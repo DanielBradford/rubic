@@ -1,5 +1,25 @@
 {% extends "base.html" %}{% block content %}
+<div class="container">
+	<div class="jumbtron row center-align">
 
-<h1>Hello</h1>
+
+		<h1>Welcome to Rubric!</h1>
+		<hr>
+		<h3>Your personal recipe manager...</h3>
+		<hr>
+
+		<form method="POST" action="">
+			<input
+          type="search"
+          name="search"
+          placeholder="search"
+          id="search"
+          class="fas fa-search icon-search"
+      /> <button type="submit"><i class="fas fa-search"></i></button>
+		</form>
+	</div>
+</div>
+
+<br>
 
 {% endblock %}
