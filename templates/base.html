@@ -13,6 +13,53 @@
 </head>
 
 <body>
+	<header>
+		<nav class="nav-extended text-shadow teal darken-1">
+			<!--top navbar-->
+			<div class="navbar nav-wrapper">
+				<a href="#" class="title brand-logo"><i class="fas fa-hat-chef"></i>Rubric</a>
+				<a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="/">Home <i class="fas fa-home"></i></a></li>
+					<li><a href="#">Recipes <i class="fas fa-book"></i></a></li>
+					{% if session.user %}
+					<li>
+						<a href="#">Profile
+							<i class="fas fa-user"></i></a>
+					</li>
+					{% if session.user|lower == "admin"|lower %}
+					<li>
+						<a href="#">Manage Recipe Categories <i class="fas fa-cog"></i></a>
+					</li>
+					{% endif %}
+					<li><a href="#">Logout <i class="fas fa-sign-out"></i></a></li>
+					{% else %}
+					<li><a href="#">Login <i class="fas fa-door-open"></i></a></li>
+					<li><a href="#">Register <i class="fas fa-user-edit"></i></a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+		<!--side nav bar-->
+		<ul class="sidenav" id="mobile-demo">
+			<li>
+				<h4 class="center-align light-blue-text text-darken-4">
+					Rubric
+				</h4>
+			</li>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Recipes</a></li>
+			{% if session.user %}
+			<li>
+				<a href="#">Profile</a>
+			</li>
+			<li><a href="#">Logout</a></li>
+			{% else %}
+			<li><a href="#">Login</a></li>
+			<li><a href="#">Register <i class="fas fa-user-edit"></i></a></li>
+			{% endif %}
+		</ul>
+	</header>
 	{% block content %}
 
 	{% endblock %}
