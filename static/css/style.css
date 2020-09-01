@@ -2,11 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Gayathri:wght@100&display=swap");
 
 /* general */
-body a {
-  color: white;
-  font-family: 'Fredoka One', cursive;
 
+body{
+    font-family: 'Fredoka One', cursive;
 }
+
 
 a:hover{
 color: coral;
@@ -68,17 +68,28 @@ body h3{
 
 }
 
+
+/* forms and cards */
+
+.card-panel{
+    border-radius: .8em;
+}
+
 /* buttons */
 button{
     height: 60px;
     width: 50px;
-    background-color: coral;
+    background-color: coral; 
     border-top-right-radius: .8em;
     border-bottom-right-radius: .8em;
 }
 button:hover{
     cursor:pointer;
     color: white;
+}
+
+button > a{
+    font-family: 'Fredoka One', cursive;
 }
 .search-btn{
     margin: 0;
