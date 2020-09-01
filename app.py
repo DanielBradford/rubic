@@ -10,6 +10,12 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
+app.config["MONGO_DBNAME"] = os.environ.get("MONDO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+
+
+mongo = PyMongo(app)
 
 @app.route("/")
 def home():
@@ -24,6 +30,10 @@ def login():
 @app.route("/register")
 def register():
     return render_template("register.html")
+
+@app.route("/categories")
+def categories():
+    return render_template("categories.html")
 
 
 if __name__ == '__main__':
