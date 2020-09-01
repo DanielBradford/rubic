@@ -1,7 +1,8 @@
 {% extends "base.html" %}{% block content %}
 
+<div class="container">
 <div class="s12 wrap">
-	<h1 class="center-align">Register</h1>
+	<h1 class="center-align jumbotron">Register</h1>
 	<div class="row">
 		<form class="col s12 m8 offset-m2" method="POST" action="#">
 			<div class="card-panel">
@@ -60,19 +61,19 @@
         <div class="col">
         <div class="switch">
     <label>
-      <input  type="checkbox">
+      <input  name="dietry_need" value="vegetarian" type="checkbox">
       <span class="lever"></span>
       Vegetarian <i class="fas fa-leaf"></i>
     </label>
   </div><div class="switch">
     <label>
-      <input type="checkbox">
+      <input name="dietry_need"  value="vegan" type="checkbox">
       <span class="lever"></span>
       Vegan <i class="fab fa-vuejs"></i>
     </label>
   </div><div class="switch">
     <label>
-      <input type="checkbox">
+      <input name="dietry_need" value="gluten" type="checkbox">
       <span class="lever"></span>
       Gluten Intolerant <i class="fas fa-wheat"></i>
     </label>
@@ -106,10 +107,10 @@
 	<div class="col s12">
 		<div class="center-align">
 			Already registered? 
-			<a href="#" class="" text-darken-4">Login to Account</a>
+			<a href="{{url_for('login') }}" class="" text-darken-4">Login to Account</a>
 		</div>
 	</div>
 </div>
-
+</div>
 
 {% endblock %}
