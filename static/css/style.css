@@ -76,6 +76,10 @@ button{
     border-top-right-radius: .8em;
     border-bottom-right-radius: .8em;
 }
+button:hover{
+    cursor:pointer;
+    color: white;
+}
 .search-btn{
     margin: 0;
     color: white;
@@ -86,6 +90,7 @@ button{
     border-radius: .8em;
     padding: .4em;
 }
+
 .btn-large a{
     color: white;
 }
