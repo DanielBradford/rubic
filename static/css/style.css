@@ -1,3 +1,108 @@
-.jumbotron{
-    width: 300px;
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Gayathri:wght@100&display=swap");
+
+/* general */
+body a {
+  color: white;
+  font-family: 'Fredoka One', cursive;
+
+}
+
+a:hover{
+color: coral;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* Navbar */
+.title i {
+  padding-left: 2em;
+}
+.title {
+  padding-left: 2em;
+  font-family: 'Fredoka One', cursive;
+  text-shadow: 2px 2px coral;
+}
+
+/* Focus Point */
+.jumbotron {
+  height: auto;
+  background-image: url("https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&auto=format&fit=crop&w=2462&q=80");
+  border-radius: 1.4em;
+}
+
+#searchbar {
+  font-family: "Fredoka One", cursive;
+  width: 30%;
+  border: solid rgba(156, 151, 151, 0.829) 2px;
+  border-top-left-radius: 0.8em;
+  border-bottom-left-radius: 0.8em;
+  padding: 8px;
+  background-color: white;
+  color: teal;
+}
+
+
+/* text */
+
+body h1{
+    font-family: 'Fredoka One', cursive;
+    color: rgb(2, 68, 68);
+    text-shadow: 2px 2px coral;
+    padding: .5em;
+}
+
+body h3{
+    font-family: 'Gayathri', sans-serif;
+    color: rgb(2, 68, 68);
+    background-color: rgba(255, 255, 255, 0.678);
+    padding: .2em;
+    
+
+}
+
+/* buttons */
+button{
+    height: 60px;
+    width: 50px;
+    background-color: coral;
+    border-top-right-radius: .8em;
+    border-bottom-right-radius: .8em;
+}
+.search-btn{
+    margin: 0;
+    color: white;
+}
+
+.btn-large{
+    border: solid 2px white;
+    border-radius: .8em;
+    padding: .4em;
+}
+.btn-large a{
+    color: white;
+}
+
+.btn-large:hover{
+    background-color: coral;
+    
+}
+
+
+
+
+
+/* footer */
+
+footer{
+    background-color: coral;
+    color: white;
+    height: 2em;
 }
