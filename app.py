@@ -48,6 +48,12 @@ def recipes():
     return render_template("recipes.html", recipes=recipes, test=test)
 
 
+@app.route("/add_recipe")
+def add_recipe():
+
+    recipes = list(mongo.db.type.find().sort("type", 1))
+    return render_template("add_recipe.html", recipes=recipes)
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
