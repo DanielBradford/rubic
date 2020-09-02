@@ -31,9 +31,21 @@ def login():
 def register():
     return render_template("register.html")
 
-@app.route("/categories")
-def categories():
-    return render_template("categories.html")
+# @app.route("/categories")
+# def categories():
+
+#     types = list(mongo.db.type.find())
+
+#     return render_template("categories.html", types=types)
+
+
+@app.route("/recipes")
+def recipes():
+    recipes = list(mongo.db.type.find().sort("type", 1))
+    test = list(mongo.db.recipes.find().sort("test", 1))
+
+
+    return render_template("recipes.html", recipes=recipes, test=test)
 
 
 if __name__ == '__main__':
