@@ -28,6 +28,10 @@
     <h3>Meal Type: {{test.type}}</h3>
     {% endfor %}
   </div>
+  <div class="row center-align">
+    <a href="{{url_for('add_recipe') }}"
+      <button>Add Recipe <i class="fas fa-plus-circle"></i></a>
+  </div>
 </div>
 
 {% endblock %}
