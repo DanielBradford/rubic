@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{%block content %}
+{% extends 'base.html' %}{%block content %} {% if recipes|length > 0 %}
 
 <div class="container">
   <h1 class="center-align jumbotron col-8">Recipes</h1>
@@ -13,8 +13,7 @@
           <div class="card-action">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
             voluptatibus dicta ipsam eos, amet suscipit deserunt recusandae vel
-            deleniti? Quis earum porro consectetur repellendus, tempora
-            voluptatem. Tempora praesentium esse ullam?
+            deleniti?
           </div>
         </div></a
       >
@@ -22,16 +21,20 @@
 
     {% endfor %}
   </div>
-  <div hidden class="row">
+  <div class="row">
     {% for test in test %}
     <h2 class="{{test.type }}_list">Recipe Name: {{ test.recipe_name }}</h2>
     <h3>Meal Type: {{test.type}}</h3>
     {% endfor %}
   </div>
   <div class="row center-align">
-    <a href="{{url_for('add_recipe') }}"
-      <button>Add Recipe <i class="fas fa-plus-circle"></i></a>
+    <a href="{{url_for('add_recipe') }}" <button
+      >Add Recipe <i class="fas fa-plus-circle"></i
+    ></a>
   </div>
+  {% else %}
+  <h3 class="red-text text-darken center-align">NO RESULTS FOUND</h3>
+  {% endif %}
 </div>
 
 {% endblock %}

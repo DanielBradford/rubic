@@ -24,14 +24,14 @@
 					<li><a href="{{url_for('recipes')}}">Recipes <i class="fas fa-book"></i></a></li>
 	
 					<li>
-						<a href="{{url_for('profile') }}">Profile
+						<a href="{{url_for('profile', username=session['user']) }}">Profile
 							<i class="fas fa-user"></i></a>
 					</li>
 					<li>
 						<a href="#">Manage Recipe Categories <i class="fas fa-cog"></i></a>
 					</li>
 	
-					<li><a href="#">Logout <i class="fas fa-sign-out"></i></a></li>
+					<li><a href="{{url_for('logout') }}">Logout <i class="fas fa-sign-out"></i></a></li>
 	
 					<li><a href="{{url_for('login') }}">Login <i class="fas fa-door-open"></i></a></li>
 					<li><a href="{{ url_for('register') }}">Register <i class="fas fa-user-edit"></i></a></li>
@@ -50,9 +50,9 @@
 			<li><a href="{{url_for('recipes')}}">Recipes</a></li>
 			{% if session.user %}
 			<li>
-				<a href="#">Profile</a>
+				<a href="{{url_for('profile', username=session['user'])}}">Profile</a>
 			</li>
-			<li><a href="#">Logout</a></li>
+			<li><a href="{{url_for('logout') }}">Logout</a></li>
 			{% else %}
 			<li><a href="{{url_for('login') }}">Login</a></li>
 			<li><a href="{{ url_for('register') }}">Register <i class="fas fa-user-edit"></i></a></li>
