@@ -53,6 +53,12 @@ def login():
     return render_template("login.html")
 
 
+@app.route('/logout')
+def logout():
+        # remove user session from cookies
+        flash("You have been logged out")
+        session.pop("user")
+        return redirect(url_for("login"))
 
 @app.route("/register")
 def register():
@@ -113,7 +119,7 @@ def add_user():
 def profile(username):
     # grab session users username from database
     username = mongo.db.users.find_one(
-        {"user_name": session["user"]})['username']
+        {"username": session["user"]})['username']
 
     if session["user"]:
         return render_template("profile.html", username=username)
