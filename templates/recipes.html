@@ -1,0 +1,33 @@
+{% extends 'base.html' %}{%block content %}
+
+<div class="container">
+  <h1 class="center-align jumbotron col-8">Recipes</h1>
+  <div class="row">
+    {% for type in recipes %}
+    <div class="{{type.type }} col s12 m3">
+      <a href="#"
+        ><div class="card teal lighten-2 text-shadow center-align">
+          <div class="card-content white-text">
+            <span class="card-title">{{type.type}}</span>
+          </div>
+          <div class="card-action">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+            voluptatibus dicta ipsam eos, amet suscipit deserunt recusandae vel
+            deleniti? Quis earum porro consectetur repellendus, tempora
+            voluptatem. Tempora praesentium esse ullam?
+          </div>
+        </div></a
+      >
+    </div>
+
+    {% endfor %}
+  </div>
+  <div hidden class="row">
+    {% for test in test %}
+    <h2 class="{{test.type }}_list">Recipe Name: {{ test.recipe_name }}</h2>
+    <h3>Meal Type: {{test.type}}</h3>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
