@@ -78,8 +78,13 @@ def add_user():
         session["user"] = request.form.get("user_name")
         flash("Registration Successful!")
         return redirect(url_for(
-        "/", username=session["user"]))
+        "profile", username=session["user"]))
     return render_template("landing.html")
+
+
+@app.route("/profile<username>")
+def profile(username):
+    return render_template("profile.html", username= session['user'])
 
 
 # @app.route("/categories")
