@@ -82,9 +82,9 @@ def add_user():
     return render_template("landing.html")
 
 
-@app.route("/profile<username>")
-def profile(username):
-    return render_template("profile.html", username= session['user'])
+@app.route("/profile")
+def profile():
+    return render_template("profile.html")
 
 
 # @app.route("/categories")
