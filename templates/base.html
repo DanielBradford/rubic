@@ -42,19 +42,26 @@
                 >Recipes <i class="fas fa-book"></i
               ></a>
             </li>
-            {% if session['user'] %}
-            <li>
-              <a href="{{url_for('profile', username=session['user']) }}"
-                >Profile <i class="fas fa-user"></i
-              ></a>
-            </li>
-            {% endif %} {% if session['user'] == 'admin' %}
+            {% if session['user'] == 'admin' %}
             <li>
               <a href="#"
                 >Manage Recipe Categories <i class="fas fa-cog"></i
               ></a>
             </li>
             {% endif %}
+            {% if session.user %}
+            <li>
+              <a href="{{url_for('profile', user=session['user']) }}"
+                >Profile <i class="fas fa-user"></i
+              ></a>
+            </li>
+
+            <li>
+              <a id="logout" href="{{url_for('logout') }}"
+                >Logout <i class="fas fa-sign-out"></i
+              ></a>
+            </li>
+            {% else %}
             <li>
               <a href="{{url_for('login') }}"
                 >Login <i class="fas fa-door-open"></i
@@ -65,11 +72,7 @@
                 >Register <i class="fas fa-user-edit"></i
               ></a>
             </li>
-            <li>
-              <a id="logout" href="{{url_for('logout') }}"
-                >Logout <i class="fas fa-sign-out"></i
-              ></a>
-            </li>
+            {% endif %}
           </ul>
         </div>
       </nav>
@@ -84,7 +87,7 @@
         <li><a href="{{url_for('recipes')}}">Recipes</a></li>
         {% if session.user %}
         <li>
-          <a href="{{url_for('profile', username=session['user'])}}">Profile</a>
+          <a href="{{url_for('profile', user=session['user'])}}">Profile</a>
         </li>
         <li><a href="{{url_for('logout') }}">Logout</a></li>
         {% else %}

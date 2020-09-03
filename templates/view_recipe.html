@@ -31,7 +31,7 @@
         <div class="right-align profile col s4">
           Appliance Used:
         </div>
-        <div class="col s8">{{item.using}}</div>
+        <div class="col s8">{{item.appliance}}</div>
       </div>
       <div class="row">
         <div class="right-align profile col s4">
@@ -43,12 +43,8 @@
         <div class="right-align profile col s4">
           Ingredients:
         </div>
-        {% for ing in item.ingredients %}
-        <ul>
-          <li>+ {{ing}}</li>
-        </ul>
-        {% endfor %}
-        <div class="col s8">{{item.ingredients}}</div>
+        
+        <div class="col s8">{{item.ingredients}}
       </div>
       <div class="row">
         <div class="right-align profile col s4">
