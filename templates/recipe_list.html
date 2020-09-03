@@ -1,3 +1,9 @@
 {% extends 'base.html'%}{% block content %}
 
+{% for recipe in recipes%}
+    {% if recipe.type == recipe_type %}
+    <h1>{{recipe.recipe_name}}</h1>
+    {% endif %}
+{% endfor %}
+
 {% endblock %}
