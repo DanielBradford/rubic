@@ -23,29 +23,30 @@ mongo = PyMongo(app)
 def home():
     return render_template("landing.html")
 
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     search = request.form.get("search")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
     return render_template("recipes.html", recipes=recipes)
 
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
-            {"user_name": request.form.get("user_name").lower()
+            {"username": request.form.get("user_name")
              })
-
         if existing_user:
             if check_password_hash(existing_user["password"],
                                    request.form.get("password")):
-                session["user"] = request.form.get("user_name").lower()
+                session["user"] = request.form.get("user_name")
                 flash("Welcome, {}".format(
                     request.form.get("user_name")))
                 return redirect(url_for(
                     "profile", username=session["user"]))
 
-                return render_template("profile.html")
+                return render_template("profile.html", username=session["user"])
 
             else:
                 flash("Incorrect username and/or Password")
@@ -60,10 +61,11 @@ def login():
 
 @app.route('/logout')
 def logout():
-        # remove user session from cookies
-        flash("You have been logged out")
-        session.pop("user")
-        return redirect(url_for("login"))
+    # remove user session from cookies
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("login"))
+
 
 @app.route("/register")
 def register():
@@ -72,10 +74,20 @@ def register():
 
 @app.route("/recipes")
 def recipes():
-    recipes = list(mongo.db.type.find().sort("type", 1))
-    test = list(mongo.db.recipes.find().sort("test", 1))
 
-    return render_template("recipes.html", recipes=recipes, test=test)
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+
+    return render_template("recipes.html", types=types, recipes=recipes)
+
+
+@app.route("/view_recipe/<recipe_id>")
+def view_recipe(recipe_id):
+
+    recipe_id = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    recipes = mongo.db.recipes.find().sort("recipe_name", 1)
+    return render_template("view_recipe.html", recipe_id=recipe_id, recipes=recipes)
 
 
 @app.route("/add_recipe")
@@ -120,8 +132,8 @@ def add_user():
     return render_template("landing.html")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
     # grab session users username from database
     username = mongo.db.users.find_one(
         {"username": session["user"]})['username']
@@ -146,6 +158,7 @@ def add_new_recipe():
             "notes": request.form.get("notes"),
             "method": request.form.get("method"),
             "rating": 0,
+            "rating_count": 0,
             "created_by": session["user"],
             "created_on": datetime.now()
         }
