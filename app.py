@@ -21,7 +21,6 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    session["user"] = request.form.get("user_name")
     return render_template("landing.html")
 
 
@@ -30,6 +29,13 @@ def search():
     search = request.form.get("search")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
     return render_template("recipes.html", recipes=recipes)
+
+
+@app.route("/myRecipes")
+def myRecipes():
+    user = session['user']
+    recipes = list(mongo.db.recipes.find({"created_by": user}))
+    return render_template("recipes.html", recipes=recipes, user = user)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -102,8 +108,8 @@ def view_recipe(recipe_id):
 @app.route("/add_recipe")
 def add_recipe():
 
-    recipes = list(mongo.db.type.find().sort("type", 1))
-    return render_template("add_recipe.html", recipes=recipes)
+    types = list(mongo.db.type.find().sort("type", 1))
+    return render_template("add_recipe.html", types=types)
 
 
 @app.route("/add_user", methods=["GET", "POST"])
