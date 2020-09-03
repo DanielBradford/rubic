@@ -80,18 +80,22 @@ def recipes():
     return render_template("recipes.html", types=types, recipes=recipes)
 
 
-@app.route("/recipe_list")
-def recipe_list():
+@app.route("/recipe_list/<recipe_type>")
+def recipe_list(recipe_type):
 
-    return render_template("recipe_list.html")
+    recipe_type = recipe_type
+
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+
+    return render_template("recipe_list.html", recipes=recipes, recipe_type=recipe_type)
 
 
 @app.route("/view_recipe/<recipe_id>")
 def view_recipe(recipe_id):
 
     recipe_id = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-
     recipes = mongo.db.recipes.find().sort("recipe_name", 1)
+
     return render_template("view_recipe.html", recipe_id=recipe_id, recipes=recipes)
 
 
