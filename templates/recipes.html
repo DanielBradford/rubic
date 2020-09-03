@@ -1,31 +1,36 @@
-{% extends 'base.html' %}{%block content %} {% if recipes|length > 0 %}
+{% extends 'base.html' %}{%block content %} 
 
 <div class="container">
   <h1 class="center-align jumbotron col-8">Recipes</h1>
   <div class="row">
-    {% for type in recipes %}
-    <div class="{{type.type }} col s12 m3">
-      <a href="#"
-        ><div class="card teal lighten-2 text-shadow center-align">
-          <div class="card-content white-text">
-            <span class="card-title">{{type.type}}</span>
-          </div>
-          <div class="card-action">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-            voluptatibus dicta ipsam eos, amet suscipit deserunt recusandae vel
-            deleniti?
-          </div>
-        </div></a
-      >
+    {% for item in types %}
+    <div class="card col s3 center-align">
+    <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{ url_for('static', filename='images/books.jpg') }}">
     </div>
-
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">{{item.type_name}}</span>
+      <p><a href="#">This is a link</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">{{item.type_name}}<i class="material-icons right">close</i></span>
+      <p>{{ item.type_desc }}</p>
+    </div>
+  </div>
     {% endfor %}
   </div>
+  {% if recipes|length > 0 %}
   <div class="row">
-    {% for test in test %}
-    <h2 class="{{test.type }}_list">Recipe Name: {{ test.recipe_name }}</h2>
-    <h3>Meal Type: {{test.type}}</h3>
-    {% endfor %}
+    {% for recipe in recipes %}
+    <div class="col s12 m7">
+    
+    <a href="{{url_for('view_recipe') }}"><h3>{{recipe.recipe_name}}</h3></a>
+
+   {% endfor %}
+   </div>
+  </div>
+  
+    
   </div>
   <div class="row center-align">
     <a href="{{url_for('add_recipe') }}" <button
