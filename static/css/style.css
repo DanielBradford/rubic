@@ -7,10 +7,20 @@ body{
     font-family: 'Fredoka One', cursive;
 }
 
+/* icons */
+
 main i{
     color: rgb(250, 250, 250);
     text-shadow: 2px 2px coral;
 
+}
+
+.view_recipe i{
+
+    color: teal;
+}
+.recipes i{
+    color: teal;
 }
 
 .categoryTitle{
@@ -155,6 +165,11 @@ button > a{
     cursor: pointer;
 }
 
+
+.add-recipe-btn{
+    background-color: green;
+    color: white;
+}
 
 .edit-btn,
 .delete-btn{
