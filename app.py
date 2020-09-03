@@ -21,6 +21,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
+    session["user"] = request.form.get("user_name")
     return render_template("landing.html")
 
 
@@ -35,7 +36,7 @@ def search():
 def login():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("user_name")
+            {"user_name": request.form.get("user_name")
              })
         if existing_user:
             if check_password_hash(existing_user["password"],
@@ -44,9 +45,7 @@ def login():
                 flash("Welcome, {}".format(
                     request.form.get("user_name")))
                 return redirect(url_for(
-                    "profile", username=session["user"]))
-
-                return render_template("profile.html", username=session["user"])
+                    "profile", user=session["user"]))
 
             else:
                 flash("Incorrect username and/or Password")
@@ -81,6 +80,12 @@ def recipes():
     return render_template("recipes.html", types=types, recipes=recipes)
 
 
+@app.route("/recipe_list")
+def recipe_list():
+
+    return render_template("recipe_list.html")
+
+
 @app.route("/view_recipe/<recipe_id>")
 def view_recipe(recipe_id):
 
@@ -100,8 +105,7 @@ def add_recipe():
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
     if request.method == "POST":
-        password = request.form.get("password")
-        confirm = request.form.get("confirm")
+
         existing_user = mongo.db.users.find_one(
             {"user_name": request.form.get("user_name").lower()})
 
@@ -109,8 +113,10 @@ def add_user():
             flash("Username already exists")
             return redirect(url_for("register"))
 
+        password = request.form.get("password")
+        confirm = request.form.get("confirm")
         if password != confirm:
-            flash("Passwords do not match.")
+            flash("Passwords do not match")
             return redirect(url_for("register"))
 
         register = {
@@ -128,20 +134,18 @@ def add_user():
         session["user"] = request.form.get("user_name")
         flash("Registration Successful!")
         return redirect(url_for(
-            "profile", username=session["user"]))
+            "profile", user=session["user"]))
     return render_template("landing.html")
 
 
-@app.route("/profile", methods=["GET", "POST"])
-def profile():
+@app.route("/profile/<user>", methods=["GET", "POST"])
+def profile(user):
+
+    user = user
+    users = mongo.db.users.find().sort("user_name", 1)
     # grab session users username from database
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})['username']
 
-    if session["user"]:
-        return render_template("profile.html", username=username)
-
-    return redirect(url_for('login'))
+    return render_template("profile.html", users=users, user=user)
 
 
 @app.route("/add_new_recipe", methods=["GET", "POST"])
