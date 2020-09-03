@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col s4 center-align">
+      <i class="large fas fa-save"></i>
+      <hr />
+      <span><button class="delete-btn">Delete</button></span>
+      <span><button class="edit-btn">Edit</button></span>
+    </div>
+    <div class="col s8">
+      <h1 class="view center-align profile">Recipe Name</h1>
+    </div>
+
+    <div class="">
+      <div class="row">
+        <div class="right-align profile col s4">
+          Recipe Name:
+        </div>
+        <div class="col s8">{{view.recipe_name}}</div>
+      </div>
+      <div class="row">
+        <div class="right-align profile col s4">
+          Recipe Type:
+        </div>
+        <div class="col s8">{{view.type}}</div>
+      </div>
+      <div class="row">
+        <div class="right-align profile col s4">
+          Appliance Used:
+        </div>
+        <div class="col s8"></div>
+      </div>
+      <div class="row">
+        <div class="right-align profile col s4">
+          Temperature:
+        </div>
+        <div class="col s8"></div>
+      </div>
+      <div class="row">
+        <div class="right-align profile col s4">
+          Notes:
+        </div>
+        <div class="col s8"></div>
+      </div>
+      <div class="row">
+        <div class="right-align profile col s4">
+          Method:
+        </div>
+        <div class="col s8"></div>
+      </div>
+    </div>
+
+    <div class="col s8"></div>
+  </div>
+
+  {% endblock%}
+</div>
