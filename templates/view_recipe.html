@@ -8,8 +8,10 @@
       <span><button class="delete-btn">Delete</button></span>
       <span><button class="edit-btn">Edit</button></span>
     </div>
+
     <div class="col s8">
-      <h1 class="view center-align profile">Recipe Name</h1>
+    {% for item in recipes %}{% if item._id == recipe_id._id %}
+      <h1 class="view center-align profile">{{ item.recipe_name }}</h1>
     </div>
 
     <div class="">
@@ -17,25 +19,25 @@
         <div class="right-align profile col s4">
           Recipe Name:
         </div>
-        <div class="col s8">{{view.recipe_name}}</div>
+        <div class="col s8">{{ item.recipe_name }}</div>
       </div>
       <div class="row">
         <div class="right-align profile col s4">
           Recipe Type:
         </div>
-        <div class="col s8">{{view.type}}</div>
+        <div class="col s8">{{ item.type }}</div>
       </div>
       <div class="row">
         <div class="right-align profile col s4">
           Appliance Used:
         </div>
-        <div class="col s8"></div>
+        <div class="col s8">{{item.using}}</div>
       </div>
       <div class="row">
         <div class="right-align profile col s4">
           Temperature:
         </div>
-        <div class="col s8"></div>
+        <div class="col s8">{{item.temperature}}</div>
       </div>
       <div class="row">
         <div class="right-align profile col s4">
@@ -47,10 +49,11 @@
         <div class="right-align profile col s4">
           Method:
         </div>
-        <div class="col s8"></div>
+        <div class="col s8">{{item.method}}</div>
       </div>
+      {% endif %}
+    {% endfor %}
     </div>
-
     <div class="col s8"></div>
   </div>
 
