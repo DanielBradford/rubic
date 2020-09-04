@@ -35,7 +35,7 @@ def search():
 def myRecipes():
     user = session['user']
     recipes = list(mongo.db.recipes.find({"created_by": user}))
-    return render_template("recipes.html", recipes=recipes, user = user)
+    return render_template("recipes.html", recipes=recipes, user=user)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -101,8 +101,10 @@ def view_recipe(recipe_id):
 
     recipe_id = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     recipes = mongo.db.recipes.find().sort("recipe_name", 1)
-
-    return render_template("view_recipe.html", recipe_id=recipe_id, recipes=recipes)
+    user = session['user']
+    user_id = mongo.db.users.find_one({"user_name": user})
+    return render_template("view_recipe.html", recipe_id=recipe_id,
+                           recipes=recipes, user_id=user_id)
 
 
 @app.route("/add_recipe")
@@ -136,6 +138,7 @@ def add_user():
             "email": request.form.get("email"),
             "user_name": request.form.get("user_name"),
             "password": generate_password_hash(request.form.get("password")),
+            "saved_recipes": [],
 
         }
         mongo.db.users.insert_one(register)
@@ -181,6 +184,18 @@ def add_new_recipe():
         return redirect(url_for("recipes"))
 
     return render_template("add_recipe.html")
+
+
+@app.route("/save_recipe/<recipe_id>")
+def save_recipe():
+    user = session["user"]
+    recipe_id = recipe_id
+    mongo.db.users.update(
+        {"user_name": user},
+        {'$addToSet': {'saved_recipes': recipe_id}})
+    flash("RECIPE SAVED SUCCESSFULLY")
+
+    return redirect(url_for("view_recipe", recipe_id=recipe_id))
 
 
 if __name__ == '__main__':
