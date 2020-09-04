@@ -2,9 +2,9 @@
 <nav>
   <div class="">
     <div class="col s12">
-      <a href="#!" class="breadcrumb">First</a>
-      <a href="#!" class="breadcrumb">Second</a>
-      <a href="#!" class="breadcrumb">Third</a>
+      <a href="#!" class="breadcrumb">Recipes</a>
+      <a href="#!" class="breadcrumb"></a>
+      <a href="#!" class="breadcrumb"></a>
     </div>
   </div>
 </nav>
@@ -21,15 +21,14 @@
           On
         </label>
       </div>
-      <a href="#">CLICK HERE TO SAVE</a>
+      <a href="{{url_for('save_recipe', recipe_id=recipe_id._id)}}">CLICK HERE TO SAVE</a>
       <hr />
-      {{if }} {% if recipes.created_by == session.user %}
+      {% for item in recipes %}{% if item._id == recipe_id._id %}
       <span><button class="delete-btn">Delete</button></span>
-      <span><button class="edit-btn">Edit</button></span>
-      {% endif %}
+      <span><a href="{{url_for('edit_recipe', recipe_id=recipe_id._id)}}"><button class="edit-btn">Edit</button></a></span>
     </div>
     <div class="col s8">
-      {% for item in recipes %}{% if item._id == recipe_id._id %}
+      
       <h1 class="view center-align profile">{{ item.recipe_name }}</h1>
     </div>
 
