@@ -23,6 +23,24 @@ main i{
     color: teal;
 }
 
+#ribbon{
+    color: rgb(151, 3, 151);
+    text-shadow: none
+}
+
+#star{
+    color: goldenrod;
+    text-shadow: 2px 2px  white;
+}
+
+
+.card-reveal i{
+    color: coral;
+    text-shadow: none;
+}
+
+
+
 .categoryTitle{
     background-color: teal;
     color: white;
@@ -43,6 +61,11 @@ main {
 }
 
 /* Navbar */
+
+nav{
+    background-color: coral;
+}
+
 .title i {
   padding-left: 2rem;
 }
@@ -121,6 +144,22 @@ body h3{
     height: 180px;
 }
 
+.collapsible li{
+    border-top-left-radius: 1.4em;
+    border-top-right-radius: 1.4em;
+
+}
+
+.recipe-card a{
+    color: rgb(121, 187, 187);
+}
+
+.recipe-card a:hover,
+.recipe-card:hover{
+    background-color: coral;
+    color: white;
+}
+
 /* buttons */
 button{
     height: 60px;
@@ -145,6 +184,9 @@ button > a{
     transform: scale(1.2);
 }
 
+.btn-small{
+    width: auto;
+}
 .btn-large{
     border: solid 2px white;
     border-radius: .8em;
