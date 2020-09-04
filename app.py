@@ -56,6 +56,8 @@ def login():
             else:
                 flash("Incorrect username and/or Password")
                 return redirect(url_for("login"))
+            
+            return render_template('login.html')
 
         else:
             flash("Incorrect Username and/or Password")
@@ -224,6 +226,9 @@ def save_recipe(recipe_id):
 
     return redirect(url_for("view_recipe", recipe_id=recipe_id))
 
+@app.route("/saved_recipes")
+def saved_recipes():
+    return render_template("saved_recipes.html")
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
