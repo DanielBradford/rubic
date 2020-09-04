@@ -1,8 +1,8 @@
-{%extends 'base.html'%}{% block content %}
+{% extends 'base.html'%}{% block content %}
 
-<div class="container">
+
 <div class="s12 wrap">
-	<h1 class="center-align jumbotron col-8">PLEASE LOGIN OR REGISTER TO ACCESS TO RECIPES</h1>
+	<h1 class="center-align jumbotron col-8">PLEASE LOGIN OR <span class="register">REGISTER FOR FREE</span> TO ACCESS RECIPES</h1>
 	<div class="row">
 		<form class="col s12 m8 offset-m2" method="POST" action="#">
 			<div class="card-panel">
@@ -54,14 +54,14 @@
 	</div>
 </div>
 
-<div class="row">
+<div class="row checker">
 	<div class="col s12">
 		<div class="center-align">
 			New Here?
-			<a href="#" class="" text-darken-4">Register Account</a>
+			<a href="{{url_for('register')}}" class="text-darken-4">Register Account</a>
 		</div>
 	</div>
 </div>
-</div>
+
 
 {% endblock %}
