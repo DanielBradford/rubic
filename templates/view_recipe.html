@@ -1,21 +1,33 @@
 {% extends 'base.html' %} {% block content %}
+<nav>
+  <div class="">
+    <div class="col s12">
+      <a href="#!" class="breadcrumb">First</a>
+      <a href="#!" class="breadcrumb">Second</a>
+      <a href="#!" class="breadcrumb">Third</a>
+    </div>
+  </div>
+</nav>
 
 <div class="container view_recipe">
   <div class="row">
     <div class="col s4 center-align">
-      SAVE RECIPE <i class="small fas fa-save"></i> <div class="switch">
-    <label>
-      Off
-      <input type="checkbox">
-      <span class="lever"></span>
-      On
-    </label>
-  </div>
+      SAVE RECIPE <i class="small fas fa-save"></i>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" />
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
+      <a href="#">CLICK HERE TO SAVE</a>
       <hr />
+      {{if }} {% if recipes.created_by == session.user %}
       <span><button class="delete-btn">Delete</button></span>
       <span><button class="edit-btn">Edit</button></span>
+      {% endif %}
     </div>
-
     <div class="col s8">
       {% for item in recipes %}{% if item._id == recipe_id._id %}
       <h1 class="view center-align profile">{{ item.recipe_name }}</h1>
@@ -50,19 +62,19 @@
         <div class="right-align profile col s4">
           Ingredients:
         </div>
-        
-        <div class="col s8">{{item.ingredients}}
-      </div>
-      <div class="row">
-        <div class="right-align profile col s4">
-          Method:
-        </div>
-        <div class="col s8">{{item.method}}</div>
-      </div>
-      {% endif %} {% endfor %}
-    </div>
-    <div class="col s8"></div>
-  </div>
 
-  {% endblock%}
+        <div class="col s8">{{item.ingredients}}</div>
+        <div class="row">
+          <div class="right-align profile col s4">
+            Method:
+          </div>
+          <div class="col s8">{{item.method}}</div>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+      <div class="col s8"></div>
+    </div>
+
+    {% endblock%}
+  </div>
 </div>
