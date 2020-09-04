@@ -62,15 +62,27 @@
       >Add Recipe <i class="fas fa-plus-circle"></i
     ></a>
   </div>
+  <br>
+  <hr>
+  <div class="row center-align">
+    <h2 >All Recipes:</h2>
+  </div>
 
   <ul class="collapsible recipes">
     {% for item in recipes %}
     <li>
-        <span class="collapsible-header">{{item.recipe_name}} {% if item.created_by == session.user %} <i class="fas fa-ribbon"></i>
-        {% endif %} Rating:{{item.rating}} <i class="fas fa-star"></i></span>
+      <div class="row">
+        <span class="recipe-card collapsible-header"
+          ><span class="col s1 align-left">{% if item.created_by == session.user %}<i id="ribbon" class="fas fa-ribbon"></i>{% endif %}</span> <a href="{{url_for('view_recipe', recipe_id=item._id) }}"><h2 class="col s3">{{item.recipe_name}} </h2></a> 
+           <p class="col s3 align-center">Created by:
+          {{item.created_by}}</p> <p class="col s3">Rating:{{item.rating}}
+          <i id="star" class="fas fa-star"></i> ({{item.rating_count}}) </p> 
+        </span>
+      </div>
       <div class="collapsible-body">
-        {{item.created_by}} test  <button class="btn blue secondary-content right-align">Edit</button
-          ><button class="btn red secondary-content right-align">Delete</button>
+      {% if item.created_by ==
+          session.user %} <button class="col s1 edit-btn blue">Edit</button
+          ><button class=" col s1 delete-btn red">Delete</button>{% endif %}
       </div>
     </li>
     {% endfor %}
