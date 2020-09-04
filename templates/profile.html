@@ -1,120 +1,127 @@
 {% extends 'base.html' %}{% block content %}
 
-<div class="container">
-  <div class="row center-align jumbotron">
-    <h1 class="col-8">{{ user }}'s Profile</h1>
-    <form method="POST" action="{{url_for('search')}}">
-      <input
-        type="search"
-        name="search"
-        placeholder="Search for recipes..."
-        id="searchbar"
-        class="fas fa-search icon-search"
-      />
-      <button class="btn-floating pulse" search-btn type="submit">
-        <i class="fas fa-search"></i>
-      </button>
-    </form>
-  </div>
+<div class="row center-align jumbotron">
+  <h1 class="col-8">{{ user }}'s Profile</h1>
+  <img
+    id="chef"
+    src="{{url_for('static', filename='images/chef.png')}}"
+    alt="chef hat image"
+  />
+  <form method="POST" action="{{url_for('search')}}">
+    <input
+      type="search"
+      name="search"
+      placeholder="Search for recipes..."
+      id="searchbar"
+      class="fas fa-search icon-search"
+    />
+    <button class="btn-floating pulse" search-btn type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
+  <br />
+</div>
 
-  <div class="row">
-    <div class="card col s3">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img
-          class="activator"
-          src="{{url_for('static', filename='images/books.jpg')}}"
-        />
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4"
-          >Recipes <i class="fas fa-folder"></i
-        ></span>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4"
-          >Recipes<i class="material-icons right">close</i></span
-        >
-        <p>
-          Here is some more information about this product that is only revealed
-          once clicked on.
-        </p>
-        <a href="{{url_for('recipes')}}">GO TO ALL RECIPES</a>
-      </div>
+<div class="row">
+  <div class="card col s3">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img
+        class="activator"
+        src="{{url_for('static', filename='images/books.jpg')}}"
+      />
     </div>
-    <div class="card col s3">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img
-          class="activator"
-          src="{{url_for('static', filename='images/bookmark.jpg')}}"
-        />
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4"
-          >Saved Recipes <i class="fas fa-save"></i
-        ></span>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4"
-          >Saved Recipes<i class="material-icons right">close</i></span
-        >
-        <p>
-          Here is some more information about this product that is only revealed
-          once clicked on.
-        </p>
-        <button class="btn-medium">
-          <a href="{{url_for('recipes')}}"
-            >GO TO SAVED RECIPES <i class="fas fa-save"></i
-          ></a>
-        </button>
-      </div>
+    <div class="center-align card-content">
+      <span class="card-title activator grey-text text-darken-4"
+        ><h3 class="activator">All Recipes</h3>
+        <i class="fas fa-folder"></i
+      ></span>
     </div>
-    <div class="card col s3">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img
-          class="activator"
-          src="{{url_for('static', filename='images/mine.jpg')}}"
-        />
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4"
-          >My Recipes <i class="fas fa-archive"></i>
-        </span>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4"
-          >My Recipes<i class="material-icons right">close</i></span
-        >
-        <p>
-          Here is some more information about this product that is only revealed
-          once clicked on.
-        </p>
-        <a class="btn-medium" href="{{url_for('myRecipes')}}"
-          >GO TO MY RECIPES</a
-        >
-      </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"
+        >All Recipes<i class="material-icons right">close</i></span
+      >
+      <p>
+        Here is some more information about this product that is only revealed
+        once clicked on.
+      </p>
+      <a href="{{url_for('recipes')}}">GO TO ALL RECIPES</a>
     </div>
-    <div class="card col s3">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img
-          class="activator"
-          src="{{url_for('static', filename='images/cart.jpg')}}"
-        />
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4"
-          >Top Tools <i class="fas fa-shop"></i>
-        </span>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4"
-          >Top Tools<i class="material-icons right">close</i></span
-        >
-        <p>
-          Here is some more information about this product that is only revealed
-          once clicked on.
-        </p>
-      </div>
+  </div>
+  <div class="card col s3">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img
+        class="activator"
+        src="{{url_for('static', filename='images/bookmark.jpg')}}"
+      />
+    </div>
+    <div class="card-content center-align">
+      <span class="card-title activator grey-text text-darken-4"
+        ><h3 class="activator">Saved Recipes</h3>
+        <i class="fas fa-save"></i
+      ></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"
+        >Saved Recipes<i class="material-icons right">close</i></span
+      >
+      <p>
+        Here is some more information about this product that is only revealed
+        once clicked on.
+      </p>
+
+      <a class="center-align" href="{{url_for('saved_recipes')}}"
+        >GO TO SAVED RECIPES <i class="medium fas fa-save"></i
+      ></a>
+    </div>
+  </div>
+  <div class="card col s3">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img
+        class="activator"
+        src="{{url_for('static', filename='images/mine.jpg')}}"
+      />
+    </div>
+    <div class="card-content center-align">
+      <span class="card-title activator grey-text text-darken-4"
+        ><h3 class="activator">My Recipes</h3>
+        <i class="fas fa-archive"></i>
+      </span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"
+        >My Recipes<i class="material-icons right">close</i></span
+      >
+      <p>
+        Here is some more information about this product that is only revealed
+        once clicked on.
+      </p>
+      <a class="btn-medium" href="{{url_for('myRecipes')}}">GO TO MY RECIPES</a>
+    </div>
+  </div>
+  <div class="card col s3">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img
+        class="activator circle"
+        src="{{url_for('static', filename='images/cart.jpg')}}"
+      />
+    </div>
+    <div class="card-content center-align">
+      <span class="card-title activator grey-text text-darken-4"
+        ><h3 class="activator">Top Tools</h3>
+        <i class="fas fa-shopping-bag"></i>
+      </span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"
+        ><h3>Top Tools</h3>
+        <i class="material-icons right">close</i></span
+      >
+      <p>
+        Here is some more information about this product that is only revealed
+        once clicked on.
+      </p>
     </div>
   </div>
 </div>
+
 {% endblock %}

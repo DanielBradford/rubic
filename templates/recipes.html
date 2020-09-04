@@ -1,122 +1,122 @@
 {% extends 'base.html' %}{%block content %}
 
-<div class="container">
-  <div class="row jumbotron center-align">
-    <h1 class=" ">Recipes</h1>
-    <form method="POST" action="{{url_for('search')}}">
-      <input
-        type="search"
-        name="search"
-        placeholder="Search for recipes..."
-        id="searchbar"
-        class="fas fa-search icon-search"
-      />
-      <button class="btn-floating pulse" search-btn type="submit">
-        <i class="fas fa-search"></i>
-      </button>
-    </form>
-  </div>
-  <div class="row">
-    {% for item in types %}
-    <div class="card col s3 center-align">
-      <div class="card-image waves-effect waves-block waves-light">
-        {% if item.type_name == 'Dessert' %}
-        <img
-          class="activator"
-          src="{{ url_for('static', filename='images/dessert.jpg') }}"
-        />
-        {% elif item.type_name == 'Snack' %}
-        <img
-          class="activator"
-          src="{{ url_for('static', filename='images/food.jpg') }}"
-        />
-        {% elif item.type_name == 'Starter' %}
-        <img
-          class="activator"
-          src="{{ url_for('static', filename='images/starter.jpg') }}"
-        />
-        {% elif item.type_name == 'Main'%}
-        <img
-          class="activator"
-          src="{{ url_for('static', filename='images/main.jpg') }}"
-        />
-        {% else %}
-        <img
-          class="activator"
-          src="{{ url_for('static', filename='images/books.jpg') }}"
-        />
-        {% endif %}
-      </div>
-      <div class="card-content">
-        <h3>
-          <span class="card-title activator grey-text text-darken-4"
-            >{{item.type_name}}</span
-          >
-        </h3>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4"
-          >{{item.type_name}} <i class="fas fa-times-circle"></i
-        ></span>
-        <p>{{ item.type_desc }}</p>
-        <a href="{{url_for('recipe_list', recipe_type=item.type_name) }}"
-          >Click Here for {{item.type_name}} recipes
-          <i class="fas fa-arrow-right"></i
-        ></a>
-      </div>
-    </div>
-    {% endfor %} {% if recipes|length > 0 %}
-    <div class="row"></div>
-  </div>
-
-  <div class="row center-align">
-    <a
-      href="{{url_for('add_recipe') }}"
-      <button
-      class="pulse center-align green btn-large"
-      >Add Recipe <i class="fas fa-plus-circle"></i
-    ></a>
-  </div>
+<div class="row jumbotron center-align">
+  <h1 class=" ">Recipes</h1>
+  <form method="POST" action="{{url_for('search')}}">
+    <input
+      type="search"
+      name="search"
+      placeholder="Search for recipes..."
+      id="searchbar"
+      class="fas fa-search icon-search"
+    />
+    <button class="btn-floating pulse" search-btn type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
   <br />
-  <hr />
-  <div class="row center-align">
-    <h2>All Recipes:</h2>
-  </div>
-
-  <ul class="collapsible recipes">
-    {% for item in recipes %}
-    <li>
-      <div class="row">
-        <a href="{{url_for('view_recipe', recipe_id=item._id) }}"
-          ><span class="recipe-card collapsible-header"
-            ><span class="col s1 align-left"
-              >{% if item.created_by == session.user %}<i
-                id="ribbon"
-                class="fas fa-ribbon"
-              ></i
-              >{% endif %}</span
-            >
-            <h2 class="col s3">{{item.recipe_name}}</h2>
-            <p class="col s3 align-center">Created by: {{item.created_by}}</p>
-            <p class="col s3">
-              RATE THIS RECIPE <br />{{item.rating}}
-              <i id="star" class="fas fa-star"></i> ({{item.rating_count}})
-            </p>
-          </span></a
-        >
-      </div>
-    </li>
-    <li>
-      <div class="collapsible-body">
-        {% if item.created_by == session.user %}
-        <button class="col s1 edit-btn blue">Edit</button
-        ><button class="col s1 delete-btn red">Delete</button>{% endif %}
-      </div>
-    </li>
-    {% endfor %}
-  </ul>
-
-  {% else %}
-  <h3 class="red-text text-darken center-align">NO RESULTS FOUND</h3>
-  {% endif %} {% endblock %}
 </div>
+<div class="row">
+  {% for item in types %}
+  <div class="card col s6 m6 l3 center-align activator">
+    <div class="card-image waves-effect waves-block waves-light">
+      {% if item.type_name == 'Dessert' %}
+      <img
+        class="activator"
+        src="{{ url_for('static', filename='images/dessert.jpg') }}"
+      />
+      {% elif item.type_name == 'Snack' %}
+      <img
+        class="activator"
+        src="{{ url_for('static', filename='images/food.jpg') }}"
+      />
+      {% elif item.type_name == 'Starter' %}
+      <img
+        class="activator"
+        src="{{ url_for('static', filename='images/starter.jpg') }}"
+      />
+      {% elif item.type_name == 'Main'%}
+      <img
+        class="activator"
+        src="{{ url_for('static', filename='images/main.jpg') }}"
+      />
+      {% else %}
+      <img
+        class="activator"
+        src="{{ url_for('static', filename='images/books.jpg') }}"
+      />
+      {% endif %}
+    </div>
+    <div class="card-content">
+   
+      <h3>
+        <span class="card-title activator grey-text text-darken-4"
+          >{{item.type_name}}</span
+        >
+      </h3>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"
+        >{{item.type_name}} <i class="fas fa-times-circle"></i
+      ></span>
+      <p>{{ item.type_desc }}</p>
+      <a href="{{url_for('recipe_list', recipe_type=item.type_name) }}"
+        >Click Here for {{item.type_name}} recipes
+        <i class="fas fa-arrow-right"></i
+      ></a>
+    </div>
+  </div>
+  {% endfor %} {% if recipes|length > 0 %}
+  <div class="row"></div>
+</div>
+
+<div class="row center-align">
+  <a
+    href="{{url_for('add_recipe') }}"
+    <button
+    class="pulse center-align green btn-large"
+    >Add Recipe <i class="fas fa-plus-circle"></i
+  ></a>
+</div>
+<br />
+<hr />
+<div class="row center-align">
+  <h2>All Recipes:</h2>
+</div>
+
+<ul class="collapsible recipes">
+  {% for item in recipes %}
+  <li>
+    <div class="row">
+      <a href="{{url_for('view_recipe', recipe_id=item._id) }}"
+        ><span class="recipe-card collapsible-header"
+          ><span class="col s1 align-left"
+            >{% if item.created_by == session.user %}<i
+              id="ribbon"
+              class="fas fa-ribbon"
+            ></i
+            >{% endif %}</span
+          >
+          <h2 class="col s3">{{item.recipe_name}}</h2>
+          <p class="col s3 align-center">Created by: {{item.created_by}}</p>
+          <p class="col s3">
+            RATE THIS RECIPE <br />{{item.rating}}
+            <i id="star" class="fas fa-star"></i> ({{item.rating_count}})
+          </p>
+        </span></a
+      >
+    </div>
+  </li>
+  <li>
+    <div class="collapsible-body">
+      {% if item.created_by == session.user %}
+      <button class="col s1 edit-btn blue">Edit</button
+      ><button class="col s1 delete-btn red">Delete</button>{% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+{% else %}
+<h3 class="red-text text-darken center-align">NO RESULTS FOUND</h3>
+{% endif %} {% endblock %}
