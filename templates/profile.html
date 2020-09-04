@@ -1,18 +1,19 @@
 {% extends 'base.html' %}{% block content %}
 
 <div class="container">
-  <div class="center-align jumbotron">
+  <div class="row center-align jumbotron">
     <h1 class="col-8">{{ user }}'s Profile</h1>
-
     <form method="POST" action="{{url_for('search')}}">
       <input
         type="search"
         name="search"
         placeholder="Search for recipes..."
         id="searchbar"
-        class="center-align fas fa-search icon-search"
+        class="fas fa-search icon-search"
       />
-      <button search-btn type="submit"><i class="fas fa-search"></i></button>
+      <button class="btn-floating pulse" search-btn type="submit">
+        <i class="fas fa-search"></i>
+      </button>
     </form>
   </div>
 
