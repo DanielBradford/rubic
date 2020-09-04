@@ -45,7 +45,7 @@
           <select multiple name="temperature">
             <option disabled selected>Choose your option</option>
             {% for i in range(100,300, 10) %}
-            <option value="oven">{{i}} °C</option>
+                <option value="oven">{{i}} °C</option>
             {% endfor %}
           </select>
           <label>Temperature</label>
@@ -79,7 +79,6 @@
             minlength="5"
             class="validate"
             maxlength="100"
-            pattern="^[a-zA-Z0-9]{5,15}$"
           />
           <label for="notes">Notes (Optional)</label>
         </div>
