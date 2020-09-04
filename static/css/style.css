@@ -39,11 +39,13 @@ main i{
     text-shadow: none;
 }
 
+.card i{
+    color: coral;
+    text-shadow: 2px 2px  white;
+}
 
-
-.categoryTitle{
-    background-color: teal;
-    color: white;
+.checker a {
+    color: coral;
 }
 
 a:hover{
@@ -64,6 +66,8 @@ main {
 
 nav{
     background-color: coral;
+    border-bottom-left-radius: 1.4em;
+    border-bottom-right-radius: 1.4em;
 }
 
 .title i {
@@ -96,7 +100,7 @@ nav{
 #searchbar {
   font-family: "Fredoka One", cursive;
   width: 50%;
-  border: solid rgba(156, 151, 151, 0.829) 2px;
+  border: solid rgba(0, 128, 128, 0.801) 2px;
   border-top-left-radius: 0.8em;
   border-bottom-left-radius: 0.8em;
   padding: 8px;
@@ -117,8 +121,14 @@ body h1{
 body h3{
     font-family: 'Gayathri', sans-serif;
     color: rgb(2, 68, 68);
-    background-color: rgba(255, 255, 255, 0.678);
+    background-color: rgba(255, 255, 255, 0.705);
     padding: .2em;
+
+}
+
+.register{
+    color: coral;
+    text-shadow: 2px 2px teal;
 
 }
 
@@ -137,13 +147,38 @@ body h3{
 
 /* forms and cards */
 .card{
-    width: 80%;
+    border-radius: 1.4em;
+    font-weight: 600;
 }
 
+.card:hover{
+    border: solid coral 2px;
+    box-shadow: 3px 3px 3px coral;
+    z-index: 200;
+}
+
+
+/* images */
 .card img{
+    padding-top: 1em;
     height: 180px;
+    
 }
 
+.card-image img {
+    border-radius: 20%;
+}
+
+#chef{
+    display: inline;
+    position: relative;
+    left: 210px;;
+    bottom: 150px;
+    width: 60px;
+}
+
+
+/* components  */
 .collapsible li{
     border-top-left-radius: 1.4em;
     border-top-right-radius: 1.4em;
@@ -158,6 +193,10 @@ body h3{
 .recipe-card:hover{
     background-color: coral;
     color: white;
+}
+
+ul a{
+    color: coral;
 }
 
 /* buttons */
