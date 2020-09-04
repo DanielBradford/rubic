@@ -185,6 +185,11 @@ def add_new_recipe():
 
     return render_template("add_recipe.html")
 
+@app.route("/edit_recipe")
+def edit_recipe():
+    return render_template("edit_recipe.html")
+
+
 
 @app.route("/save_recipe/<recipe_id>")
 def save_recipe():
