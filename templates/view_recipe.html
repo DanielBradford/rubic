@@ -24,7 +24,7 @@
       <a href="{{url_for('save_recipe', recipe_id=recipe_id._id)}}">CLICK HERE TO SAVE</a>
       <hr />
       {% for item in recipes %}{% if item._id == recipe_id._id %}
-      <span><button class="delete-btn">Delete</button></span>
+      <span><a href="{{url_for('delete_recipe', recipe_id=recipe_id._id)}}"><button class="delete-btn">Delete</button></a></span>
       <span><a href="{{url_for('edit_recipe', recipe_id=recipe_id._id)}}"><button class="edit-btn">Edit</button></a></span>
     </div>
     <div class="col s8">
