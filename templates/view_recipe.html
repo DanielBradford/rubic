@@ -2,33 +2,34 @@
 <nav>
   <div class="">
     <div class="col s12">
-      <a href="#!" class="breadcrumb">Recipes</a>
+      <a href="{{url_for('recipes')}}" class="breadcrumb">Recipes</a>
       <a href="#!" class="breadcrumb"></a>
       <a href="#!" class="breadcrumb"></a>
     </div>
   </div>
 </nav>
 
-<div class="container view_recipe">
-  <div class="row">
+<div class="view_recipe">
+  <div class=" save row">
     <div class="col s4 center-align">
-      SAVE RECIPE <i class="small fas fa-save"></i>
-      <div class="switch">
-        <label>
-          Off
-          <input type="checkbox" />
-          <span class="lever"></span>
-          On
-        </label>
-      </div>
-      <a href="{{url_for('save_recipe', recipe_id=recipe_id._id)}}">CLICK HERE TO SAVE</a>
+      <a href="{{url_for('save_recipe', recipe_id=recipe_id._id)}}"
+        ><h4>SAVE RECIPE</h4> <i class="small fas fa-save"></i></a
+      >
       <hr />
       {% for item in recipes %}{% if item._id == recipe_id._id %}
-      <span><a href="{{url_for('delete_recipe', recipe_id=recipe_id._id)}}"><button class="delete-btn">Delete</button></a></span>
-      <span><a href="{{url_for('edit_recipe', recipe_id=recipe_id._id)}}"><button class="edit-btn">Edit</button></a></span>
+      {% if item.created_by == session.user %}
+      <span
+        ><a href="{{url_for('delete_recipe', recipe_id=recipe_id._id)}}"
+          ><button class="delete-btn">Delete</button></a
+        ></span
+      >
+      <span
+        ><a href="{{url_for('edit_recipe', recipe_id=recipe_id._id)}}"
+          ><button class="edit-btn">Edit</button></a
+        ></span
+      >{% endif %}
     </div>
     <div class="col s8">
-      
       <h1 class="view center-align profile">{{ item.recipe_name }}</h1>
     </div>
 
