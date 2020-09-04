@@ -1,0 +1,67 @@
+{%extends 'base.html'%}{% block content %}
+
+<div class="container">
+<div class="s12 wrap">
+	<h1 class="center-align jumbotron col-8">PLEASE LOGIN OR REGISTER TO ACCESS TO RECIPES</h1>
+	<div class="row">
+		<form class="col s12 m8 offset-m2" method="POST" action="#">
+			<div class="card-panel">
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="fas fa-user-secret prefix text-darken-4"></i>
+						<input
+              id="user_name"
+              name="user_name"
+              type="text"
+              minlength="5"
+              class="validate"
+              maxlength="15"
+              pattern="^[a-zA-Z0-9]{5,15}$"
+              required
+            />
+						<label for="user_name">Username</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<i
+              class="fas fa-user-lock prefix  text-darken-4"
+            ></i>
+						<input
+              id="password"
+              name="password"
+              type="password"
+              minlength="5"
+              class="validate"
+              maxlength="15"
+              pattern="^[a-zA-Z0-9]{5,15}$"
+              required
+            />
+						<label for="password">Password</label>
+					</div>
+				</div>
+				<!--login-->
+				<div class="row">
+					<button
+            type="submit"
+            class="col s12 btn-large  darken-4 text-shadow"
+          >
+            Log In <i class="fas fa-sign-in-alt"></i>
+          </button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s12">
+		<div class="center-align">
+			New Here?
+			<a href="#" class="" text-darken-4">Register Account</a>
+		</div>
+	</div>
+</div>
+</div>
+
+{% endblock %}
