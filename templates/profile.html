@@ -1,8 +1,9 @@
 {% extends 'base.html' %}{% block content %}
 
 <div class="container">
-  <h1 class="center-align jumbotron col-8">{{ user }}'s Profile</h1>
-  <div class="center-align">
+  <div class="center-align jumbotron">
+    <h1 class="col-8">{{ user }}'s Profile</h1>
+
     <form method="POST" action="{{url_for('search')}}">
       <input
         type="search"
@@ -36,9 +37,7 @@
           Here is some more information about this product that is only revealed
           once clicked on.
         </p>
-        <button class="btn-medium">
-          <a href="{{url_for('recipes')}}">GO TO ALL RECIPES</a>
-        </button>
+        <a href="{{url_for('recipes')}}">GO TO ALL RECIPES</a>
       </div>
     </div>
     <div class="card col s3">
@@ -62,7 +61,9 @@
           once clicked on.
         </p>
         <button class="btn-medium">
-          <a href="{{url_for('recipes')}}">GO TO SAVED RECIPES <i class="fas fa-save"></i></a>
+          <a href="{{url_for('recipes')}}"
+            >GO TO SAVED RECIPES <i class="fas fa-save"></i
+          ></a>
         </button>
       </div>
     </div>
@@ -86,8 +87,9 @@
           Here is some more information about this product that is only revealed
           once clicked on.
         </p>
-          <a class="btn-medium" href="{{url_for('myRecipes')}}">GO TO MY RECIPES</a>
-
+        <a class="btn-medium" href="{{url_for('myRecipes')}}"
+          >GO TO MY RECIPES</a
+        >
       </div>
     </div>
     <div class="card col s3">
