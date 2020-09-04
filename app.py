@@ -96,11 +96,11 @@ def recipe_list(recipe_type):
     return render_template("recipe_list.html", recipes=recipes, recipe_type=recipe_type)
 
 
-@app.route("/view_recipe/<recipe_id>")
+@app.route("/view_recipe/<recipe_id>", methods=["GET", "POST"])
 def view_recipe(recipe_id):
 
     recipe_id = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    recipes = mongo.db.recipes.find().sort("recipe_name", 1)
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     user = session['user']
     user_id = mongo.db.users.find_one({"user_name": user})
     return render_template("view_recipe.html", recipe_id=recipe_id,
@@ -176,8 +176,7 @@ def add_new_recipe():
             "method": request.form.get("method"),
             "rating": 0,
             "rating_count": 0,
-            "created_by": session["user"],
-            "created_on": datetime.now()
+            "created_by": session["user"]
         }
         mongo.db.recipes.insert_one(new)
         flash("Recipe Successfully Added")
@@ -185,14 +184,34 @@ def add_new_recipe():
 
     return render_template("add_recipe.html")
 
-@app.route("/edit_recipe")
-def edit_recipe():
-    return render_template("edit_recipe.html")
+
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    if request.method == "POST":
+        new = {
+            "recipe_name": request.form.get("recipe_name"),
+            "type": request.form.get("type"),
+            "using": request.form.get("using"),
+            "oven_temperature": request.form.get("oven_temperature"),
+            "ingredients": request.form.get("ingredients"),
+            "dietary_need": request.form.get("dietary_need"),
+            "notes": request.form.get("notes"),
+            "method": request.form.get("method"),
+            "rating": 0,
+            "rating_count": 0,
+            "created_by": session["user"]
+        }
+        mongo.db.recipes.update(new)
+        flash("RECIPE SUCCESSFULLY UPDATED")
+        return redirect(url_for("recipes'"))
+
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    return render_template("edit_recipe.html", recipe=recipe, recipes=recipes)
 
 
-
-@app.route("/save_recipe/<recipe_id>")
-def save_recipe():
+@app.route("/save_recipe/<recipe_id>", methods=["GET", "POST"])
+def save_recipe(recipe_id):
     user = session["user"]
     recipe_id = recipe_id
     mongo.db.users.update(
