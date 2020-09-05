@@ -11,7 +11,7 @@
 </nav>
 
 <div class="row center-align jumbotron">
-  <h1 class="col-8">Saved Recipes ({{size}}) <i class="fas fa-save"></i></h1>
+  <h1 class="col-8">Saved Recipess <i class="fas fa-save"></i></h1>
   <form method="POST" action="{{url_for('search')}}">
     <input
       type="search"
@@ -45,7 +45,7 @@
             <h2 class="col s3">{{item.recipe_name}}</h2>
             <p class="col s3 align-center">Created by: {{item.created_by}}</p>
             <p class="col s3">
-             <i id="remove-btn" class="fas fa-trash-alt"></i> <br />{{item.rating}}
+            <i id="remove-btn" class="fas fa-trash-alt"></i><br />{{item.rating}}
               <i id="star" class="fas fa-star"></i> ({{item.rating_count}})
             </p>
           </span></a
