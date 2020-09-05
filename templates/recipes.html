@@ -18,58 +18,48 @@
 </div>
 <div class="row">
   {% for item in types %}
-  <div class="card col s6 m6 l3 center-align activator">
-    <div class="card-image waves-effect waves-block waves-light">
-      {% if item.type_name == 'Dessert' %}
-      <img
-        class="activator"
-        src="{{ url_for('static', filename='images/dessert.jpg') }}"
-      />
-      {% elif item.type_name == 'Snack' %}
-      <img
-        class="activator"
-        src="{{ url_for('static', filename='images/food.jpg') }}"
-      />
-      {% elif item.type_name == 'Starter' %}
-      <img
-        class="activator"
-        src="{{ url_for('static', filename='images/starter.jpg') }}"
-      />
-      {% elif item.type_name == 'Main'%}
-      <img
-        class="activator"
-        src="{{ url_for('static', filename='images/main.jpg') }}"
-      />
-      {% else %}
-      <img
-        class="activator"
-        src="{{ url_for('static', filename='images/books.jpg') }}"
-      />
-      {% endif %}
+  <a href="{{url_for('recipe_list', recipe_type=item.type_name) }}">
+    <div class="card col s6 m6 l3 center-align activator">
+      <div class="card-image waves-effect waves-block waves-light">
+        {% if item.type_name == 'Dessert' %}
+        <img
+          class="activator"
+          src="{{ url_for('static', filename='images/dessert.jpg') }}"
+        />
+        {% elif item.type_name == 'Snack' %}
+        <img
+          class="activator"
+          src="{{ url_for('static', filename='images/food.jpg') }}"
+        />
+        {% elif item.type_name == 'Starter' %}
+        <img
+          class="activator"
+          src="{{ url_for('static', filename='images/starter.jpg') }}"
+        />
+        {% elif item.type_name == 'Main'%}
+        <img
+          class="activator"
+          src="{{ url_for('static', filename='images/main.jpg') }}"
+        />
+        {% else %}
+        <img
+          class="activator"
+          src="{{ url_for('static', filename='images/books.jpg') }}"
+        />
+        {% endif %}
+      </div>
+      <div class="card-content">
+        <h3>
+          <span class="card-title activator grey-text text-darken-4"
+            >{{item.type_name}}</span
+          >
+        </h3>
+      </div>
     </div>
-    <div class="card-content">
-   
-      <h3>
-        <span class="card-title activator grey-text text-darken-4"
-          >{{item.type_name}}</span
-        >
-      </h3>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4"
-        >{{item.type_name}} <i class="fas fa-times-circle"></i
-      ></span>
-      <p>{{ item.type_desc }}</p>
-      <a href="{{url_for('recipe_list', recipe_type=item.type_name) }}"
-        >Click Here for {{item.type_name}} recipes
-        <i class="fas fa-arrow-right"></i
-      ></a>
-    </div>
-  </div>
+  </a>
   {% endfor %} {% if recipes|length > 0 %}
   <div class="row"></div>
 </div>
-
 <div class="row center-align">
   <a
     href="{{url_for('add_recipe') }}"
