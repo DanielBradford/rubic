@@ -23,7 +23,7 @@
 </div>
 
 <div class="row">
-  <div class="card col s3">
+  <div class="card col s6 m6 l3">
     <div class="card-image waves-effect waves-block waves-light">
       <img
         class="activator"
@@ -32,7 +32,7 @@
     </div>
     <div class="center-align card-content">
       <span class="card-title activator grey-text text-darken-4"
-        ><h3 class="activator">All Recipes</h3>
+        ><h3 class="flow-text activator">All Recipes</h3>
         <i class="fas fa-folder"></i
       ></span>
     </div>
@@ -47,16 +47,16 @@
       <a href="{{url_for('recipes')}}">GO TO ALL RECIPES</a>
     </div>
   </div>
-  <div class="card col s3">
+  <div class="card col s6 m6 l3">
     <div class="card-image waves-effect waves-block waves-light">
       <img
-        class="activator"
+        class="flow-text activator"
         src="{{url_for('static', filename='images/bookmark.jpg')}}"
       />
     </div>
     <div class="card-content center-align">
       <span class="card-title activator grey-text text-darken-4"
-        ><h3 class="activator">Saved Recipes</h3>
+        ><h3 class="flow-text activator">Saved Recipes</h3>
         <i class="fas fa-save"></i
       ></span>
     </div>
@@ -69,12 +69,12 @@
         once clicked on.
       </p>
 
-      <a class="center-align" href="{{url_for('saved_recipes')}}"
+      <a class="center-align" href="{{url_for('saved_recipes', user=session.user)}}"
         >GO TO SAVED RECIPES <i class="medium fas fa-save"></i
       ></a>
     </div>
   </div>
-  <div class="card col s3">
+  <div class="card col s6 m6 l3">
     <div class="card-image waves-effect waves-block waves-light">
       <img
         class="activator"
@@ -83,8 +83,8 @@
     </div>
     <div class="card-content center-align">
       <span class="card-title activator grey-text text-darken-4"
-        ><h3 class="activator">My Recipes</h3>
-        <i class="fas fa-archive"></i>
+        ><h3 class="flow-text activator">My Recipes</h3>
+        <i class="flow-text fas fa-archive"></i>
       </span>
     </div>
     <div class="card-reveal">
@@ -98,7 +98,7 @@
       <a class="btn-medium" href="{{url_for('myRecipes')}}">GO TO MY RECIPES</a>
     </div>
   </div>
-  <div class="card col s3">
+  <div class="card col s6 m6 l3">
     <div class="card-image waves-effect waves-block waves-light">
       <img
         class="activator circle"
@@ -107,7 +107,7 @@
     </div>
     <div class="card-content center-align">
       <span class="card-title activator grey-text text-darken-4"
-        ><h3 class="activator">Top Tools</h3>
+        ><h3 class="flow-text activator">Top Tools</h3>
         <i class="fas fa-shopping-bag"></i>
       </span>
     </div>
