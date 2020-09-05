@@ -1,5 +1,4 @@
 import os
-import datetime
 from flask import (
     Flask, flash, render_template, redirect,
     request, session, url_for)
@@ -96,7 +95,8 @@ def recipe_list(recipe_type):
 
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
 
-    return render_template("recipe_list.html", recipes=recipes, recipe_type=recipe_type)
+    return render_template("recipe_list.html",
+                           recipes=recipes, recipe_type=recipe_type)
 
 
 @app.route("/view_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -107,10 +107,12 @@ def view_recipe(recipe_id):
         user = session['user']
         user_id = mongo.db.users.find_one({"user_name": user})
         return render_template("view_recipe.html", recipe_id=recipe_id,
-                               recipes=recipes, user_id=user_id)
+                               recipes=recipes, user_id=user_id, user=user)
 
     except:
+        flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
         return render_template("guest.html")
+
 
 
 @app.route("/add_recipe")
@@ -222,30 +224,30 @@ def save_recipe(recipe_id):
     recipe_id = recipe_id
     mongo.db.users.update(
         {"user_name": user},
-        {'$addToSet': {'saved_recipes': recipe_id}})
+        {'$addToSet': {'saved_recipes': ObjectId(recipe_id)}})
     flash("RECIPE SAVED SUCCESSFULLY")
 
     return redirect(url_for("view_recipe", recipe_id=recipe_id))
 
 
-@app.route("/saved_recipes/", methods=["GET", "POST"])
+@app.route("/saved_recipes", methods=["GET", "POST"])
 def saved_recipes():
 
     user = session["user"]
     this = mongo.db.users.find_one({"user_name": user})
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-    saved_list = list(mongo.db.users.distinct("saved_recipes"))
+    saved_list = list(mongo.db.users.distinct("saved_recipes", {"user_name": user}))
+
 
     check_list = []
     for item in saved_list:
         if item == "":
             continue
         else:
-            check_list.append(ObjectId(item))
-    size = len(check_list)
+            check_list.append(item)
     return render_template("saved_recipes.html",
                            recipes=recipes, user=user,
-                           this=this, check_list=check_list, size=size)
+                           this=this, check_list=check_list)
 
 
 @app.route("/delete_recipe/<recipe_id>")
@@ -253,6 +255,12 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
     return redirect(url_for("recipes"))
+
+
+@app.route("/remove_recipe/<recipe_id>")
+def remove_recipe(recipe_id):
+    saved_list = list(mongo.db.users.distinct("saved_recipes"))
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
 
 
 if __name__ == '__main__':
