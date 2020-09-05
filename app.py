@@ -55,8 +55,9 @@ def login():
 
             else:
                 flash("Incorrect username and/or Password")
-                return redirect(url_for("login"))
-            
+                return redirect(url_for(
+                    "login"))
+
             return render_template('login.html')
 
         else:
@@ -106,10 +107,10 @@ def view_recipe(recipe_id):
         user = session['user']
         user_id = mongo.db.users.find_one({"user_name": user})
         return render_template("view_recipe.html", recipe_id=recipe_id,
-                            recipes=recipes, user_id=user_id)
+                               recipes=recipes, user_id=user_id)
 
     except:
-        return  render_template("guest.html")
+        return render_template("guest.html")
 
 
 @app.route("/add_recipe")
@@ -226,9 +227,26 @@ def save_recipe(recipe_id):
 
     return redirect(url_for("view_recipe", recipe_id=recipe_id))
 
-@app.route("/saved_recipes")
+
+@app.route("/saved_recipes/", methods=["GET", "POST"])
 def saved_recipes():
-    return render_template("saved_recipes.html")
+
+    user = session["user"]
+    this = mongo.db.users.find_one({"user_name": user})
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    saved_list = list(mongo.db.users.distinct("saved_recipes"))
+
+    check_list = []
+    for item in saved_list:
+        if item == "":
+            continue
+        else:
+            check_list.append(ObjectId(item))
+    size = len(check_list)
+    return render_template("saved_recipes.html",
+                           recipes=recipes, user=user,
+                           this=this, check_list=check_list, size=size)
+
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
