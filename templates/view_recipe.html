@@ -3,21 +3,24 @@
   <div class="">
     <div class="col s12">
       <a href="{{url_for('recipes')}}" class="breadcrumb">Recipes</a>
-      <a id="back" href="#" class="breadcrumb">{{recipe_id.type}}</a>
+      <a id="back" href="#" class="breadcrumb">Previous</a>
       <a href="#!" class="breadcrumb">{{recipe_id.recipe_name}}</a>
     </div>
   </div>
 </nav>
 
 <div class="view_recipe">
-  <div class=" save row">
+  <div class="save row">
     <div class="col s4 center-align">
-      <a id="save-btn href="{{url_for('save_recipe', recipe_id=recipe_id._id)}}"
-        ><h4>SAVE RECIPE</h4> <i class="small fas fa-save"></i></a
-      >
+      <a
+        id="save-btn"
+        href="{{url_for('save_recipe', recipe_id=recipes._id)}}"
+        ><h4>SAVE RECIPE</h4>
+        <i class="small fas fa-save"></i
+      ></a>
       <hr />
-      {% for item in recipes %}{% if item._id == recipe_id._id %}
-      {% if item.created_by == session.user %}
+      {% for item in recipes %}{% if item._id == recipe_id._id %} {% if
+      item.created_by == session.user %}
       <span
         ><a href="{{url_for('delete_recipe', recipe_id=recipe_id._id)}}"
           ><button class="delete-btn">Delete</button></a
