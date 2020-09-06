@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{{url_for('static', filename='images/chef.png')}}" samesite="none">
+    <link
+      rel="shortcut icon"
+      href="{{url_for('static', filename='images/chef.png')}}"
+      samesite="none"
+    />
     <link
       rel=" stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -25,10 +29,15 @@
 
   <body>
     <header>
+      <!-- <ul id="profile" class="dropdown-content">
+        <li><a href="#!">Saved Recipes</a></li>
+        <li><a href="#!">My Recipes</a></li>
+        <li><a href="#!">Top Tools</a></li>
+      </ul> -->
       <nav class="nav-extended text-shadow teal darken-1">
         <!--top navbar-->
         <div class="navbar nav-wrapper">
-          <a href="/" class="title brand-logo"
+          <a href="/" class="title logo brand-logo"
             ><i class="fas fa-hat-chef"></i>Rubric</a
           >
           <a href="#" data-target="mobile-demo" class="sidenav-trigger right"
@@ -47,13 +56,16 @@
             </li>
             {% endif %} {% if session.user %}
             <li>
-              <a href="{{url_for('recipes', user=session['user']) }}"
+              <a
+                href="{{url_for('recipes', user=session['user']) }}"
                 >Recipes <i class="fas fa-list-ul"></i
               ></a>
             </li>
 
             <li>
-              <a href="{{url_for('profile', user=session['user']) }}"
+              <a
+
+                href="{{url_for('profile', user=session['user']) }}"
                 >Profile <i class="fas fa-user"></i
               ></a>
             </li>
@@ -81,8 +93,8 @@
       <!--side nav bar-->
       <ul class="sidenav" id="mobile-demo">
         <li>
-          <h4 class="center-align light-blue-text text-darken-4">
-            Rubric
+          <h4 class="center-align teal-text">
+            <i class="fas fa-hat-chef"></i> Rubric
           </h4>
         </li>
 
@@ -96,7 +108,7 @@
         </li>
         {% endif %} {% if session.user %}
         <li>
-          <a href="{{url_for('recipes', user=session['user']) }}"
+          <a href="{{url_for('recipes')}}"
             >Recipes <i class="fas fa-list-ul"></i
           ></a>
         </li>
