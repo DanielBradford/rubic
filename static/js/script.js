@@ -27,15 +27,22 @@ $(document).ready(function () {
   $("#back").click(function () {
     window.history.back();
   });
-//   remove button for saved recipes
+  //   remove button for saved recipes
   $(".remove-btn").click(function () {
     if (
       confirm(
         "Are you sure you want to REMOVE this recipe from the SAVED RECIPES? This action cannot be undone!"
       )
-    ) {alert("RECIPE HAS BEEN SUCCESSFULLY REMOVED")
+    ) {
+      alert("RECIPE HAS BEEN SUCCESSFULLY REMOVED");
     } else {
       return false; //----On cancel user returns to current screen------//
     }
+  });
+  $("#save-btn").click(function () {
+    alert("This recipe has been SAVED successfully!");
+    $(".lever").addAttribute("selected");
+    $("#save-text").html("SAVED")
+
   });
 });
