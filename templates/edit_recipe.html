@@ -2,9 +2,13 @@
 
 <div class="container">
   <h1 class="center-align jumbotron">
-    Edit Recipe <i class="fas fa-plus-circle"></i>
+    Edit Recipe <i class="fas fa-pencil"></i>
   </h1>
-  <form class="col s12 m8 offset-m2" method="POST" action="{{url_for('edit_recipe')}}">
+  <form
+    class="col s12 m8 offset-m2"
+    method="POST"
+    action="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
+  >
     <div class="card-panel">
       <div class="row">
         <div class="input-field col s6">
@@ -19,21 +23,27 @@
           <label for="recipe_name">Recipe Name</label>
         </div>
         <div class="input-field col s6 m6">
-        <i class="fas fa-folder-open prefix"></i>
-    <select class="icons" name="type" required>
-      <option value="" disabled selected>Recipe Type</option>
-      {% for type in types %}
-        <option value="{{ type.type_name }}" data-icon="images/sample-1.jpg">{{ types.type_name }}</option>
-      {% endfor %}
-    </select>
-    <label>Images in select</label>
-  </div>
+          <i class="fas fa-folder-open prefix"></i>
+
+          <select class="icons" name="type" required>
+            <option value="" disabled>Recipe Type</option>
+            {% for type in types %}
+            <option value="{{ recipe.type }}" data-icon="images/sample-1.jpg"
+              selected>{{ type.type_name }}</option
+            >
+            {% endfor %}
+          </select>
+          <label>Images in select</label>
+        </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-        <i class="fas fa-fire prefix"></i>
+          <i class="fas fa-fire prefix"></i>
           <select multiple name="using">
-            <option value="" disabled selected>Choose your option</option>
+            <option value="" disabled
+              >Choose your option</option
+            >
+            <option value="{{recipe.appliance}}" selected>{{recipe.appliance}}</option>
             <option value="oven">Oven</option>
             <option value="pan_hob">Pan/Hob</option>
             <option value="fridge">Fridge</option>
@@ -42,11 +52,11 @@
           <label>Appliance Used</label>
         </div>
         <div class="input-field col s6">
-        <i class="fas fa-thermometer-half prefix"></i>
+          <i class="fas fa-thermometer-half prefix"></i>
           <select multiple name="temperature">
-            <option disabled selected>Choose your option</option>
+            <option disabled >Choose your option</option>
             {% for i in range(100,300, 10) %}
-            <option value="oven">{{i}} °C</option>
+            <option value="{{recipe.temperature}}">{{i}} °C</option>
             {% endfor %}
           </select>
           <label>Temperature</label>
@@ -62,12 +72,10 @@
             minlength="5"
             class="validate"
             maxlength="200"
-
             placeholder="List ingredients with ',' in between
             "
             value="{{recipe.ingredients}}"
             required
-
           />
           <label for="user_name">Ingredients</label>
         </div>
@@ -83,6 +91,7 @@
             class="validate"
             maxlength="100"
             pattern="^[a-zA-Z0-9]{5,15}$"
+            value="{{recipe.notes}}"
           />
           <label for="notes">Notes (Optional)</label>
         </div>
@@ -117,7 +126,14 @@
         <div class="input-field col s8">
           <i class="fas fa-list-ol prefix"></i>
 
-          <input id="method" name="method" type="text" class="validate" value="{{recipe.method}}" placeholder="List instructions with numbers e.g. '1. Mix eggs in bowl'"/>
+          <input
+            id="method"
+            name="method"
+            type="text"
+            class="validate"
+            value="{{recipe.method}}"
+            placeholder="List instructions with numbers e.g. '1. Mix eggs in bowl'"
+          />
           <label for="method">Method</label>
         </div>
       </div>
