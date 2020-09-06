@@ -94,9 +94,10 @@ def recipe_list(recipe_type):
     recipe_type = recipe_type
 
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    types = list(mongo.db.type.find().sort("type_name", 1))
 
     return render_template("recipe_list.html",
-                           recipes=recipes, recipe_type=recipe_type)
+                           recipes=recipes, recipe_type=recipe_type, types=types)
 
 
 @app.route("/view_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -112,7 +113,6 @@ def view_recipe(recipe_id):
     except:
         flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
         return render_template("guest.html")
-
 
 
 @app.route("/add_recipe")
@@ -195,6 +195,7 @@ def add_new_recipe():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    types = list(mongo.db.types.find().sort("type_name", 1))
     if request.method == "POST":
         new = {
             "recipe_name": request.form.get("recipe_name"),
@@ -212,10 +213,11 @@ def edit_recipe(recipe_id):
         mongo.db.recipes.update(new)
         flash("RECIPE SUCCESSFULLY UPDATED")
         return redirect(url_for("recipes'"))
-
+    recipe_id = recipe_id
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-    return render_template("edit_recipe.html", recipe=recipe, recipes=recipes)
+    return render_template("edit_recipe.html", recipe=recipe,
+                           recipes=recipes, types=types, recipe_id=recipe_id)
 
 
 @app.route("/save_recipe/<recipe_id>", methods=["GET", "POST"])
@@ -236,8 +238,8 @@ def saved_recipes():
     user = session["user"]
     this = mongo.db.users.find_one({"user_name": user})
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-    saved_list = list(mongo.db.users.distinct("saved_recipes", {"user_name": user}))
-
+    saved_list = list(mongo.db.users.distinct(
+        "saved_recipes", {"user_name": user}))
 
     check_list = []
     for item in saved_list:
