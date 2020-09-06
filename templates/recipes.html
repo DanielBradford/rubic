@@ -57,9 +57,10 @@
       </div>
     </div>
   </a>
-  {% endfor %} {% if recipes|length > 0 %}
+  {% endfor %} 
   <div class="row"></div>
 </div>
+{% if recipes|length > 0 %}
 <div class="row center-align">
   <a
     href="{{url_for('add_recipe') }}"
@@ -74,38 +75,58 @@
   <h2>All Recipes:</h2>
 </div>
 
-<ul class="collapsible recipes">
+<div class="row">
+<ul class="collection">
   {% for item in recipes %}
-  <li>
-    <div class="row">
+  <li class="collection-item avatar col s6">
+    {% if item.type == 'Dessert' %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/dessert.jpg') }}"
+        />
+        {% elif item.type == 'Snack' %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/food.jpg') }}"
+        />
+        {% elif item.type == 'Starter' %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/starter.jpg') }}"
+        />
+        {% elif item.type == 'Main'%}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/main.jpg') }}"
+        />
+        {% else %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/books.jpg') }}"
+        />
+    {% endif %}
+    <span class="title">
       <a href="{{url_for('view_recipe', recipe_id=item._id) }}"
-        ><span class="recipe-card collapsible-header"
-          ><span class="col s1 align-left"
-            >{% if item.created_by == session.user %}<i
+        ><h2>{{item.recipe_name}}</h2></a>
+      {% if item.created_by == session.user %}
+      <p><i
               id="ribbon"
               class="fas fa-ribbon"
             ></i
-            >{% endif %}</span
-          >
-          <h2 class="col s3">{{item.recipe_name}}</h2>
-          <p class="col s3 align-center">Created by: {{item.created_by}}</p>
-          <p class="col s3">
-            RATE THIS RECIPE <br />{{item.rating}}
-            <i id="star" class="fas fa-star"></i> ({{item.rating_count}})
-          </p>
-        </span></a
-      >
-    </div>
+            > Created by YOU</p></span
+    >{% else %}
+    <p>
+       <h4><i class="fas fa-user"></i> Creator: {{item.created_by}}{% endif %}</h4><br />
+    </p>
+    <br>
+    
+    <a href="#!" class="secondary-content"
+      >{{item.rating}} <i id="star" class="fas fa-star"></i></a
+    >
   </li>
-  <li>
-    <div class="collapsible-body">
-      {% if item.created_by == session.user %}
-      <button class="col s1 edit-btn blue">Edit</button
-      ><button class="col s1 delete-btn red">Delete</button>{% endif %}
-    </div>
-  </li>
-  {% endfor %}
+  {% endfor %} 
 </ul>
+</div>
 
 {% else %}
 <h3 class="red-text text-darken center-align">NO RESULTS FOUND</h3>
