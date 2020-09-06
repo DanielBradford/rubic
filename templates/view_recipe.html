@@ -11,14 +11,20 @@
 
 <div class="view_recipe">
   <div class="save row">
-    <div class="col s4 center-align">
-      <a
-        id="save-btn"
-        href="{{url_for('save_recipe', recipe_id=recipes._id)}}"
-        ><h4>SAVE RECIPE</h4>
+    <div id="save-btn" class="col s4 center-align">
+      <a href="{{url_for('save_recipe', recipe_id=recipe_id._id)}}"
+        ><h4 id="save-text">SAVE RECIPE</h4>
         <i class="small fas fa-save"></i
       ></a>
-      <hr />
+      <span class="switch">
+        <label>
+          Off
+          <input type="checkbox" />
+          <span class="lever"></span>
+          On
+        </label>
+      </span>
+    </div>
       {% for item in recipes %}{% if item._id == recipe_id._id %} {% if
       item.created_by == session.user %}
       <span
@@ -27,7 +33,7 @@
         ></span
       >
       <span
-        ><a href="{{url_for('edit_recipe', recipe_id=recipe_id._id)}}"
+        ><a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
           ><button class="edit-btn">Edit</button></a
         ></span
       >{% endif %}
