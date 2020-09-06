@@ -20,7 +20,8 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    return render_template("landing.html")
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    return render_template("landing.html", types=types)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -34,7 +35,8 @@ def search():
 def myRecipes():
     user = session['user']
     recipes = list(mongo.db.recipes.find({"created_by": user}))
-    return render_template("recipes.html", recipes=recipes, user=user)
+
+    return render_template("my_recipes.html", recipes=recipes, user=user)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -97,12 +99,14 @@ def recipe_list(recipe_type):
     types = list(mongo.db.type.find().sort("type_name", 1))
 
     return render_template("recipe_list.html",
-                           recipes=recipes, recipe_type=recipe_type, types=types)
+                           recipes=recipes, recipe_type=recipe_type,
+                           types=types)
 
 
 @app.route("/view_recipe/<recipe_id>", methods=["GET", "POST"])
 def view_recipe(recipe_id):
     try:
+        recipe_id = recipe_id
         recipe_id = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
         user = session['user']
@@ -161,12 +165,14 @@ def add_user():
 
 @app.route("/profile/<user>", methods=["GET", "POST"])
 def profile(user):
-
     user = user
+    this_user = mongo.db.users.find_one({"user_name": user})
     users = mongo.db.users.find().sort("user_name", 1)
+    recipes = mongo.db.recipes.find().sort("recipe_name", 1)
     # grab session users username from database
 
-    return render_template("profile.html", users=users, user=user)
+    return render_template("profile.html", users=users,
+                           user=user, this_user=this_user)
 
 
 @app.route("/add_new_recipe", methods=["GET", "POST"])
@@ -195,7 +201,10 @@ def add_new_recipe():
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
-    types = list(mongo.db.types.find().sort("type_name", 1))
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    recipe_id = recipe_id
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     if request.method == "POST":
         new = {
             "recipe_name": request.form.get("recipe_name"),
@@ -206,16 +215,11 @@ def edit_recipe(recipe_id):
             "dietary_need": request.form.get("dietary_need"),
             "notes": request.form.get("notes"),
             "method": request.form.get("method"),
-            "rating": 0,
-            "rating_count": 0,
             "created_by": session["user"]
         }
-        mongo.db.recipes.update(new)
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, new)
         flash("RECIPE SUCCESSFULLY UPDATED")
-        return redirect(url_for("recipes'"))
-    recipe_id = recipe_id
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+        return redirect(url_for("recipes"))
     return render_template("edit_recipe.html", recipe=recipe,
                            recipes=recipes, types=types, recipe_id=recipe_id)
 
@@ -247,16 +251,17 @@ def saved_recipes():
             continue
         else:
             check_list.append(item)
+    size = len(check_list)
     return render_template("saved_recipes.html",
                            recipes=recipes, user=user,
-                           this=this, check_list=check_list)
+                           this=this, check_list=check_list, size=size)
 
 
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
-    return redirect(url_for("recipes"))
+    return redirect(url_for("myRecipes"))
 
 
 @app.route("/remove_recipe/<recipe_id>")
