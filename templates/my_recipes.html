@@ -1,0 +1,50 @@
+{% extends 'base.html' %}{%block content %}
+
+<div class="row jumbotron center-align">
+  <h1 class=" ">My Recipes</h1>
+  <form method="POST" action="{{url_for('search')}}">
+    <input
+      type="search"
+      name="search"
+      placeholder="Search for recipes..."
+      id="searchbar"
+      class="fas fa-search icon-search"
+    />
+    <button class="btn-floating pulse" search-btn type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
+  <br />
+</div>
+{% if recipes|length > 0 %}
+<ul class="collapsible recipes">
+  {% for item in recipes %}
+  {% if item.created_by == session.user %}
+  <li>
+    <div class="row">
+      <span class="recipe-card collapsible-header"
+        ><a href="{{url_for('view_recipe', recipe_id=recipes._id) }}"
+        ><h2 class="flow-text col s4">{{item.recipe_name}}</h2></a>
+        <a href="{{url_for('edit_recipe', recipe_id=recipes._id) }}" ><button class="edit-btn blue">Edit</button
+      ></a>  <a href="{{url_for('delete_recipe', recipe_id=recipes._id) }}"><button class="delete-btn red">Delete</button></a>
+          <p class="flow-text col s4 align-center"><div>
+      
+    </div>
+          
+          </p>
+          <p class="flow-text col s3">
+            RATING:<br />{{item.rating}}
+            <i id="star" class="fas fa-star"></i> ({{item.rating_count}})
+          </p>
+        </span></a
+      >
+    </div>
+  </li>
+  <li>
+    
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>
+{%else%}
+<h3 class="red-text text-darken center-align">NO RESULTS FOUND</h3>{%endif%} {% endblock %}
