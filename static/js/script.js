@@ -1,6 +1,7 @@
 $(document).ready(function () {
   $("select").formSelect();
   $(".collapsible").collapsible();
+  $(".dropdown-trigger").dropdown();
   $(".sidenav").sidenav();
   $("#logout").click(function () {
     if (confirm("Are you sure you want to logout?")) {
@@ -11,10 +12,8 @@ $(document).ready(function () {
   });
   /*------Delete Button Confirmation-----*/
   $(".delete-btn").click(function () {
-    if (
-      confirm(
-        "Are you sure you want to DELETE this recipe? This action cannot be undone!"
-      )
+    if (confirm(
+        "Are you sure you want to DELETE this recipe? This action cannot be undone!")
     ) {
       alert("RECIPE HAS BEEN SUCCESSFULLY DELETED");
     } else {
@@ -42,7 +41,6 @@ $(document).ready(function () {
   $("#save-btn").click(function () {
     alert("This recipe has been SAVED successfully!");
     $(".lever").addAttribute("selected");
-    $("#save-text").html("SAVED")
-
+    $("#save-text").text("SAVED");
   });
 });

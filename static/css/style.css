@@ -3,54 +3,51 @@
 
 /* general */
 
-body{
-    font-family: 'Fredoka One', cursive;
+body {
+  font-family: "Fredoka One", cursive;
 }
 
 /* icons */
 
-main i{
-    color: rgb(250, 250, 250);
-    text-shadow: 2px 2px coral;
-
+main i {
+  color: rgb(250, 250, 250);
+  text-shadow: 2px 2px coral;
 }
 
-.view_recipe i{
-
-    color: teal;
+.view_recipe i {
+  color: teal;
 }
-.recipes i{
-    color: teal;
-}
-
-#ribbon{
-    color: rgb(151, 3, 151);
-    text-shadow: none
+.recipes i {
+  color: teal;
 }
 
-#star{
-    color: goldenrod;
-    text-shadow: 2px 2px  white;
+#ribbon {
+  color: rgb(151, 3, 151);
+  text-shadow: none;
 }
 
-
-.card-reveal i{
-    color: coral;
-    text-shadow: none;
+#star {
+  color: goldenrod;
+  text-shadow: 2px 2px white;
 }
 
-.card i{
-    color: coral;
-    text-shadow: 2px 2px  white;
+.card-reveal i {
+  color: coral;
+  text-shadow: none;
+}
+
+.card i {
+  color: coral;
+  text-shadow: 2px 2px white;
 }
 
 .checker a {
-    color: coral;
+  color: coral;
 }
 
-a:hover{
-color: coral;
-text-shadow: .5px .5px white;
+a:hover {
+  color: coral;
+  text-shadow: 0.5px 0.5px white;
 }
 body {
   display: flex;
@@ -64,23 +61,30 @@ main {
 
 /* Navbar */
 
-nav{
-    background-color: coral;
-    border-bottom-left-radius: 1.4em;
-    border-bottom-right-radius: 1.4em;
+nav {
+  background-color: coral;
+  border-bottom-left-radius: 1.4em;
+  border-bottom-right-radius: 1.4em;
 }
 
 .title i {
-  padding-left: 2rem;
+  margin-left: 2rem;
 }
-.title {
-  padding-left: 2em;
-  font-family: 'Fredoka One', cursive;
+.logo {
+  font-family: "Fredoka One", cursive;
   text-shadow: 2px 2px coral;
 }
-.title:hover{
-    text-shadow: 2px 2px white;
+.title:hover {
+  text-shadow: 2px 2px white;
+}
 
+/* Mobile navbar  */
+
+#mobile-demo a {
+  color: teal;
+}
+#mobile-demo li a i {
+  color: coral;
 }
 
 /* Focus Point */
@@ -90,11 +94,10 @@ nav{
   border-radius: 1.4em;
 }
 
-.profile{
-    height: auto;
-     background-image: url("https://images.unsplash.com/photo-1540660290370-8aa90e451e8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80");
-     border-radius: 1.4em;
-
+.profile {
+  height: auto;
+  background-image: url("https://images.unsplash.com/photo-1540660290370-8aa90e451e8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80");
+  border-radius: 1.4em;
 }
 
 #searchbar {
@@ -108,184 +111,186 @@ nav{
   color: teal;
 }
 
-
 /* text */
 
-body h1{
-    font-family: 'Fredoka One', cursive;
-    color: rgb(2, 68, 68);
-    text-shadow: 2px 2px coral;
-    padding: .5em;
+body h1 {
+  font-family: "Fredoka One", cursive;
+  color: rgb(2, 68, 68);
+  text-shadow: 2px 2px coral;
+  padding: 0.5em;
 }
 
-body h3{
-    font-family: 'Gayathri', sans-serif;
-    color: rgb(2, 68, 68);
-    background-color: rgba(255, 255, 255, 0.705);
-    padding: .2em;
-    margin: 0;
-
+body h3 {
+  font-family: "Gayathri", sans-serif;
+  color: rgb(2, 68, 68);
+  background-color: rgba(255, 255, 255, 0.705);
+  padding: 0.2em;
+  margin: 0;
 }
 
-.register{
+h4{
+font-family: "Gayathri", sans-serif;
+color: rgb(2, 68, 68);
+}
+
+.type-desc h3{
     color: coral;
-    text-shadow: 2px 2px teal;
-
+    font-weight: 200;
+    letter-spacing: 2px;
 }
 
-
-
-.view{
-    font-family: 'Fredoka One', cursive;
-    color: coral;
-    text-shadow: 2px 2px teal;
-    padding: .5em;
-
+.register {
+  color: coral;
+  text-shadow: 2px 2px teal;
 }
 
-.reg_label{
-    font-size: 200;
+.view {
+  font-family: "Fredoka One", cursive;
+  color: coral;
+  text-shadow: 2px 2px teal;
+  padding: 0.5em;
 }
 
+.reg_label {
+  font-size: 200;
+}
 
 /* forms and cards */
-.card{
-    border-radius: 1.4em;
-    font-weight: 600;
+.card {
+  border-radius: 1.4em;
+  font-weight: 600;
 }
 
-.card:hover{
-    border: solid coral 2px;
-    box-shadow: 3px 3px 3px coral;
-    z-index: 200;
+.card:hover {
+  border: solid coral 2px;
+  box-shadow: 3px 3px 3px coral;
+  z-index: 200;
 }
-
 
 /* images */
-.card img{
-    padding-top: 1em;
-    height: 180px;
-    
+.card img {
+  padding-top: 1em;
+  height: 180px;
 }
 
 .card-image img {
-    border-radius: 20%;
+  border-radius: 20%;
 }
 
-#chef{
-    display: inline;
-    position: relative;
-    left: 210px;;
-    bottom: 150px;
-    width: 60px;
+#chef {
+  display: inline;
+  position: relative;
+  left: 210px;
+  bottom: 150px;
+  width: 60px;
 }
-
 
 /* components  */
-.collapsible li{
-    border-top-left-radius: 1.4em;
-    border-top-right-radius: 1.4em;
-
+.collapsible li {
+  border-top-left-radius: 1.4em;
+  border-top-right-radius: 1.4em;
 }
 
-.recipe-card a{
-    color: rgb(121, 187, 187);
+.recipe-card a {
+  color: rgb(121, 187, 187);
 }
 
 .recipe-card a:hover,
-.recipe-card:hover{
-    background-color: coral;
-    color: white;
+.recipe-card:hover {
+  background-color: coral;
+  color: white;
 }
 
-ul a{
-    color: coral;
+ul a {
+  color: coral;
 }
 
 /* buttons */
-button{
-    height: 60px;
-    width: 50px;
-    background-color: coral; 
-    border-top-right-radius: .8em;
-    border-bottom-right-radius: .8em;
+button {
+  height: 60px;
+  width: 50px;
+  background-color: coral;
+  border-top-right-radius: 0.8em;
+  border-bottom-right-radius: 0.8em;
 }
-button:hover{
-    cursor:pointer;
-    color: white;
-}
-
-button > a{
-    font-family: 'Fredoka One', cursive;
-}
-.search-btn{
-    margin: 0;
-    color: white;
-}
-.search-btn:hover{
-    transform: scale(1.2);
+button:hover {
+  cursor: pointer;
+  color: white;
 }
 
-.btn-small{
-    width: auto;
+button > a {
+  font-family: "Fredoka One", cursive;
 }
-.btn-large{
-    border: solid 2px white;
-    border-radius: .8em;
-    padding: .4em;
+.search-btn {
+  margin: 0;
+  color: white;
 }
-
-.btn-large a{
-    color: white;
+.search-btn:hover {
+  transform: scale(1.2);
 }
 
-.btn-large:hover{
-    background-color: coral;
-    
+.btn-small {
+  width: auto;
+}
+.btn-large {
+  border: solid 2px white;
+  border-radius: 0.8em;
+  padding: 0.4em;
+}
+
+.btn-large a {
+  color: white;
+}
+
+.btn-large:hover {
+  background-color: coral;
+}
+
+.card .card-content {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .card-content:hover,
-.card:hover{
-    cursor: pointer;
+.card:hover {
+  cursor: pointer;
 }
 
-
-.add-recipe-btn{
-    background-color: green;
-    color: white;
+.add-recipe-btn {
+  background-color: green;
+  color: white;
 }
 
 .edit-btn,
-.delete-btn{
-
-    width: 5em;
-    color: white;
-    border-radius: 1.2em;
+.delete-btn {
+  width: 5em;
+  color: white;
+  border-radius: 1.2em;
 }
 
-.delete-btn{
-    background-color: red;
+.delete-btn {
+  background-color: red;
 }
 
-.edit-btn{
-    background-color: green;
+.edit-btn {
+  background-color: green;
 }
 
-#save-btn{
-    border: 2px solid teal;
-    border-radius: 1.4em;
-    padding: 1em;
-    margin-top: 3em;
-
+#save-btn {
+  border: 2px solid teal;
+  border-radius: 1.4em;
+  padding: 1em;
+  margin-top: 3em;
+  width: 400px;
 }
-#save-btn:hover{
-    cursor: pointer;
+#save-btn:hover {
+  cursor: pointer;
 }
 
 /* footer */
 
-footer{
-    background-color: coral;
-    color: white;
-    height: 2em;
+footer {
+  background-color: coral;
+  color: white;
+  height: 2em;
 }
