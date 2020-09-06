@@ -1,24 +1,59 @@
 {% extends 'base.html'%}{% block content %}
 <nav>
   <div class="">
-    <div class="col s12">
+    <div class="col s4">
       <a href="{{url_for('recipes')}}" class="breadcrumb"> Recipes </a>
       <a href="#!" class="breadcrumb"> {{ recipe_type }}</a>
     </div>
   </div>
 </nav>
 <h1 class="center-align jumbotron col-8">{{ recipe_type }}</h1>
-<div class="row">
+<div class="type-desc text-darken-2 row center-align"><h3>
   {% for item in types %} {% if item.type_name == recipe_type %}
-  {{item.type_desc}} {% endif %} {% endfor %}
+  {{item.type_desc}} {% endif %} {% endfor %}</h3>
 </div>
-<div class="row">
+<ul class="collection">
   {% for recipe in recipes%} {% if recipe.type == recipe_type %}
-  <div class="col s4">
-    <a href="{{url_for('view_recipe', recipe_id=recipe._id) }}"
-      ><h1>{{recipe.recipe_name}}</h1></a
+  <li class="collection-item avatar">
+    {% if recipe_type == 'Dessert' %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/dessert.jpg') }}"
+        />
+        {% elif recipe_type == 'Snack' %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/food.jpg') }}"
+        />
+        {% elif recipe_type == 'Starter' %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/starter.jpg') }}"
+        />
+        {% elif recipe_type == 'Main'%}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/main.jpg') }}"
+        />
+        {% else %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/books.jpg') }}"
+        />
+        {% endif %}
+    <span class="title">
+      <a href="{{url_for('view_recipe', recipe_id=recipe._id) }}"
+        ><h2>{{recipe.recipe_name}}</h2></a
+      ></span
     >
-  </div>
+    <p>
+       <h4><i class="fas fa-user"></i> Creator: {{recipe.created_by}}</h4><br />
+    </p>
+    <br>
+    <a href="#!" class="secondary-content"
+      >{{recipe.rating}} <i id="star" class="fas fa-star"></i></a
+    >
+  </li>
   {% endif %} {% endfor %}
-</div>
+</ul>
 {% endblock %}
