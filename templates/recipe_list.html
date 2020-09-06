@@ -7,14 +7,18 @@
     </div>
   </div>
 </nav>
-  <h1 class="center-align jumbotron col-8">{{ recipe_type }}</h1>
-  <div class="row">
-{% for recipe in recipes%}
-    {% if recipe.type == recipe_type %}
-    <div class="col s4">
-        <a href="{{url_for('view_recipe', recipe_id=recipe._id) }}"><h1>{{recipe.recipe_name}}</h1></a>
-    </div>
-    {% endif %}
-{% endfor %}
+<h1 class="center-align jumbotron col-8">{{ recipe_type }}</h1>
+<div class="row">
+  {% for item in types %} {% if item.type_name == recipe_type %}
+  {{item.type_desc}} {% endif %} {% endfor %}
+</div>
+<div class="row">
+  {% for recipe in recipes%} {% if recipe.type == recipe_type %}
+  <div class="col s4">
+    <a href="{{url_for('view_recipe', recipe_id=recipe._id) }}"
+      ><h1>{{recipe.recipe_name}}</h1></a
+    >
+  </div>
+  {% endif %} {% endfor %}
 </div>
 {% endblock %}
