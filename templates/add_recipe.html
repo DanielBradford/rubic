@@ -20,7 +20,7 @@
         <div class="input-field col s6 m6">
         <i class="fas fa-folder-open prefix"></i>
     <select class="icons" name="type" required>
-      <option value="" disabled selected>Recipe Type</option>
+      <option value="" disabled>Recipe Type</option>
       {% for type in types %}
         <option value="{{ type.type }}" data-icon="images/sample-1.jpg">{{ type.type_name }}</option>
       {% endfor %}
@@ -32,7 +32,7 @@
         <div class="input-field col s6">
         <i class="fas fa-fire prefix"></i>
           <select multiple name="using">
-            <option value="" disabled selected>Choose your option</option>
+            <option value="" disabled>Choose your option</option>
             <option value="oven">Oven</option>
             <option value="pan_hob">Pan/Hob</option>
             <option value="fridge">Fridge</option>
@@ -43,7 +43,7 @@
         <div class="input-field col s6">
         <i class="fas fa-thermometer-half prefix"></i>
           <select multiple name="temperature">
-            <option disabled selected>Choose your option</option>
+            <option disabled>Choose your option</option>
             {% for i in range(100,300, 10) %}
                 <option value="oven">{{i}} °C</option>
             {% endfor %}
