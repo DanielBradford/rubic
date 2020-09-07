@@ -111,6 +111,7 @@ def view_recipe(recipe_id):
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     user = session['user']
     user_id = mongo.db.users.find_one({"user_name": user})
+
     saved_list = list(mongo.db.users.distinct(
         "saved_recipes", {"user_name": user}))
     return render_template("view_recipe.html", recipe_id=recipe_id,
@@ -265,15 +266,13 @@ def delete_recipe(recipe_id):
     return redirect(url_for("myRecipes"))
 
 
-# @app.route("/remove_recipe/<recipe_id>")
-# def remove_recipe(recipe_id):
-#     saved_list = list(mongo.db.users.distinct(
-#         "saved_recipes", {"user_name": user}))
-#     recipe_id = recipe_id
-#     mongo.db.recipes.remove("saved_recipes": recipe_id})
-
-#     flash("Recipe successfully removed from saved list")
-#     return redirect(url_for('saved_recipes'))
+@app.route("/remove_recipe/<recipe_id>")
+def remove_recipe(recipe_id):
+    saved_list = list(mongo.db.users.distinct(
+        "saved_recipes", {"user_name": user}))
+    recipe_id = recipe_id
+    flash("Recipe successfully removed from saved list")
+    return redirect(url_for('saved_recipes'))
 
 
 @app.route("/rate_recipe/<recipe_id>", methods=["GET", "POST"])
