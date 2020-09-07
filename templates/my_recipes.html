@@ -17,34 +17,60 @@
   <br />
 </div>
 {% if recipes|length > 0 %}
-<ul class="collapsible recipes">
+<ul class="collection col s12">
   {% for item in recipes %}
-  {% if item.created_by == session.user %}
-  <li>
-    <div class="row">
-      <span class="recipe-card collapsible-header"
-        ><a href="{{url_for('view_recipe', recipe_id=recipes._id) }}"
-        ><h2 class="flow-text col s4">{{item.recipe_name}}</h2></a>
-        <a href="{{url_for('edit_recipe', recipe_id=recipes._id) }}" ><button class="edit-btn blue">Edit</button
-      ></a>  <a href="{{url_for('delete_recipe', recipe_id=recipes._id) }}"><button class="delete-btn red">Delete</button></a>
-          <p class="flow-text col s4 align-center"><div>
-      
-    </div>
-          
-          </p>
-          <p class="flow-text col s3">
-            RATING:<br />{{item.rating}}
-            <i id="star" class="fas fa-star"></i> ({{item.rating_count}})
-          </p>
-        </span></a
+  <a href="{{url_for('view_recipe', recipe_id=item._id) }}">
+    <li class="collection-item #e0f2f1 teal lighten-5 hoverable avatar col s12">
+      {% if item.type == 'Dessert' %}
+      <img
+        class="circle"
+        src="{{ url_for('static', filename='images/dessert.jpg') }}"
+      />
+      {% elif item.type == 'Snack' %}
+      <img
+        class="circle"
+        src="{{ url_for('static', filename='images/food.jpg') }}"
+      />
+      {% elif item.type == 'Starter' %}
+      <img
+        class="circle"
+        src="{{ url_for('static', filename='images/starter.jpg') }}"
+      />
+      {% elif item.type == 'Main'%}
+      <img
+        class="circle"
+        src="{{ url_for('static', filename='images/main.jpg') }}"
+      />
+      {% else %}
+      <img
+        class="circle"
+        src="{{ url_for('static', filename='images/books.jpg') }}"
+      />
+      {% endif %}
+      <span class="title">
+        <h2>{{item.recipe_name}}</h2><span>
+  <a href="{{url_for('edit_recipe', recipe_id=item._id) }}"
+    ><button class="edit-btn blue">Edit</button></a
+  >
+  <a href="{{url_for('delete_recipe', recipe_id=item._id) }}"
+    ><button class="delete-btn red">Delete</button></a
+  ></span>
+
+      <br />
+
+      <a href="" disabled class="secondary-content"
+        ><h3>{{item.rating}} <i id="star" class="fas fa-star"></i></h3>
+        ({{item.rating_count}}) RATINGS</a
       >
-    </div>
-  </li>
-  <li>
-    
-  </li>
-  {% endif %}
+    </li>
+  </a>
   {% endfor %}
 </ul>
-{%else%}
-<h3 class="red-text text-darken center-align">NO RESULTS FOUND</h3>{%endif%} {% endblock %}
+
+
+ 
+
+  {%else%}
+  <h3 class="red-text text-darken center-align">NO RESULTS FOUND</h3>
+  {%endif%} {% endblock %}
+</span>
