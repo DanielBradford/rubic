@@ -31,10 +31,12 @@
         <i class="fas fa-folder"></i
       ></span>
     </div>
-    <div class="card-reveal">
+    <div class="card-reveal #b2dfdb teal lighten-4 center-align">
       <span class="card-title grey-text text-darken-4"
-        >All Recipes <i class="xsmall fas fa-times"></i></span
-      >
+        >All Recipes <i class="xsmall fas fa-times"></i
+      ></span>
+      <br />
+      <i class="medium fas fa-books"></i>
       <p>
         All recipes of every type from all creators...
       </p>
@@ -50,21 +52,25 @@
     </div>
     <div class="card-content center-align">
       <span class="card-title activator grey-text text-darken-4"
-        ><h3 class="flow-text activator">Saved Recipes </h3>
-        <i class="fas fa-save"></i
-      > ({{this_user.saved_recipes|length}})</span>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4"
-        >Saved Recipes <i class="xsmall fas fa-times"></i></span
+        ><h3 class="flow-text activator">Saved Recipes</h3>
+        <i class="fas fa-save"></i> ({{this_user.saved_recipes|length}})</span
       >
+    </div>
+    <div class="card-reveal #b2dfdb teal lighten-3 center-align">
+      <span class="card-title grey-text text-darken-4"
+        >Saved Recipes <i class="xsmall fas fa-times"></i
+      ></span>
+      <br />
+      <i class="medium center-align fas fa-save"></i>
       <p>
         Here are all the recipes you chose to save...
       </p>
 
-      <a class="center-align" href="{{url_for('saved_recipes', user=session.user)}}"
-        >GO TO SAVED RECIPES <i class="medium fas fa-save"></i
-      ></a>
+      <a
+        class="center-align"
+        href="{{url_for('saved_recipes', user=session.user)}}"
+        >GO TO SAVED RECIPES
+      </a>
     </div>
   </div>
   <div class="card col s6 m6 l3">
@@ -76,19 +82,19 @@
     </div>
     <div class="card-content center-align">
       <span class="card-title activator grey-text text-darken-4"
-        ><h3 class="flow-text activator">My 
-        Recipes</h3>
+        ><h3 class="flow-text activator">My Recipes</h3>
         <i class="flow-text fas fa-archive"></i>
       </span>
     </div>
-    <div class="card-reveal">
-    <div class="span right-align">
-    <i class="xsmall fas fa-times "></i></div>
+    <div class="card-reveal #b2dfdb teal lighten-2 center-align">
+      <div class="span right-align"></div>
       <span class="card-title grey-text text-darken-4"
-        >My Recipes</span
-      >
+        >My Recipes <i class="xsmall fas fa-times"></i>
+      </span>
+      <br>
+      <i class="medium center-align fas fa-book-reader"></i>
       <p>
-        Here are all the recipes you have create and contributed...
+        Here are all the recipes you have created...
       </p>
       <a class="btn-medium" href="{{url_for('myRecipes')}}">GO TO MY RECIPES</a>
     </div>
@@ -106,11 +112,13 @@
         <i class="fas fa-shopping-bag"></i>
       </span>
     </div>
-    <div class="card-reveal">
-      <span class="card-title right-align grey-text text-darken-4"
-        ><i class="xsmall fas fa-times"></i>Top Tools
-        </span
-      >
+    <div class="card-reveal #b2dfdb teal lighten-1 center-align">
+      <span class="card-title grey-text text-darken-4"
+        >Top Tools <i class="xsmall fas fa-times"></i>
+        
+      </span>
+      <br>
+      <i class="center-align medium fas fa-blender"></i>
       <p>
         Here is some more information about top cooking products...
       </p>
