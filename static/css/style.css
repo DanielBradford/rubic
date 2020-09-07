@@ -21,6 +21,10 @@ main i {
   color: teal;
 }
 
+.saved i{
+    color: teal;
+}
+
 #ribbon {
   color: rgb(151, 3, 151);
   text-shadow: none;
@@ -133,10 +137,16 @@ font-family: "Gayathri", sans-serif;
 color: rgb(2, 68, 68);
 }
 
+#size{
+    color: coral;
+    text-shadow: 2px 2px teal;
+}
+
 .type-desc h3{
     color: coral;
     font-weight: 200;
     letter-spacing: 2px;
+    text-shadow: 1px 1px teal;
 }
 
 .register {
@@ -177,24 +187,28 @@ color: rgb(2, 68, 68);
   border-radius: 20%;
 }
 
-#chef {
-  display: inline;
-  position: relative;
-  left: 210px;
-  bottom: 150px;
-  width: 60px;
+
+img.circle{
+    margin-top: 50px;
 }
+
 
 /* components  */
-.collapsible li {
-  border-top-left-radius: 1.4em;
-  border-top-right-radius: 1.4em;
+
+
+/* all recipe cards */
+.collection{
+    border: none;
 }
 
-.recipe-card a {
-  color: rgb(121, 187, 187);
+.collection-item{
+    border-radius: 1.5em;
+}
+.collection-item:hover{
+    border: solid 2px teal;
 }
 
+/* recipe type cards */
 .recipe-card a:hover,
 .recipe-card:hover {
   background-color: coral;
