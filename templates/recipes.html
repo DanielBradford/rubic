@@ -19,7 +19,7 @@
 <div  class="row">
   {% for item in types %}
   <a href="{{url_for('recipe_list', recipe_type=item.type_name) }}">
-    <div class="card col s6 m6 l3 center-align activator">
+    <div class="card hoverable col s6 m6 l3 center-align activator">
       <div class="card-image waves-effect waves-block waves-light">
         {% if item.type_name == 'Dessert' %}
         <img
@@ -128,7 +128,9 @@
         
       </li>
     </a>
+    <br>
     {% endfor %}
+
   </ul>
 </div>
 
