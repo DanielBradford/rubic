@@ -5,7 +5,6 @@ $(document).ready(function () {
   $(".sidenav").sidenav();
   $("#logout").click(function () {
     if (confirm("Are you sure you want to logout?")) {
-      alert("YOU HAVE BEEN SUCCESSFULLY LOGGED OUT");
     } else {
       return false; //----On cancel user returns to current screen------//
     }
@@ -43,4 +42,8 @@ $(document).ready(function () {
     $(".lever").addAttribute("selected");
     $("#save-text").text("SAVED");
   });
+
+  $("#remove-btn").click(function(){
+      $(".remove").toggle();
+  })
 });
