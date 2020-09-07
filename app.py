@@ -105,23 +105,24 @@ def recipe_list(recipe_type):
 
 @app.route("/view_recipe/<recipe_id>", methods=["GET", "POST"])
 def view_recipe(recipe_id):
-    try:
-        recipe_id = recipe_id
-        recipe_id = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-        user = session['user']
-        user_id = mongo.db.users.find_one({"user_name": user})
-        return render_template("view_recipe.html", recipe_id=recipe_id,
-                               recipes=recipes, user_id=user_id, user=user)
+    # try:
+    recipe_id = recipe_id
+    recipe_id = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    user = session['user']
+    user_id = mongo.db.users.find_one({"user_name": user})
+    saved_list = list(mongo.db.users.distinct(
+        "saved_recipes", {"user_name": user}))
+    return render_template("view_recipe.html", recipe_id=recipe_id,
+                           recipes=recipes, user_id=user_id, user=user, saved_list=saved_list)
 
-    except:
-        flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
-        return render_template("guest.html")
+    # except:
+    flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
+    return render_template("guest.html")
 
 
 @app.route("/add_recipe")
 def add_recipe():
-
     types = list(mongo.db.type.find().sort("type", 1))
     return render_template("add_recipe.html", types=types)
 
@@ -189,7 +190,7 @@ def add_new_recipe():
             "notes": request.form.get("notes"),
             "method": request.form.get("method"),
             "rating": 0,
-            "rating_count": 0,
+            "rating_count": 1,
             "created_by": session["user"]
         }
         mongo.db.recipes.insert_one(new)
@@ -264,10 +265,45 @@ def delete_recipe(recipe_id):
     return redirect(url_for("myRecipes"))
 
 
-@app.route("/remove_recipe/<recipe_id>")
-def remove_recipe(recipe_id):
-    saved_list = list(mongo.db.users.distinct("saved_recipes"))
-    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+# @app.route("/remove_recipe/<recipe_id>")
+# def remove_recipe(recipe_id):
+#     saved_list = list(mongo.db.users.distinct(
+#         "saved_recipes", {"user_name": user}))
+#     recipe_id = recipe_id
+#     mongo.db.recipes.remove("saved_recipes": recipe_id})
+
+#     flash("Recipe successfully removed from saved list")
+#     return redirect(url_for('saved_recipes'))
+
+
+@app.route("/rate_recipe/<recipe_id>", methods=["GET", "POST"])
+def rate_recipe(recipe_id):
+    recipe_id = recipe_id
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    user = session['user']
+
+
+    if request.method == "POST":
+        for rating in current_rating:
+            for num in count:
+                # updates the count of ratings
+                new_count = num + 1
+                # creates the average rating
+                userRating = request.form.get("rating")
+                new_rating = (rating+userRating) / num
+            # updates mongodb
+                mongo.db.recipes.updateOne(
+                    {"_id": recipe_id}, {'$set': {'rating': new_rating}})
+                mongo.db.recipes.updateOne(
+                    {"_id": recipe_id}, {'$set': {'rating_count': new_count}})
+                flash("Rating received! Thank you!")
+                return redirect(url_for('view_recipe', recipe_id=recipe_id))
+        # except:
+        #     # deals with potential errors
+        #     flash("Could not rate recipe. Try Again!")
+        #     return redirect(url_for('view_recipe', recipe_id=recipe_id))
+    return render_template('view_recipe.html', recipe_id=recipe_id,
+                           recipes=recipes, user=user)
 
 
 if __name__ == '__main__':
