@@ -8,29 +8,32 @@
   </div>
 </nav>
 <h1 class="center-align jumbotron col-8">{{ recipe_type }}</h1>
-<div class="type-desc text-darken-2 row center-align"><h3>
+<div class="type-desc text-darken-2 row center-align"><h4>
   {% for item in types %} {% if item.type_name == recipe_type %}
-  {{item.type_desc}} {% endif %} {% endfor %}</h3>
+  {{item.type_desc}} {% endif %} {% endfor %}</h4>
 </div>
-<ul class="collection">
-  {% for recipe in recipes%} {% if recipe.type == recipe_type %}
-  <li class="collection-item avatar">
-    {% if recipe_type == 'Dessert' %}
+<ul class="collection col s12">
+    {% for item in recipes %}
+    {% if item.type == recipe_type %}
+    <a href="{{url_for('view_recipe', recipe_id=item._id) }}"
+      >
+      <li class="collection-item #e0f2f1 teal lighten-5 hoverable avatar col s12">
+        {% if item.type == 'Dessert' %}
         <img
           class="circle"
           src="{{ url_for('static', filename='images/dessert.jpg') }}"
         />
-        {% elif recipe_type == 'Snack' %}
+        {% elif item.type == 'Snack' %}
         <img
           class="circle"
           src="{{ url_for('static', filename='images/food.jpg') }}"
         />
-        {% elif recipe_type == 'Starter' %}
+        {% elif item.type == 'Starter' %}
         <img
           class="circle"
           src="{{ url_for('static', filename='images/starter.jpg') }}"
         />
-        {% elif recipe_type == 'Main'%}
+        {% elif item.type == 'Main'%}
         <img
           class="circle"
           src="{{ url_for('static', filename='images/main.jpg') }}"
@@ -41,19 +44,28 @@
           src="{{ url_for('static', filename='images/books.jpg') }}"
         />
         {% endif %}
-    <span class="title">
-      <a href="{{url_for('view_recipe', recipe_id=recipe._id) }}"
-        ><h2>{{recipe.recipe_name}}</h2></a
-      ></span
-    >
-    <p>
-       <h4><i class="fas fa-user"></i> Creator: {{recipe.created_by}}</h4><br />
-    </p>
-    <br>
-    <a href="#!" class="secondary-content"
-      >{{recipe.rating}} <i id="star" class="fas fa-star"></i></a
-    >
-  </li>
-  {% endif %} {% endfor %}
-</ul>
+        <span class="title">
+          <h2>{{item.recipe_name}}</h2>
+
+          <p>
+            {% if item.created_by == session.user %}<i
+              id="ribbon"
+              class="fas fa-ribbon"
+            ></i>
+            Created by YOU{% else %}<i class="fas fa-user"></i> Creator:
+            {{item.created_by}}{% endif %}
+          </p></span
+        >
+
+        <br />
+
+        <a href="" disabled class="secondary-content"
+          ><h3>{{item.rating}} <i id="star" class="fas fa-star"></i
+        ></h3> ({{item.rating_count}}) RATINGS</a>
+        
+      </li>
+    </a>
+    {% endif %}
+    {% endfor %}
+  </ul>
 {% endblock %}
