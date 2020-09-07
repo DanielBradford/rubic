@@ -32,36 +32,34 @@
 <div class="row">
   <ul class="collection col s12">
     {%for item in recipes %} {% for x in check_list %} {% if item._id == x %}
-    <a href="{{url_for('view_recipe', recipe_id=item._id) }}">
-      <li
-        class="collection-item #e0f2f1 teal lighten-5 hoverable avatar col s12"
-      >
-        {% if item.type == 'Dessert' %}
-        <img
-          class="circle"
-          src="{{ url_for('static', filename='images/dessert.jpg') }}"
-        />
-        {% elif item.type == 'Snack' %}
-        <img
-          class="circle"
-          src="{{ url_for('static', filename='images/food.jpg') }}"
-        />
-        {% elif item.type == 'Starter' %}
-        <img
-          class="circle"
-          src="{{ url_for('static', filename='images/starter.jpg') }}"
-        />
-        {% elif item.type == 'Main'%}
-        <img
-          class="circle"
-          src="{{ url_for('static', filename='images/main.jpg') }}"
-        />
-        {% else %}
-        <img
-          class="circle"
-          src="{{ url_for('static', filename='images/books.jpg') }}"
-        />
-        {% endif %}
+    <li class="collection-item #e0f2f1 teal lighten-5 hoverable avatar col s12">
+      {% if item.type == 'Dessert' %}
+      <img
+        class="circle"
+        src="{{ url_for('static', filename='images/dessert.jpg') }}"
+      />
+      {% elif item.type == 'Snack' %}
+      <img
+        class="circle"
+        src="{{ url_for('static', filename='images/food.jpg') }}"
+      />
+      {% elif item.type == 'Starter' %}
+      <img
+        class="circle"
+        src="{{ url_for('static', filename='images/starter.jpg') }}"
+      />
+      {% elif item.type == 'Main'%}
+      <img
+        class="circle"
+        src="{{ url_for('static', filename='images/main.jpg') }}"
+      />
+      {% else %}
+      <img
+        class="circle"
+        src="{{ url_for('static', filename='images/books.jpg') }}"
+      />
+      {% endif %}
+      <a href="{{url_for('view_recipe', recipe_id=item._id) }}">
         <span class="title">
           <h2>{{item.recipe_name}}</h2>
 
@@ -73,19 +71,22 @@
             Created by YOU{% else %}<i class="fas fa-user"></i> Creator:
             {{item.created_by}}{% endif %}
           </p></span
-        >
+        ></a
+      >
 
-        <br />
+      <br />
+      <div>
+        <h4>{{item.rating}} <i id="star" class="fas fa-star"></i></h4>
+      </div>
+      <div class="secondary-content">
+        <h4>
+          <i id="remove-btn" class="fas fa-trash-alt right"></i
+          ><span class="remove" hidden><a id="remove_confim" href="{{url_for('remove_recipe', recipe_id=item._id) }}">REMOVE FROM SAVED <i class="fas fa-times"></i> </a></span>
+        </h4>
+      </div>
+    </li>
 
-        <a href="" disabled class="secondary-content"
-          ><h3>{{item.rating}} <i id="star" class="fas fa-star"></i></h3>
-          ({{item.rating_count}}) RATINGS</a
-        >
-      </li>
-    </a>
-    {% endif %}
-    {% endfor %}
-    {% endfor %}
+    {% endif %} {% endfor %} {% endfor %}
   </ul>
 </div>
 
