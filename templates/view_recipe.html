@@ -15,12 +15,13 @@
       item.created_by == session.user %}
       <span 
         ><a href="{{url_for('delete_recipe', recipe_id=recipe_id._id)}}"
-          ><button class="delete-btn">Delete</button></a
+          ><button class="delete-btn">Delete <i class="fas fa-trash-alt"></i></button></a
         ></span
-      >
+        >
+
       <span
         ><a href="{{url_for('edit_recipe', recipe_id=item._id)}}"
-          ><button class="edit-btn">Edit</button></a
+          ><button class="edit-btn">Edit <i class="fas fa-pencil"></i></button></a
         ></span
       >
       {%else %}
@@ -29,7 +30,7 @@
       {% endif %}
     </div>
     <div class="flow-text center col s12 m8">
-      <h1 class=" view center-align">{{ item.recipe_name }}</h1>
+      <h1 class=" view ">{{ item.recipe_name }}</h1>
     </div>
     <hr>
   </div>
@@ -52,21 +53,25 @@
         <div class="list center-align profile col s6">
           Cooking time:
         </div>
-        <div class="center col s6">{{ item.cooking_time }}</div>
+        <div class="center col s6">{{ item.cooking_time }} minutes</div>
       </div>
       <div class="row">
         <div class="list center-align profile col s6">
           Temperature:
         </div>
-        <div class="col s6 center">{{item.temperature}} </div>
+        {% if item.temperature == "N/A" %}
+        <div class="col s6 center">{{item.temperature}}</div>
+        {%else%}
+        <div class="col s6 center">{{item.temperature}}°C </div>
+        {% endif %}
       </div>
       <div class="row">
         <div class="list center-align profile col s6">
           Vegan <i class="fab fa-envira"></i>:
         </div>
-        {% if item.vegan == "Yes" %}
+        {% if item.vegan == "yes" %}
         <div class="green-text col s6 center">{{item.vegan}} </div>
-        {% elif item.vegan == "No" %}
+        {% elif item.vegan == "no" %}
         <div class="red-text col s6 center">{{item.vegan}} </div>
         {%else%}
         {%endif%}
@@ -158,13 +163,13 @@
             <button class="btn-small" type="submit">
               RATE <i class="fas fa-check"></i>
             </button>
+            
           </form>
           <br>
         </div>
       </div>
     </div>
   </div>
-  {{rating}}
 </main>
 
 
