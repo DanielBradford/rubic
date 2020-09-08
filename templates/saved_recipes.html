@@ -75,13 +75,13 @@
       >
 
       <br />
-      <div>
+      <div class="right">
         <h4>{{item.rating}} <i id="star" class="fas fa-star"></i></h4>
       </div>
       <div class="secondary-content">
         <h4>
           <i id="remove-btn" class="fas fa-trash-alt right"></i
-          ><span class="remove" hidden><a id="remove_confim" href="{{url_for('remove_recipe', recipe_id=item._id) }}">REMOVE FROM SAVED <i class="fas fa-times"></i> </a></span>
+          ><a class="remove" hidden href="{{url_for('remove_recipe', recipe_id=item._id) }}">REMOVE FROM SAVED <i class="fas fa-times"></i></a>
         </h4>
       </div>
     </li>
@@ -89,5 +89,6 @@
     {% endif %} {% endfor %} {% endfor %}
   </ul>
 </div>
+{{rating}}
 
 {% endblock %}
