@@ -8,11 +8,11 @@
   </div>
 </nav>
 <h1 class="center-align jumbotron col-8">{{ recipe_type }}</h1>
-<div class="type-desc text-darken-2 row center-align"><h4>
+<div class="type-desc text-darken-2 row center-align"><h4 class="flow-text">
   {% for item in types %} {% if item.type_name == recipe_type %}
   {{item.type_desc}} {% endif %} {% endfor %}</h4>
 </div>
-<ul class="collection col s12">
+<ul class="collection flow-text col s12">
     {% for item in recipes %}
     {% if item.type == recipe_type %}
     <a href="{{url_for('view_recipe', recipe_id=item._id) }}"
@@ -20,7 +20,7 @@
       <li class="collection-item #e0f2f1 teal lighten-5 hoverable avatar col s12">
         {% if item.type == 'Dessert' %}
         <img
-          class="circle"
+          class="valign-wrapper circle"
           src="{{ url_for('static', filename='images/dessert.jpg') }}"
         />
         {% elif item.type == 'Snack' %}
@@ -45,9 +45,9 @@
         />
         {% endif %}
         <span class="title">
-          <h2>{{item.recipe_name}}</h2>
+          <h2 class="flow-text">{{item.recipe_name}}</h2>
 
-          <p>
+          <p class="flow-text">
             {% if item.created_by == session.user %}<i
               id="ribbon"
               class="fas fa-ribbon"
@@ -60,7 +60,7 @@
         <br />
 
         <a href="" disabled class="secondary-content"
-          ><h3>{{item.rating}} <i id="star" class="fas fa-star"></i
+          ><h3 class="flow-text">{{item.rating}} <i id="star" class="fas fa-star"></i
         ></h3> ({{item.rating_count}}) RATINGS</a>
         
       </li>
