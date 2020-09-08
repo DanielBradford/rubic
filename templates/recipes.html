@@ -16,7 +16,7 @@
   </form>
   <br />
 </div>
-<div  class="row">
+<div class="row">
   {% for item in types %}
   <a href="{{url_for('recipe_list', recipe_type=item.type_name) }}">
     <div class="card hoverable col s6 m6 l3 center-align activator">
@@ -74,66 +74,68 @@
 <div class="row center-align">
   <h2>All Recipes:</h2>
 </div>
-
-<div id="all_recipes" class="row">
-  <ul class="collection col s12">
-    {% for item in recipes %}
-    <a href="{{url_for('view_recipe', recipe_id=item._id) }}"
-      >
-      <li class="collection-item #e0f2f1 teal lighten-5 hoverable avatar col s12">
-        {% if item.type == 'Dessert' %}
-        <img
-          class="circle"
-          src="{{ url_for('static', filename='images/dessert.jpg') }}"
-        />
-        {% elif item.type == 'Snack' %}
-        <img
-          class="circle"
-          src="{{ url_for('static', filename='images/food.jpg') }}"
-        />
-        {% elif item.type == 'Starter' %}
-        <img
-          class="circle"
-          src="{{ url_for('static', filename='images/starter.jpg') }}"
-        />
-        {% elif item.type == 'Main'%}
-        <img
-          class="circle"
-          src="{{ url_for('static', filename='images/main.jpg') }}"
-        />
-        {% else %}
-        <img
-          class="circle"
-          src="{{ url_for('static', filename='images/books.jpg') }}"
-        />
-        {% endif %}
-        <span class="title">
-          <h2>{{item.recipe_name}}</h2>
-
-          <p>
-            {% if item.created_by == session.user %}<i
-              id="ribbon"
-              class="fas fa-ribbon"
-            ></i>
-            Created by YOU{% else %}<i class="fas fa-user"></i> Creator:
-            {{item.created_by}}{% endif %}
-          </p></span
+<div class="container-fluid">
+  <div id="all_recipes" class="row">
+    <ul class="collection col s12">
+      {% for item in recipes %}
+      <a href="{{url_for('view_recipe', recipe_id=item._id) }}">
+        <li
+          class="collection-item #e0f2f1 teal lighten-5 hoverable avatar col s12"
         >
+          {% if item.type == 'Dessert' %}
+          <img
+            class="circle"
+            src="{{ url_for('static', filename='images/dessert.jpg') }}"
+          />
+          {% elif item.type == 'Snack' %}
+          <img
+            class="circle"
+            src="{{ url_for('static', filename='images/food.jpg') }}"
+          />
+          {% elif item.type == 'Starter' %}
+          <img
+            class="circle"
+            src="{{ url_for('static', filename='images/starter.jpg') }}"
+          />
+          {% elif item.type == 'Main'%}
+          <img
+            class="circle"
+            src="{{ url_for('static', filename='images/main.jpg') }}"
+          />
+          {% else %}
+          <img
+            class="circle"
+            src="{{ url_for('static', filename='images/books.jpg') }}"
+          />
+          {% endif %}
+          <span class="title">
+            <h2 class="flow-text">{{item.recipe_name}}</h2>
 
-        <br />
+            <p>
+              {% if item.created_by == session.user %}<i
+                id="ribbon"
+                class="fas fa-ribbon"
+              ></i>
+              Created by YOU{% else %}<i class="fas fa-user"></i> Creator:
+              {{item.created_by}}{% endif %}
+            </p></span
+          >
 
-        <a href="" disabled class="secondary-content"
-          ><h3>{{item.rating}} <i id="star" class="fas fa-star"></i
-        ></h3> ({{item.rating_count}}) RATINGS</a>
-        
-      </li>
-    </a>
-    <br>
-    {% endfor %}
+          <br />
 
-  </ul>
+          <a href="" disabled class="secondary-content"
+            ><h3 class="flow-text">
+              {{item.rating}} <i id="star" class="fas fa-star"></i>
+            </h3>
+            <span class="flow-text">({{item.rating_count}})</span> RATINGS</a
+          >
+        </li>
+      </a>
+      <br />
+      {% endfor %}
+    </ul>
+  </div>
 </div>
-
 {% else %}
 <h3 class="red-text text-darken center-align">NO RESULTS FOUND</h3>
 <div class="row center-align">
