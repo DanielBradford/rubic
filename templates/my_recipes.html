@@ -16,6 +16,14 @@
   </form>
   <br />
 </div>
+<div class="row center-align">
+  <a
+    href="{{url_for('add_recipe') }}"
+    <button
+    class="pulse center-align green btn-large"
+    >Add Recipe <i class="fas fa-plus-circle"></i
+  ></a>
+</div>
 {% if recipes|length > 0 %}
 <ul class="collection col s12">
   {% for item in recipes %}
@@ -48,12 +56,12 @@
       />
       {% endif %}
       <span class="title">
-        <h2>{{item.recipe_name}}</h2><span>
+        <h2 class="">{{item.recipe_name}}</h2></span><span class="align-center">
   <a href="{{url_for('edit_recipe', recipe_id=item._id) }}"
-    ><button class="edit-btn blue">Edit</button></a
+    ><button class="center edit-btn blue">Edit <br><i class="fas fa-pencil"></i></button></a
   >
   <a href="{{url_for('delete_recipe', recipe_id=item._id) }}"
-    ><button class="delete-btn red">Delete</button></a
+    ><button class="center delete-btn red">Delete <i class="fas fa-trash-alt"></i></button></a
   ></span>
 
       <br />
