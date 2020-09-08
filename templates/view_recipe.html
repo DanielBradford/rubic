@@ -8,7 +8,7 @@
     </div>
   </div>
 </nav>
-<main class="flow-text" id="view_recipe">
+<main class="flow-text jumbotron" id="view_recipe">
   <div class="row valign-wrapper">
     <div class="center-align view_recipe col s3 hide-on-small-only">
       {% for item in recipes %}{% if item._id == recipe_id._id %} {% if
@@ -25,17 +25,18 @@
       >
       {%else %}
       <a href="{{url_for('save_recipe', recipe_id=item._id)}}"
-        ><h4 class="flow-text">SAVE RECIPE <i class="fas fa-save"></i></h4
-      ></a>
+        ><button id="save-btn">SAVE RECIPE <i class="fas fa-save"></i></button></a>
       {% endif %}
     </div>
     <div class="flow-text center col s12 m8">
-      <h1 class=" view center-align jumbotron">{{ item.recipe_name }}</h1>
+      <h1 class=" view center-align">{{ item.recipe_name }}</h1>
     </div>
+    <hr>
   </div>
-  <div class="row jumbotron">
-    <div class="flow-text col s12 m6">
+  <div class="row ">
+    <div class="flow-text ing col s12 m6">
       <div class="row">
+      <br>
         <div class="center-align list profile col s6">
           Recipe Type:
         </div>
@@ -45,26 +46,37 @@
         <div class="list center-align profile col s6">
           Appliance:
         </div>
-        <div class="center col s6">{{item.appliance}}</div>
+        <div class="center col s6">{{ item.appliance }}</div>
       </div>
       <div class="row">
         <div class="list center-align profile col s6">
           Cooking time:
         </div>
-        <div class="center col s6">{{item.time}}</div>
+        <div class="center col s6">{{ item.cooking_time }}</div>
       </div>
       <div class="row">
         <div class="list center-align profile col s6">
           Temperature:
         </div>
-        <div class="col s6 center">{{item.temperature}}</div>
+        <div class="col s6 center">{{item.temperature}} </div>
+      </div>
+      <div class="row">
+        <div class="list center-align profile col s6">
+          Vegan <i class="fab fa-envira"></i>:
+        </div>
+        {% if item.vegan == "Yes" %}
+        <div class="green-text col s6 center">{{item.vegan}} </div>
+        {% elif item.vegan == "No" %}
+        <div class="red-text col s6 center">{{item.vegan}} </div>
+        {%else%}
+        {%endif%}
       </div>
       <div class="row">
         <div class="list center-align profile col s12">
           Method:
         </div>
       </div>
-      <div class="method row">
+      <div class="row">
         <div class="col s12 left">
           <ol>
             {% for ing in item.method.split(".") %}
@@ -106,7 +118,7 @@
       </div>
     </div>
   </div>
-  <div class="row jumbotron">
+  <div class="row rate_me">
     <div class="col s12">
       {% if item.created_by == session.user %} {%else%} {% for recipe in
       saved_list %} {% if recipe._id == item.id %} {%else%}
@@ -126,7 +138,7 @@
           </span>
         </div>
         {% endif %}{% endfor %}
-        <div id="rate" class="flow-text center-align col s12 m6">
+        <div id="rate" class="ing flow-text center-align col s12 m6">
           <h4>RATE ME <i id="star" class="fas fa-star"></i></h4>
           <form
             class="center-align"
@@ -134,14 +146,14 @@
             action="{{url_for('rate_recipe', recipe_id=recipe_id._id)}}"
           >
             <p class="range-field">
-              <label class="left" for="rating">Awful</label>
+              <label class="left" for="rating">(0) Awful</label>
               <input
                 type="range"
                 name="rating"
                 id="rating"
                 min="0"
                 max="10"
-              /><label class="right" for="rating">Perfection</label>
+              /><label class="right" for="rating">Perfection (10)</label>
             </p>
             <button class="btn-small" type="submit">
               RATE <i class="fas fa-check"></i>
