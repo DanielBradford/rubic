@@ -3,17 +3,17 @@
   <div class="">
     <div class="col s12">
       <a href="{{url_for('recipes')}}" class="breadcrumb">Recipes</a>
-      <a id="back" href="#" class="breadcrumb">Back</a>
+      <a id="back" href="#" class="breadcrumb"> BACK </a>
       <a href="#!" class="breadcrumb">{{recipe_id.recipe_name}}</a>
     </div>
   </div>
 </nav>
-<main>
+<main class="flow-text" id="view_recipe">
   <div class="row valign-wrapper">
-    <div class="center-align view_recipe col s4">
+    <div class="center-align view_recipe col s3 hide-on-small-only">
       {% for item in recipes %}{% if item._id == recipe_id._id %} {% if
       item.created_by == session.user %}
-      <span
+      <span 
         ><a href="{{url_for('delete_recipe', recipe_id=recipe_id._id)}}"
           ><button class="delete-btn">Delete</button></a
         ></span
@@ -23,101 +23,137 @@
           ><button class="edit-btn">Edit</button></a
         ></span
       >
-      {% for recipe in saved_list %} {% if recipe._id == item.id %} {%else%}
-      <i class="fas fa-save"></i>
-      {%endif%}{%endfor%}{% endif %}
+      {%else %}
+      <a href="{{url_for('save_recipe', recipe_id=item._id)}}"
+        ><h4 class="flow-text">SAVE RECIPE <i class="fas fa-save"></i></h4
+      ></a>
+      {% endif %}
     </div>
-    <div class="col s8">
-      <h1 class="view center-align profile">{{ item.recipe_name }}</h1>
+    <div class="flow-text center col s12 m8">
+      <h1 class=" view center-align jumbotron">{{ item.recipe_name }}</h1>
     </div>
   </div>
-  <div class="">
-    <div class="row">
-      <div class="right-align profile col s4">
-        Recipe Name:
+  <div class="row jumbotron">
+    <div class="flow-text col s12 m6">
+      <div class="row">
+        <div class="center-align list profile col s6">
+          Recipe Type:
+        </div>
+        <div class="col s6 center">{{ item.type }}</div>
       </div>
-      <div class="col s8">{{ item.recipe_name }}</div>
+      <div class="row">
+        <div class="list center-align profile col s6">
+          Appliance:
+        </div>
+        <div class="center col s6">{{item.appliance}}</div>
+      </div>
+      <div class="row">
+        <div class="list center-align profile col s6">
+          Cooking time:
+        </div>
+        <div class="center col s6">{{item.time}}</div>
+      </div>
+      <div class="row">
+        <div class="list center-align profile col s6">
+          Temperature:
+        </div>
+        <div class="col s6 center">{{item.temperature}}</div>
+      </div>
+      <div class="row">
+        <div class="list center-align profile col s12">
+          Method:
+        </div>
+      </div>
+      <div class="method row">
+        <div class="col s12 left">
+          <ol>
+            {% for ing in item.method.split(".") %}
+            <span class="hide-on-small-only right">
+                <label>
+                  <input type="checkbox" />
+                  <span> <i class="fas fa-map-marker-alt"></i> </span>
+                </label>
+              </span><li>
+              {{ing}}
+            </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <div class="right-align profile col s4">
-        Recipe Type:
+    <div class="ing col s12 m6">
+      <div class="row">
+        <div class="list center-align profile col s12">
+          Ingredients:
+        </div>
       </div>
-      <div class="col s8">{{ item.type }}</div>
-    </div>
-    <div class="row">
-      <div class="right-align profile col s4">
-        Appliance Used:
-      </div>
-      <div class="col s8">{{item.appliance}}</div>
-    </div>
-    <div class="row">
-      <div class="right-align profile col s4">
-        Temperature:
-      </div>
-    </div>
-    <div class="row">
-      <div class="right-align profile col s4">
-        Ingredients:
-      </div>
-      <div class="col s8">
-        <ul >
+      <div class="col s12">
+        <!-- <div class="row"> -->
+        <ul>
           {% for ing in item.ingredients.split(",") %}
-          <li id="ingredients"> <i class="fas fa-circle"></i>  {{ing}}</li>
-          <br>
+          <li class="flow-text" id="ingredients">
+            <i class="hide-on-small-only fas fa-circle"></i> {{ing}}
+            <span class=" right">
+              <label>
+                <input type="checkbox" />
+                <span> <i class="fas fa-shopping-basket"></i> </span>
+              </label>
+            </span>
+          </li>
+          <br />
           {%endfor%}
         </ul>
       </div>
     </div>
-
-    <div class="row">
-      <div class="right-align profile col s4">
-        Method:
+  </div>
+  <div class="row jumbotron">
+    <div class="col s12">
+      {% if item.created_by == session.user %} {%else%} {% for recipe in
+      saved_list %} {% if recipe._id == item.id %} {%else%}
+      <div class="row">
+        <div id="save-btn" class="col s12 center-align">
+          <a href="{{url_for('save_recipe', recipe_id=recipe_id._id)}}"
+            ><h4 id="save-text">SAVE RECIPE</h4>
+            <i class="small fas fa-save"></i
+          ></a>
+          <span class="switch">
+            <label>
+              Off
+              <input type="checkbox" />
+              <span class="lever"></span>
+              On
+            </label>
+          </span>
+        </div>
+        {% endif %}{% endfor %}
+        <div id="rate" class="flow-text center-align col s12 m6">
+          <h4>RATE ME <i id="star" class="fas fa-star"></i></h4>
+          <form
+            class="center-align"
+            method="POST"
+            action="{{url_for('rate_recipe', recipe_id=recipe_id._id)}}"
+          >
+            <p class="range-field">
+              <label class="left" for="rating">Awful</label>
+              <input
+                type="range"
+                name="rating"
+                id="rating"
+                min="0"
+                max="10"
+              /><label class="right" for="rating">Perfection</label>
+            </p>
+            <button class="btn-small" type="submit">
+              RATE <i class="fas fa-check"></i>
+            </button>
+          </form>
+          <br>
+        </div>
       </div>
-      <div class="col s8">{{item.method}}</div>
     </div>
   </div>
-  <div class="col s8"></div>
-  {% if item.created_by == session.user %} {%else%} {% for recipe in saved_list
-  %} {% if recipe._id == item.id %} {%else%}
-  <div class="row">
-    <div id="save-btn" class="col s4 center-align">
-      <a href="{{url_for('save_recipe', recipe_id=recipe_id._id)}}"
-        ><h4 id="save-text">SAVE RECIPE</h4>
-        <i class="small fas fa-save"></i
-      ></a>
-      <span class="switch">
-        <label>
-          Off
-          <input type="checkbox" />
-          <span class="lever"></span>
-          On
-        </label>
-      </span>
-    </div>
-    {% endif %}{% endfor %}
-    <div class="col s1"></div>
-    <div id="rate" class="col s5">
-      <h4>RATE THIS RECIPE <i id="star" class="fas fa-star"></i></h4>
-      <form
-        class="center-align"
-        method="POST"
-        action="{{url_for('rate_recipe', recipe_id=recipe_id._id)}}"
-      >
-        <p class="range-field">
-          <label class="left" for="rating">Awful</label>
-          <input
-            type="range"
-            name="rating"
-            id="rating"
-            min="0"
-            max="10"
-          /><label class="right" for="rating">Perfection</label>
-        </p>
-        <button class="btn-small" type="submit">
-          RATE <i class="fas fa-check"></i>
-        </button>
-      </form>
-    </div>
-  </div>
+  {{rating}}
 </main>
-{%endif%} {% endif %} {% endfor %} {% endblock%}
+
+
+{%endif %} {% endif %} {% endfor %} {% endblock%}
