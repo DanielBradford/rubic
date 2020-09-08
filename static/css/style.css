@@ -21,8 +21,8 @@ main i {
   color: teal;
 }
 
-.saved i{
-    color: teal;
+.saved i {
+  color: teal;
 }
 
 #ribbon {
@@ -93,15 +93,31 @@ nav {
 
 /* Focus Point */
 .jumbotron {
+  margin-top: 20px;
   height: auto;
   background-image: url("https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&auto=format&fit=crop&w=2462&q=80");
   border-radius: 1.4em;
 }
 
+#welcome {
+  background-color: rgba(255, 255, 255, 0.788);
+}
+
+#welcome_profile {
+  margin-bottom: 0;
+}
+
 .profile {
   height: auto;
-  background-image: url("https://images.unsplash.com/photo-1540660290370-8aa90e451e8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80");
-  border-radius: 1.4em;
+  background-color: #e0f2f1;
+  border-bottom-right-radius: 1.4em;
+  border-bottom-left-radius: 1.4em;
+  font-family: "Fredoka One", cursive;
+  color: teal;
+  text-shadow: 1px 1px white;
+
+  border: solid 1px teal;
+  text-transform: uppercase;
 }
 
 #searchbar {
@@ -127,30 +143,39 @@ body h1 {
 body h3 {
   font-family: "Gayathri", sans-serif;
   color: rgb(2, 68, 68);
-  background-color: rgba(255, 255, 255, 0.705);
+  /* background-color: rgba(255, 255, 255, 0.705); */
   padding: 0.2em;
   margin: 0;
 }
 
-h4{
-font-family: "Gayathri", sans-serif;
-color: rgb(2, 68, 68);
+h4 {
+  font-family: "Gayathri", sans-serif;
+  color: rgb(2, 68, 68);
 }
 
-.card .card-title{
-    font-size:22px;
+.method ol {
+  padding-left: auto;
 }
 
-#size{
-    color: coral;
-    text-shadow: 2px 2px teal;
+.card .card-title {
+  font-size: 22px;
 }
 
-.type-desc h3{
-    color: coral;
-    font-weight: 200;
-    letter-spacing: 2px;
-    text-shadow: 1px 1px teal;
+.card-reveal a {
+  font-size: 20px;
+  color: teal;
+}
+
+#size {
+  color: coral;
+  text-shadow: 2px 2px teal;
+}
+
+.type-desc h3 {
+  color: coral;
+  font-weight: 200;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px teal;
 }
 
 .register {
@@ -171,10 +196,14 @@ color: rgb(2, 68, 68);
 
 /* forms and cards */
 .card {
+  background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
+  background-size: cover;
+
   border-radius: 1.4em;
   font-weight: 600;
-  border: solid coral .5px;
+  /* border: solid coral 0.5px; */
 }
+
 
 .card:hover {
   border: solid coral 2px;
@@ -182,39 +211,60 @@ color: rgb(2, 68, 68);
   z-index: 200;
 }
 
+#view_recipe {
+  font-family: "Gayathri", cursive;
+  color: teal;
+  font-size: 1.2em;
+}
+
+#view_recipe i {
+  color: teal;
+}
+
 /* images */
+
+.circle {
+  text-shadow: 2px 2px teal;
+}
 .card img {
   padding-top: 1em;
   height: 180px;
 }
 
-.card-image img {
-  border-radius: 20%;
+.card .card-image img {
+  border-radius: 50%;
+  border: transparent;
 }
 
-
-img.circle{
-    margin-top: 50px;
+img.circle {
+  margin-top: 50px;
 }
-
 
 /* components  */
 
-
 /* all recipe cards */
-.collection{
-    border: none;
-    padding-bottom: 10px;
+.collection {
+  border: none;
+  padding-bottom: 10px;
 }
 
-.collection-item{
-    border-radius: 1.5em;
-    
+.collection-item {
+  border-radius: 1.5em;
+   background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
+  background-size: cover;
 }
-.collection-item:hover{
-    /* border: solid 2px teal; */
-    z-index: 300;
-    
+.collection-item:hover {
+  border: solid 1px teal; 
+  z-index: 300;
+}
+
+.ing,
+.method {
+  border-bottom-left-radius: 1.4em;
+  border-bottom-right-radius: 1.4em;
+  border: solid 2px teal;
+  background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
+  background-size: cover;
 }
 
 /* recipe type cards */
@@ -235,6 +285,11 @@ button {
   background-color: coral;
   border-top-right-radius: 0.8em;
   border-bottom-right-radius: 0.8em;
+}
+
+button i {
+  color: white;
+  text-shadow: none;
 }
 button:hover {
   cursor: pointer;
@@ -289,6 +344,7 @@ button > a {
   width: 5em;
   color: white;
   border-radius: 1.2em;
+  margin-left: 20px;
 }
 
 .delete-btn {
@@ -310,12 +366,6 @@ button > a {
   cursor: pointer;
 }
 
-#ingredients{
-    list-style-type: square;
-    margin-left: 1em;
-    display: inline;
-}
-
 /* footer */
 
 footer {
@@ -323,3 +373,10 @@ footer {
   color: white;
   height: 2em;
 }
+
+/* MEDIA QUERIES
+
+.container{
+            width: 100%;
+            max-width:initial;
+        } */
