@@ -1,13 +1,17 @@
 {% extends "base.html" %}{% block content %}
 
 <div class="container">
-  <h1 class="center-align jumbotron">
+  <h1 class="center-align jumbotron flow-text">
     Add Recipe <i class="fas fa-plus-circle"></i>
   </h1>
-  <form class="col s12 m8 offset-m2" method="POST" action="{{url_for('add_new_recipe')}}">
+  <form
+    class="flow-text col s12 m8 offset-m2"
+    method="POST"
+    action="{{url_for('add_new_recipe')}}"
+  >
     <div class="card-panel">
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s12 m6">
           <i class="fas fa-pencil prefix"></i>
           <input
             name="recipe_name"
@@ -17,80 +21,56 @@
           />
           <label for="recipe_name">Recipe Name</label>
         </div>
-        <div class="input-field col s6 m6">
-        <i class="fas fa-folder-open prefix"></i>
-    <select class="icons" name="type" required>
-      <option value="" disabled>Recipe Type</option>
-      {% for type in types %}
-        <option value="{{ type.type }}" data-icon="images/sample-1.jpg">{{ type.type_name }}</option>
-      {% endfor %}
-    </select>
-    <label>Images in select</label>
-  </div>
+        <div class="input-field col s12 m6">
+          <i class="fas fa-folder-open prefix"></i>
+          <select class="icons" name="type" required>
+            <option value="" disabled selected>Recipe Type</option>
+            {% for type in types %}
+            <option value="{{ type.type }}" data-icon="images/sample-1.jpg"
+              >{{ type.type_name }}</option
+            >
+            {% endfor %}
+          </select>
+          <label>Recipe Type</label>
+        </div>
       </div>
       <div class="row">
-        <div class="input-field col s6">
-        <i class="fas fa-fire prefix"></i>
+        <div class="input-field col s12 m6">
+          <i class="fas fa-fire prefix"></i>
           <select multiple name="using">
             <option value="" disabled>Choose your option</option>
-            <option value="oven">Oven</option>
-            <option value="pan_hob">Pan/Hob</option>
-            <option value="fridge">Fridge</option>
-            <option value="other">Other</option>
+            <option value="Oven">Oven</option>
+            <option value="Pan/Hob">Pan/Hob</option>
+            <option value="Fridge">Fridge</option>
+            <option value="Toaster">Toaster</option>
+            <option value="Microwave">Microwave</option>
+            <option value="Other">Other</option>
           </select>
-          <label>Appliance Used</label>
+          <label>Appliance</label>
         </div>
-        <div class="input-field col s6">
-        <i class="fas fa-thermometer-half prefix"></i>
+        <div class="input-field col s12 m6">
+          <i class="fas fa-thermometer-half prefix"></i>
           <select multiple name="temperature">
             <option disabled>Choose your option</option>
             {% for i in range(100,300, 10) %}
-                <option value="oven">{{i}} °C</option>
+            <option value="{{i}}">{{i}} °C</option>
             {% endfor %}
           </select>
           <label>Temperature</label>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <i class="fas fa-list-ul prefix text-darken-4"></i>
-          <input
-            id="ingredients"
-            name="ingredients"
-            type="text"
-            minlength="5"
-            class="validate"
-            maxlength="200"
-
-            placeholder="List ingredients with ',' in between
-            "
-            required
-          />
-          <label for="user_name">Ingredients</label>
+        <div class="input-field col s12 m6">
+          <i class="fas fa-stopwatch prefix"></i>
+          <select multiple name="time">
+            <option disabled>Choose your option</option>
+            {% for i in range(0,120, 5) %}
+            <option value="oven">{{i}} minutes</option>
+            {% endfor %}
+          </select>
+          <label>Cooking Time</label>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s8">
-          <i class="fas fa-sticky-note prefix text-darken-4"></i>
-          <input
-            id="notes"
-            name="notes"
-            type="text"
-            minlength="5"
-            class="validate"
-            maxlength="100"
-          />
-          <label for="notes">Notes (Optional)</label>
-        </div>
-        <div class="col s4">
-          <div class="switch">
-            <label>
-              <input name="dietry_need" value="vegetarian" type="checkbox" />
-              <span class="lever"></span>
-              <span class="reg_label">Vegetarian</span>
-              <i class="fas fa-leaf"></i>
-            </label>
-          </div>
+        <div class="col s12 m6">
           <div class="switch">
             <label>
               <input name="dietry_need" value="vegan" type="checkbox" />
@@ -98,22 +78,34 @@
               <span class="reg_label">Vegan</span> <i class="fab fa-vuejs"></i>
             </label>
           </div>
-          <div class="switch">
-            <label>
-              <input name="dietry_need" value="gluten" type="checkbox" />
-              <span class="lever"></span>
-              <span class="reg_label">Gluten Int.</span>
-              <i class="fas fa-wheat"></i>
-            </label>
-          </div>
         </div>
       </div>
-
+        <div class="row">
+          <div class="input-field col s12 m12">
+            <i class="fas fa-list-ul prefix"></i>
+            <input
+              id="ingredients"
+              name="ingredients"
+              type="text"
+              minlength="5"
+              class="validate center"
+              maxlength="200"
+              placeholder="List ingredients with ',' in between"
+              required
+            />
+            <label for="user_name">Ingredients</label>
+          </div>
+        </div>
       <div class="row">
-        <div class="input-field col s8">
+        <div class="input-field col s12 m12">
           <i class="fas fa-list-ol prefix"></i>
-
-          <input id="method" name="method" type="text" class="validate" placeholder="List instructions with numbers e.g. '1. Mix eggs in bowl'"/>
+          <input
+            id="method"
+            name="method"
+            type="text"
+            class="validate center"
+            placeholder="List instructions with '.' between"
+          />
           <label for="method">Method</label>
         </div>
       </div>
