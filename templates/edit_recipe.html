@@ -78,9 +78,9 @@
             <option disabled>Choose your option</option>
             {% for i in range(0,120, 5) %}
             {% if i == recipe.cooking_time %}
-            <option value="{{i}} minutes" selected>{{i}} minutes</option>
+            <option value="{{i}}" selected>{{i}} minutes</option>
             {%else%}
-            <option value="{{i}} minutes">{{i}} minutes</option>
+            <option value="{{i}}">{{i}} minutes</option>
             {% endif %}
             {% endfor %}
           </select>
