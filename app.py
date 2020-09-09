@@ -116,31 +116,21 @@ def recipe_list(recipe_type):
 
 @app.route("/view_recipe/<recipe_id>", methods=["GET", "POST"])
 def view_recipe(recipe_id):
-    # try:
-    recipe_id = recipe_id
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-    user = session['user']
-    user_id = mongo.db.users.find_one({"user_name": user})
-    saved_list = list(mongo.db.users.distinct(
-        "saved_recipes", {"user_name": user}))
-    # # rating functionality
-    # rating = list(mongo.db.recipes.distinct(
-    #     "rating", {"_id": ObjectId(recipe_id)}))
-    # count = len(rating)
-    # if count == 0:
-    #     current = "No ratings yet"
-    # else:
-    #     convert = [num for num in rating]
-    #     # gets average from all ratings
-    #     current = (round(sum(convert)/len(convert), 1))
+    try:
+        recipe_id = recipe_id
+        recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+        user = session['user']
+        user_id = mongo.db.users.find_one({"user_name": user})
+        saved_list = list(mongo.db.users.distinct(
+            "saved_recipes", {"user_name": user}))
 
-    return render_template("view_recipe.html", recipe=recipe,
-                           recipes=recipes, user_id=user_id, user=user, saved_list=saved_list)
+        return render_template("view_recipe.html", recipe=recipe,
+                            recipes=recipes, user_id=user_id, user=user, saved_list=saved_list)
 
-    # except:
-    flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
-    return render_template("guest.html")
+    except:
+        flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
+        return render_template("guest.html")
 
 
 @app.route("/add_recipe")
