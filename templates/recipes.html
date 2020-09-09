@@ -1,7 +1,7 @@
 {% extends 'base.html' %}{%block content %}
 
 <div class="row jumbotron center-align">
-  <h1 class=" ">Recipes</h1>
+  <h1 class=" ">Recipes <i class="fas fa-books"></i></h1>
   <form method="POST" action="{{url_for('search')}}">
     <input
       type="search"
@@ -23,6 +23,7 @@
     <div class=" col s6 m3">
         <a
             id="allRecipes"
+            href="{{url_for('all_filter')}}"
             class="hoverable center-align blue btn-large" >All Recipes <i class="fas fa-sort-alpha-down"></i
         ></a>
         </div>
