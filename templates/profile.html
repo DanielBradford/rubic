@@ -1,7 +1,7 @@
 {% extends 'base.html' %}{% block content %}
 
 <div class="row center-align jumbotron">
-  <h1 id="welcome_profile" class="col-8">{{ user }}'s Profile</h1>
+  <h1 id="welcome_profile" class="col-8">{{ user }}'s Profile <i class="fas fa-user"></i></h1>
   <form method="POST" action="{{url_for('search')}}">
     <input
       type="search"
@@ -37,7 +37,7 @@
       ></span>
       <br />
       <i class="medium fas fa-books"></i>
-      <a href="{{url_for('recipes')}}">
+      <a href="{{url_for('all_filter')}}">
         <p>
           All recipes of every type from all creators...
         </p><i class="fas fa-arrow-circle-right"></i></a
