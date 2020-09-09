@@ -21,14 +21,20 @@ mongo = PyMongo(app)
 @app.route("/")
 def home():
     types = list(mongo.db.type.find().sort("type_name", 1))
-    return render_template("landing.html", types=types)
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    users = list(mongo.db.users.find().sort("user_name", 1))
+
+
+
+    return render_template("landing.html", types=types, recipes=recipes, users=users)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     search = request.form.get("search")
+    types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
-    return render_template("recipes.html", recipes=recipes)
+    return render_template("recipes.html", recipes=recipes, types=types)
 
 
 @app.route("/myRecipes")
@@ -126,7 +132,7 @@ def view_recipe(recipe_id):
             "saved_recipes", {"user_name": user}))
 
         return render_template("view_recipe.html", recipe=recipe,
-                            recipes=recipes, user_id=user_id, user=user, saved_list=saved_list)
+                               recipes=recipes, user_id=user_id, user=user, saved_list=saved_list)
 
     except:
         flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
@@ -157,6 +163,7 @@ def add_user():
             flash("Passwords do not match")
             return redirect(url_for("register"))
 
+        vegan = "Yes" if request.form.get("vegan") else "No"
         register = {
 
             "first_name": request.form.get("first_name"),
@@ -164,7 +171,8 @@ def add_user():
             "email": request.form.get("email"),
             "user_name": request.form.get("user_name"),
             "password": generate_password_hash(request.form.get("password")),
-            "saved_recipes": [],
+            "vegan": vegan,
+            "saved_recipes": []
 
         }
         mongo.db.users.insert_one(register)
@@ -191,7 +199,7 @@ def profile(user):
 @app.route("/add_new_recipe", methods=["GET", "POST"])
 def add_new_recipe():
     if request.method == "POST":
-        vegan = "YES" if request.form.get("vegan") else "NO"
+        vegan = "Yes" if request.form.get("vegan") else "No"
         new = {
             "recipe_name": request.form.get("recipe_name"),
             "type": request.form.get("type"),
@@ -223,7 +231,7 @@ def edit_recipe(recipe_id):
         "rating", {"_id": ObjectId(recipe_id)}
     ))
     if request.method == "POST":
-        vegan = "YES" if request.form.get("vegan") else "N0"
+        vegan = "Yes" if request.form.get("vegan") else "No"
         new = {
             "recipe_name": request.form.get("recipe_name"),
             "type": request.form.get("type"),
@@ -285,11 +293,22 @@ def delete_recipe(recipe_id):
 
 @app.route("/remove_recipe/<recipe_id>")
 def remove_recipe(recipe_id):
+    user = session["user"]
     saved_list = list(mongo.db.users.distinct(
         "saved_recipes", {"user_name": user}))
     recipe_id = recipe_id
-    flash("Recipe successfully removed from saved list")
-    return redirect(url_for('saved_recipes'))
+
+    for item in saved_list:
+        if item == recipe_id:
+            # pull?
+
+            flash("Recipe successfully removed from saved list")
+            return redirect(url_for('saved_recipes', user=user))
+        else:
+            flash("FAILED TO REMOVE")
+            return redirect(url_for('saved_recipes', user=user))
+
+    return redirect(url_for('saved_recipes', user=user))
 
 
 @app.route("/add_rating/<recipe_id>", methods=["POST", "GET"])
@@ -303,6 +322,34 @@ def add_rating(recipe_id):
     flash("RECIPE RATED SUCCESSFULLY")
 
     return redirect(url_for("view_recipe", recipe_id=recipe_id, currentRating=currentRating))
+
+
+# filters
+
+@app.route("/vegan")
+def vegan_filter():
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    recipes = list(mongo.db.recipes.find({"vegan": "Yes"}))
+
+    return render_template("recipes.html", types=types,
+                           recipes=recipes)
+
+
+@app.route("/most_popular")
+def most_popular_filter():
+    
+    new = list(mongo.db.recipes.find().sort("rating", 1))
+
+    return render_template("recipes.html",
+                           new=new)
+
+
+@app.route("/all_recipes")
+def all_filter():
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    return render_template("recipes.html",
+                           recipes=recipes, types=types)
 
 
 if __name__ == '__main__':
