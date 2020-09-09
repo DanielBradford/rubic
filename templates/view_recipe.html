@@ -10,7 +10,7 @@
 </nav>
 <main class="flow-text jumbotron" id="view_recipe">
   <div class="row valign-wrapper">
-    <div class="center-align view_recipe col s3 hide-on-small-only">
+    <div class="center-align view_recipe col s12 m4 ">
       {% for item in recipes %}{% if item._id == recipe_id._id %} {% if
       item.created_by == session.user %}
       <span 
@@ -127,21 +127,8 @@
     <div class="col s12">
       {% if item.created_by == session.user %} {%else%} {% for recipe in
       saved_list %} {% if recipe._id == item.id %} {%else%}
-      <div class="row">
-        <div id="save-btn" class="col s12 center-align">
-          <a href="{{url_for('save_recipe', recipe_id=recipe_id._id)}}"
-            ><h4 id="save-text">SAVE RECIPE</h4>
-            <i class="small fas fa-save"></i
-          ></a>
-          <span class="switch">
-            <label>
-              Off
-              <input type="checkbox" />
-              <span class="lever"></span>
-              On
-            </label>
-          </span>
-        </div>
+     
+    
         {% endif %}{% endfor %}
         <div id="rate" class="ing flow-text center-align col s12 m6">
           <h4>RATE ME <i id="star" class="fas fa-star"></i></h4>
