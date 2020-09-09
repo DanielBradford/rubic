@@ -76,7 +76,8 @@
 
       <br />
       <div class="right">
-        <h4>{{item.rating}} <i id="star" class="fas fa-star"></i></h4>
+        <h3>{% if item.rating|length == 0 %}No ratings{%else%}{{item.rating|sum / item.rating|length}}{%endif%}<i id="star" class="star fas fa-star"></i>
+            </h3>
       </div>
       <div class="secondary-content">
         <h4>
