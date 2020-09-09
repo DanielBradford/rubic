@@ -7,6 +7,10 @@ body {
   font-family: "Fredoka One", cursive;
 }
 
+main {
+  padding: 1em;
+}
+
 /* icons */
 
 main i {
@@ -14,9 +18,6 @@ main i {
   text-shadow: 2px 2px coral;
 }
 
-.view_recipe i {
-  color: teal;
-}
 .recipes i {
   color: teal;
 }
@@ -30,7 +31,7 @@ main i {
   text-shadow: none;
 }
 
-#star {
+main .star {
   color: goldenrod;
   text-shadow: 2px 2px white;
 }
@@ -162,7 +163,8 @@ h4 {
 
 .card-reveal a {
   font-size: 20px;
-  color: teal;
+  color: rgb(2, 68, 68);
+  font-family: "Gayathri", sans-serif;
 }
 
 #size {
@@ -187,6 +189,7 @@ h4 {
   color: coral;
   text-shadow: 2px 2px teal;
   padding: 0.5em;
+  margin: 0;
 }
 
 .reg_label {
@@ -203,7 +206,6 @@ h4 {
   /* border: solid coral 0.5px; */
 }
 
-
 .card:hover {
   border: solid coral 2px;
   box-shadow: 3px 3px 3px coral;
@@ -218,6 +220,10 @@ h4 {
 
 #view_recipe i {
   color: teal;
+}
+
+#view_recipe button i {
+  color: white;
 }
 
 /* images */
@@ -249,11 +255,11 @@ img.circle {
 
 .collection-item {
   border-radius: 1.5em;
-   background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
+  background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
   background-size: cover;
 }
 .collection-item:hover {
-  border: solid 1px teal; 
+  box-shadow: solid 1px teal;
   z-index: 300;
 }
 
@@ -265,13 +271,21 @@ img.circle {
   background-size: cover;
 }
 
-
-
 /* recipe type cards */
 .recipe-card a:hover,
 .recipe-card:hover {
   background-color: coral;
   color: white;
+}
+
+.card .card-content {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.card-content:hover,
+.card:hover {
+  cursor: pointer;
 }
 
 ul a {
@@ -280,11 +294,12 @@ ul a {
 
 /* buttons */
 button {
-  height: 60px;
-  width: 50px;
+  height: auto;
+  width: auto;
   background-color: coral;
   border-top-right-radius: 0.8em;
   border-bottom-right-radius: 0.8em;
+  z-index: 600;
 }
 
 button i {
@@ -324,14 +339,8 @@ button > a {
   background-color: coral;
 }
 
-.card .card-content {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.card-content:hover,
-.card:hover {
-  cursor: pointer;
+#controlPanel button{
+    margin-bottom: 10px;
 }
 
 .add-recipe-btn {
@@ -341,10 +350,13 @@ button > a {
 
 .edit-btn,
 .delete-btn {
-  width: 5em;
+  width: 7em;
   color: white;
   border-radius: 1.2em;
+  margin-top: 20px;
   margin-left: 20px;
+  z-index: 300;
+  padding: 10px;
 }
 
 .delete-btn {
@@ -352,7 +364,12 @@ button > a {
 }
 
 .edit-btn {
-  background-color: green;
+  background-color: rgb(33, 169, 223);
+}
+
+.delete-btn i,
+.edit-btn i {
+  color: white;
 }
 
 #save-btn {
@@ -360,14 +377,26 @@ button > a {
   background-color: teal;
   color: white;
   border-radius: 1.4em;
-  width: 400px;
+  width: auto;
 }
 
-#save-btn i{
-    color: white;
+#save-btn i {
+  color: white;
 }
 #save-btn:hover {
   cursor: pointer;
+}
+
+.remove-btn{
+    z-index: 500;
+    color: white;
+}
+
+.remove-btn:hover{
+
+    cursor: pointer;
+    color: coral;
+    text-shadow: none;
 }
 
 /* footer */
