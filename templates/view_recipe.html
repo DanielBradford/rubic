@@ -37,7 +37,8 @@
         ></i
         > {% if item.rating|length == 0 %}{%else%} ({{item.rating|length}}){% endif %}</span
       >
-      <h1 class="view">{{ item.recipe_name }}</h1>
+      <span class="flow-text"><h1 class="view">{{ item.recipe_name }}</h1></span>
+      
     </div>
     <hr />
   </div>
@@ -78,9 +79,9 @@
         </div>
         {% if item.vegan|lower == "yes" %}
         <div class="green-text col s6 center">{{item.vegan}}</div>
-        {% elif item.vegan|lower == "no" %}
+        {% else %}
         <div class="red-text col s6 center">{{item.vegan}}</div>
-        {%else%} {%endif%}
+        {%endif%}
       </div>
       <div class="row">
         <div class="list center-align profile col s12">
