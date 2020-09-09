@@ -49,13 +49,12 @@
       <span class="title">
         <h2 class="flow-text teal-text">{{item.recipe_name}}</h2>
 
-        <p class="flow-text">
-          {% if item.created_by == session.user %}<i
+        <p>
+          <h3 class="flow-text">{% if item.created_by == session.user %}<i
             id="ribbon"
             class="fas fa-ribbon"
-          ></i>
-          Created by YOU{% else %}<i class="fas fa-user"></i> Creator:
-          {{item.created_by}}{% endif %}
+          ></i> Created by YOU{% else %}<i class="fas fa-user"></i> Creator:
+          {{item.created_by}}{% endif %}</h3>
         </p></span
       >
 

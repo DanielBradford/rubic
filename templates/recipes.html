@@ -117,7 +117,7 @@
                 class="fas fa-ribbon"
               ></i>
               Created by YOU{% else %}<i class="fas fa-user"></i> Creator:
-              {{item.created_by}}</h3>{% endif %}
+              {{item.created_by}}{% endif %}</h3>
             </p></span
           >
 
@@ -125,7 +125,7 @@
 
           <a href="" disabled class="secondary-content"
             ><h3 class="flow-text">
-            {% if item.rating|length == 0 %}No ratings{%else%}{{item.rating|sum / item.rating|length}}{%endif%}<i id="star" class="fas fa-star"></i>
+            {% if item.rating|length == 0 %}No ratings{%else%}{{item.rating|sum / item.rating|length}}{%endif%}<i id="star" class="star fas fa-star"></i>
             </h3>
             <span class="flow-text">({{item.rating|length}})</span> RATINGS</a
           >

@@ -33,7 +33,7 @@
     <div class="flow-text center col s12 m8">
       <span class="ratings secondary-content"
         >{% if item.rating|length == 0 %}NO RATINGS{%else%}{{item.rating|sum / item.rating|length}}{% endif %}<i
-          class="fas fa-star star"
+          class="star fas fa-star"
         ></i
         > {% if item.rating|length == 0 %}{%else%} ({{item.rating|length}}){% endif %}</span
       >
