@@ -40,8 +40,7 @@
       <a href="{{url_for('recipes')}}">
         <p>
           All recipes of every type from all creators...
-        </p>
-        GO TO ALL RECIPES</a
+        </p><i class="fas fa-arrow-circle-right"></i></a
       >
     </div>
   </div>
@@ -70,9 +69,7 @@
       >
         <p>
           Here are all the recipes you chose to save...
-        </p>
-
-        GO TO SAVED RECIPES
+        </p><i class="fas fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -89,7 +86,7 @@
         <i class="flow-text fas fa-archive"></i>
       </span>
     </div>
-    <div class="card-reveal #b2dfdb teal lighten-2 center-align">
+    <div class="card-reveal #b2dfdb teal lighten-4 center-align">
       <div class="span right-align"></div>
       <span class="card-title grey-text text-darken-4"
         >My Recipes <i class="xsmall fas fa-times"></i>
@@ -98,9 +95,8 @@
       <i class="medium center-align fas fa-book-reader"></i>
       <a class="btn-medium" href="{{url_for('myRecipes')}}">
       <p>
-        ADD, EDIT  DELETE YOUR RECIPES...
-      </p>
-      GO TO MY RECIPES</a>
+        Create, Edit and Delete your recipes...
+      </p><i class="fas fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <div class="card col s6 m6 l3">
@@ -116,15 +112,17 @@
         <i class="fas fa-shopping-bag"></i>
       </span>
     </div>
-    <div class="card-reveal #b2dfdb teal lighten-1 center-align">
+    <div class="card-reveal #b2dfdb teal lighten-3 center-align">
       <span class="card-title grey-text text-darken-4"
         >Top Tools <i class="xsmall fas fa-times"></i>
       </span>
       <br />
       <i class="center-align medium fas fa-blender"></i>
+      <a class="btn-medium" href="{{url_for('myRecipes')}}">
       <p>
-        Here is some more information about top cooking products...
-      </p>
+        Our recommended top tools...
+      </p><i class="fas fa-arrow-circle-right"></i></a>
+    </div>
     </div>
   </div>
 </div>
