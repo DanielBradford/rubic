@@ -83,11 +83,22 @@ def register():
 
 @app.route("/recipes")
 def recipes():
+    # # rating functionality
+    # rating = list(mongo.db.recipes.distinct(
+    #     "rating", {"_id": ObjectId(recipe_id)}))
+    # count = len(rating)
+    # if count == 0:
+    #     current = "No ratings yet"
+    # else:
+    #     convert = [int(num) for num in rating]
+    #     # gets average from all ratings
+    #     current = (round(sum(convert)/len(convert), 1))
 
     types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
 
-    return render_template("recipes.html", types=types, recipes=recipes)
+    return render_template("recipes.html", types=types,
+                           recipes=recipes)
 
 
 @app.route("/recipe_list/<recipe_type>")
@@ -107,16 +118,24 @@ def recipe_list(recipe_type):
 def view_recipe(recipe_id):
     # try:
     recipe_id = recipe_id
-    recipe_id = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     user = session['user']
     user_id = mongo.db.users.find_one({"user_name": user})
-
-
-
     saved_list = list(mongo.db.users.distinct(
         "saved_recipes", {"user_name": user}))
-    return render_template("view_recipe.html", recipe_id=recipe_id,
+    # # rating functionality
+    # rating = list(mongo.db.recipes.distinct(
+    #     "rating", {"_id": ObjectId(recipe_id)}))
+    # count = len(rating)
+    # if count == 0:
+    #     current = "No ratings yet"
+    # else:
+    #     convert = [num for num in rating]
+    #     # gets average from all ratings
+    #     current = (round(sum(convert)/len(convert), 1))
+
+    return render_template("view_recipe.html", recipe=recipe,
                            recipes=recipes, user_id=user_id, user=user, saved_list=saved_list)
 
     # except:
@@ -193,9 +212,8 @@ def add_new_recipe():
             "ingredients": request.form.get("ingredients"),
             "vegan": vegan,
             "method": request.form.get("method"),
-            "rating": 5,
-            "rating_count": 1,
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "rating": []
         }
         mongo.db.recipes.insert_one(new)
         flash("Recipe Successfully Added")
@@ -280,35 +298,17 @@ def remove_recipe(recipe_id):
     return redirect(url_for('saved_recipes'))
 
 
-@app.route("/rate_recipe/<recipe_id>", methods=["GET", "POST"])
-def rate_recipe(recipe_id):
-    recipe_id = recipe_id
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    user = session['user']
-    rating = mongo.db.recipes.find({"id": ObjectId(recipe_id)}, {
-                                   "rating": 1, "rating_coung": 1})
+@app.route("/add_rating/<recipe_id>", methods=["POST", "GET"])
+def add_rating(recipe_id):
+    userRating = int(request.form.get("rating"))
+    currentRating = list(mongo.db.recipes.distinct(
+        "rating", {"_id": recipe_id}))
+    mongo.db.recipes.update(
+        {"_id": ObjectId(recipe_id)},
+        {'$addToSet': {"rating": userRating}})
+    flash("RECIPE RATED SUCCESSFULLY")
 
-    if request.method == "POST":
-        for rating in current_rating:
-            for num in count:
-                # updates the count of ratings
-                new_count = num + 1
-                # creates the average rating
-                userRating = request.form.get("rating")
-                new_rating = (rating+userRating) / num
-            # updates mongodb
-                mongo.db.recipes.updateOne(
-                    {"_id": recipe_id}, {'$set': {'rating': new_rating}})
-                mongo.db.recipes.updateOne(
-                    {"_id": recipe_id}, {'$set': {'rating_count': new_count}})
-                flash("Rating received! Thank you!")
-                return redirect(url_for('view_recipe', recipe_id=recipe_id))
-        # except:
-        #     # deals with potential errors
-        #     flash("Could not rate recipe. Try Again!")
-        #     return redirect(url_for('view_recipe', recipe_id=recipe_id))
-    return render_template('view_recipe.html', recipe_id=recipe_id,
-                           recipes=recipes, user=user)
+    return redirect(url_for("view_recipe", recipe_id=recipe_id, currentRating=currentRating))
 
 
 if __name__ == '__main__':
