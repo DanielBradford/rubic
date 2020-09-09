@@ -16,7 +16,43 @@
   </form>
   <br />
 </div>
-<div class="row">
+<br />
+<hr />
+<br>
+<div class="row center-align">
+    <div class=" col s6 m3">
+        <a
+            id="allRecipes"
+            class="hoverable center-align blue btn-large" >All Recipes <i class="fas fa-sort-alpha-down"></i
+        ></a>
+        </div>
+        <div class="col s6 m3">
+        <a
+            href="{{url_for('most_popular_filter')}}"
+           class="hoverable center-align pink btn-large"
+            >Popular <i class="fas fa-trophy"></i
+        >
+        </a>
+    </div>
+    <div class="col s6 m3">
+        <a
+            id="types-btn"
+            class="hoverable center-align orange btn-large"
+            >Recipe Types <i class="fas fa-filter"></i
+        ></a>
+    </div>
+    <div class="col s6 m3">
+        <a
+            href="{{url_for('vegan_filter')}}"
+            
+            class="hoverable center-align green darken-4 btn-large"
+            >Vegan <i class="fab fa-envira"></i
+        ></a>
+    </div>
+</div>
+<hr>
+<br>
+<div hidden id="recipeTypeCards" class="row">
   {% for item in types %}
   <a href="{{url_for('recipe_list', recipe_type=item.type_name) }}">
     <div class="card hoverable col s6 m6 l3 center-align activator">
@@ -58,22 +94,9 @@
     </div>
   </a>
   {% endfor %}
-  <div class="row"></div>
+
 </div>
 {% if recipes|length > 0 %}
-<div class="row center-align">
-  <a
-    href="{{url_for('add_recipe') }}"
-    <button
-    class="pulse center-align green btn-large"
-    >Add Recipe <i class="fas fa-plus-circle"></i
-  ></a>
-</div>
-<br />
-<hr />
-<div class="row center-align">
-  <h2>All Recipes:</h2>
-</div>
 <div class="container-fluid">
   <div id="all_recipes" class="row">
     <ul class="collection col s12">
