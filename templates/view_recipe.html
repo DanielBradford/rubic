@@ -4,18 +4,27 @@
     <div class="col s12">
       <a href="{{url_for('recipes')}}" class="breadcrumb">Recipes</a>
       <a id="back" href="#" class="breadcrumb"> BACK </a>
-      <a href="#!" class="breadcrumb">{{recipe_id.recipe_name}}</a>
+      <a href="#!" class="breadcrumb">{{recipe.recipe_name}}</a>
     </div>
   </div>
 </nav>
 <main class="flow-text jumbotron" id="view_recipe">
   <div class="row valign-wrapper">
+<<<<<<< HEAD
     <div class="center-align view_recipe col s12 m4 ">
       {% for item in recipes %}{% if item._id == recipe_id._id %} {% if
       item.created_by == session.user %}
       <span 
         ><a href="{{url_for('delete_recipe', recipe_id=recipe_id._id)}}"
           ><button class="delete-btn">Delete <i class="fas fa-trash-alt"></i></button></a
+=======
+    <div class="center-align view_recipe col s3 hide-on-small-only">
+      {% for item in recipes %}{% if item._id == recipe._id %} {% if
+      item.created_by == session.user %}
+      <span
+        ><a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
+          ><button class="delete-btn">Delete</button></a
+>>>>>>> ratingtest
         ></span
         >
 
@@ -26,18 +35,26 @@
       >
       {%else %}
       <a href="{{url_for('save_recipe', recipe_id=item._id)}}"
-        ><button id="save-btn">SAVE RECIPE <i class="fas fa-save"></i></button></a>
+        ><button id="save-btn">SAVE RECIPE <i class="fas fa-save"></i></button
+      ></a>
       {% endif %}
     </div>
     <div class="flow-text center col s12 m8">
+<<<<<<< HEAD
       <h1 class=" view ">{{ item.recipe_name }}</h1>
+=======
+      <span class="secondary-content"
+        >{{item.rating|sum / item.rating|length}}<i id="star" class="fas fa-star"></i
+      >{% if item.rating|length == 0 %}{%else%}({{item.rating|length}} rating/s){%endif%}</span>
+      <h1 class="view">{{ item.recipe_name }}</h1>
+>>>>>>> ratingtest
     </div>
-    <hr>
+    <hr />
   </div>
-  <div class="row ">
+  <div class="row">
     <div class="flow-text ing col s12 m6">
       <div class="row">
-      <br>
+        <br />
         <div class="center-align list profile col s6">
           Recipe Type:
         </div>
@@ -59,22 +76,34 @@
         <div class="list center-align profile col s6">
           Temperature:
         </div>
+<<<<<<< HEAD
         {% if item.temperature == "N/A" %}
         <div class="col s6 center">{{item.temperature}}</div>
         {%else%}
         <div class="col s6 center">{{item.temperature}}°C </div>
         {% endif %}
+=======
+        <div class="col s6 center">{{item.temperature}}</div>
+>>>>>>> ratingtest
       </div>
       <div class="row">
         <div class="list center-align profile col s6">
           Vegan <i class="fab fa-envira"></i>:
         </div>
+<<<<<<< HEAD
         {% if item.vegan == "yes" %}
         <div class="green-text col s6 center">{{item.vegan}} </div>
         {% elif item.vegan == "no" %}
         <div class="red-text col s6 center">{{item.vegan}} </div>
         {%else%}
         {%endif%}
+=======
+        {% if item.vegan == "Yes" %}
+        <div class="green-text col s6 center">{{item.vegan}}</div>
+        {% elif item.vegan == "No" %}
+        <div class="red-text col s6 center">{{item.vegan}}</div>
+        {%else%} {%endif%}
+>>>>>>> ratingtest
       </div>
       <div class="row">
         <div class="list center-align profile col s12">
@@ -86,11 +115,12 @@
           <ol>
             {% for ing in item.method.split(".") %}
             <span class="hide-on-small-only right">
-                <label>
-                  <input type="checkbox" />
-                  <span> <i class="fas fa-map-marker-alt"></i> </span>
-                </label>
-              </span><li>
+              <label>
+                <input type="checkbox" />
+                <span> <i class="fas fa-map-marker-alt"></i> </span>
+              </label>
+            </span>
+            <li>
               {{ing}}
             </li>
             {% endfor %}
@@ -110,7 +140,7 @@
           {% for ing in item.ingredients.split(",") %}
           <li class="flow-text" id="ingredients">
             <i class="hide-on-small-only fas fa-circle"></i> {{ing}}
-            <span class=" right">
+            <span class="right">
               <label>
                 <input type="checkbox" />
                 <span> <i class="fas fa-shopping-basket"></i> </span>
@@ -127,15 +157,33 @@
     <div class="col s12">
       {% if item.created_by == session.user %} {%else%} {% for recipe in
       saved_list %} {% if recipe._id == item.id %} {%else%}
+<<<<<<< HEAD
      
     
+=======
+      <div class="row">
+        <div id="save-btn" class="col s12 center-align">
+          <a href="{{url_for('save_recipe', recipe_id=recipe._id)}}"
+            ><h4 id="save-text">SAVE RECIPE</h4>
+            <i class="small fas fa-save"></i
+          ></a>
+          <span class="switch">
+            <label>
+              Off
+              <input type="checkbox" />
+              <span class="lever"></span>
+              On
+            </label>
+          </span>
+        </div>
+>>>>>>> ratingtest
         {% endif %}{% endfor %}
         <div id="rate" class="ing flow-text center-align col s12 m6">
           <h4>RATE ME <i id="star" class="fas fa-star"></i></h4>
           <form
             class="center-align"
             method="POST"
-            action="{{url_for('rate_recipe', recipe_id=recipe_id._id)}}"
+            action="{{url_for('add_rating', recipe_id=recipe._id)}}"
           >
             <p class="range-field">
               <label class="left" for="rating">(0) Awful</label>
@@ -152,12 +200,11 @@
             </button>
             
           </form>
-          <br>
+          <br />
         </div>
       </div>
     </div>
   </div>
 </main>
-
 
 {%endif %} {% endif %} {% endfor %} {% endblock%}
