@@ -192,8 +192,7 @@ def profile(user):
     user = user
     this_user = mongo.db.users.find_one({"user_name": user})
     users = mongo.db.users.find().sort("user_name", 1)
-    recipes = mongo.db.recipes.find().sort("recipe_name", 1)
-    # grab session users username from database
+    # recipes = mongo.db.recipes.find().sort("recipe_name", 1)
 
     return render_template("profile.html", users=users,
                            user=user, this_user=this_user)
@@ -202,7 +201,7 @@ def profile(user):
 @app.route("/add_new_recipe", methods=["GET", "POST"])
 def add_new_recipe():
     if request.method == "POST":
-        vegan = "yes" if request.form.get("vegan") else "no"
+        vegan = "YES" if request.form.get("vegan") else "NO"
         new = {
             "recipe_name": request.form.get("recipe_name"),
             "type": request.form.get("type"),
@@ -229,8 +228,12 @@ def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     products = list(mongo.db.products.find().sort("product_name", 1))
+
+    rating = list(mongo.db.recipes.distinct(
+        "rating", {"_id": ObjectId(recipe_id)}
+    ))
     if request.method == "POST":
-        vegan = "Yes" if request.form.get("vegan") else "No"
+        vegan = "YES" if request.form.get("vegan") else "N0"
         new = {
             "recipe_name": request.form.get("recipe_name"),
             "type": request.form.get("type"),
@@ -240,7 +243,8 @@ def edit_recipe(recipe_id):
             "ingredients": request.form.get("ingredients"),
             "vegan": vegan,
             "method": request.form.get("method"),
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "rating": rating
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, new)
         flash("RECIPE SUCCESSFULLY UPDATED")
