@@ -61,7 +61,7 @@ $(document).ready(function () {
   });
 //   Recipe types menu to be shown
   $("#types-btn").click(function(){
-      $("#recipeTypeCards").toggle("slow");
+      $("#recipeTypeCards").slideToggle("slow");
       $("#all_recipes").hide("slow");
   });
   //   Shows all Vegan Recipes
