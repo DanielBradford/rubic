@@ -73,16 +73,14 @@
           </p></span
         ></a
       >
-
-      <br />
-      <div class="right">
-        <h3>{% if item.rating|length == 0 %}No ratings{%else%}{{item.rating|sum / item.rating|length}}{%endif%}<i id="star" class="star fas fa-star"></i>
-            </h3>
-      </div>
+      <span class="right">
+        <h4>{% if item.rating|length == 0 %}No ratings{%else%}{{item.rating|sum / item.rating|length}}{%endif%}<i id="star" class="star fas fa-star"></i>
+            </h4>
+      </span>
       <div class="secondary-content">
-        <h4>
-          <i id="remove-btn" class="fas fa-trash-alt right"></i
-          ><a class="remove" hidden href="{{url_for('remove_recipe', recipe_id=item._id) }}">REMOVE FROM SAVED <i class="fas fa-times"></i></a>
+        <h4>  
+          <i class=" remove-btn fas fa-trash-alt right"></i
+          ><br><a class="remove" hidden href="{{url_for('remove_recipe', recipe_id=item._id) }}"><h3 class="flow-text">REMOVE           <i class="fas fa-times"></i></h3></a>
         </h4>
       </div>
     </li>
