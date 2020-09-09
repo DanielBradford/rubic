@@ -31,13 +31,11 @@
       {% endif %}
     </div>
     <div class="flow-text center col s12 m8">
-      <span class="secondary-content"
-        >{{item.rating|sum / item.rating|length}}<i
-          id="star"
-          class="fas fa-star"
+      <span class="ratings secondary-content"
+        >{% if item.rating|length == 0 %}NO RATINGS{%else%}{{item.rating|sum / item.rating|length}}{% endif %}<i
+          class="fas fa-star star"
         ></i
-        >{% if item.rating|length == 0 %}{%else%}({{item.rating|length}}
-        rating/s){% endif %}</span
+        > {% if item.rating|length == 0 %}{%else%} ({{item.rating|length}}){% endif %}</span
       >
       <h1 class="view">{{ item.recipe_name }}</h1>
     </div>
@@ -78,9 +76,9 @@
         <div class="list center-align profile col s6">
           Vegan <i class="fab fa-envira"></i>:
         </div>
-        {% if item.vegan == "yes" %}
+        {% if item.vegan|lower == "yes" %}
         <div class="green-text col s6 center">{{item.vegan}}</div>
-        {% elif item.vegan == "no" %}
+        {% elif item.vegan|lower == "no" %}
         <div class="red-text col s6 center">{{item.vegan}}</div>
         {%else%} {%endif%}
       </div>
