@@ -72,8 +72,8 @@
         <br />
 
         <a href="" disabled class="secondary-content"
-          ><h3 class="flow-text">{% if item.rating|length == 0 %}{%else%}{{item.rating|sum / item.rating|length}}{%endif%}<i id="star" class="star fas fa-star"></i></h3>
-          <span>({{item.rating|length}}) <span class="hide-on-small-only">RATINGS</span></span></a
+          ><h3 class="flow-text">{% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.2f' % rating|float}} <i id="star" class="star fas fa-star"></i></h3>
+          <span>({{item.rating|length}}) <span class="hide-on-small-only">RATINGS</span></span>{% endif %}</a
         >
       </li>
     </a>

@@ -74,7 +74,7 @@
         ></a
       >
       <span class="right">
-        <h4>{% if item.rating|length == 0 %}No ratings{%else%}{{item.rating|sum / item.rating|length}}{%endif%}<i id="star" class="star fas fa-star"></i>
+        <h4>{% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.2f' % rating|float}}{% endif %} <i id="star" class="star fas fa-star"></i>
             </h4>
       </span>
       <div class="secondary-content">
