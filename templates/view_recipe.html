@@ -9,8 +9,8 @@
   </div>
 </nav>
 <main class="flow-text jumbotron" id="view_recipe">
-  <div class="row valign-wrapper">
-    <div class="center-align view_recipe col s3 hide-on-small-only">
+  <div class="row">
+    <div class="center-align view_recipe col s12">
       {% for item in recipes %}{% if item._id == recipe._id %} {% if
       item.created_by == session.user %}
       <span
@@ -18,27 +18,27 @@
           ><button class="delete-btn">Delete <i class="fas fa-trash"></i></button></a
         ></span
       >
-
       <span
         ><a href="{{url_for('edit_recipe', recipe_id=item._id)}}"
           ><button class="edit-btn">
             Edit <i class="fas fa-pencil"></i></button></a
       ></span>
       {%else %}
+      {% if item._id in saved_list %}<h4 class="flow-text">SAVED <i class="fas fa-save"></i></h4>{%else%}
       <a href="{{url_for('save_recipe', recipe_id=item._id)}}"
         ><button id="save-btn">SAVE RECIPE <i class="fas fa-save"></i></button
       ></a>
+      {% endif%}
       {% endif %}
     </div>
-    <div class="flow-text center col s12 m8">
-      <span class="ratings secondary-content"
+    <div class=" col s12 center-align"><h1 class="view">{{ item.recipe_name }}</h1></div>
+    <div id="recipe-rating" class="flow-text center col s12 m12">
+      <span class="ratings center"
         >{% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.2f' % rating|float}}{% endif %} <i
           class="star fas fa-star"
         ></i
         > {% if item.rating|length == 0 %}{%else%} ({{item.rating|length}}){% endif %}</span
-      >
-      <span class="flow-text"><h1 class="view">{{ item.recipe_name }}</h1></span>
-      
+        > 
     </div>
     <hr />
   </div>
