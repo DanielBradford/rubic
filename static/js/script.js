@@ -36,7 +36,7 @@ $(document).ready(function () {
 
   //   remove button for saved recipes
   $(".remove-btn").click(function () {
-    $(".remove").toggle();
+    $(".remove").toggle("left");
   });
 
   $(".remove").click(function (){
@@ -51,14 +51,19 @@ $(document).ready(function () {
     }
   });
 
-  $("button").hover(function () {
+//   button pulse function
+  $("button").mouseover(function () {
     $(this).addClass("pulse");
+  });
+  $("button").mouseout(function () {
+    $(this).removeClass("pulse");
   });
 
 // Shows all recipes
   $("#allRecipes").click(function(){
-      $("#results").toggle("drop");
+      $(".recipe-cards").attr("hidden",false);
   });
+
 //   Recipe types menu to be shown
   $("#types-btn").click(function(){
       $("#recipeTypeCards").slideToggle("slow");
