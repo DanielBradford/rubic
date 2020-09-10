@@ -30,64 +30,51 @@
 </div>
 
 <div class="row">
-  <ul class="collection col s12">
+  <ul class="collection col s12 m12">
     {%for item in recipes %} {% for x in check_list %} {% if item._id == x %}
-    <li class="collection-item #e0f2f1 teal lighten-5 hoverable avatar col s12">
-      {% if item.type == 'Dessert' %}
-      <img
-        class="circle"
-        src="{{ url_for('static', filename='images/dessert.jpg') }}"
-      />
-      {% elif item.type == 'Snack' %}
-      <img
-        class="circle"
-        src="{{ url_for('static', filename='images/food.jpg') }}"
-      />
-      {% elif item.type == 'Starter' %}
-      <img
-        class="circle"
-        src="{{ url_for('static', filename='images/starter.jpg') }}"
-      />
-      {% elif item.type == 'Main'%}
-      <img
-        class="circle"
-        src="{{ url_for('static', filename='images/main.jpg') }}"
-      />
-      {% else %}
-      <img
-        class="circle"
-        src="{{ url_for('static', filename='images/books.jpg') }}"
-      />
-      {% endif %}
-      <a href="{{url_for('view_recipe', recipe_id=item._id) }}">
-        <span class="title">
-          <h2>{{item.recipe_name}}</h2>
-
-          <p>
-            {% if item.created_by == session.user %}<i
-              id="ribbon"
-              class="fas fa-ribbon"
-            ></i>
-            Created by YOU{% else %}<i class="fas fa-user"></i> Creator:
-            {{item.created_by}}{% endif %}
-          </p></span
-        ></a
+    <a href="{{url_for('view_recipe', recipe_id=item._id) }}">
+      <li
+        class="collection-item hoverable avatar col s12"
       >
-      <span class="right">
-        <h4>{% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.2f' % rating|float}}{% endif %} <i id="star" class="star fas fa-star"></i>
-            </h4>
-      </span>
-      <div class="secondary-content">
-        <h4>  
-          <i class=" remove-btn fas fa-trash-alt right"></i
-          ><br><a class="remove" hidden href="{{url_for('remove_recipe', recipe_id=item._id) }}"><h3 class="flow-text">REMOVE           <i class="fas fa-times"></i></h3></a>
-        </h4>
-      </div>
-    </li>
+        {% if item.type == 'Dessert' %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/dessert.jpg') }}"
+        />
+        {% elif item.type == 'Snack' %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/food.jpg') }}"
+        />
+        {% elif item.type == 'Starter' %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/starter.jpg') }}"
+        />
+        {% elif item.type == 'Main'%}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/main.jpg') }}"
+        />
+        {% else %}
+        <img
+          class="circle"
+          src="{{ url_for('static', filename='images/books.jpg') }}"
+        />
+        {% endif %}
+        <span class="title"> <h2 class="flow-text">{{item.recipe_name}}</h2></span
+        ><span><h4 class="flow-text"><i class="fas fa-user"></i> Created by: {{item.created_by}}</h4></span>
+    </a>
+        <h4><i class=" remove-btn fas fa-trash-alt right"></i
+          ><br><a class="remove" hidden href="{{url_for('remove_recipe', recipe_id=item._id) }}"><h3 class="flow-text">REMOVE <i class="fas fa-times"></i></h3></a></h4>
 
-    {% endif %} {% endfor %} {% endfor %}
+        <a href="" disabled class="secondary-content"
+          ><h3 class="flow-text">{% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.2f' % rating|float}} <i id="star" class="star fas fa-star"></i></h3>
+          <span>({{item.rating|length}}) <span class="hide-on-small-only">RATINGS</span></span>{% endif %}</a
+        >
+      </li>
+    {% endif%}{%endfor%}{%endfor%}
   </ul>
 </div>
-{{rating}}
 
 {% endblock %}
