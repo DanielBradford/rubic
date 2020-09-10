@@ -1,5 +1,4 @@
 import os
-
 from flask import (
     Flask, flash, render_template, redirect,
     request, session, url_for)
@@ -101,7 +100,7 @@ def register():
 
 @app.route("/recipes")
 def recipes():
-    # # rating functionality
+    # rating functionality
     # rating = list(mongo.db.recipes.distinct(
     #     "rating", {"_id": ObjectId(recipe_id)}))
     # count = len(rating)
@@ -111,7 +110,6 @@ def recipes():
     #     convert = [int(num) for num in rating]
     #     # gets average from all ratings
     #     current = (round(sum(convert)/len(convert), 1))
-
     types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
 
@@ -287,8 +285,7 @@ def edit_recipe(recipe_id):
 @app.route("/save_recipe/<recipe_id>", methods=["GET", "POST"])
 def save_recipe(recipe_id):
     # gets current user
-    user = session["user"]
-    recipe_id = recipe_id
+    user = session['user']
     # appends the chosen recipe_id to current user document in db
     mongo.db.users.update(
         {"user_name": user},
@@ -382,24 +379,31 @@ def vegan_filter():
     return render_template("recipes.html", types=types,
                            recipes=recipes)
 
-# filters so items with most reviews are shown
 
+# # filters so items with most reviews are shown
+# @app.route("/most_popular")
+# def most_popular_filter():
 
-@app.route("/most_popular")
-def most_popular_filter():
+#     new = list(mongo.db.recipes.find().sort("rating", 1))
 
-    new = list(mongo.db.recipes.find().sort("rating", 1))
+#     return render_template("recipes.html",
+#                            new=new)
 
-    return render_template("recipes.html",
-                           new=new)
 
 #  filters so all recipes are shown
-
-
 @app.route("/all_recipes")
 def all_filter():
     types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    return render_template("recipes.html",
+                           recipes=recipes, types=types)
+
+
+#  filters so most popular recipes are shown
+@app.route("/random")
+def random():
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    recipes = list(mongo.db.recipes.aggregate([{'$sample': {'size': 1}}]))
     return render_template("recipes.html",
                            recipes=recipes, types=types)
 
