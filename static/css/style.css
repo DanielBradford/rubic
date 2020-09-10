@@ -139,9 +139,9 @@ body h1 {
   text-shadow: 2px 2px coral;
   padding: 0.5em;
 }
-h2{
-    font-family: "Fredoka One", cursive;
-    color: coral;
+h2 {
+  font-family: "Fredoka One", cursive;
+  color: coral;
   text-shadow: 1px 1px rgb(2, 68, 68);
   padding: 0.5em;
 }
@@ -204,10 +204,9 @@ h4 {
 
 /* forms and cards */
 
-form i{
-    color: rgb(248, 246, 246);
-    text-shadow: 2px 2px coral;
-    
+form i {
+  color: rgb(248, 246, 246);
+  text-shadow: 2px 2px coral;
 }
 .card {
   background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
@@ -275,6 +274,11 @@ img.circle {
   z-index: 300;
 }
 
+#recipe-rating,
+#recipe-rating i{
+    color: white;
+}
+
 .ing,
 .method {
   border-radius: 1.4em;
@@ -282,14 +286,6 @@ img.circle {
   background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
   background-size: cover;
 }
-
-/* recipe type cards */
-.recipe-card a:hover,
-.recipe-card:hover {
-  background-color: coral;
-  color: white;
-}
-
 .card .card-content {
   padding-left: 0;
   padding-right: 0;
@@ -351,8 +347,8 @@ button > a {
   background-color: coral;
 }
 
-#controlPanel button{
-    margin-bottom: 10px;
+#controlPanel button {
+  margin-bottom: 10px;
 }
 
 .add-recipe-btn {
@@ -365,8 +361,7 @@ button > a {
   width: 7em;
   color: white;
   border-radius: 1.2em;
-  margin-top: 20px;
-  margin-left: 20px;
+  margin: 20px;
   z-index: 300;
   padding: 10px;
 }
@@ -390,6 +385,7 @@ button > a {
   color: white;
   border-radius: 1.4em;
   width: auto;
+  padding: 1em;
 }
 
 #save-btn i {
@@ -399,16 +395,15 @@ button > a {
   cursor: pointer;
 }
 
-.remove-btn{
-    z-index: 500;
-    color: white;
+.remove-btn {
+  z-index: 500;
+  color: teal;
 }
 
-.remove-btn:hover{
-
-    cursor: pointer;
-    color: coral;
-    text-shadow: none;
+.remove-btn:hover {
+  cursor: pointer;
+  color: coral;
+  text-shadow: none;
 }
 
 /* footer */
@@ -419,9 +414,19 @@ footer {
   height: 2em;
 }
 
-/* MEDIA QUERIES
+/* MEDIA QUERIES*/
 
-.container{
-            width: 100%;
-            max-width:initial;
-        } */
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    max-width: initial;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    width: auto;
+    color: white;
+    border-radius: 1.2em;
+    z-index: 300;
+  }
+}
