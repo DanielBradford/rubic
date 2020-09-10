@@ -1,7 +1,6 @@
 {% extends 'base.html' %}{% block content %}
-
 <div class="row center-align jumbotron">
-  <h1 id="welcome_profile" class="col-8">{{ user }}'s Profile <i class="fas fa-user"></i></h1>
+  <h1 id="welcome_profile" class="col-8">{{ session.user }}'s Profile <i class="fas fa-user"></i></h1>
   <form method="POST" action="{{url_for('search')}}">
     <input
       type="search"

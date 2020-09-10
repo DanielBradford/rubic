@@ -62,7 +62,7 @@
 
       <a href="" disabled class="secondary-content"
         ><h3 class="flow-text">
-          {% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.2f' % rating|float}}{% endif %} <i id="star" class="star fas fa-star"></i>
+          {% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.1f' % rating|float}}{% endif %} <i id="star" class="star fas fa-star"></i>
         </h3>
         ({{item.rating|length}})</a
       >

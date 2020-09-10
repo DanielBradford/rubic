@@ -34,7 +34,7 @@
     <div class=" col s12 center-align"><h1 class="view">{{ item.recipe_name }}</h1></div>
     <div id="recipe-rating" class="flow-text center col s12 m12">
       <span class="ratings center"
-        >{% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.2f' % rating|float}}{% endif %} <i
+        >{% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.1f' % rating|float}}{% endif %} <i
           class="star fas fa-star"
         ></i
         > {% if item.rating|length == 0 %}{%else%} ({{item.rating|length}}){% endif %}</span

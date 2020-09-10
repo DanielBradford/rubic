@@ -29,16 +29,16 @@
         </div>
         <div class="col s6 m3">
         <a
-            href="{{url_for('most_popular_filter')}}"
+            href="{{url_for('random')}}"
            class="hoverable center-align pink btn-large"
-            >Popular <i class="fas fa-trophy"></i
+            >Random <i class="fas fa-random"></i
         >
         </a>
     </div>
     <div class="col s6 m3">
         <a
             id="types-btn"
-            class="hoverable center-align orange btn-large"
+            class="hoverable center-align #ff6e40 deep-orange accent-2 btn-large"
             >Recipe Types <i class="fas fa-filter"></i
         ></a>
     </div>
@@ -97,8 +97,12 @@
   {% endfor %}
 
 </div>
+
 {% if recipes|length > 0 %}
-<div class="container-fluid">
+<div class="recipe-cards container-fluid">  
+<div class="menu row">
+    <span class="left">Recipe</span><span class="right">Average Rating / 10</span>
+</div>
   <div id="all_recipes" class="row">
     <ul class="collection col s12">
       {% for item in recipes %}
@@ -149,9 +153,9 @@
 
           <a href="" disabled class="secondary-content"
             ><h3 class="flow-text">
-           {% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.2f' % rating|float}}{% endif %} <i id="star" class="star fas fa-star"></i>
+           {% if item.rating|length == 0 %}RATE ME{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.1f' % rating|float}}{% endif %} <i id="star" class="star fas fa-star"></i>
             </h3>
-            <span class="flow-text">({{item.rating|length}})</span> RATINGS</a
+            <span class="flow-text hide-on-small-only">({{item.rating|length}})</span> <span class="hide-on-small-only">RATINGS</span></a
           >
         </li>
       </a>
