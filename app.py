@@ -38,27 +38,6 @@ def search():
     recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
     return render_template("recipes.html", recipes=recipes, types=types)
 
-
-@app.route("/user_search", methods=["GET", "POST"])
-# function to allow user to search for recipes based
-# on recipe_name and ingredients index
-def user_search():
-    search = request.form.get("search")
-    types = list(mongo.db.type.find().sort("type_name", 1))
-    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-    users = list(mongo.db.users.find({"$text": {"$search": search}}))
-    count = len(users)
-    # checks if no users match search
-    if count == 0:
-        users = list(mongo.db.recipes.find().sort("last_name", 1))
-        flash("NO USERS FOUND")
-        return render_template("management.html", users=users, types=types, recipes=recipes, count=count)
-    # returns results that match
-    else:
-        return render_template("management.html", users=users, types=types, recipes=recipes, count=count)
-
-
-
 # look at pep8 snake case better
 
 
@@ -84,7 +63,7 @@ def manage():
     if user == "admin":
         users = list(mongo.db.users.find().sort("last_name", 1))
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-        types = list(mongo.db.types.find().sort("type_name", 1))
+        types = list(mongo.db.type.find().sort("type_name", 1))
     else:
         flash("Authorization denied!")
         return redirect("landing.html")
@@ -422,16 +401,6 @@ def vegan_filter():
                            recipes=recipes)
 
 
-# # filters so items with most reviews are shown
-# @app.route("/most_popular")
-# def most_popular_filter():
-
-#     new = list(mongo.db.recipes.find().sort("rating", 1))
-
-#     return render_template("recipes.html",
-#                            new=new)
-
-
 #  filters so all recipes are shown
 @app.route("/all_recipes")
 def all_filter():
@@ -448,6 +417,48 @@ def random():
     recipes = list(mongo.db.recipes.aggregate([{'$sample': {'size': 1}}]))
     return render_template("recipes.html",
                            recipes=recipes, types=types)
+
+
+# MANAGEMENT FUNCTIONS
+
+# searches
+@app.route("/search_recipes", methods=["GET", "POST"])
+def search_recipes():
+    search = request.form.get("search")
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    users = list(mongo.db.users.find().sort("last_name", 1))
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
+    return render_template("management.html/", recipes=recipes, types=types, users=users)
+
+@app.route("/user_search", methods=["GET", "POST"])
+# function to allow user to search for recipes based
+# on recipe_name and ingredients index
+def user_search():
+    search = request.form.get("search")
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    users = list(mongo.db.users.find({"$text": {"$search": search}}))
+    count = len(users)
+    # checks if no users match search
+    if count == 0:
+        users = list(mongo.db.recipes.find().sort("last_name", 1))
+        flash("NO USERS FOUND")
+        return render_template("management.html", users=users, types=types, recipes=recipes, count=count)
+    # returns results that match
+    else:
+        return render_template("management.html", users=users, types=types, recipes=recipes, count=count)
+
+
+# deleting records
+@app.route("/delete_user/<username>")
+def delete_user(username):
+    username = username
+    # javascript confirm confirms this action on frontend
+    mongo.db.users.remove({"user_name": username})
+    flash("User Successfully Deleted")
+    # check user exists if not 404 page
+    # defensive programming verify admin possibly with password
+    return redirect(url_for("manage"))
 
 
 if __name__ == '__main__':
