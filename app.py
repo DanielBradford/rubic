@@ -53,6 +53,11 @@ def myRecipes():
 # function logs user into the app
 
 
+@app.route("/manage")
+def manage():
+    return render_template("management.html")
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -337,11 +342,15 @@ def remove_recipe(recipe_id):
     user = session["user"]
     saved_list = list(mongo.db.users.distinct(
         "saved_recipes", {"user_name": user}))
-    recipe_id = recipe_id
+    recipe_id = ObjectId(recipe_id)
 
     for item in saved_list:
         if item == recipe_id:
             # pull?
+            mongo.db.users.update(
+                {"user_name": user},
+                {"$pull":  {'saved_recipes': recipe_id}}
+            )
 
             flash("Recipe successfully removed from saved list")
             return redirect(url_for('saved_recipes', user=user))
