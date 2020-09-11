@@ -38,7 +38,32 @@ def search():
     recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
     return render_template("recipes.html", recipes=recipes, types=types)
 
+
+@app.route("/user_search", methods=["GET", "POST"])
+# function to allow user to search for recipes based
+# on recipe_name and ingredients index
+def user_search():
+    search = request.form.get("search")
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    users = list(mongo.db.users.find({"$text": {"$search": search}}))
+    count = len(users)
+    # checks if no users match search
+    if count == 0:
+        users = list(mongo.db.recipes.find().sort("last_name", 1))
+        flash("NO USERS FOUND")
+        return render_template("management.html", users=users, types=types, recipes=recipes, count=count)
+    # returns results that match
+    else:
+        return render_template("management.html", users=users, types=types, recipes=recipes, count=count)
+
+
+
 # look at pep8 snake case better
+
+
+
+
 
 # displays recipes only created by current user
 
@@ -55,7 +80,15 @@ def myRecipes():
 
 @app.route("/manage")
 def manage():
-    return render_template("management.html")
+    user = session["user"]
+    if user == "admin":
+        users = list(mongo.db.users.find().sort("last_name", 1))
+        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+        types = list(mongo.db.types.find().sort("type_name", 1))
+    else:
+        flash("Authorization denied!")
+        return redirect("landing.html")
+    return render_template("management.html", users=users, recipes=recipes, types=types)
 
 
 @app.route("/login", methods=["GET", "POST"])

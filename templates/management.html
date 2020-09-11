@@ -3,12 +3,172 @@
 <div class="center row">
   <h1 class=" ">Management <i class="fas fa-cogs"></i></h1>
 </div>
+<hr />
+<br />
+<div class="row center-align">
+  <div class="col s6 m3">
+    <a hidden id="all_users" class="hoverable center-align light-blue btn-large"
+      >Users<i class="fas fa-sort-alpha-down"></i
+    ></a>
+  </div>
+  <div class="col s6 m3">
+    <a
+      href="{{url_for('random')}}"
+      class="hoverable center-align pink btn-large"
+      >Random <i class="fas fa-random"></i>
+    </a>
+  </div>
+  <div class="col s6 m3">
+    <a
+      id="types-btn"
+      class="hoverable center-align #ff6e40 deep-orange accent-2 btn-large"
+      >Recipe Types <i class="fas fa-filter"></i
+    ></a>
+  </div>
+  <div class="col s6 m3">
+    <a
+      href="{{url_for('vegan_filter')}}"
+      class="hoverable center-align green darken-4 btn-large"
+      >Vegan <i class="fab fa-envira"></i
+    ></a>
+  </div>
+</div>
+<hr />
+<div class="row tables">
+  <div id="user-table" class="col light-blue white-text s12">
+    <table class="striped">
+      <h3 class="center">Users</h3>
+      <form class="center-align" method="POST" action="{{url_for('user_search')}}">
+        <input
+          type="search"
+          name="search"
+          placeholder="SEARCH USERS USING USERNAME OR SURNAME..."
+          id="searchbar"
+          class="fas fa-search icon-search center-align"
+        />
+        <button class="btn-floating" search-btn type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form><span class="black-text darken-5 secondary-content"><h4>{{count}} RESULTS:</h4></span>
+      <span><a href="{{url_for('manage')}}"><button class="btn purple">Reset</button></a></span>
+      <thead>
+        <tr class="dark-blue-text">
+          <th></th>
+          <th>User Name</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Recipes Added</th>
+          <th>Recipes Saved</th>
+          <th>Delete User</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in users %}
+        <tr>
+          <td>{{index}}</td>
+          <td>{{item.user_name}}</td>
+          <td>{{item.first_name}}</td>
+          <td>{{item.last_name}}</td>
+          <td>{{item.email}}</td>
+          <td>0</td>
+          <td>{{item.saved_recipes|length}}</td>
+          <td>
+            <button class="red btn"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div id="recipe-table" class="col light-green s12">
+    <table>
+      <h3>Recipes</h3>
+      <thead>
+        <tr class="dark-blue-text">
+          <th></th>
+          <th>Recipe Name</th>
+          <th>Recipe Type</th>
+          <th>Created By</th>
+          <th>Delete Recipe</th>
+        </tr>
+      </thead>
 
+      <tbody>
+        {% for item in recipes %}
+        <tr>
+          <td>{{index}}</td>
+          <td>{{item.recipe_name}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.created_by}}</td>
+          <td>
+            <button class="red btn"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 <div class="row">
-<div class="col blue s6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, eum sed nihil tenetur culpa facere ut quisquam earum animi unde odio itaque fugit qui accusamus perspiciatis nulla nam possimus blanditiis.</div>
-<div class="col green s6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos fugiat voluptate hic libero maiores enim laboriosam laudantium vero quod reprehenderit, distinctio beatae voluptatibus ratione, eum fugit necessitatibus omnis magni nulla!</div>
+  <div class="col light-blue s6">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Item Name</th>
+          <th>Item Price</th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <tr>
+          <td>Alvin</td>
+          <td>Eclair</td>
+          <td>$0.87</td>
+        </tr>
+        <tr>
+          <td>Alan</td>
+          <td>Jellybean</td>
+          <td>$3.76</td>
+        </tr>
+        <tr>
+          <td>Jonathan</td>
+          <td>Lollipop</td>
+          <td>$7.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col light-green s6">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Item Name</th>
+          <th>Item Price</th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <tr>
+          <td>Alvin</td>
+          <td>Eclair</td>
+          <td>$0.87</td>
+        </tr>
+        <tr>
+          <td>Alan</td>
+          <td>Jellybean</td>
+          <td>$3.76</td>
+        </tr>
+        <tr>
+          <td>Jonathan</td>
+          <td>Lollipop</td>
+          <td>$7.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 {% endblock %}
