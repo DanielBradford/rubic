@@ -7,15 +7,13 @@
 <br />
 <div class="row center-align">
   <div class="col s6 m3">
-    <a hidden id="all_users" class="hoverable center-align light-blue btn-large"
+    <a id="all_users" class="hoverable center-align light-blue btn-large"
       >Users<i class="fas fa-sort-alpha-down"></i
     ></a>
   </div>
   <div class="col s6 m3">
-    <a
-      href="{{url_for('random')}}"
-      class="hoverable center-align pink btn-large"
-      >Random <i class="fas fa-random"></i>
+    <a id="recipes-btn" class="hoverable center-align pink btn-large"
+      >Recipes <i class="fas fa-books"></i>
     </a>
   </div>
   <div class="col s6 m3">
@@ -27,147 +25,186 @@
   </div>
   <div class="col s6 m3">
     <a
-      href="{{url_for('vegan_filter')}}"
-      class="hoverable center-align green darken-4 btn-large"
-      >Vegan <i class="fab fa-envira"></i
+      href="#"
+      class="hoverable center-align green btn-large"
+      >Products <i class="fas fa-blender"></i
     ></a>
   </div>
 </div>
 <hr />
-<div class="row tables">
-  <div id="user-table" class="col light-blue white-text s12">
-    <table class="striped">
-      <h3 class="center">Users</h3>
-      <form class="center-align" method="POST" action="{{url_for('user_search')}}">
-        <input
-          type="search"
-          name="search"
-          placeholder="SEARCH USERS USING USERNAME OR SURNAME..."
-          id="searchbar"
-          class="fas fa-search icon-search center-align"
-        />
-        <button class="btn-floating" search-btn type="submit">
-          <i class="fas fa-search"></i>
-        </button>
-      </form><span class="black-text darken-5 secondary-content"><h4>{{count}} RESULTS:</h4></span>
-      <span><a href="{{url_for('manage')}}"><button class="btn purple">Reset</button></a></span>
-      <thead>
-        <tr class="dark-blue-text">
-          <th></th>
-          <th>User Name</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Recipes Added</th>
-          <th>Recipes Saved</th>
-          <th>Delete User</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in users %}
-        <tr>
-          <td>{{index}}</td>
-          <td>{{item.user_name}}</td>
-          <td>{{item.first_name}}</td>
-          <td>{{item.last_name}}</td>
-          <td>{{item.email}}</td>
-          <td>0</td>
-          <td>{{item.saved_recipes|length}}</td>
-          <td>
-            <button class="red btn"><i class="fas fa-trash"></i></button>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  <div id="recipe-table" class="col light-green s12">
-    <table>
-      <h3>Recipes</h3>
-      <thead>
-        <tr class="dark-blue-text">
-          <th></th>
-          <th>Recipe Name</th>
-          <th>Recipe Type</th>
-          <th>Created By</th>
-          <th>Delete Recipe</th>
-        </tr>
-      </thead>
+<div class="tables row">
+  <div class="row">
+    <div id="user-table" class="table col light-blue white-text s12">
+      <table class="striped">
+        <span class="secondary-content"
+          ><a href="{{url_for('manage')}}"
+            ><button class="btn purple">Reset <i class="fas fa-redo"></i></button></a
+          ></span
+        >
+        <h3 class="center">Users</h3>
+        <form
+          class="center-align"
+          method="POST"
+          action="{{url_for('user_search')}}"
+        >
+          <input
+            type="search"
+            name="search"
+            placeholder="SEARCH USERS USING USERNAME OR SURNAME..."
+            id="searchbar"
+            class="fas fa-search icon-search center-align"
+          />
+          <button class="btn-floating" search-btn type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+        <span class="black-text darken-5 secondary-content"
+          ><h4>{{count}}{%if count%}{%else%}ALL{%endif%} RESULTS:</h4></span
+        >
+        <thead>
+          <tr class="black-text upper">
+            <th></th>
+            <th>User Name</th>
+            <th>First Name</th>
+            <th>Last Name <i class="fas fa-sort-alpha-down"></i></th>
+            <th>Email</th>
+            <th>Recipes Added</th>
+            <th>Recipes Saved</th>
+            <th>Delete User</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in users %}
+          <tr>
+            <td>{{loop.index}}</td>
+            <td>{{item.user_name}}</td>
+            <td>{{item.first_name}}</td>
+            <td>{{item.last_name}}</td>
+            <td><a href="mailto:{{item.email}}?subject=Account Management at RUBRIC" >{{item.email}}</a></td>
+            <td>0</td>
+            <td>{{item.saved_recipes|length}}</td>
+            <td>
+              <button class="red btn"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div id="recipe-table" class=" table col pink s12">
+      <table class="striped">
+        <span class="secondary-content"
+          ><a href="{{url_for('manage')}}"
+            ><button class="btn purple">Reset <i class="fas fa-redo"></i></button></a
+          ></span
+        >
+        <h3 class="center">Recipes</h3>
+        <form method="POST" action="{{url_for('search_recipes')}}">
+          <input
+            type="search"
+            name="search"
+            placeholder="SEARCH RECIPES BY NAME OR INGREDIENTS..."
+            id="searchbar"
+            class="fas fa-search icon-search center-align"
+          />
+          <button class="btn-floating pulse" search-btn type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+          <span class="black-text darken-5 secondary-content"
+          ><h4>{{count}}{%if count%}{%else%}ALL{%endif%} RESULTS:</h4></span
+        >
+        </form>
+        <thead>
+          <tr class="dark-blue-text">
+            <th></th>
+            <th>Recipe Name <i class="fas fa-sort-alpha-down"></i> </th>
+            <th>Recipe Type</th>
+            <th>Created By</th>
+            <th>Delete Recipe</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        {% for item in recipes %}
-        <tr>
-          <td>{{index}}</td>
-          <td>{{item.recipe_name}}</td>
-          <td>{{item.type}}</td>
-          <td>{{item.created_by}}</td>
-          <td>
-            <button class="red btn"><i class="fas fa-trash"></i></button>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        <tbody>
+          {% for item in recipes %}
+          <tr class="white-text">
+            <td>{{loop.index}}</td>
+            <td>{{item.recipe_name}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.created_by}}</td>
+            <td>
+              <button class="red btn"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col light-blue s6">
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Item Name</th>
-          <th>Item Price</th>
-        </tr>
-      </thead>
+  <div class="row">
+    <div class="col #ff6e40 deep-orange accent-2 s8">
+      <table class="striped">
+        <h3>Recipes</h3>
+        <thead>
+          <tr class="dark-blue-text">
+            <th></th>
+            <th>Recipe Type</th>
+            <th>Type Description</th>
+            <th>Recipe Count</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr>
-          <td>Alvin</td>
-          <td>Eclair</td>
-          <td>$0.87</td>
-        </tr>
-        <tr>
-          <td>Alan</td>
-          <td>Jellybean</td>
-          <td>$3.76</td>
-        </tr>
-        <tr>
-          <td>Jonathan</td>
-          <td>Lollipop</td>
-          <td>$7.00</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="col light-green s6">
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Item Name</th>
-          <th>Item Price</th>
-        </tr>
-      </thead>
+        <tbody>
+          {% for item in types %}
+          <tr class="white-text">
+            <td>{{index}}</td>
+            <td>{{item.type_name}}</td>
+            <td>{{item.type_desc}}</td>
+            <td></td>
+            <td>
+              <button class="red btn"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="table col s4">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nulla a
+      modi dolorem quas nesciunt, nemo omnis aliquid ipsam quis deleniti
+      aspernatur, dolorum facere magni earum libero sunt deserunt amet.
+    </div>
+    <div class="row">
+      <div class="table col light-green s4">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+            </tr>
+          </thead>
 
-      <tbody>
-        <tr>
-          <td>Alvin</td>
-          <td>Eclair</td>
-          <td>$0.87</td>
-        </tr>
-        <tr>
-          <td>Alan</td>
-          <td>Jellybean</td>
-          <td>$3.76</td>
-        </tr>
-        <tr>
-          <td>Jonathan</td>
-          <td>Lollipop</td>
-          <td>$7.00</td>
-        </tr>
-      </tbody>
-    </table>
+          <tbody>
+            <tr>
+              <td>Alvin</td>
+              <td>Eclair</td>
+              <td>$0.87</td>
+            </tr>
+            <tr>
+              <td>Alan</td>
+              <td>Jellybean</td>
+              <td>$3.76</td>
+            </tr>
+            <tr>
+              <td>Jonathan</td>
+              <td>Lollipop</td>
+              <td>$7.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col s8"></div>
+    </div>
   </div>
 </div>
 
