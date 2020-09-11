@@ -344,7 +344,11 @@ def delete_recipe(recipe_id):
     flash("Recipe Successfully Deleted")
     # check recipe exists if not 404 page
     # defensive programming verify owner login in required
-    return redirect(url_for("myRecipes"))
+    if session['user'] == "admin":
+        return redirect(url_for('manage'))
+
+    else:
+        return redirect(url_for("myRecipes"))
 
 
 # removes the recipe from the users saved list
@@ -459,6 +463,8 @@ def delete_user(username):
     # check user exists if not 404 page
     # defensive programming verify admin possibly with password
     return redirect(url_for("manage"))
+
+
 
 
 if __name__ == '__main__':
