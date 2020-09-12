@@ -194,12 +194,41 @@ h4 {
   font-family: "Fredoka One", cursive;
   color: coral;
   text-shadow: 2px 2px teal;
-  padding: 0.5em;
+  padding: 0.2em;
   margin: 0;
 }
 
 .reg_label {
   font-size: 200;
+}
+
+/* management table */
+
+table {
+  padding: 0.4em;
+  font-family: "Gayathri", sans-serif;
+  
+}
+.table{
+     border-radius: 1.4em;
+     max-height: 500px;
+     min-height: auto;
+     overflow:scroll;
+
+}
+
+
+tr{
+    width: auto;
+}
+
+table a{
+    color: white;
+}
+table a:hover{
+    text-decoration: underline;
+    color: darkblue;
+    text-shadow: none;
 }
 
 /* forms and cards */
@@ -275,8 +304,10 @@ img.circle {
 }
 
 #recipe-rating,
-#recipe-rating i{
-    color: white;
+#recipe-rating i {
+  background-color: #f3fafab9;
+  padding: 0.2em;
+  border-radius: 1.4em;
 }
 
 .ing,
@@ -393,6 +424,14 @@ button > a {
 }
 #save-btn:hover {
   cursor: pointer;
+}
+
+
+#saved{
+    border-radius: 1.4em;
+    background-color: white;
+    border: 2px 2px teal;
+    color:teal;
 }
 
 .remove-btn {
