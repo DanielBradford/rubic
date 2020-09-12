@@ -50,8 +50,8 @@
 
             {% if session['user'] == 'admin' %}
             <li>
-              <a href="#"
-                >Manage Recipe Categories <i class="fas fa-cog"></i
+              <a href="{{url_for('manage')}}"
+                >Management <i class="fas fa-cogs"></i
               ></a>
             </li>
             {% endif %} {% if session.user %}
@@ -104,7 +104,7 @@
 
         {% if session['user'] == 'admin' %}
         <li>
-          <a href="#">Manage Recipe Categories <i class="fas fa-cog"></i></a>
+          <a href="#">Management <i class="fas fa-cogs"></i></a>
         </li>
         {% endif %} {% if session.user %}
         <li>
