@@ -31,17 +31,17 @@
     ></a>
   </div>
 </div>
-<hr />
-<div class="tables row">
+<br>
+<hr>
   <div class="row">
     <div id="user-table" class="table col light-blue white-text s12">
-      <table class="striped">
+      <table class="highlight centered">
         <span class="secondary-content"
           ><a href="{{url_for('manage')}}"
             ><button class="btn purple">Reset <i class="fas fa-redo"></i></button></a
           ></span
         >
-        <h3 class="center">Users</h3>
+        <h3 class="center">Users <i class="fas fa-users"></i> </h3>
         <form
           class="center-align"
           method="POST"
@@ -61,38 +61,42 @@
         <span class="black-text darken-5 secondary-content"
           ><h4>{{count}}{%if count%}{%else%}ALL{%endif%} RESULTS:</h4></span
         >
-        <thead>
+        <thead class="positon: fixed">
           <tr class="black-text upper">
             <th></th>
             <th>User Name</th>
-            <th>First Name</th>
             <th>Last Name <i class="fas fa-sort-alpha-down"></i></th>
+            <th>First Name</th>
             <th>Email</th>
-            <th>Recipes Added</th>
-            <th>Recipes Saved</th>
-            <th>Delete User</th>
+            <th>Contributed </th>
+            <th>Saved</th>
+            <th>Delete</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
           {% for item in users %}
-          <tr>
+          <tr style="overflow: auto">
             <td>{{loop.index}}</td>
             <td>{{item.user_name}}</td>
-            <td>{{item.first_name}}</td>
             <td>{{item.last_name}}</td>
-            <td><a href="mailto:{{item.email}}?subject=Account Management at RUBRIC" >{{item.email}}</a></td>
-            <td>0</td>
-            <td>{{item.saved_recipes|length}}</td>
+            <td>{{item.first_name}}</td>
+            <td><a id="email_link" href="mailto:{{item.email}}?subject=Account Management at RUBRIC" >{{item.email}}</a></td>
+            <td></td>
+            <td>{% if item.saved_recipes|length > 0 %}{{item.saved_recipes|length}}{% endif %}</td>
+            <!-- the following stops the admin deleting their own account -->
             <td>
-              <button class="red btn"><i class="fas fa-trash"></i></button>
+              {%if item.user_name == "admin" %} <i class="fas fa-lock"></i> {%else%}<a class="delete-user-btn" href="{{url_for('delete_user', username=item.user_name)}}"><button class="red btn"><i class="fas fa-trash"></i></button></a>{%endif%}
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
+  </div>
+    <br>
+    <div class="row">
     <div id="recipe-table" class=" table col pink s12">
-      <table class="striped">
+      <table class="highlight centered">
         <span class="secondary-content"
           ><a href="{{url_for('manage')}}"
             ><button class="btn purple">Reset <i class="fas fa-redo"></i></button></a
@@ -119,7 +123,7 @@
             <th></th>
             <th>Recipe Name <i class="fas fa-sort-alpha-down"></i> </th>
             <th>Recipe Type</th>
-            <th>Created By</th>
+            <th>Created By <i class="fas fa-hammer"></i></th>
             <th>Delete Recipe</th>
           </tr>
         </thead>
@@ -132,7 +136,7 @@
             <td>{{item.type}}</td>
             <td>{{item.created_by}}</td>
             <td>
-              <button class="red btn"><i class="fas fa-trash"></i></button>
+              <a href="{{url_for('delete_recipe', recipe_id = item._id)}}"><button class="delete-btn" style="margin:0;"><i class="fas fa-trash"></i></button></a>
             </td>
           </tr>
           {% endfor %}
@@ -140,10 +144,33 @@
       </table>
     </div>
   </div>
+  <br>
   <div class="row">
-    <div class="col #ff6e40 deep-orange accent-2 s8">
+    <div class="table col #ff6e40 deep-orange accent-2 s12">
       <table class="striped">
-        <h3>Recipes</h3>
+        <div class="row">
+            <span class="col s6"><h3>Recipe Types</h3></span><button id="add_type_show" class="col s6 btn right">Create Recipe Type <i class="fas fa-hammer"></i> </button>
+        </div>
+        <div hidden id="add_type" class="row" style="padding:1em; padding-bottom: none; margin-bottom: none">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="fas fa-filter prefix"></i>
+                        <input style="border-radius: 1.4em; background-color: white" id="type_name" type="text" class="validate center">
+                        <label for="type_name">Recipe Type Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="fas fa-pencil prefix"></i> 
+                        <input style="border-radius: 1.4em; background-color: white" id="description" name="type_desc" type="tel" class="validate center">
+                        <label for="description">Type Description</label>
+                    </div>
+                </div>
+                <div class="row center-align">
+                    <button class="btn center">Add Type <i class="fas fa-plus-circle"></i> </button>
+                </div>
+            </form>
+            <hr>
+        </div>
         <thead>
           <tr class="dark-blue-text">
             <th></th>
@@ -156,19 +183,22 @@
         <tbody>
           {% for item in types %}
           <tr class="white-text">
-            <td>{{index}}</td>
+            <td>{{loop.index}}</td>
             <td>{{item.type_name}}</td>
             <td>{{item.type_desc}}</td>
-            <td></td>
+            <td>{%for recipe in recipes%}{%if recipe.type == item.type_name%}{{loop.length}}{%endif%}{%endfor%}</td>
             <td>
               <button class="red btn"><i class="fas fa-trash"></i></button>
             </td>
           </tr>
           {% endfor %}
         </tbody>
+    
+            </span>
+        </div>
       </table>
     </div>
-    <div class="table col s4">
+    <div class="highlight centered table col s4">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nulla a
       modi dolorem quas nesciunt, nemo omnis aliquid ipsam quis deleniti
       aspernatur, dolorum facere magni earum libero sunt deserunt amet.
