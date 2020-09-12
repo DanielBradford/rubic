@@ -1,6 +1,8 @@
 {% extends 'base.html' %}{% block content %}
 <div class="row center-align jumbotron">
-  <h1 id="welcome_profile" class="col-8">{{ session.user }}'s Profile <i class="fas fa-user"></i></h1>
+  <h1 id="welcome_profile" class="col-8">
+    {{ session.user }}'s Profile <i class="fas fa-user"></i>
+  </h1>
   <form method="POST" action="{{url_for('search')}}">
     <input
       type="search"
@@ -35,12 +37,13 @@
         >All Recipes <i class="xsmall fas fa-times"></i
       ></span>
       <br />
-      <i class="medium fas fa-books"></i>
       <a href="{{url_for('all_filter')}}">
+      <i class="medium fas fa-books"></i>
         <p>
           All recipes of every type from all creators...
-        </p><i class="fas fa-arrow-circle-right"></i></a
-      >
+        </p>
+        <i class="fas fa-arrow-circle-right"></i
+      ></a>
     </div>
   </div>
   <div class="card col s6 m6 l3">
@@ -61,14 +64,15 @@
         >Saved Recipes <i class="xsmall fas fa-times"></i
       ></span>
       <br />
-      <i class="medium center-align fas fa-save"></i>
       <a
         class="center-align"
         href="{{url_for('saved_recipes', user=session.user)}}"
       >
+        <i class="medium center-align fas fa-save"></i>
         <p>
           Here are all the recipes you chose to save...
-        </p><i class="fas fa-arrow-circle-right"></i>
+        </p>
+        <i class="fas fa-arrow-circle-right"></i>
       </a>
     </div>
   </div>
@@ -91,11 +95,13 @@
         >My Recipes <i class="xsmall fas fa-times"></i>
       </span>
       <br />
-      <i class="medium center-align fas fa-book-reader"></i>
       <a class="btn-medium" href="{{url_for('myRecipes')}}">
-      <p>
-        Create, Edit and Delete your recipes...
-      </p><i class="fas fa-arrow-circle-right"></i></a>
+        <i class="medium center-align fas fa-book-reader"></i>
+        <p>
+          Create, Edit and Delete your recipes...
+        </p>
+        <i class="fas fa-arrow-circle-right"></i
+      ></a>
     </div>
   </div>
   <div class="card col s6 m6 l3">
@@ -116,12 +122,13 @@
         >Top Tools <i class="xsmall fas fa-times"></i>
       </span>
       <br />
-      <i class="center-align medium fas fa-blender"></i>
       <a class="btn-medium" href="{{url_for('myRecipes')}}">
-      <p>
-        Our recommended top tools...
-      </p><i class="fas fa-arrow-circle-right"></i></a>
-    </div>
+        <i class="center-align medium fas fa-blender"></i>
+        <p>
+          Our recommended top tools...
+        </p>
+        <i class="fas fa-arrow-circle-right"></i
+      ></a>
     </div>
   </div>
 </div>
