@@ -46,14 +46,14 @@ def search():
 
 @app.route("/myRecipes")
 def myRecipes():
+    # prevent users to cross to other clients recipe page
     user = session['user']
     recipes = list(mongo.db.recipes.find({"created_by": user}))
 
     return render_template("my_recipes.html", recipes=recipes, user=user)
 
+
 # function logs user into the app
-
-
 @app.route("/manage")
 def manage():
     user = session["user"]
@@ -117,6 +117,7 @@ def logout():
 @app.route("/register")
 def register():
     return render_template("register.html")
+    
 
 
 @app.route("/recipes")
@@ -171,9 +172,9 @@ def view_recipe(recipe_id):
         flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
         return render_template("guest.html")
 
+
+
 # routes user to the add recipe form template
-
-
 @app.route("/add_recipe")
 def add_recipe():
     types = list(mongo.db.type.find().sort("type", 1))
@@ -215,6 +216,27 @@ def add_user():
         }
 
         # defensive programming validation
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
+        if len(first_name) or len(last_name) > 20:
+            flash("First Name and Last Name should be under 20 characters")
+            return redirect(url_for("register"))
+        email = request.form.get("email")
+        if len(email) > 20:
+            flash("Email should be under 20 characters")
+            return redirect(url_for("register"))
+        user_name = request.form.get("user_name")
+        if len(user_name) > 15:
+            flash("Email should be under 15 characters")
+            return redirect(url_for("register"))
+        # password validaton
+        password = generate_password_hash(request.form.get("password"))
+        check = password.split()
+
+
+        if first_name or last_name or email or user_name or password == "":
+            flash("All fields must be filled for registration")
+            return redirect(url_for("register"))
 
         mongo.db.users.insert_one(register)
 
@@ -257,6 +279,21 @@ def add_new_recipe():
             "rating": []
         }
 
+        recipe_name = request.form.get("recipe_name"),
+        recipe_type = request.form.get("type"),
+        appliance = request.form.get("appliance"),
+        temperature = request.form.get("temperature"),
+        cooking_time = request.form.get("time"),
+        ingredients = request.form.get("ingredients"),
+        if len(ingredients) > 100:
+            flash("Ingredients over 100 character limit. Please condense and re-submit")
+            return redirect(url_for("recipes"))
+        vegan = vegan,
+        method = request.form.get("method"),
+        if len(method) > 200:
+            flash("Method over 200 character limit. Please condense and re-submit")
+            return redirect(url_for("recipes"))
+
         # validation defensive programming
         # adds new recipe to recipes collection
         mongo.db.recipes.insert_one(new)
@@ -295,6 +332,20 @@ def edit_recipe(recipe_id):
         }
 
         # validation defensive programming
+        recipe_name = request.form.get("recipe_name"),
+        recipe_type = request.form.get("type"),
+        appliance = request.form.get("appliance"),
+        temperature = request.form.get("temperature"),
+        cooking_time = request.form.get("time"),
+        ingredients = request.form.get("ingredients"),
+        if len(ingredients) > 100:
+            flash("Ingredients over 100 character limit. Please condense and re-submit")
+            return redirect(url_for("recipes"))
+        vegan = vegan,
+        method = request.form.get("method"),
+        if len(method) > 200:
+            flash("Method over 200 character limit. Please condense and re-submit")
+            return redirect(url_for("recipes"))
         # check recipe exists if not 404 page
 
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, new)
