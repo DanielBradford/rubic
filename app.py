@@ -62,7 +62,6 @@ def manage():
         users = list(mongo.db.users.find().sort("last_name", 1))
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
         types = list(mongo.db.type.find().sort("type_name", 1))
-        count = list(mongo.db.recipes.find({"created_by": {}}))
     else:
         types = list(mongo.db.type.find().sort("type_name", 1))
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
@@ -72,7 +71,7 @@ def manage():
         return render_template("landing.html",
                                users=users, recipes=recipes, types=types)
     return render_template("management.html",
-                           users=users, recipes=recipes, types=types, count=count)
+                           users=users, recipes=recipes, types=types)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -122,16 +121,6 @@ def register():
 
 @app.route("/recipes")
 def recipes():
-    # rating functionality
-    # rating = list(mongo.db.recipes.distinct(
-    #     "rating", {"_id": ObjectId(recipe_id)}))
-    # count = len(rating)
-    # if count == 0:
-    #     current = "No ratings yet"
-    # else:
-    #     convert = [int(num) for num in rating]
-    #     # gets average from all ratings
-    #     current = (round(sum(convert)/len(convert), 1))
     types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
 
@@ -154,17 +143,29 @@ def recipe_list(recipe_type):
 
 @app.route("/view_recipe/<recipe_id>", methods=["GET", "POST"])
 def view_recipe(recipe_id):
+    # # rating functionality
+    # rating = list(mongo.db.recipes.distinct(
+    #     "rating", {"_id": ObjectId(recipe_id)}))
+    # count = len(rating)
+    # if count == 0:
+    #     current = "No ratings yet"
+    # else:
+    #     convert = [int(num) for num in rating]
+    #     # gets average from all ratings
+    #     current = (round(sum(convert)/len(convert), 1))
     try:
         recipe_id = recipe_id
         recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+        types = list(mongo.db.type.find().sort("type_name", 1))
         user = session['user']
         user_id = mongo.db.users.find_one({"user_name": user})
         saved_list = list(mongo.db.users.distinct(
             "saved_recipes", {"user_name": user}))
 
         return render_template("view_recipe.html", recipe=recipe,
-                               recipes=recipes, user_id=user_id, user=user, saved_list=saved_list)
+                               recipes=recipes, user_id=user_id,
+                               user=user, saved_list=saved_list, types=types)
 
     except:
         flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
@@ -469,8 +470,8 @@ def search_recipes():
     types = list(mongo.db.type.find().sort("type_name", 1))
     users = list(mongo.db.users.find().sort("last_name", 1))
     recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
-    
-    return render_template("management.html/", recipes=recipes, types=types, users=users)
+
+    return render_template("management.html/", recipes=recipes, types=types, users=users, search=search)
 
 
 @app.route("/user_search", methods=["GET", "POST"])
@@ -484,12 +485,11 @@ def user_search():
     count = len(users)
     # checks if no users match search
     if count == 0:
-        users = list(mongo.db.recipes.find().sort("last_name", 1))
         flash("NO USERS FOUND")
-        return render_template("management.html", users=users, types=types, recipes=recipes, count=count)
+        return render_template("management.html", users=users, types=types, recipes=recipes, count=count, search=search)
     # returns results that match
     else:
-        return render_template("management.html", users=users, types=types, recipes=recipes, count=count)
+        return render_template("management.html", users=users, types=types, recipes=recipes, count=count, search=search)
 
 
 # deleting records
