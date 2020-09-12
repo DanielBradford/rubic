@@ -11,38 +11,40 @@
 <main class="flow-text jumbotron" id="view_recipe">
   <div class="row">
     <div class="center-align view_recipe col s12">
-      {% for item in recipes %}{% if item._id == recipe._id %} {% if
-      item.created_by == session.user %}
+      {% for item in recipes %}{% if item._id == recipe._id %}
+    </div>
+    <div class="col s12 center-align">
+      <h1 class="view">{{ item.recipe_name }}</h1>
+    </div>
+    <div class="flow-text center col s12 m12">
+      <span id="recipe-rating" class="ratings center"
+        >{% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating =
+        item.rating|sum / item.rating|length %}{{'%0.1f' % rating|float}}{%
+        endif %} <i class="star fas fa-star"></i> {% if item.rating|length == 0
+        %}{%else%} ({{item.rating|length}}){% endif %}</span
+      >
+    </div>
+    {% if item.created_by == session.user %}
+    <div class="center col s12">
       <span
         ><a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
-          ><button class="delete-btn">Delete <i class="fas fa-trash"></i></button></a
-        ></span
-      >
+          ><button class="delete-btn">
+            Delete <i class="fas fa-trash"></i></button></a
+      ></span>
       <span
         ><a href="{{url_for('edit_recipe', recipe_id=item._id)}}"
           ><button class="edit-btn">
             Edit <i class="fas fa-pencil"></i></button></a
       ></span>
-      {%else %}
-      {% if item._id in saved_list %}<h4 class="flow-text">SAVED <i class="fas fa-save"></i></h4>{%else%}
+      {%else %} {% if item._id in saved_list %}
+      <span id="saved"><h4 class="flow-text">SAVED <i class="fas fa-thumbtack"></i></h4></span>
+      {%else%}
       <a href="{{url_for('save_recipe', recipe_id=item._id)}}"
-        ><button id="save-btn">SAVE RECIPE <i class="fas fa-save"></i></button
+        ><button id="save-btn">
+          ADD TO SAVED <i class="fas fa-thumbtack"></i></button
       ></a>
-      {% endif%}
-      {% endif %}
     </div>
-    <div class=" col s12 center-align"><h1 class="view">{{ item.recipe_name }}</h1></div>
-    <div id="recipe-rating" class="flow-text center col s12 m12">
-      <span class="ratings center"
-        >{% if item.rating|length == 0 %}NO RATINGS{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.1f' % rating|float}}{% endif %} <i
-          class="star fas fa-star"
-        ></i
-        > {% if item.rating|length == 0 %}{%else%} ({{item.rating|length}}){% endif %}</span
-        > 
-    </div>
-    <hr />
-  </div>
-  <div class="row">
+    {% endif%} {% endif %}
     <div class="flow-text ing col s12 m6">
       <div class="row">
         <br />
@@ -55,7 +57,7 @@
         <div class="list center-align profile col s6">
           Appliance:
         </div>
-        <div class="center col s6">{{ item.appliance }}</div>
+        <div class="center col s6">{{item.appliance}}{%for x in types%}{% if item.appliance == x.type_name %}<a href="{{x.url}}">{{x.url}}<i class="fas fa-arrow"></i></a>{%endif%}{%endfor%}</div>
       </div>
       <div class="row">
         <div class="list center-align profile col s6">
