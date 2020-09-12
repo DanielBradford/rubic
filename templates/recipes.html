@@ -108,7 +108,7 @@
       {% for item in recipes %}
       <a href="{{url_for('view_recipe', recipe_id=item._id) }}">
         <li
-          class="collection-item #e0f2f1 teal lighten-5 hoverable avatar col s12"
+          class="collection-item hoverable avatar col s12"
         >
           {% if item.type == 'Dessert' %}
           <img
