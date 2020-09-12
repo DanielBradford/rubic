@@ -41,9 +41,6 @@ def search():
 # look at pep8 snake case better
 
 
-
-
-
 # displays recipes only created by current user
 
 
@@ -60,14 +57,22 @@ def myRecipes():
 @app.route("/manage")
 def manage():
     user = session["user"]
+    # defensive programming to prevent non admin users accessing management template
     if user == "admin":
         users = list(mongo.db.users.find().sort("last_name", 1))
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
         types = list(mongo.db.type.find().sort("type_name", 1))
+        count = list(mongo.db.recipes.find({"created_by": {}}))
     else:
-        flash("Authorization denied!")
-        return redirect("landing.html")
-    return render_template("management.html", users=users, recipes=recipes, types=types)
+        types = list(mongo.db.type.find().sort("type_name", 1))
+        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+        users = list(mongo.db.users.find().sort("user_name", 1))
+        # warning message to non admin users
+        flash("ADMIN ONLY! Authorization denied!")
+        return render_template("landing.html",
+                               users=users, recipes=recipes, types=types)
+    return render_template("management.html",
+                           users=users, recipes=recipes, types=types, count=count)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -425,6 +430,38 @@ def random():
 
 # MANAGEMENT FUNCTIONS
 
+
+# deleting recipe types
+@app.route("/delete_recipe_type/<type_id>")
+def delete_recipe_type(type_id):
+    mongo.db.type.remove({"_id": ObjectId(type_id)})
+    flash("Recipe Type Successfully Deleted")
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    users = list(mongo.db.users.find().sort("last_name", 1))
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    return render_template("management.html/", recipes=recipes, types=types, users=users)
+
+
+# adding recipe types
+@app.route("/add_recipe_type", methods=["GET", "POST"])
+def add_recipe_type():
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    users = list(mongo.db.users.find().sort("last_name", 1))
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+
+    if request.method == "POST":
+        new_type = {
+            "type_name": request.form.get("type_name"),
+            "type_desc": request.form.get("type_desc")
+        }
+        mongo.db.type.insert_one(new_type)
+        flash("Type Successfully Added")
+        return render_template("management.html/", recipes=recipes, types=types, users=users)
+
+    flash("Failed to add recipe type")
+    return render_template("management.html/", recipes=recipes, types=types, users=users)
+
+
 # searches
 @app.route("/search_recipes", methods=["GET", "POST"])
 def search_recipes():
@@ -432,7 +469,9 @@ def search_recipes():
     types = list(mongo.db.type.find().sort("type_name", 1))
     users = list(mongo.db.users.find().sort("last_name", 1))
     recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
+    
     return render_template("management.html/", recipes=recipes, types=types, users=users)
+
 
 @app.route("/user_search", methods=["GET", "POST"])
 # function to allow user to search for recipes based
@@ -463,8 +502,6 @@ def delete_user(username):
     # check user exists if not 404 page
     # defensive programming verify admin possibly with password
     return redirect(url_for("manage"))
-
-
 
 
 if __name__ == '__main__':
