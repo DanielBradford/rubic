@@ -39,7 +39,7 @@ $(document).ready(function () {
     $(".remove").toggle("left");
   });
 
-  $(".remove").click(function (){
+  $(".remove").click(function () {
     if (
       confirm(
         "Are you sure you want to REMOVE this recipe from the SAVED RECIPES? This action cannot be undone!"
@@ -51,7 +51,7 @@ $(document).ready(function () {
     }
   });
 
-//   button pulse function
+  //   button pulse function
   $("button").mouseover(function () {
     $(this).addClass("pulse");
   });
@@ -59,19 +59,72 @@ $(document).ready(function () {
     $(this).removeClass("pulse");
   });
 
-// Shows all recipes
-  $("#allRecipes").click(function(){
-      $(".recipe-cards").attr("hidden",false);
+  // Shows all recipes
+  $("#allRecipes").click(function () {
+    $(".recipe-cards").attr("hidden", false);
   });
 
-//   Recipe types menu to be shown
-  $("#types-btn").click(function(){
-      $("#recipeTypeCards").slideToggle("slow");
-      $("#all_recipes").hide("slow");
+  //   Recipe types menu to be shown
+  $("#types-btn").click(function () {
+    $("#recipeTypeCards").slideToggle("slow");
+    $("#all_recipes").hide("slow");
   });
   //   Shows all Vegan Recipes
-  $("#vegan").click(function(){
-      $("#all_recipes").toggle("slow");
+  $("#vegan").click(function () {
+    $("#all_recipes").toggle("slow");
+  });
+
+  //   management template
+  $("#all_users").click(function () {
+    $("#user-table").toggle("slow");
+    $("#types-table").hide("slow");
+  });
+
+  $("#recipes-btn").click(function () {
+    $("#recipe-table").toggle("slow");
+    $("#user-table").hide("slow");
+    $("#types-table").hide("slow");
+  });
+
+  $("#types-btn").click(function () {
+    $("#types-table").show("slow");
+    $("#recipe-table").hide("slow");
+    $("#user-table").hide("slow");
+  });
+
+  $("#email_link").click(function () {
+    if (confirm("Would you like to Email this User?")) {
+    } else {
+      return false; //----On cancel user returns to current screen------//
+    }
+  });
+  $("#delete-user-btn").click(function () {
+    if (
+      confirm(
+        "Are you sure you want to delete this user? This action cannot be undone!"
+      )
+    ) {
+    } else {
+      return false; //----On cancel user returns to current screen------//
+    }
+  });
+  $("#delete-type-btn").click(function () {
+    if (
+      confirm(
+        "Are you sure you want to delete this recipe type? This action cannot be undone!"
+      )
+    ) {
+    } else {
+      return false; //----On cancel user returns to current screen------//
+    }
+  });
+  $("#add_type_show").click(function () {
+    $("#add_type").slideToggle("slow");
+  });
+
+  //   searchbars
+  $(".search").click(function () {
+    $(".inner-search").slideToggle("slow");
   });
 
 });
