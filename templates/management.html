@@ -1,236 +1,273 @@
 {% extends 'base.html' %}{% block content %}
-
-<div class="center row">
-  <h1 class=" ">Management <i class="fas fa-cogs"></i></h1>
-</div>
-<hr />
-<br />
-<div class="row center-align">
-  <div class="col s6 m3">
-    <a id="all_users" name="users" class="hoverable center-align light-blue btn-large"
-      >Users<i class="fas fa-sort-alpha-down"></i
-    ></a>
+<div class="row">
+  <div class="center row flow-text">
+    <h1 class="">
+      Management <i class="fas fa-cogs"></i>
+    </h1>
   </div>
-  <div class="col s6 m3">
-    <a id="recipes-btn" class="hoverable center-align pink btn-large"
-      >Recipes <i class="fas fa-books"></i>
-    </a>
+  <hr />
+  <br />
+  <div class="row center-align">
+    <div class="col s6 m3">
+      <a
+        id="all_users"
+        name="users"
+        class="hoverable center-align light-blue btn-large"
+        >Users<i class="fas fa-sort-alpha-down"></i
+      ></a>
+    </div>
+    <div class="col s6 m3">
+      <a id="recipes-btn" class="hoverable center-align pink btn-large"
+        >Recipes <i class="fas fa-books"></i>
+      </a>
+    </div>
+    <div class="col s6 m3">
+      <a
+        id="types-btn"
+        class="hoverable center-align #ff6e40 deep-orange accent-2 btn-large"
+        >Recipe Types <i class="fas fa-filter"></i
+      ></a>
+    </div>
+    <div class="col s6 m3">
+      <a href="#" class="hoverable center-align green btn-large"
+        >Products <i class="fas fa-blender"></i
+      ></a>
+    </div>
   </div>
-  <div class="col s6 m3">
-    <a
-      id="types-btn"
-      class="hoverable center-align #ff6e40 deep-orange accent-2 btn-large"
-      >Recipe Types <i class="fas fa-filter"></i
-    ></a>
-  </div>
-  <div class="col s6 m3">
-    <a href="#" class="hoverable center-align green btn-large"
-      >Products <i class="fas fa-blender"></i
-    ></a>
-  </div>
-</div>
-<br />
-<hr />
-<div id="user-table" class="row">
-  <div  class="table col light-blue white-text s12">
-    <table class="highlight centered">
-      <span class="secondary-content"
-        ><a href="{{url_for('manage')}}"
-          ><button class="btn purple">
-            <span class="hide-on-small-only">
-            Reset</span> <i class="fas fa-redo"></i></button></a
-      ></span>
-      <h4 class="search use_search left"><i class="fas fa-search"></i>: {{search}}</h4>
-      <h3 class="center">Users <i class="fas fa-users"></i> {%if users|length > 0 %}({{users|length}}){%else%}(0){%endif%}</h3>
-      <div hidden class="inner-search row">
-        <form
-          class="center-align"
-          method="POST"
-          action="{{url_for('user_search')}}"
-        >
-          <input
-            type="search"
-            name="search"
-            placeholder="SEARCH USERS USING USERNAME OR SURNAME..."
-            id="searchbar"
-            class="fas fa-search icon-search center-align"
-          />
-          <button class="btn-floating" search-btn type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
-      </div>
-      <thead class="positon: fixed">
-        <tr class="black-text upper">
-          <th></th>
-          <th>User Name <i class="fas fa-hat-chef"></i></th>
-          <th>Last Name <i class="fas fa-sort-alpha-down"></i></th>
-          <th class="hide-on-small-only">First Name</th>
-          <th class="hide-on-small-only">Email <i class="fas fa-at"></i></th>
-          <th class="hide-on-small-only">Contributed</th>
-          <th class="hide-on-small-only">Saved <i class="fas fa-thumbtack"></i></th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in users %}
-        <tr style="overflow: auto;">
-          <td>{{loop.index}}</td>
-          <td>{{item.user_name}}</td>
-          <td >{{item.last_name}}</td>
-          <td class="hide-on-small-only">{{item.first_name}}</td>
-          <td class="hide-on-small-only">
-            <a
-              id="email_link"
-              href="mailto:{{item.email}}?subject=Account Management at RUBRIC"
-              >{{item.email}}</a
-            >
-          </td>
-          <td class="hide-on-small-only"></td>
-          <td class="hide-on-small-only">
-            {% if item.saved_recipes|length > 0
-            %}{{item.saved_recipes|length}}{%else%}0{% endif %}
-          </td>
-          <!-- the following stops the admin deleting their own account -->
-          <td>
-            {%if item.user_name == "admin" %}
-            <i class="fas fa-lock"></i> {%else%}<a
-              class="delete-user-btn"
-              href="{{url_for('delete_user', username=item.user_name)}}"
-              ><button class="red btn"><i class="fas fa-trash"></i></button></a
-            >{%endif%}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
-<br />
-<div id="recipe-table" class="row">
-  <div class="table col pink s12">
-    <table id="recipe" class="highlight centered">
-      <span class="secondary-content"
-        ><a href="{{url_for('manage')}}"
-          ><button class="btn purple">
-            <span class="hide-on-small-only">
-            Reset</span> <i class="fas fa-redo"></i></button></a
-      ></span>
-      <h3 class="center">Recipes <i class="fas fa-books"></i> ({{recipes|length}})</h3>
-      <thead>
-        <tr class="dark-blue-text">
-          <th></th>
-          <th>Recipe Name <i class="fas fa-sort-alpha-down"></i></th>
-          <th>Recipe Type <i class="fas fa-filter"></i></th> 
-          <th>Created By <i class="fas fa-hammer"></i></th>
-          <th>Delete Recipe</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {% for item in recipes %}
-        <tr class="white-text">
-          <td>{{loop.index}}</td>
-          <td>{{item.recipe_name}}</td>
-          <td>{{item.type}}</td>
-          <td>{{item.created_by}}</td>
-          <td>
-            <a href="{{url_for('delete_recipe', recipe_id = item._id)}}"
-              ><button class="delete-btn" style="margin: 0;">
-                <i class="fas fa-trash"></i></button
-            ></a>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
-<br />
-<div hidden id="types-table" class="row">
-  <div class="table col #ff6e40 deep-orange accent-2 s12">
-    <table class="striped">
-      <div class="row">
-        <span class="col s6"><h3>Recipe Types <i class="fas fa-filter"></i> ({{types|length}})</h3></span
-        ><button id="add_type_show" class="col s6 btn right">
-          Create Recipe Type <i class="fas fa-hammer"></i>
-        </button>
-      </div>
-      <div
-        hidden
-        id="add_type"
-        class="row"
-        style="padding: 1em; padding-bottom: none; margin-bottom: none;"
-      >
-        <form
-          class="col s12"
-          method="POST"
-          action="{{url_for('add_recipe_type')}}"
-        >
-          <div class="row">
-            <div class="input-field col s6">
-              <i class="fas fa-filter prefix"></i>
-              <input
-                style="border-radius: 1.4em; background-color: white;"
-                name="type_name"
-                id="type_name"
-                type="text"
-                class="validate center"
-              />
-              <label for="type_name">Recipe Type Name</label>
-            </div>
-            <div class="input-field col s6">
-              <i class="fas fa-pencil prefix"></i>
-              <input
-                style="border-radius: 1.4em; background-color: white;"
-                id="description"
-                name="type_desc"
-                type="tel"
-                class="validate center"
-              />
-              <label for="description">Type Description</label>
-            </div>
-          </div>
-          <div class="row center-align">
-            <button type="submit" class="btn center">
-              Add Type <i class="fas fa-plus-circle"></i>
+  <br />
+  <hr />
+  <div id="user-table" class="row">
+    <div class="table col light-blue white-text s12">
+      <table class="highlight">
+        <span class="right"
+          ><a href="{{url_for('register')}}"
+            ><button class="green btn">
+              Add User <i class="fas fa-user"></i></button></a
+          ><a href="{{url_for('manage')}}"
+            ><button class="btn purple">
+              <span class="hide-on-small-only"> Reset</span>
+              <i class="fas fa-redo"></i></button></a
+        ></span>
+        <h4 class="search use_search left">
+          <i class="fas fa-times" hidden></i
+          ><span id="search-glass"
+            ><i class="fas fa-search"></i>: {{search}}</span
+          >
+        </h4>
+        <span class="center">
+          <h3>
+            Users <i class="fas fa-users"></i> {%if users|length > 0
+            %}({{users|length}}){%else%}(0){%endif%}
+          </h3>
+        </span>
+        <div hidden class="center inner-search row">
+          <form
+            class="center-align"
+            method="POST"
+            action="{{url_for('user_search')}}"
+          >
+            <input
+              type="search"
+              name="search"
+              placeholder="SEARCH USERS USING USERNAME OR SURNAME..."
+              id="searchbar"
+              class="fas fa-search icon-search center-align"
+            />
+            <button class="btn-floating" search-btn type="submit">
+              <i class="fas fa-search"></i>
             </button>
-          </div>
-        </form>
-        <hr />
-      </div>
-      <thead class="center-align">
-        <tr class="dark-blue-text">
-          <th></th>
-          <th>Type <i class="fas fa-tag"></i></th>
-          <th>Description <i class="fas fa-info"></i></th>
-          <th>Recipe Count </th>
-          <th>Delete </th>
-        </tr>
-      </thead>
+          </form>
+          <hr />
+        </div>
+        <thead class="positon: fixed">
+          <tr class="black-text upper">
+            <th></th>
+            <th>User Name <i class="fas fa-hat-chef"></i></th>
+            <th>Last Name <i class="fas fa-sort-alpha-down"></i></th>
+            <th class="hide-on-small-only">First Name</th>
+            <th class="hide-on-small-only">Email <i class="fas fa-at"></i></th>
+            <th class="hide-on-small-only">Contributed</th>
+            <th class="hide-on-small-only">
+              Saved <i class="fas fa-thumbtack"></i>
+            </th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in users %}
+          <tr style="overflow: auto;">
+            <td>{{loop.index}}</td>
+            <td>{{item.user_name}}</td>
+            <td>{{item.last_name}}</td>
+            <td class="hide-on-small-only">{{item.first_name}}</td>
+            <td class="hide-on-small-only">
+              <a
+                id="email_link"
+                href="mailto:{{item.email}}?subject=Account Management at RUBRIC"
+                >{{item.email}}</a
+              >
+            </td>
+            <td class="hide-on-small-only"></td>
+            <td class="hide-on-small-only">
+              {% if item.saved_recipes|length > 0
+              %}{{item.saved_recipes|length}}{%else%}0{% endif %}
+            </td>
+            <!-- the following stops the admin deleting their own account -->
+            <td>
+              {%if item.user_name == "admin" %}
+              <i class="fas fa-lock"></i> {%else%}<a
+                class="delete-user-btn"
+                href="{{url_for('delete_user', username=item.user_name)}}"
+                ><button class="red btn">
+                  <i class="fas fa-trash"></i></button></a
+              >{%endif%}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br />
+  <div id="recipe-table" class="row">
+    <div class="table col pink s12">
+      <table id="recipe" class="highlight centered">
+        <span class="secondary-content"
+          ><a href="{{url_for('add_recipe')}}"
+            ><button class="green btn">
+              Add Recipe <i class="fas fa-plus"></i></button></a
+          ><a href="{{url_for('manage')}}"
+            ><button class="btn purple">
+              <span class="hide-on-small-only"> Reset</span>
+              <i class="fas fa-redo"></i></button></a
+        ></span>
+        <h3 class="center">
+          Recipes <i class="fas fa-books"></i> ({{recipes|length}})
+        </h3>
+        <thead>
+          <tr class="dark-blue-text">
+            <th></th>
+            <th>Recipe Name <i class="fas fa-sort-alpha-down"></i></th>
+            <th>Recipe Type <i class="fas fa-filter"></i></th>
+            <th class="hide-on-small-only">Rating <i class="fas fa-star"></i></th>
+            <th>Created By <i class="fas fa-hammer"></i></th>
+            <th>Delete Recipe</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        {% for item in types %}
-        <tr class="white-text">
-          <td>{{loop.index}}</td>
-          <td>{{item.type_name}}</td>
-          <td style="width: 60%">{{item.type_desc}}</td>
-          <td>
-            {%for recipe in recipes%}{%if recipe.type ==
-            item.type_name%}{{loop.length}}{%endif%}{%endfor%}
-          </td>
-          <td>
-            <a
-              id="delete-type-btn"
-              href="{{url_for('delete_recipe_type', type_id=item._id) }}"
-              ><button class="red btn"><i class="fas fa-trash"></i></button
-            ></a>
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        <tbody>
+          {% for item in recipes %}
+          <tr class="white-text">
+            <td>{{loop.index}}</td>
+            <td>{{item.recipe_name}}</td>
+            <td>{{item.type}}</td>
+            <td class="hide-on-small-only">
+              {% if item.rating|length == 0 %}UNRATED{%else%}{%set rating =
+              item.rating|sum / item.rating|length %}{{'%0.1f' %
+              rating|float}}{% endif %}
+            </td>
+            <td>{{item.created_by}}</td>
+            <td>
+              <a href="{{url_for('delete_recipe', recipe_id = item._id)}}"
+                ><button class="delete-btn" style="margin: 0;">
+                  <i class="fas fa-trash"></i></button
+              ></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br />
+  <div id="types-table" class="row">
+    <div class="table col #ff6e40 deep-orange accent-2 s12">
+      <table class="striped">
+        <div class="row">
+          <span class="col s6"
+            ><h3>
+              Recipe Types <i class="fas fa-filter"></i> ({{types|length}})
+            </h3></span
+          ><button id="add_type_show" class="col s6 btn green right">
+            Create Recipe Type <i class="fas fa-hammer"></i
+            ><i hidden class="right fas fa-times"></i
+            ><i class="right fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div
+          hidden
+          id="add_type"
+          class="row"
+          style="padding: 1em; padding-bottom: none; margin-bottom: none;"
+        >
+          <form
+            class="col s12"
+            method="POST"
+            action="{{url_for('add_recipe_type')}}"
+          >
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="fas fa-filter prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  name="type_name"
+                  id="type_name"
+                  type="text"
+                  class="validate center"
+                />
+                <label for="type_name">Recipe Type Name</label>
+              </div>
+              <div class="input-field col s6">
+                <i class="fas fa-pencil prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  id="description"
+                  name="type_desc"
+                  type="tel"
+                  class="validate center"
+                />
+                <label for="description">Type Description</label>
+              </div>
+            </div>
+            <div class="row center-align">
+              <button type="submit" class="btn green center">
+                Add Type <i class="fas fa-plus-circle"></i>
+              </button>
+            </div>
+          </form>
+          <hr />
+        </div>
+        <thead class="center-align">
+          <tr class="dark-blue-text">
+            <th></th>
+            <th>Type <i class="fas fa-tag"></i></th>
+            <th>Description <i class="fas fa-info"></i></th>
+            <th>Recipe Count</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for item in types %}
+          <tr class="white-text">
+            <td>{{loop.index}}</td>
+            <td>{{item.type_name}}</td>
+            <td style="width: 60%;">{{item.type_desc}}</td>
+            <td>
+              {%for recipe in recipes%}{%if recipe.type ==
+              item.type_name%}{{loop.length}}{%endif%}{%endfor%}
+            </td>
+            <td>
+              <a href="{{url_for('delete_recipe_type', type_id=item._id) }}"
+                ><button id="delete-type-btn" class="red btn">
+                  <i class="fas fa-trash"></i></button
+              ></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
-
 {% endblock %}
