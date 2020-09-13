@@ -237,31 +237,45 @@ def add_user():
         }
 
         # defensive programming validation
-        # first_name = request.form.get("first_name")
-        # last_name = request.form.get("last_name")
-        # if len(first_name) or len(last_name) > 20:
-        #     flash("First Name and Last Name should be under 20 characters")
-        #     return redirect(url_for("register"))
-        # email = request.form.get("email")
-        # if len(email) > 20:
-        #     flash("Email should be under 20 characters")
-        #     return redirect(url_for("register"))
-        # user_name = request.form.get("user_name")
-        # if len(user_name) > 15:
-        #     flash("Email should be under 15 characters")
-        #     return redirect(url_for("register"))
+        first_name = request.form.get("first_name")
+        if len(first_name) > 20:
+            flash("First Name should be under 20 characters")
+            return redirect(url_for("register"))
+        #  checks fields are completed before submission
+        if len(first_name) == 0:
+            flash("First Name must be filled for registration")
+            return redirect(url_for("register"))
+        last_name = request.form.get("last_name")
+        if len(last_name) > 20:
+            flash("Last Name should be under 20 characters")
+            return redirect(url_for("register"))
+        if len(last_name) == 0:
+            flash("Last Name must be filled for registration")
+            return redirect(url_for("register"))
+        email = request.form.get("email")
+        if len(email) > 50:
+            flash("Email should be under 50 characters")
+            return redirect(url_for("register"))
+        if len(email) == 0:
+            flash("Email must be filled for registration")
+            return redirect(url_for("register"))
+        user_name = request.form.get("user_name")
+        if len(user_name) > 15:
+            flash("Email should be under 15 characters")
+            return redirect(url_for("register"))
+        if len(user_name) == 0:
+            flash("Username must be filled for registration")
+            return redirect(url_for("register"))
         # password validaton
-        # password = generate_password_hash(request.form.get("password"))
-
-        # checks fields are completed before submission
-        # if first_name or last_name or email or user_name or password == "":
-        #     flash("All fields must be filled for registration")
-        #     return redirect(url_for("register"))
+        password = generate_password_hash(request.form.get("password"))
+        if len(password) == 0:
+            flash("Both Password fields must be filled for registration")
+            return redirect(url_for("register"))
         mongo.db.users.insert_one(register)
         # put new user in session cookie
         session["user"] = request.form.get("user_name")
         flash("Registration Successful!")
-                # log user in
+        # log user in and take to profile
         return redirect(url_for(
                     "profile", user=session["user"]))
     return render_template("landing.html")
@@ -298,7 +312,13 @@ def add_new_recipe():
         }
 
         recipe_name = request.form.get("recipe_name"),
+        if len(recipe_name) > 30:
+            flash("Recipe name cannot be longer than 30 characters")
+            return redirect(url_for('add_new_recipe'))
         recipe_type = request.form.get("type"),
+        # if  recipe_type not in :
+        #     flash("Please select from list")
+        #     return redirect(url_for('add_new_recipe'))
         appliance = request.form.get("appliance"),
         temperature = request.form.get("temperature"),
         cooking_time = request.form.get("time"),
