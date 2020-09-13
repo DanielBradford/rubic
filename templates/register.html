@@ -17,6 +17,7 @@
               id="first_name"
               type="text"
               class="validate"
+              required
             />
             <label for="first_name">First Name</label>
           </div>
@@ -27,6 +28,7 @@
               id="last_name"
               type="text"
               class="validate"
+              required
             />
             <label for="last_name">Last Name</label>
           </div>
@@ -34,7 +36,7 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="fas fa-envelope prefix"></i>
-            <input name="email" id="email" type="email" class="validate" />
+            <input name="email" id="email" type="email" class="validate" required />
             <label for="email">Email</label>
           </div>
         </div>
@@ -72,7 +74,7 @@
           <div class="col s4">
             <div class="switch">
               <label>
-                <input name="dietry_need" value="vegan" type="checkbox" />
+                <input name="vegan" value="vegan" type="checkbox" />
                 <span class="lever"></span>
                 <span class="reg_label">Vegan</span>
                 <i class="fab fa-vuejs"></i>
@@ -89,6 +91,7 @@
                 name="confirm"
                 type="password"
                 class="validate"
+                required
               />
               <label for="confirm"> Confirm Password</label>
             </div>
