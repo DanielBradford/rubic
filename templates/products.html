@@ -1,0 +1,120 @@
+{%extends 'base.html' %}{% block content %}
+
+<div class="row jumbotron center">
+  <h1 class="center-align">
+    Products <i class="fas fa-blender"></i></h1>
+    <h3 id="welcome">Our top recommended products and tools...</h3>
+    <br>
+  
+</div>
+<hr>
+<br>
+<ul>
+  <li>
+    <div class="row">
+      <a
+        href="https://www.amazon.co.uk/Spiralizer-Handheld-Vegetable-Slicer-Spaghetti/dp/B07WCZTGF2/ref=sr_1_5?dchild=1&keywords=zoodle&qid=1600005692&sr=8-5"
+      >
+        <div class="col s6">
+          <h3>ZOODLE MAKER</h3>
+        
+        <p>
+        <ul>
+        <li>
+        Spiralizer vegetable
+          slicer is made of high quality and eco-friendly ABS plastic (BPA free)
+          +304 food grade stainless steel. Due to its compact size, plastic
+          takes up minimal space and fits comfortably in the hand - for precise
+          and safe cutting. 
+        </li>
+        </ul>
+        </p>
+
+        <h4>£9.99</h4>
+        <p class="center">Click here for more info...</p>
+        </div>
+        <div class="col s6">
+          <img
+            style="width: 70%;"
+            src="https://images-na.ssl-images-amazon.com/images/I/61iMsAUTtrL._AC_SL1001_.jpg"
+            alt=""
+          /></div
+      ></a>
+    </div>
+  </li>
+  <hr>
+  <br>
+  <li>
+    <div class="row">
+      <a
+        href="https://www.amazon.co.uk/OXO-Mandoline-Slicer-Stainless-Standard/dp/B000YDO2LG/ref=sr_1_5?dchild=1&keywords=potato+slicer&qid=1600006591&sr=8-5"
+      >
+        <div class="col s6"><img
+            style="width: 70%"
+            src="https://images-na.ssl-images-amazon.com/images/I/71vbI6HxfpL._AC_SL1500_.jpg"
+            alt=""
+          />
+          
+        </div>
+        <div class="col s6"><h3>Handheld Mandoline Slicer</h3>
+        
+        <p>
+        <ul>
+        <li>
+        Three slice thickness settings. Non-slip handle and finger protection knob
+Perfect for slicing food, fruit and vegetables
+Dishwasher safe on the upper basket. OXO products are designed to last.
+Transparent window shows the slices created Holes on the handle for hanging it in the kitchen
+        </li>
+        </ul>
+        </p>
+        <h4>£9.99</h4>
+        <p class="center">Click here for more info...</p>
+          </div
+      ></a>
+    </div>
+  </li>
+  <hr>
+  <br>
+  <li>
+    <div class="row">
+      <a
+        href="https://www.amazon.co.uk/Spiralizer-Handheld-Vegetable-Slicer-Spaghetti/dp/B07WCZTGF2/ref=sr_1_5?dchild=1&keywords=zoodle&qid=1600005692&sr=8-5"
+      >
+        <div class="col s6">
+          <h3>Multipurpose Function Kitchen Tool Bottle 8 In 1</h3>
+        
+        <p>
+        <ul>
+        <li>
+        8 IN 1 PREMIUM KITCHEN HELPER: Combines 8 different kitchen tools into one, ZNOKA kitchen tool set includes a funnel, lemon squeezer, egg masher, spice grater, cheese grater, egg separator, cap opener and a 420ml measuring cup. All those parts stack together in the shape of a wine bottle.
+        </li>
+        </ul>
+        </p>
+
+        <h4>£9.99</h4>
+        <p class="center">Click here for more info...</p>
+        </div>
+        <div class="col s6">
+          <img
+            style="width: 70%;"
+            src="https://images-na.ssl-images-amazon.com/images/I/61s2IEFuSHL._AC_SL1200_.jpg"
+            alt=""
+          /></div
+      ></a>
+    </div>
+  </li>
+</ul>
+
+
+
+<ul class="row">
+{%for product in products %} 
+<div class="col s2">
+ {{product.product_name}}
+ </div>
+ {%endfor%}
+</ul>
+
+
+{%endblock%}
