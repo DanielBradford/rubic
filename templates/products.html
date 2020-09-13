@@ -32,7 +32,8 @@
         </ul>
         </p>
 
-        <h4>£9.99 <span class="large green badge">10% off with voucher code</span></h4>
+        <h4>£9.99   <button data-target="discount" class="btn green modal-trigger">10% off with voucher code <i class="fas fa-receipt"></i></button>
+
          <a
         href="https://www.amazon.co.uk/Spiralizer-Handheld-Vegetable-Slicer-Spaghetti/dp/B07WCZTGF2/ref=sr_1_5?dchild=1&keywords=zoodle&qid=1600005692&sr=8-5" target="_blank"
       ><p class="center">Click here for more info...</p></a>
@@ -42,7 +43,7 @@
       >
         <div class="col s6">
           <img
-            style="width: 70%;"
+            style="width: 100%;"
             src="https://images-na.ssl-images-amazon.com/images/I/61iMsAUTtrL._AC_SL1001_.jpg"
             alt=""
           /></div
@@ -57,8 +58,8 @@
          <a
         href="https://www.amazon.co.uk/OXO-Mandoline-Slicer-Stainless-Standard/dp/B000YDO2LG/ref=sr_1_5?dchild=1&keywords=potato+slicer&qid=1600006591&sr=8-5" target="_blank"
       ><div class="col s6"><img
-            style="width: 70%"
-            src="https://images-na.ssl-images-amazon.com/images/I/71vbI6HxfpL._AC_SL1500_.jpg"
+            style="width: 100%"
+            src="https://images-na.ssl-images-amazon.com/images/I/71fm2UKkPIL._AC_SL1500_.jpg"
             alt=""
           />
           
@@ -74,12 +75,11 @@
         </li>
         </ul>
         </p>
-        <h4>£9.99 <span class="green badge">10% off with voucher code</span></h4>
+        <h4>£9.99</h4> <button data-target="discount" class="btn green modal-trigger">10% off with voucher code <i class="fas fa-receipt"></i></button>
          <a
         href="https://www.amazon.co.uk/OXO-Mandoline-Slicer-Stainless-Standard/dp/B000YDO2LG/ref=sr_1_5?dchild=1&keywords=potato+slicer&qid=1600006591&sr=8-5" target="_blank"
       ><p class="center">Click here for more info...</p></a>
-          </div
-      >
+        </div>
     </div>
   </li>
   <hr>
@@ -100,7 +100,7 @@
         </ul>
         </p>
 
-        <h4>£9.99 <span class="green badge">10% off with voucher code</span></h4> 
+        <h4>£9.99 <button data-target="discount" class="btn green modal-trigger">10% off with voucher code <i class="fas fa-receipt"></i></button>
         <a
         href="https://www.amazon.co.uk/Spiralizer-Handheld-Vegetable-Slicer-Spaghetti/dp/B07WCZTGF2/ref=sr_1_5?dchild=1&keywords=zoodle&qid=1600005692&sr=8-5" target="_blank"
       ><p class="center">Click here for more info...</p></a>
@@ -109,7 +109,7 @@
         href="https://www.amazon.co.uk/Spiralizer-Handheld-Vegetable-Slicer-Spaghetti/dp/B07WCZTGF2/ref=sr_1_5?dchild=1&keywords=zoodle&qid=1600005692&sr=8-5" target="_blank"
       ><div class="col s6">
           <img
-            style="width: 70%;"
+            style="width: 100%;"
             src="https://images-na.ssl-images-amazon.com/images/I/61s2IEFuSHL._AC_SL1200_.jpg"
             alt=""
           /></div
@@ -119,8 +119,13 @@
   <hr>
 </ul>
 
+{{images}}
 
-<a href="{{link}}">TEST</a>
+{%for item in images%}
+<img src="{{item}}" alt="">
+{%endfor%}
+
+<a href="{{link}}" target="_blank">TEST</a>
 <div class="row center">
 {%for product in products %} 
 <div class="col s2">
@@ -129,5 +134,15 @@
  {%endfor%}
 </div>
 </div>
-
+<div id="discount" class="modal">
+    <div class="jumbotron modal-content center">
+      <h4> <i class="fas fa-at-chef"></i> RUBRIC DISCOUNT CODE</h4>
+      <hr>
+      <h5>Here is your unique discount code:</h5>
+      <strong><h5 style="background-color: rgba(255,255,240,0); color:goldenrod">RUBRIC10</h5></strong>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Thanks <i class="fas fa-thumbs-up"></i></a>
+    </div>
+  </div>
 {%endblock%}
