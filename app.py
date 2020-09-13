@@ -315,10 +315,10 @@ def add_new_recipe():
         if len(recipe_name) > 30:
             flash("Recipe name cannot be longer than 30 characters")
             return redirect(url_for('add_new_recipe'))
+        if len(recipe_name) == 0:
+            flash("Recipe name must be filled for registration")
+            return redirect(url_for("add_recipe"))
         recipe_type = request.form.get("type"),
-        # if  recipe_type not in :
-        #     flash("Please select from list")
-        #     return redirect(url_for('add_new_recipe'))
         appliance = request.form.get("appliance"),
         temperature = request.form.get("temperature"),
         cooking_time = request.form.get("time"),
@@ -544,6 +544,11 @@ def add_recipe_type():
             "type_name": request.form.get("type_name"),
             "type_desc": request.form.get("type_desc")
         }
+
+        type_name = request.form.get("type_name")
+        
+        type_desc = request.form.get("type_desc")
+
         mongo.db.type.insert_one(new_type)
         flash("Type Successfully Added")
         return redirect(url_for('manage'))
