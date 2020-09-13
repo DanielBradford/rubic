@@ -9,12 +9,12 @@
     </div>
   </div>
 </nav>
-
 <div class="row center-align jumbotron">
   <h1 class="saved col-8">
-    Saved Recipes (<span id="size">{{size}}</span>) <i class="fas fa-save"></i>
+    Saved Recipes (<span id="size">{{size}}</span>)
+    <i class="fas fa-thumbtack"></i>
   </h1>
-  <form method="POST" action="{{url_for('search')}}">
+  <form method="POST" action="{{url_for('search_saved')}}">
     <input
       type="search"
       name="search"
@@ -22,14 +22,19 @@
       id="searchbar"
       class="fas fa-search icon-search"
     />
-    <button class="btn-floating pulse" search-btn type="submit">
+    <button id="search-saved" class="btn-floating pulse" search-btn type="submit">
       <i class="fas fa-search"></i>
     </button>
   </form>
   <br />
 </div>
-
+<div id="saved-reset" class="row center"
+  ><a href="{{url_for('saved_recipes')}}"
+    ><button class="btn purple">
+      <i class="fas fa-redo"></i></button></a
+></div>
 <div class="row">
+  {% if recipes|length > 0 %}
   <ul class="collection col s12 m12">
     {%for item in recipes %} {% for x in check_list %} {% if item._id == x %}
     <li class="collection-item hoverable avatar col s12">
@@ -91,6 +96,9 @@
     </li>
     {% endif%}{%endfor%}{%endfor%}
   </ul>
+  {%else%}
+  <h1 class="red-text center">NO SAVED RECIPES FOUND</h1>
+  {%endif%}
 </div>
 
 {% endblock %}

@@ -38,6 +38,28 @@ def search():
     recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
     return render_template("recipes.html", recipes=recipes, types=types)
 
+
+@app.route("/search_saved", methods=["GET", "POST"])
+# function to allow user to search for recipes based
+# on recipe_name and ingredients index
+def search_saved():
+    user = session['user']
+    search = request.form.get("search")
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
+    saved_list = list(mongo.db.users.distinct(
+        "saved_recipes", {"user_name": user}))
+    # clears any empty entries
+    check_list = []
+    for item in saved_list:
+        if item == "":
+            continue
+        else:
+            check_list.append(item)
+    # length of the list shows the rating count
+    size = len(check_list)
+    return render_template("saved_recipes.html", recipes=recipes, types=types, check_list=check_list, size=size, user=user)
+
 # look at pep8 snake case better
 
 
@@ -212,40 +234,36 @@ def add_user():
             "password": generate_password_hash(request.form.get("password")),
             "vegan": vegan,
             "saved_recipes": []
-
         }
 
         # defensive programming validation
-        first_name = request.form.get("first_name")
-        last_name = request.form.get("last_name")
-        if len(first_name) or len(last_name) > 20:
-            flash("First Name and Last Name should be under 20 characters")
-            return redirect(url_for("register"))
-        email = request.form.get("email")
-        if len(email) > 20:
-            flash("Email should be under 20 characters")
-            return redirect(url_for("register"))
-        user_name = request.form.get("user_name")
-        if len(user_name) > 15:
-            flash("Email should be under 15 characters")
-            return redirect(url_for("register"))
+        # first_name = request.form.get("first_name")
+        # last_name = request.form.get("last_name")
+        # if len(first_name) or len(last_name) > 20:
+        #     flash("First Name and Last Name should be under 20 characters")
+        #     return redirect(url_for("register"))
+        # email = request.form.get("email")
+        # if len(email) > 20:
+        #     flash("Email should be under 20 characters")
+        #     return redirect(url_for("register"))
+        # user_name = request.form.get("user_name")
+        # if len(user_name) > 15:
+        #     flash("Email should be under 15 characters")
+        #     return redirect(url_for("register"))
         # password validaton
-        password = generate_password_hash(request.form.get("password"))
-        check = password.split()
+        # password = generate_password_hash(request.form.get("password"))
 
-
-        if first_name or last_name or email or user_name or password == "":
-            flash("All fields must be filled for registration")
-            return redirect(url_for("register"))
-
+        # checks fields are completed before submission
+        # if first_name or last_name or email or user_name or password == "":
+        #     flash("All fields must be filled for registration")
+        #     return redirect(url_for("register"))
         mongo.db.users.insert_one(register)
-
         # put new user in session cookie
         session["user"] = request.form.get("user_name")
         flash("Registration Successful!")
-        # log user in
+                # log user in
         return redirect(url_for(
-            "profile", user=session["user"]))
+                    "profile", user=session["user"]))
     return render_template("landing.html")
 
 
@@ -508,22 +526,13 @@ def add_recipe_type():
         }
         mongo.db.type.insert_one(new_type)
         flash("Type Successfully Added")
-        return render_template("management.html/", recipes=recipes, types=types, users=users)
+        return redirect(url_for('manage'))
 
     flash("Failed to add recipe type")
     return render_template("management.html/", recipes=recipes, types=types, users=users)
 
 
 # searches
-@app.route("/search_recipes", methods=["GET", "POST"])
-def search_recipes():
-    search = request.form.get("search")
-    types = list(mongo.db.type.find().sort("type_name", 1))
-    users = list(mongo.db.users.find().sort("last_name", 1))
-    recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
-
-    return render_template("management.html/", recipes=recipes, types=types, users=users, search=search)
-
 
 @app.route("/user_search", methods=["GET", "POST"])
 # function to allow user to search for recipes based
@@ -540,6 +549,7 @@ def user_search():
         return render_template("management.html", users=users, types=types, recipes=recipes, count=count, search=search)
     # returns results that match
     else:
+        flash("Search results:")
         return render_template("management.html", users=users, types=types, recipes=recipes, count=count, search=search)
 
 
