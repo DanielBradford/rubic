@@ -11,12 +11,30 @@ main {
   padding: 1em;
 }
 
+.flashes{
+    margin-bottom: 0;
+}
+
+.random-border{
+    border: solid rgb(218, 6, 105) 5px;
+}
+
 /* .stat{
     background-color: rgba(0, 151, 151, 0.466);
     border-radius: 50%;
 } */
 
 /* icons */
+
+.fas{
+    font-weight: 200;
+}
+
+#view_recipe .fas,
+.collection-item
+ .fas{
+    font-weight: 800;
+}
 
 .recipes i {
   color: teal;
@@ -129,6 +147,22 @@ nav {
   padding: 8px;
   background-color: white;
   color: teal;
+}
+
+.search:hover{
+    cursor: pointer;
+}
+#search-glass:hover{
+    color: white;
+    font-weight: 500;
+}
+
+.fa-times:hover{
+    color: red;
+}
+
+#saved-reset .btn {
+    border-radius: 1.4em;
 }
 
 /* text */
