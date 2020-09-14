@@ -576,6 +576,56 @@ def add_recipe_type():
     return render_template("management.html/", recipes=recipes, types=types, users=users)
 
 
+# adding tools
+@app.route("/add_tool", methods=["GET", "POST"])
+def add_tool():
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    users = list(mongo.db.users.find().sort("last_name", 1))
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+
+    if request.method == "POST":
+        new_product = {
+            "name": request.form.get("tool_name"),
+            "url": request.form.get("url"),
+            "image": request.form.get("image_url"),
+            "desc": request.form.get("tool_desc"),
+            "price": request.form.get("price")
+        }
+
+        mongo.db.products.insert_one(new_product)
+        flash("Product Successfully Added")
+        return redirect(url_for('manage'))
+
+    flash("Failed to add tool")
+    return render_template("management.html/", recipes=recipes,
+                           types=types, users=users)
+
+# adding products
+
+
+@app.route("/add_product", methods=["GET", "POST"])
+def add_product():
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    users = list(mongo.db.users.find().sort("last_name", 1))
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+
+    if request.method == "POST":
+        new_tool = {
+            "product_name": request.form.get("product_name"),
+            "url": request.form.get("url"),
+            "image_url": request.form.get("image_url"),
+            "product_desc": request.form.get("product_desc"),
+            "price": request.form.get("price")
+        }
+
+        mongo.db.tools.insert_one(new_tool)
+        flash("Product Successfully Added")
+        return redirect(url_for('manage'))
+
+    flash("Failed to add product")
+    return render_template("management.html/", recipes=recipes, types=types, users=users)
+
+
 # searches
 
 @app.route("/user_search", methods=["GET", "POST"])
@@ -612,6 +662,7 @@ def delete_user(username):
         flash("UNAUTHORISED ACCESS!")
         return redirect(url_for("home"))
 
+
 @app.route("/delete_product/<product>")
 def delete_product(product):
     # validate the user is admin
@@ -625,15 +676,15 @@ def delete_product(product):
     else:
         flash("UNAUTHORISED ACCESS!")
         return redirect(url_for("home"))
-    
+
 
 @app.route("/delete_tool/<tool>")
 def delete_tool(tool):
-     # validate the user is admin
+    # validate the user is admin
     if session['user'] == "admin":
         # javascript confirm confirms this action on frontend
-        mongo.db.tools.remove({"name": tool})
-        flash("User Successfully Deleted")
+        mongo.db.tools.remove({"_id": ObjectId(tool)})
+        flash("Tool Successfully Deleted")
         # check user exists if not 404 page
         # defensive programming verify admin possibly with password
         return redirect(url_for("manage"))
