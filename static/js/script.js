@@ -5,7 +5,6 @@ $(document).ready(function () {
   $(".dropdown-trigger").dropdown();
   $(".sidenav").sidenav();
   $(".modal").modal();
- 
 
   //   logout confirm function
   $(".logout").click(function () {
@@ -86,7 +85,9 @@ $(document).ready(function () {
   //   management template
   //   all user button
   $("#all_users").click(function () {
-    $("#user-table").toggle("slow");
+    $("#user-table").show("slow");
+    $("#types-table").hide("slow");
+    $("#prodsAndTools").hide("slow");
     $("#types-table").hide("slow");
   });
 
@@ -95,6 +96,7 @@ $(document).ready(function () {
     $("#recipe-table").show("slow");
     $("#user-table").hide("slow");
     $("#types-table").hide("slow");
+    $("#prodsAndTools").hide("slow");
   });
 
   // recipe types button
@@ -102,8 +104,16 @@ $(document).ready(function () {
     $("#types-table").show("slow");
     $("#recipe-table").hide("slow");
     $("#user-table").hide("slow");
+    $("#prodsAndTools").hide("slow");
   });
 
+    // Products and Tools button
+  $("#prodsAndTools-btn").click(function () {
+    $("#prodsAndTools").show("slow");
+    $("#recipe-table").hide("slow");
+    $("#user-table").hide("slow");
+    $("#types-table").hide("slow");
+  });
   // email confirmation
   $("#email_link").click(function () {
     if (confirm("Would you like to Email this User?")) {
@@ -135,6 +145,27 @@ $(document).ready(function () {
       return false; //----On cancel user returns to current screen------//
     }
   });
+  //   delete tool /product confirm
+  $("#delete-tool").click(function () {
+    if (
+      confirm(
+        "Are you sure you want to delete this tool? This action cannot be undone!"
+      )
+    ) {
+    } else {
+      return false; //----On cancel user returns to current screen------//
+    }
+  });
+  $("#delete-product").click(function () {
+    if (
+      confirm(
+        "Are you sure you want to delete this product? This action cannot be undone!"
+      )
+    ) {
+    } else {
+      return false; //----On cancel user returns to current screen------//
+    }
+  });
 
   //   add type button
   $("#add_type_show").click(function () {
@@ -142,6 +173,21 @@ $(document).ready(function () {
     $(".fa-chevron-down").toggle();
     $(".fa-times").toggle();
     $("#add_type").slideToggle("slow");
+  });
+
+  //add product
+  $("#add-product-btn").click(function () {
+    //   changes drop down icon to exit icon
+    $(".fa-chevron-down").toggle();
+    $(".fa-times").toggle();
+    $("#add_product").slideToggle("slow");
+  });
+  //add tool
+  $("#add-tool-btn").click(function () {
+    //   changes drop down icon to exit icon
+    $(".fa-chevron-down").toggle();
+    $(".fa-times").toggle();
+    $("#add_tool").slideToggle("slow");
   });
 
   //   searchbars
