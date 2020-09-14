@@ -19,6 +19,11 @@ main {
     border: solid rgb(218, 6, 105) 5px;
 }
 
+h4 .badge{
+    text-transform: uppercase;
+    color: white;
+}
+
 /* .stat{
     background-color: rgba(0, 151, 151, 0.466);
     border-radius: 50%;
@@ -165,6 +170,17 @@ nav {
     border-radius: 1.4em;
 }
 
+/* images */
+
+#products img{
+    width: 80%;
+}
+
+.products img{
+    height: auto;
+    width: auto;
+}
+
 /* text */
 
 body h1 {
@@ -243,18 +259,21 @@ table {
   font-family: "Gayathri", sans-serif;
   
 }
+
 .table{
      border-radius: 1.4em;
      max-height: 500px;
      min-height: auto;
      overflow:scroll;
+    
+}
 
+.table button{
+    z-index: 0;
 }
 
 
-tr{
-    width: auto;
-}
+
 
 table a{
     color: white;
@@ -294,6 +313,18 @@ form i {
 
 #view_recipe i {
   color: teal;
+}
+#view_recipe a{
+    color: coral;
+}
+#view_recipe a:hover{
+    text-decoration: underline;
+}
+
+
+#toast-container{
+    background-color: green;
+    color: white;
 }
 
 #view_recipe button i {
