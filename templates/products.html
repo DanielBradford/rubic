@@ -12,6 +12,8 @@
 <br>
 <ul>
 {% for tool in tools %}
+{%if tool.name =="Other" %}
+{%else%}
 {% if  loop.index %2 != 0 %}
   <li>
     <div class="row">
@@ -82,6 +84,7 @@
         </div>
     </div>
   </li>
+{%endif%}
 {%endif%}
 {% endfor %}
   <hr>
