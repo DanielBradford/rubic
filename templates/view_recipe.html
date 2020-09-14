@@ -57,7 +57,7 @@
         <div class="list center-align profile col s6">
           Appliance:
         </div>
-        <div class="center col s6">{{item.appliance}}{%for x in types%}{% if item.appliance == x.type_name %}<a href="{{x.url}}">{{x.url}}<i class="fas fa-arrow"></i></a>{%endif%}{%endfor%}</div>
+        <div class="center col s6">{%for x in products%}{% if item.appliance == x.product_name %}<a href="{{x.url}}" target="_blank">{{item.appliance}}  <i class="fab fa-amazon"></i></a>{%endif%}{%endfor%}</div>
       </div>
       <div class="row">
         <div class="list center-align profile col s6">
@@ -133,8 +133,8 @@
       </div>
     </div>
   </div>
-  <div class="row rate_me">
-    <div class="col s12">
+  <div class="row center rate_me">
+    <div class="col s12 center ">
       {% if item.created_by == session.user %} {%else%}
       <div id="rate" class="ing flow-text center-align col s12 m6">
         <h4>RATE ME <i class="star fas fa-star"></i></h4>
