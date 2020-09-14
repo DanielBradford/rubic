@@ -81,9 +81,6 @@ def my_recipes():
 def products():
     products = tools = list(mongo.db.products.find().sort("product_name", 1))
     tools = list(mongo.db.tools.find().sort("name", 1))
-
-    link = "https://www.amazon.co.uk/OXO-Mandoline-Slicer-Stainless-Standard/dp/B000YDO2LG/ref=sr_1_5?dchild=1&keywords=potato+slicer&qid=1600006591&sr=8-5"
-
     return render_template("products.html", tools=tools, products=products)
 
 # function logs user into the app
@@ -97,15 +94,8 @@ def manage():
         users = list(mongo.db.users.find().sort("last_name", 1))
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
         types = list(mongo.db.type.find().sort("type_name", 1))
-
-        # calculates amount of recipe contributions from each user
-        created = []
-        for user in users:
-            for recipe in recipes:
-                if user['user_name'] == recipe['created_by']:
-                    created.append(user['user_name'])
-
-        new = created.count(user['user_name'])
+        products = list(mongo.db.products.find().sort("product_name"))
+        tools = list(mongo.db.tools.find().sort("name"))
 
         # counts the amount of recipes with this recipe type
 
@@ -118,7 +108,7 @@ def manage():
         return render_template("landing.html",
                                users=users, recipes=recipes, types=types)
     return render_template("management.html",
-                           users=users, recipes=recipes, types=types, new=new)
+                           users=users, recipes=recipes, types=types, products=products, tools=tools)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -190,16 +180,6 @@ def recipe_list(recipe_type):
 
 @app.route("/view_recipe/<recipe_id>", methods=["GET", "POST"])
 def view_recipe(recipe_id):
-    # # rating functionality
-    # rating = list(mongo.db.recipes.distinct(
-    #     "rating", {"_id": ObjectId(recipe_id)}))
-    # count = len(rating)
-    # if count == 0:
-    #     current = "No ratings yet"
-    # else:
-    #     convert = [int(num) for num in rating]
-    #     # gets average from all ratings
-    #     current = (round(sum(convert)/len(convert), 1))
     try:
         recipe_id = recipe_id
         recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -213,7 +193,8 @@ def view_recipe(recipe_id):
 
         return render_template("view_recipe.html", recipe=recipe,
                                recipes=recipes, user_id=user_id,
-                               user=user, saved_list=saved_list, types=types, products=products)
+                               user=user, saved_list=saved_list,
+                               types=types, products=products)
 
     except:
         flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
@@ -306,7 +287,7 @@ def add_user():
     return render_template("landing.html")
 
 
-@app.route("/profile/", methods=["GET", "POST"])
+@app.route("/profile", methods=["GET", "POST"])
 def profile():
     user = session["user"]
     this_user = mongo.db.users.find_one({"user_name": user})
@@ -619,13 +600,45 @@ def user_search():
 # deleting records
 @app.route("/delete_user/<username>")
 def delete_user(username):
-    username = username
-    # javascript confirm confirms this action on frontend
-    mongo.db.users.remove({"user_name": username})
-    flash("User Successfully Deleted")
-    # check user exists if not 404 page
-    # defensive programming verify admin possibly with password
-    return redirect(url_for("manage"))
+    # validate the user is admin
+    if session['user'] == "admin":
+        # javascript confirm confirms this action on frontend
+        mongo.db.users.remove({"user_name": username})
+        flash("User Successfully Deleted")
+        # check user exists if not 404 page
+        # defensive programming verify admin possibly with password
+        return redirect(url_for("manage"))
+    else:
+        flash("UNAUTHORISED ACCESS!")
+        return redirect(url_for("home"))
+
+@app.route("/delete_product/<product>")
+def delete_product(product):
+    # validate the user is admin
+    if session['user'] == "admin":
+        # javascript confirm confirms this action on frontend
+        mongo.db.products.remove({"product_name": product})
+        flash("Product Successfully Deleted")
+        # check user exists if not 404 page
+        # defensive programming verify admin possibly with password
+        return redirect(url_for("manage"))
+    else:
+        flash("UNAUTHORISED ACCESS!")
+        return redirect(url_for("home"))
+    
+
+@app.route("/delete_tool/<tool>")
+def delete_tool(tool):
+     # validate the user is admin
+    if session['user'] == "admin":
+        # javascript confirm confirms this action on frontend
+        mongo.db.tools.remove({"name": tool})
+        flash("User Successfully Deleted")
+        # check user exists if not 404 page
+        # defensive programming verify admin possibly with password
+        return redirect(url_for("manage"))
+    flash("UNAUTHORISED ACCESS!")
+    return redirect(url_for("home"))
 
 
 if __name__ == '__main__':
