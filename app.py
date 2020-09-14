@@ -36,6 +36,7 @@ def search():
     search = request.form.get("search")
     types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.find({"$text": {"$search": search}}))
+    flash("{} Results for '{}'".format(len(recipes), search))
     return render_template("recipes.html", recipes=recipes, types=types)
 
 
@@ -58,7 +59,8 @@ def search_saved():
             check_list.append(item)
     # length of the list shows the rating count
     size = len(check_list)
-    return render_template("saved_recipes.html", recipes=recipes, types=types, check_list=check_list, size=size, user=user)
+    return render_template("saved_recipes.html", recipes=recipes, types=types,
+                           check_list=check_list, size=size, user=user)
 
 # look at pep8 snake case better
 
@@ -66,8 +68,8 @@ def search_saved():
 # displays recipes only created by current user
 
 
-@app.route("/myRecipes")
-def myRecipes():
+@app.route("/my_recipes")
+def my_recipes():
     # prevent users to cross to other clients recipe page
     user = session['user']
     recipes = list(mongo.db.recipes.find({"created_by": user}))
@@ -75,7 +77,18 @@ def myRecipes():
     return render_template("my_recipes.html", recipes=recipes, user=user)
 
 
+@app.route("/products")
+def products():
+    products = tools = list(mongo.db.products.find().sort("product_name", 1))
+    tools = list(mongo.db.tools.find().sort("name", 1))
+
+    link = "https://www.amazon.co.uk/OXO-Mandoline-Slicer-Stainless-Standard/dp/B000YDO2LG/ref=sr_1_5?dchild=1&keywords=potato+slicer&qid=1600006591&sr=8-5"
+
+    return render_template("products.html", tools=tools, products=products)
+
 # function logs user into the app
+
+
 @app.route("/manage")
 def manage():
     user = session["user"]
@@ -84,6 +97,18 @@ def manage():
         users = list(mongo.db.users.find().sort("last_name", 1))
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
         types = list(mongo.db.type.find().sort("type_name", 1))
+
+        # calculates amount of recipe contributions from each user
+        created = []
+        for user in users:
+            for recipe in recipes:
+                if user['user_name'] == recipe['created_by']:
+                    created.append(user['user_name'])
+
+        new = created.count(user['user_name'])
+
+        # counts the amount of recipes with this recipe type
+
     else:
         types = list(mongo.db.type.find().sort("type_name", 1))
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
@@ -93,7 +118,7 @@ def manage():
         return render_template("landing.html",
                                users=users, recipes=recipes, types=types)
     return render_template("management.html",
-                           users=users, recipes=recipes, types=types)
+                           users=users, recipes=recipes, types=types, new=new)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -139,7 +164,6 @@ def logout():
 @app.route("/register")
 def register():
     return render_template("register.html")
-    
 
 
 @app.route("/recipes")
@@ -185,15 +209,15 @@ def view_recipe(recipe_id):
         user_id = mongo.db.users.find_one({"user_name": user})
         saved_list = list(mongo.db.users.distinct(
             "saved_recipes", {"user_name": user}))
+        products = list(mongo.db.products.find().sort("product_name", 1))
 
         return render_template("view_recipe.html", recipe=recipe,
                                recipes=recipes, user_id=user_id,
-                               user=user, saved_list=saved_list, types=types)
+                               user=user, saved_list=saved_list, types=types, products=products)
 
     except:
         flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
         return render_template("guest.html")
-
 
 
 # routes user to the add recipe form template
@@ -233,7 +257,8 @@ def add_user():
             "user_name": request.form.get("user_name"),
             "password": generate_password_hash(request.form.get("password")),
             "vegan": vegan,
-            "saved_recipes": []
+            "saved_recipes": [],
+            "contributed": 0
         }
 
         # defensive programming validation
@@ -277,7 +302,7 @@ def add_user():
         flash("Registration Successful!")
         # log user in and take to profile
         return redirect(url_for(
-                    "profile", user=session["user"]))
+            "profile", user=session["user"]))
     return render_template("landing.html")
 
 
@@ -318,22 +343,21 @@ def add_new_recipe():
         if len(recipe_name) == 0:
             flash("Recipe name must be filled for registration")
             return redirect(url_for("add_recipe"))
-        recipe_type = request.form.get("type"),
-        appliance = request.form.get("appliance"),
-        temperature = request.form.get("temperature"),
-        cooking_time = request.form.get("time"),
-        ingredients = request.form.get("ingredients"),
+        ingredients = request.form.get("ingredients")
         if len(ingredients) > 100:
             flash("Ingredients over 100 character limit. Please condense and re-submit")
             return redirect(url_for("recipes"))
         vegan = vegan,
-        method = request.form.get("method"),
+        method = request.form.get("method")
         if len(method) > 200:
             flash("Method over 200 character limit. Please condense and re-submit")
             return redirect(url_for("recipes"))
 
         # validation defensive programming
         # adds new recipe to recipes collection
+        mongo.db.users.update({"user_name": session["user"]},
+                              {"$inc": {"contributed": 1}}
+                              )
         mongo.db.recipes.insert_one(new)
         flash("Recipe Successfully Added")
         return redirect(url_for("recipes"))
@@ -443,7 +467,7 @@ def delete_recipe(recipe_id):
         return redirect(url_for('manage'))
 
     else:
-        return redirect(url_for("myRecipes"))
+        return redirect(url_for("my_recipes"))
 
 
 # removes the recipe from the users saved list
@@ -524,12 +548,26 @@ def random():
 # deleting recipe types
 @app.route("/delete_recipe_type/<type_id>")
 def delete_recipe_type(type_id):
-    mongo.db.type.remove({"_id": ObjectId(type_id)})
-    flash("Recipe Type Successfully Deleted")
     types = list(mongo.db.type.find().sort("type_name", 1))
     users = list(mongo.db.users.find().sort("last_name", 1))
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-    return render_template("management.html/", recipes=recipes, types=types, users=users)
+
+    # # verifies if an item in that category exists and prevents deletion
+    # for item in types:
+    #     for recipe in recipes:
+    #         search = list(mongo.db.recipes.find({recipe["type"]: item['type_name']}))
+    #         if len(search) > 0:
+    #             flash("THIS TYPE HAS RECIPES. CANNOT DELETE!")
+    #             return render_template("management.html/",
+    #                                 recipes=recipes, types=types, users=users)
+    #         elif len(search) == 0:
+    #             mongo.db.type.remove({"_id": ObjectId(type_id)})
+    #             flash("Recipe Type Successfully Deleted")
+    #             return render_template("management.html/", recipes=recipes,
+    #                        types=types, users=users)
+
+    return render_template("management.html/", recipes=recipes,
+                           types=types, users=users)
 
 
 # adding recipe types
@@ -546,7 +584,7 @@ def add_recipe_type():
         }
 
         type_name = request.form.get("type_name")
-        
+
         type_desc = request.form.get("type_desc")
 
         mongo.db.type.insert_one(new_type)
@@ -574,7 +612,7 @@ def user_search():
         return render_template("management.html", users=users, types=types, recipes=recipes, count=count, search=search)
     # returns results that match
     else:
-        flash("Search results:")
+        flash("Search results: {} for '{}'".format(len(users), search))
         return render_template("management.html", users=users, types=types, recipes=recipes, count=count, search=search)
 
 
