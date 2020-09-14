@@ -4,6 +4,7 @@ $(document).ready(function () {
   $(".collapsible").collapsible();
   $(".dropdown-trigger").dropdown();
   $(".sidenav").sidenav();
+  $('.modal').modal();
 
   //   logout confirm function
   $("#logout").click(function () {
@@ -88,7 +89,7 @@ $("#random-btn").click(function(){
 
   // recipes button
   $("#recipes-btn").click(function () {
-    $("#recipe-table").toggle("slow");
+    $("#recipe-table").show("slow");
     $("#user-table").hide("slow");
     $("#types-table").hide("slow");
   });
