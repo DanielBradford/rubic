@@ -4,6 +4,9 @@
   <h1 class="center-align jumbotron">
     Edit Recipe <i class="fas fa-pencil"></i>
   </h1>
+  <div class="row center">
+  <button class="back btn red">Cancel Edit <i class="fas fa-backspace"></i></button>
+  </div>
   <form
     class="flow-text col s12 m8 offset-m2"
     method="POST"
@@ -26,16 +29,17 @@
           <i class="fas fa-folder-open prefix"></i>
           <select class="icons" name="type" required>
             <option value="" disabled>Recipe Type</option>
-            {% for type in types %}
-            {% if type.type_name == recipe.type %}
-            <option value="{{ type.type_name }}" data-icon="images/sample-1.jpg" selected
+            {% for type in types %} {% if type.type_name == recipe.type %}
+            <option
+              value="{{ type.type_name }}"
+              data-icon="images/sample-1.jpg"
+              selected
               >{{ type.type_name }}</option
             >{%else%}
             <option value="{{ type.type_name }}" data-icon="images/sample-1.jpg"
               >{{ type.type_name }}</option
             >
-            {%endif%}
-            {% endfor %}
+            {%endif%} {% endfor %}
           </select>
           <label>Recipe Type</label>
         </div>
@@ -45,13 +49,16 @@
           <i class="fas fa-fire prefix"></i>
           <select name="appliance">
             <option value="" selected disabled>Choose your option</option>
-            {%for product in products %}
-            {% if product.product_name == recipe.appliance %}
-            <option selected value="{{product.product_name}}">{{product.product_name}}</option>
+            {%for product in products %} {% if product.product_name ==
+            recipe.appliance %}
+            <option selected value="{{product.product_name}}"
+              >{{product.product_name}}</option
+            >
             {%else %}
-            <option value="{{product.product_name}}">{{product.product_name}}</option>
-            {% endif %}
-            {% endfor %}
+            <option value="{{product.product_name}}"
+              >{{product.product_name}}</option
+            >
+            {% endif %} {% endfor %}
           </select>
           <label>Appliance</label>
         </div>
@@ -60,13 +67,11 @@
           <select name="temperature">
             <option disabled>Choose your option</option>
             <option value="N/A">N/A</option>
-            {% for i in range(100,300, 10) %}
-            {% if i == recipe.temperature %}
-            <option value="{{i}}" selected>{{i}} °C</option>
+            {% for i in range(100,300, 10) %} {% if i == recipe.temperature %}
+            <option selected value="{{i}}">{{i}} °C</option>
             {%else%}
-            <option value="{{i}}" >{{i}} °C</option>
-            {% endif %}
-            {% endfor %}
+            <option value="{{i}}">{{i}} °C</option>
+            {% endif %} {% endfor %}
           </select>
           <label>Temperature</label>
         </div>
@@ -76,13 +81,13 @@
           <i class="fas fa-stopwatch prefix"></i>
           <select name="time">
             <option disabled>Choose your option</option>
-            {% for i in range(0,120, 5) %}
-            {% if i == recipe.cooking_time %}
-            <option value="{{i}}" selected>{{i}} minutes</option>
+            {% for i in range(0,120, 5) %} {% if i == recipe.cooking_time %}
+            <option selected value="{{i}}"
+              >{{i}} minutes</option
+            >
             {%else%}
             <option value="{{i}}">{{i}} minutes</option>
-            {% endif %}
-            {% endfor %}
+            {% endif %} {% endfor %}
           </select>
           <label>Cooking Time</label>
         </div>
