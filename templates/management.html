@@ -1,9 +1,7 @@
 {% extends 'base.html' %}{% block content %}
 <div class="row">
   <div class="center row">
-    <h1 class="">
-      Management <i class="fas fa-cogs"></i>
-    </h1>
+    <h1 class="">Management <i class="fas fa-cogs"></i></h1>
   </div>
   <hr />
   <br />
@@ -41,7 +39,7 @@
     <div class="table col light-blue white-text s12">
       <table class="highlight">
         <span class="col 2 right"
-          ><a style="positon:absolute" href="{{url_for('register')}}"
+          ><a style="positon: absolute;" href="{{url_for('register')}}"
             ><button class="green btn">
               Add User <i class="fas fa-user"></i></button></a
           ><a href="{{url_for('manage')}}"
@@ -98,8 +96,12 @@
           {% for item in users %}
           <tr style="overflow: auto;">
             <td>{{loop.index}}</td>
-            <td>{{item.user_name}} {% if item.vegan =="Yes" %} 
-  <a onclick="M.toast({html: 'This User is Vegan'})"><i class="fab fa-envira"></i></a>{%else%}{%endif%}</td>
+            <td>
+              {{item.user_name}} {% if item.vegan =="Yes" %}
+              <a onclick="M.toast({html: 'This User is Vegan'})"
+                ><i class="fab fa-envira"></i></a
+              >{%else%}{%endif%}
+            </td>
             <td>{{item.last_name}}</td>
             <td class="hide-on-small-only">{{item.first_name}}</td>
             <td class="hide-on-small-only">
@@ -151,7 +153,9 @@
             <th></th>
             <th>Recipe Name <i class="fas fa-sort-alpha-down"></i></th>
             <th>Recipe Type <i class="fas fa-filter"></i></th>
-            <th class="hide-on-small-only">Rating <i class="fas fa-star"></i></th>
+            <th class="hide-on-small-only">
+              Rating <i class="fas fa-star"></i>
+            </th>
             <th>Created By <i class="fas fa-hammer"></i></th>
             <th>Delete Recipe</th>
           </tr>
@@ -188,7 +192,7 @@
         <div class="row">
           <span class="col s6"
             ><h3>
-              Recipe Types <i class="fas fa-filter"></i> ({{types|length}})
+              Recipe Type <i class="fas fa-filter"></i> ({{types|length}})
             </h3></span
           ><button id="add_type_show" class="col s6 btn green right">
             Create Recipe Type <i class="fas fa-hammer"></i
@@ -256,12 +260,271 @@
             <td>{{item.type_name}}</td>
             <td style="width: 60%;">{{item.type_desc}}</td>
             <td>
-              {%for recipe in recipes%}{%if recipe.type ==
-              item.type_name%} <i class="fas fa-bookmark"></i> {%endif%}{%endfor%}
+              {%for recipe in recipes%}{%if recipe.type == item.type_name%}
+              <i class="fas fa-bookmark"></i> {%endif%}{%endfor%}
             </td>
             <td>
               <a href="{{url_for('delete_recipe_type', type_id=item._id) }}"
                 ><button id="delete-type-btn" class="red btn">
+                  <i class="fas fa-trash"></i></button
+              ></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br />
+  <div id="products-table" class="row">
+    <div class="table centered col green s6">
+      <table class="striped">
+        <div class="row">
+          <span class="col s6"
+            ><h3>
+              Products
+              <i class="fas fa-oven"></i> ({{products|length}})
+            </h3></span
+          ><button
+            id="add-product-btn"
+            class="col s6 btn white green-text right"
+          >
+            Add Product <i class="white green-text fas fa-plus"></i
+            ><i hidden class="right green-text fas fa-times"></i
+            ><i class="green-text right fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div
+          hidden
+          id="add_product"
+          class="row"
+          style="padding: 1em; padding-bottom: none; margin-bottom: none;"
+        >
+          <form
+            class="col s12"
+            method="POST"
+            action="{{url_for('add_recipe_type')}}"
+          >
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="fas fa-filter prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  name="product_name"
+                  id="product_name"
+                  type="text"
+                  class="validate center"
+                />
+                <label for="product_name">Product Name</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="fas fa-pencil prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  id="description"
+                  name="product_desc"
+                  type="text"
+                  class="validate center"
+                />
+                <label for="description">Product Description</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="fas fa-map-marker prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  id="url"
+                  name="url"
+                  type="text"
+                  class="validate center"
+                />
+                <label for="url">Product URL</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="fas fa-image prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  id="image_url"
+                  name="image_url"
+                  type="text"
+                  class="validate center"
+                />
+                <label for="image_url">Image URL</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="fas fa-pound-sign prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  id="price"
+                  name="price"
+                  type="text"
+                  class="validate center"
+                />
+                <label for="price">Price</label>
+              </div>
+              <div class="col s6 center">
+                <button type="submit" class="btn white green-text center">
+                  Add Type <i class="green-text fas fa-plus-circle"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+          <hr />
+        </div>
+        <thead class="center-align">
+          <tr class="dark-blue-text">
+            <th></th>
+            <th>Name <i class="fas fa-tag"></i></th>
+            <th>Description <i class="fas fa-info"></i></th>
+
+            <th>Price</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for item in products %}
+          <tr class="white-text">
+            <td>{{loop.index}}</td>
+            <a href="{{item.url}}"><td>{{item.product_name}}</td></a>
+            <td class="truncate">{{item.product_desc}}</td>
+            <td>
+              £{{item.price}}
+            </td>
+            <td>
+              <a href="{{url_for('delete_recipe_type', type_id=item._id) }}"
+                ><button id="delete-product-btn" class="red btn">
+                  <i class="fas fa-trash"></i></button
+              ></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="table centered col white border-green s6">
+      <table class="striped">
+        <div class="row">
+          <span class="col s6"
+            ><h3>
+              Tools
+              <i class="fas fa-blender"></i> ({{tools|length}})
+            </h3></span
+          ><button
+            id="add-tool-btn"
+            class="col s6 btn white green-text right"
+          >
+            Add Tool <i class="green-text fas fa-plus"></i
+            ><i hidden class="right  green-text fas fa-times"></i
+            ><i class="green-text right fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div
+          hidden
+          id="add_tool"
+          class="row"
+          style="padding: 1em; padding-bottom: none; margin-bottom: none;"
+        >
+          <form
+            class="col s12"
+            method="POST"
+            action="{{url_for('add_recipe_type')}}"
+          >
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="fas fa-filter prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  name="tool_name"
+                  id="tool_name"
+                  type="text"
+                  class="validate center"
+                />
+                <label for="tool_name">Tool Name</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="fas fa-pencil prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  id="description"
+                  name="tool_desc"
+                  type="text"
+                  class="validate center"
+                />
+                <label for="tool_desc">Tool Description</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="fas fa-map-marker prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  id="url"
+                  name="url"
+                  type="text"
+                  class="validate center"
+                />
+                <label for="url">Tool URL</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="fas fa-image prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  id="image_url"
+                  name="image_url"
+                  type="text"
+                  class="validate center"
+                />
+                <label for="image_url">Image URL</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="fas fa-pound-sign prefix"></i>
+                <input
+                  style="border-radius: 1.4em; background-color: white;"
+                  id="price"
+                  name="price"
+                  type="text"
+                  class="validate center"
+                />
+                <label for="price">Price</label>
+              </div>
+              <div class="col s6 center">
+                <button type="submit" class="btn green white-text center">
+                  Add Tool <i class="white-text green fas fa-plus-circle"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+          <hr />
+        </div>
+        <thead class="center-align">
+          <tr class="dark-blue-text">
+            <th></th>
+            <th>Name <i class="fas fa-tag"></i></th>
+            <th>Description <i class="fas fa-info"></i></th>
+
+            <th>Price</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for item in tools %}
+          <tr class="green-text">
+            <td>{{loop.index}}</td>
+            <a href="{{item.url}}"><td>{{item.name}}</td></a>
+            <td class="truncate">{{item.desc}}</td>
+            <td>
+              £{{item.price}}
+            </td>
+            <td>
+              <a href="#"
+                ><button id="delete-tool-btn" class="red btn">
                   <i class="fas fa-trash"></i></button
               ></a>
             </td>
