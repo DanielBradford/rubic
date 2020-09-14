@@ -12,24 +12,24 @@
         id="all_users"
         name="users"
         class="hoverable center-align light-blue btn-large"
-        >Users<i class="fas fa-sort-alpha-down"></i
+        >Users <br><i class="fas fa-sort-alpha-down"></i
       ></a>
     </div>
     <div class="col s6 m3">
       <a id="recipes-btn" class="hoverable center-align pink btn-large"
-        >Recipes <i class="fas fa-books"></i>
+        >Recipes <br><i class="fas fa-books"></i>
       </a>
     </div>
     <div class="col s6 m3">
       <a
         id="types-btn"
         class="hoverable center-align #ff6e40 deep-orange accent-2 btn-large"
-        >Recipe Types <i class="fas fa-filter"></i
+        >Recipe Types <br><i class="fas fa-filter"></i
       ></a>
     </div>
     <div class="col s6 m3">
-      <a href="#" class="hoverable center-align green btn-large"
-        >Products & Tools <i class="fas fa-blender"></i
+      <a id="prodsAndTools-btn" class="hoverable center-align green btn-large"
+        >Products & Tools <br><i class="fas fa-blender"></i
       ></a>
     </div>
   </div>
@@ -100,6 +100,8 @@
               {{item.user_name}} {% if item.vegan =="Yes" %}
               <a onclick="M.toast({html: 'This User is Vegan'})"
                 ><i class="fab fa-envira"></i></a
+              >{%elif item.contributed >= 5 %}<a onclick="M.toast({html: 'STAR MEMBER: Over 5 recipes contributed'})"
+                ><i class="fas fa-star"></i></a
               >{%else%}{%endif%}
             </td>
             <td>{{item.last_name}}</td>
@@ -283,7 +285,7 @@
           <span class="col s6"
             ><h3>
               Products
-              <i class="fas fa-oven"></i> ({{products|length}})
+              <i class="fas fa-microwave"></i> ({{products|length}})
             </h3></span
           ><button
             id="add-product-btn"
