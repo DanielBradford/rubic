@@ -1,7 +1,7 @@
 {% extends 'base.html' %}{% block content %}
 <div class="row">
   <div class="center row">
-    <h1 class="">Management <i class="fas fa-cogs"></i></h1>
+    <h1 class="flow-text">Management <i class="fas fa-cogs"></i></h1>
   </div>
   <hr />
   <br />
@@ -12,24 +12,24 @@
         id="all_users"
         name="users"
         class="hoverable center-align light-blue btn-large"
-        >Users <br><i class="fas fa-sort-alpha-down"></i
+        >Users <br><i class="hide-on-small-only fas fa-sort-alpha-down"></i
       ></a>
     </div>
     <div class="col s6 m3">
       <a id="recipes-btn" class="hoverable center-align pink btn-large"
-        >Recipes <br><i class="fas fa-books"></i>
+        >Recipes <br><i class="hide-on-small-only fas fa-books"></i>
       </a>
     </div>
     <div class="col s6 m3">
       <a
         id="types-btn"
         class="hoverable center-align #ff6e40 deep-orange accent-2 btn-large"
-        >Recipe Types <br><i class="fas fa-filter"></i
+        >Recipe Types <br><i class="hide-on-small-only fas fa-filter"></i
       ></a>
     </div>
     <div class="col s6 m3">
       <a id="prodsAndTools-btn" class="hoverable center-align green btn-large"
-        >Products & Tools <br><i class="fas fa-blender"></i
+        >Products & Tools <br><i class="hide-on-small-only fas fa-blender"></i
       ></a>
     </div>
   </div>
@@ -214,7 +214,7 @@
             action="{{url_for('add_recipe_type')}}"
           >
             <div class="row">
-              <div class="input-field col s6">
+              <div class="input-field col s12 m6">
                 <i class="fas fa-filter prefix"></i>
                 <input
                   style="border-radius: 1.4em; background-color: white;"
@@ -225,7 +225,7 @@
                 />
                 <label for="type_name">Recipe Type Name</label>
               </div>
-              <div class="input-field col s6">
+              <div class="input-field col s12 m6">
                 <i class="fas fa-pencil prefix"></i>
                 <input
                   style="border-radius: 1.4em; background-color: white;"
@@ -279,7 +279,7 @@
   </div>
   <br />
   <div id="prodAndTools" class="row">
-    <div id="products-table" class="table centered col green s6">
+    <div id="products-table" class="table centered col green s12 m6">
       <table class="striped">
         <div class="row">
           <span class="col s6"
@@ -410,7 +410,7 @@
         </tbody>
       </table>
     </div>
-    <div id="tools-table" class="table centered col white border-green s6">
+    <div id="tools-table" class="table centered col white border-green s12 m6">
       <table class="striped">
         <div class="row">
           <span class="col s6"
