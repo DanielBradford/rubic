@@ -268,11 +268,22 @@ table {
     
 }
 
+.table label{
+    padding-left: 1em;
+}
+
+.table label::after{
+    color: white;
+}
+
 .table button{
     z-index: 0;
 }
 
-
+#products-table,
+#tools-table{
+    border: solid 1px green;
+}
 
 
 table a{
@@ -282,6 +293,10 @@ table a:hover{
     text-decoration: underline;
     color: darkblue;
     text-shadow: none;
+}
+tr td{
+    width: 180px;
+    overflow: hidden;
 }
 
 /* forms and cards */
@@ -329,6 +344,10 @@ form i {
 
 #view_recipe button i {
   color: white;
+}
+
+#tools-table input{
+    border: solid 1px green;
 }
 
 /* images */
