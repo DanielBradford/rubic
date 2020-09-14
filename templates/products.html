@@ -3,7 +3,7 @@
 <div id="products" class="row">
 <div class="row jumbotron center">
   <h1 class="center-align">
-    Products <i class="fas fa-blender"></i></h1>
+    Top Tools & Products <i class="fas fa-blender"></i></h1>
     <h3 id="welcome">Our top recommended products and tools...</h3>
     <br>
   
@@ -11,126 +11,94 @@
 <hr>
 <br>
 <ul>
+{% for tool in tools %}
+{% if  loop.index %2 != 0 %}
   <li>
     <div class="row">
      
         <div class="col s6">
          <a
-        href="https://www.amazon.co.uk/Spiralizer-Handheld-Vegetable-Slicer-Spaghetti/dp/B07WCZTGF2/ref=sr_1_5?dchild=1&keywords=zoodle&qid=1600005692&sr=8-5" target="_blank"
+        href="{{tool.url}}" target="_blank"
       >
-          <h3>ZOODLE MAKER</h3></a>
+          <h3>{{tool.name}}</h3></a>
         
         <p>
         <ul>
         <li>
-        Spiralizer vegetable
-          slicer is made of high quality and eco-friendly ABS plastic (BPA free)
-          +304 food grade stainless steel. Due to its compact size, plastic
-          takes up minimal space and fits comfortably in the hand - for precise
-          and safe cutting. 
+        {{tool.desc}}
         </li>
         </ul>
         </p>
 
-        <h4>£9.99   <button data-target="discount" class="btn green modal-trigger">10% off with voucher code <i class="fas fa-receipt"></i></button>
+        <div class="center"><h4 class="center">£{{tool.price}}</h4>  <button data-target="discount" class=" btn green modal-trigger">10% off with voucher code <i class="fas fa-receipt"></i></button></div>
 
          <a
-        href="https://www.amazon.co.uk/Spiralizer-Handheld-Vegetable-Slicer-Spaghetti/dp/B07WCZTGF2/ref=sr_1_5?dchild=1&keywords=zoodle&qid=1600005692&sr=8-5" target="_blank"
+        href="{{tool.url}}" target="_blank"
       ><p class="center">Click here for more info...</p></a>
         </div>
          <a
-        href="https://www.amazon.co.uk/Spiralizer-Handheld-Vegetable-Slicer-Spaghetti/dp/B07WCZTGF2/ref=sr_1_5?dchild=1&keywords=zoodle&qid=1600005692&sr=8-5" target="_blank"
+        href="{{tool.url}}" target="_blank"
       >
         <div class="col s6">
           <img
-            style="width: 100%;"
-            src="https://images-na.ssl-images-amazon.com/images/I/61iMsAUTtrL._AC_SL1001_.jpg"
+            src="{{tool.image}}"
             alt=""
           /></div
       ></a>
     </div>
   </li>
-  <hr>
-  <br>
-  <li>
+{% else %}
+<li>
     <div class="row">
+     <a
+        href="{{tool.url}}" target="_blank"
+      >
+        <div class="col s6">
+          <img
+            src="{{tool.image}}"
+            alt=""
+          /></div
+      ></a>
      
-         <a
-        href="https://www.amazon.co.uk/OXO-Mandoline-Slicer-Stainless-Standard/dp/B000YDO2LG/ref=sr_1_5?dchild=1&keywords=potato+slicer&qid=1600006591&sr=8-5" target="_blank"
-      ><div class="col s6"><img
-            style="width: 100%"
-            src="https://images-na.ssl-images-amazon.com/images/I/71fm2UKkPIL._AC_SL1500_.jpg"
-            alt=""
-          />
-          
-        </div></a>
-        <div class="col s6"> <a
-        href="https://www.amazon.co.uk/OXO-Mandoline-Slicer-Stainless-Standard/dp/B000YDO2LG/ref=sr_1_5?dchild=1&keywords=potato+slicer&qid=1600006591&sr=8-5" target="_blank"
-      ><h3>Handheld Mandoline Slicer</h3></a>
-        
-        <p>
-        <ul>
-        <li>
-        Three slice thickness settings. Non-slip handle and finger protection knob. Perfect for slicing food, fruit and vegetables. Dishwasher safe on the upper basket. OXO products are designed to last. Transparent window shows the slices created Holes on the handle for hanging it in the kitchen
-        </li>
-        </ul>
-        </p>
-        <h4>£9.99</h4> <button data-target="discount" class="btn green modal-trigger">10% off with voucher code <i class="fas fa-receipt"></i></button>
-         <a
-        href="https://www.amazon.co.uk/OXO-Mandoline-Slicer-Stainless-Standard/dp/B000YDO2LG/ref=sr_1_5?dchild=1&keywords=potato+slicer&qid=1600006591&sr=8-5" target="_blank"
-      ><p class="center">Click here for more info...</p></a>
-        </div>
-    </div>
-  </li>
-  <hr>
-  <br>
-  <li>
-    <div class="row">
-      
         <div class="col s6">
-          <a
-        href="https://www.amazon.co.uk/Spiralizer-Handheld-Vegetable-Slicer-Spaghetti/dp/B07WCZTGF2/ref=sr_1_5?dchild=1&keywords=zoodle&qid=1600005692&sr=8-5" target="_blank"
-      ><h3>Multipurpose Function Kitchen Tool Bottle 8 In 1</h3></a>
+         <a
+        href="{{tool.url}}" target="_blank"
+      >
+          <h3>{{tool.name}}</h3></a>
         
         <p>
         <ul>
         <li>
-        8 IN 1 PREMIUM KITCHEN HELPER: Combines 8 different kitchen tools into one, ZNOKA kitchen tool set includes a funnel, lemon squeezer, egg masher, spice grater, cheese grater, egg separator, cap opener and a 420ml measuring cup. All those parts stack together in the shape of a wine bottle.
+        {{tool.desc}}
         </li>
         </ul>
         </p>
 
-        <h4>£9.99 <button data-target="discount" class="btn green modal-trigger">10% off with voucher code <i class="fas fa-receipt"></i></button>
-        <a
-        href="https://www.amazon.co.uk/Spiralizer-Handheld-Vegetable-Slicer-Spaghetti/dp/B07WCZTGF2/ref=sr_1_5?dchild=1&keywords=zoodle&qid=1600005692&sr=8-5" target="_blank"
+        <div class="center"><h4 class="center">£{{tool.price}}</h4>  <button data-target="discount" class=" btn green modal-trigger">10% off with voucher code <i class="fas fa-receipt"></i></button></div>
+
+         <a
+        href="{{tool.url}}" target="_blank"
       ><p class="center">Click here for more info...</p></a>
         </div>
-        <a
-        href="https://www.amazon.co.uk/Spiralizer-Handheld-Vegetable-Slicer-Spaghetti/dp/B07WCZTGF2/ref=sr_1_5?dchild=1&keywords=zoodle&qid=1600005692&sr=8-5" target="_blank"
-      ><div class="col s6">
-          <img
-            style="width: 100%;"
-            src="https://images-na.ssl-images-amazon.com/images/I/61s2IEFuSHL._AC_SL1200_.jpg"
-            alt=""
-          /></div
-      ></a>
     </div>
   </li>
+{%endif%}
+{% endfor %}
   <hr>
+  <br>
+
 </ul>
-
-{{images}}
-
-{%for item in images%}
-<img src="{{item}}" alt="">
-{%endfor%}
-
-<a href="{{link}}" target="_blank">TEST</a>
-<div class="row center">
+<div class="products row center">
+<h3><i class="fab fa-amazon"></i></h3>
+<h3> Our recommended apppliances:</h3>
+<br>
 {%for product in products %} 
-<div class="col s2">
- {{product.product_name}}
- </div>
+<a href="{{product.url}}">
+<span class="center col s2">
+{{product.product_name}}:
+ <img src="{{product.image_url}}" alt="{{product.product_name}}">
+ </span>
+ </a>
  {%endfor%}
 </div>
 </div>
@@ -139,7 +107,7 @@
       <h4> <i class="fas fa-at-chef"></i> RUBRIC DISCOUNT CODE</h4>
       <hr>
       <h5>Here is your unique discount code:</h5>
-      <strong><h5 style="background-color: rgba(255,255,240,0); color:goldenrod">RUBRIC10</h5></strong>
+      <strong><h5 style="background-color: rgba(255,255,240,0); color:goldenrod">RUBRIC10 <i class="fas fa-copy"></i></h5></strong>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Thanks <i class="fas fa-thumbs-up"></i></a>
