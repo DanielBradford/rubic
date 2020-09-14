@@ -4,10 +4,11 @@ $(document).ready(function () {
   $(".collapsible").collapsible();
   $(".dropdown-trigger").dropdown();
   $(".sidenav").sidenav();
-  $('.modal').modal();
+  $(".modal").modal();
+ 
 
   //   logout confirm function
-  $("#logout").click(function () {
+  $(".logout").click(function () {
     if (confirm("Are you sure you want to logout?")) {
     } else {
       return false; //----On cancel user returns to current screen------//
@@ -29,6 +30,9 @@ $(document).ready(function () {
 
   //   back button for breadcrumb nav
 
+  $("#back").click(function () {
+    window.history.back();
+  });
   $(".back").click(function () {
     window.history.back();
   });
@@ -59,11 +63,10 @@ $(document).ready(function () {
     $(this).removeClass("pulse");
   });
 
-//   random button border add
-$("#random-btn").click(function(){
+  //   random button border add
+  $("#random-btn").click(function () {
     $(".collection-item").addClass("random-border");
-
-});
+  });
 
   // Shows all recipes
   $("#allRecipes").click(function () {
