@@ -573,7 +573,8 @@ def add_recipe_type():
         return redirect(url_for('manage'))
 
     flash("Failed to add recipe type")
-    return render_template("management.html/", recipes=recipes, types=types, users=users)
+    return render_template("management.html/",
+                           recipes=recipes, types=types, users=users)
 
 
 # adding tools
@@ -584,7 +585,7 @@ def add_tool():
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
 
     if request.method == "POST":
-        new_product = {
+        new_tool = {
             "name": request.form.get("tool_name"),
             "url": request.form.get("url"),
             "image": request.form.get("image_url"),
@@ -592,8 +593,8 @@ def add_tool():
             "price": request.form.get("price")
         }
 
-        mongo.db.products.insert_one(new_product)
-        flash("Product Successfully Added")
+        mongo.db.tools.insert_one(new_tool)
+        flash("Tool Successfully Added")
         return redirect(url_for('manage'))
 
     flash("Failed to add tool")
@@ -617,6 +618,7 @@ def add_product():
             "product_desc": request.form.get("product_desc"),
             "price": request.form.get("price")
         }
+
 
         mongo.db.tools.insert_one(new_tool)
         flash("Product Successfully Added")
