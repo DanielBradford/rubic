@@ -1,7 +1,7 @@
 {% extends 'base.html' %}{%block content %}
 
 <div class="row jumbotron center-align">
-  <h1 class=" ">My Recipes</h1>
+  <h1 class=" ">My Recipes ({{this_user.contributed}})</h1>
   <form method="POST" action="{{url_for('search')}}">
     <input
       type="search"

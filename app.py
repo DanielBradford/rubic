@@ -72,9 +72,11 @@ def search_saved():
 def my_recipes():
     # prevent users to cross to other clients recipe page
     user = session['user']
+    this_user = mongo.db.users.find_one({"user_name": user})
     recipes = list(mongo.db.recipes.find({"created_by": user}))
 
-    return render_template("my_recipes.html", recipes=recipes, user=user)
+    return render_template("my_recipes.html",
+                           recipes=recipes, this_user=this_user)
 
 
 @app.route("/products")
@@ -618,7 +620,6 @@ def add_product():
             "product_desc": request.form.get("product_desc"),
             "price": request.form.get("price")
         }
-
 
         mongo.db.tools.insert_one(new_tool)
         flash("Product Successfully Added")
