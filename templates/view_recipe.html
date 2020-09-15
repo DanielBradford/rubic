@@ -24,8 +24,9 @@
         %}{%else%} ({{item.rating|length}}){% endif %}</span
       >
     </div>
-    {% if item.created_by == session.user %}
+    
     <div class="center col s12">
+    {% if item.created_by == session.user %}
       <span
         ><a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
           ><button class="delete-btn">
@@ -39,12 +40,14 @@
       {%else %} {% if item._id in saved_list %}
       <span id="saved"><h4 class="flow-text">SAVED <i class="fas fa-thumbtack"></i></h4></span>
       {%else%}
-      <a href="{{url_for('save_recipe', recipe_id=item._id)}}"
-        ><button id="save-btn">
-          ADD TO SAVED <i class="fas fa-thumbtack"></i></button
-      ></a>
-    </div>
+      <span><a href="{{url_for('save_recipe', recipe_id=item._id)}}"
+        ><button id="save-btn" class="btn">
+          <span class="white-text">ADD TO SAVED <i class="fas fa-thumbtack"></i></span></button
+      ></a></span>
     {% endif%} {% endif %}
+    </div>
+    <br>
+    <div></div>
     <div class="flow-text ing col s12 m6">
       <div class="row">
         <br />
