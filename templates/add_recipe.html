@@ -51,7 +51,7 @@
             <option disabled selected>Choose your option</option>
             <option value="N/A">N/A</option>
             {% for i in range(100,300, 10) %}
-            <option value="{{i}} °C">{{i}} °C</option>
+            <option value="{{i}}">{{i}} °C</option>
             {% endfor %}
           </select>
           <label>Temperature</label>
@@ -63,7 +63,7 @@
           <select multiple name="time">
             <option disabled>Choose your option</option>
             {% for i in range(0,120, 5) %}
-            <option value="{{i}} minutes">{{i}} minutes</option>
+            <option value="{{i}}">{{i}} minutes</option>
             {% endfor %}
           </select>
           <label>Cooking Time</label>
