@@ -24,9 +24,12 @@ def home():
     types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     users = list(mongo.db.users.find().sort("user_name", 1))
+    session['user'] = "Guest"
+    user = session['user']
+
 
     return render_template("landing.html", types=types,
-                           recipes=recipes, users=users)
+                           recipes=recipes, users=users, user=user)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -66,8 +69,6 @@ def search_saved():
 
 
 # displays recipes only created by current user
-
-
 @app.route("/my_recipes")
 def my_recipes():
     # prevent users to cross to other clients recipe page
@@ -79,17 +80,20 @@ def my_recipes():
                            recipes=recipes, this_user=this_user)
 
 
+# function displays amazon products recommended to user (Scope for monetising the app)
+# discount code only shown to logged in users
 @app.route("/products")
 def products():
-    products = tools = list(mongo.db.products.find().sort("product_name", 1))
+    products = tools = list(
+        mongo.db.products.find().sort("product_name", 1))
     tools = list(mongo.db.tools.find().sort("name", 1))
-    return render_template("products.html", tools=tools, products=products)
 
-# function logs user into the app
+    return render_template("products.html", tools=tools, products=products)
 
 
 @app.route("/manage")
 def manage():
+
     user = session["user"]
     # defensive programming to prevent non admin users accessing management template
     if user == "admin":
@@ -100,7 +104,6 @@ def manage():
         tools = list(mongo.db.tools.find().sort("name"))
 
         # counts the amount of recipes with this recipe type
-
     else:
         types = list(mongo.db.type.find().sort("type_name", 1))
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
@@ -110,7 +113,8 @@ def manage():
         return render_template("landing.html",
                                users=users, recipes=recipes, types=types)
     return render_template("management.html",
-                           users=users, recipes=recipes, types=types, products=products, tools=tools)
+                           users=users, recipes=recipes, types=types,
+                           products=products, tools=tools)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -150,6 +154,8 @@ def logout():
     session.pop("user")
     flash("You have been logged out")
     return redirect(url_for("login"))
+    flash("SORRY IT LOOKS LIKE YOU'RE NOT LOGGED IN OR REGISTERED")
+    return render_template("guest.html")
 
 
 # takes user to registrating page
@@ -182,12 +188,13 @@ def recipe_list(recipe_type):
 
 @app.route("/view_recipe/<recipe_id>", methods=["GET", "POST"])
 def view_recipe(recipe_id):
-    try:
+    if session['user']:
         recipe_id = recipe_id
         recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
         types = list(mongo.db.type.find().sort("type_name", 1))
         user = session['user']
+        guest = "Guest"
         user_id = mongo.db.users.find_one({"user_name": user})
         saved_list = list(mongo.db.users.distinct(
             "saved_recipes", {"user_name": user}))
@@ -196,22 +203,37 @@ def view_recipe(recipe_id):
         return render_template("view_recipe.html", recipe=recipe,
                                recipes=recipes, user_id=user_id,
                                user=user, saved_list=saved_list,
-                               types=types, products=products)
+                               types=types, products=products, guest=guest)
 
-    except:
-        flash("PLEASE REGISTER OR LOGIN FOR FULL ACCESS")
-        return render_template("guest.html")
+    user = "Guest"
+    recipe_id = recipe_id
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    types = list(mongo.db.type.find().sort("type_name", 1))
+    user_id = mongo.db.users.find_one({"user_name": user})
+    saved_list = list(mongo.db.users.distinct(
+        "saved_recipes", {"user_name": user}))
+    products = list(mongo.db.products.find().sort("product_name", 1))
+
+    return render_template("view_recipe.html", recipe=recipe,
+                           recipes=recipes, user_id=user_id,
+                           user=user, saved_list=saved_list,
+                           types=types, products=products)
 
 
 # routes user to the add recipe form template
 @app.route("/add_recipe")
 def add_recipe():
-    types = list(mongo.db.type.find().sort("type", 1))
+    types = list(mongo.db.type.find().sort("type_name", 1))
     products = list(mongo.db.products.find().sort("product_name", 1))
-    return render_template("add_recipe.html", types=types, products=products)
-
+    return render_template("add_recipe.html",
+                           types=types, products=products)
+    flash("SORRY IT LOOKS LIKE YOU'RE NOT LOGGED IN OR REGISTERED")
+    return render_template("guest.html")
 
 # adds new user to users collection in db
+
+
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
     if request.method == "POST":
@@ -303,6 +325,7 @@ def profile():
 
 @app.route("/add_new_recipe", methods=["GET", "POST"])
 def add_new_recipe():
+
     if request.method == "POST":
         # establishes if vegan switch is selected
         vegan = "Yes" if request.form.get("vegan") else "No"
@@ -328,7 +351,8 @@ def add_new_recipe():
             return redirect(url_for("add_recipe"))
         ingredients = request.form.get("ingredients")
         if len(ingredients) > 100:
-            flash("Ingredients over 100 character limit. Please condense and re-submit")
+            flash(
+                "Ingredients over 100 character limit. Please condense and re-submit")
             return redirect(url_for("recipes"))
         vegan = vegan,
         method = request.form.get("method")
@@ -351,6 +375,7 @@ def add_new_recipe():
 # function to edit the chosen recipe
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+
     types = list(mongo.db.type.find().sort("type_name", 1))
     # gets chosen recipe
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -384,12 +409,13 @@ def edit_recipe(recipe_id):
         cooking_time = request.form.get("time"),
         ingredients = request.form.get("ingredients"),
         if len(ingredients) > 100:
-            flash("Ingredients over 100 character limit. Please condense and re-submit")
+            flash(
+                "Ingredients over 100 character limit. Please condense and re-submit")
             return redirect(url_for("recipes"))
         vegan = vegan,
         method = request.form.get("method"),
         if len(method) > 200:
-            flash("Method over 200 character limit. Please condense and re-submit")
+            flash("Method over 200 character limit. Please condense")
             return redirect(url_for("recipes"))
         # check recipe exists if not 404 page
 
@@ -693,6 +719,50 @@ def delete_tool(tool):
         return redirect(url_for("manage"))
     flash("UNAUTHORISED ACCESS!")
     return redirect(url_for("home"))
+
+# EDIT TOOLS
+
+@app.route("/edit_user/<user_id>", methods=["GET", "POST"])
+def edit_user(user_id):
+
+    # gets chosen user
+    user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+    if request.method == "POST":
+        vegan = "Yes" if request.form.get("vegan") else "No"
+        edit = {
+            "user_name": request.form.get("user_name"),
+            "first_name": request.form.get("first_name"),
+            "last_name": request.form.get("last_name"),
+            "email": request.form.get("email"),
+            "vegan": vegan,
+            "password": generate_password_hash(request.form.get("password")),
+            # maintains uneffected
+            "contributed": user["contributed"],
+            "saved_recipes": user["saved_recipes"]
+        }
+
+        # validation defensive programming
+        existing_user = mongo.db.users.find_one(
+            {"user_name": request.form.get("user_name").lower()})
+        
+        if existing_user:
+            flash("Username taken. Please choose another")
+            return redirect("edit_user")
+        
+        password = request.form.get("password")
+        confirm = request.form.get("confirm")
+        if password != confirm:
+            flash("Passwords do not match")
+            return render_template("edit_user", user=user)
+        vegan = vegan,
+        # check recipe exists if not 404 page
+
+        mongo.db.users.update({"_id": ObjectId(user_id)}, edit)
+        flash("USER SUCCESSFULLY UPDATED")
+        return redirect(url_for("manage"))
+    return render_template("edit_user.html", user=user)
+
+
 
 
 if __name__ == '__main__':
