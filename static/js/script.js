@@ -5,6 +5,7 @@ $(document).ready(function () {
   $(".dropdown-trigger").dropdown();
   $(".sidenav").sidenav();
   $(".modal").modal();
+  $('.fixed-action-btn').floatingActionButton();
 
   //   logout confirm function
   $(".logout").click(function () {
