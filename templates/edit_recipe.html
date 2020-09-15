@@ -96,7 +96,11 @@
         <div class="col s12 m6">
           <div class="switch">
             <label>
-              <input name="vegan" value="vegan" type="checkbox" />
+            {%if recipe.vegan == "Yes" or "yes"%}
+              <input name="vegan" value="vegan" type="checkbox" checked />
+            {%else %}
+            <input name="vegan" value="vegan" type="checkbox"/>
+            {%endif%}
               <span class="lever"></span>
               <span class="reg_label">Vegan</span> <i class="fab fa-vuejs"></i>
             </label>
