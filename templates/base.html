@@ -56,16 +56,13 @@
             </li>
             {% endif %} {% if session.user %}
             <li>
-              <a
-                href="{{url_for('recipes', user=session['user']) }}"
+              <a href="{{url_for('recipes', user=session['user']) }}"
                 >Recipes <i class="fas fa-books"></i
               ></a>
             </li>
 
             <li>
-              <a
-
-                href="{{url_for('profile', user=session['user']) }}"
+              <a href="{{url_for('profile', user=session['user']) }}"
                 >Profile <i class="fas fa-user"></i
               ></a>
             </li>
@@ -150,6 +147,37 @@
     <main>
       <div class="container">
         {% block content %} {% endblock %}
+        {%if session.user %}
+        <div class="fixed-action-btn">
+          <a class="btn-large btn-floating teal">
+            <i class="fas fa-hat-chef"></i>
+          </a>
+          <ul>
+            <li>
+              <a href="{{url_for('my_recipes')}}" class="btn-floating #ff7043 deep-orange lighten-1"
+                ><i class="fas fa-archive"></i></a
+              >
+            </li>
+            <li>
+            
+              <a href="{{url_for('saved_recipes')}}" class="btn-floating yellow darken-1"
+                ><i class="fas fa-thumbtack"></i></a
+              >
+            </li>
+            <li>
+              <a href="{{url_for('products')}}" class="btn-floating purple"
+                ><i class="fas fa-blender"></i></a
+              >
+            </li>
+            <li>
+              <a href="{{url_for('add_new_recipe')}}" class="btn-floating green"
+                ><i class="fas fa-plus"></i></a
+              >
+            </li>
+          </ul>
+        </div>
+        {%else%}
+        {%endif%}
       </div>
     </main>
     <footer>
