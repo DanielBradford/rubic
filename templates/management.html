@@ -89,6 +89,7 @@
             <th class="hide-on-small-only">
               Saved <i class="fas fa-thumbtack"></i>
             </th>
+            <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -118,6 +119,15 @@
               {% if item.saved_recipes|length > 0
               %}{{item.saved_recipes|length}}{%else%}0{% endif %}
             </td>
+            <td>
+              {%if item.user_name == "admin" %}
+              <i class="fas fa-lock"></i> {%else%}<a
+                class="edit-user-btn"
+                href="#"
+                ><button class="blue btn">
+                  <i class="fas fa-pencil"></i></button></a
+              >{%endif%}
+            </td>
             <!-- the following stops the admin deleting their own account -->
             <td>
               {%if item.user_name == "admin" %}
@@ -128,6 +138,7 @@
                   <i class="fas fa-trash"></i></button></a
               >{%endif%}
             </td>
+            
           </tr>
           {% endfor %}
         </tbody>
@@ -167,7 +178,10 @@
           {% for item in recipes %}
           <tr class="white-text">
             <td>{{loop.index}}</td>
-            <td>{{item.recipe_name}}</td>
+            <td>{{item.recipe_name}} {% if item.vegan =="Yes" %}
+              <a onclick="M.toast({html: 'This recipe is Vegan'})"
+                ><i class="fab fa-envira"></i></a
+              >{%else%}{%endif%}</td>
             <td>{{item.type}}</td>
             <td class="hide-on-small-only">
               {% if item.rating|length == 0 %}UNRATED{%else%}{%set rating =
