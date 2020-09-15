@@ -25,7 +25,7 @@
       >
     </div>
     
-    <div class="center col s12">
+    <div class="center col s12">{%if user == guest %}{%else%}
     {% if item.created_by == session.user %}
       <span
         ><a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
@@ -44,7 +44,7 @@
         ><button id="save-btn" class="btn">
           <span class="white-text">ADD TO SAVED <i class="fas fa-thumbtack"></i></span></button
       ></a></span>
-    {% endif%} {% endif %}
+    {% endif%} {% endif %}{%endif%}
     </div>
     <br>
     <div></div>
@@ -136,6 +136,7 @@
       </div>
     </div>
   </div>
+  {% if user == guest %}{%else%}
   <div class="row center rate_me">
     <div class="col s12 center ">
       {% if item.created_by == session.user %} {%else%}
@@ -165,6 +166,7 @@
       </div>
       {% endif %}
     </div>
+    {%endif%}
   </div>
 </main>
 {% endif %}{% endfor %} {% endblock%}
