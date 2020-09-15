@@ -5,7 +5,6 @@ $(document).ready(function () {
   $(".dropdown-trigger").dropdown();
   $(".sidenav").sidenav();
   $(".modal").modal();
-  $('.fixed-action-btn').floatingActionButton();
 
   //   logout confirm function
   $(".logout").click(function () {
@@ -108,7 +107,7 @@ $(document).ready(function () {
     $("#prodsAndTools").hide("slow");
   });
 
-    // Products and Tools button
+  // Products and Tools button
   $("#prodsAndTools-btn").click(function () {
     $("#prodsAndTools").show("slow");
     $("#recipe-table").hide("slow");
@@ -196,5 +195,15 @@ $(document).ready(function () {
     $("#search-glass").toggle("medium");
     $(".fa-times").toggle("medium");
     $(".inner-search").fadeToggle("medium");
+  });
+});
+
+
+// fixed action button and menu made clickable for responsive desgin
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.querySelectorAll(".fixed-action-btn");
+  var instances = M.FloatingActionButton.init(elems, {
+    direction: "top",
+    hoverEnabled: false,
   });
 });
