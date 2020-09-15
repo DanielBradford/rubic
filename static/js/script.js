@@ -196,8 +196,21 @@ $(document).ready(function () {
     $(".fa-times").toggle("medium");
     $(".inner-search").fadeToggle("medium");
   });
-});
 
+//   copy discount code confirmation
+  $("#copy").click(function () {
+    $("#copy").hide();
+    $("#tick").show();
+
+  });
+
+//   resets copy confirmation
+  $("#thanks").click(function(){
+       $("#copy").show();
+    $("#tick").hide();
+
+  })
+});
 
 // fixed action button and menu made clickable for responsive desgin
 document.addEventListener("DOMContentLoaded", function () {
@@ -207,3 +220,20 @@ document.addEventListener("DOMContentLoaded", function () {
     hoverEnabled: false,
   });
 });
+
+//   code from w3 schools https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+// copy the discount code function
+function copyCode() {
+  /* Get the text field */
+  var copyText = document.getElementById("code");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+}
