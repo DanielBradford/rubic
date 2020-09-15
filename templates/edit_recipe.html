@@ -5,7 +5,9 @@
     Edit Recipe <i class="fas fa-pencil"></i>
   </h1>
   <div class="row center">
-  <button class="back btn red">Cancel Edit <i class="fas fa-backspace"></i></button>
+    <button class="back btn red">
+      Cancel Edit <i class="fas fa-backspace"></i>
+    </button>
   </div>
   <form
     class="flow-text col s12 m8 offset-m2"
@@ -65,13 +67,15 @@
         <div class="input-field col s12 m6">
           <i class="fas fa-thermometer-half prefix"></i>
           <select name="temperature">
-            <option disabled>Choose your option</option>
+            <option disabled value="">Choose your option</option>
             <option value="N/A">N/A</option>
-            {% for i in range(100,300, 10) %} {% if i == recipe.temperature %}
-            <option selected value="{{i}}">{{i}} °C</option>
-            {%else%}
+            {% for i in range(100,300, 10) %}
             <option value="{{i}}">{{i}} °C</option>
-            {% endif %} {% endfor %}
+            {% if i|string == recipe.temperature %}
+            <option selected value="{{i}}"
+              >{{recipe.temperature}} °C</option
+            >
+            {%else%} {% endif %} {% endfor %}
           </select>
           <label>Temperature</label>
         </div>
@@ -81,10 +85,8 @@
           <i class="fas fa-stopwatch prefix"></i>
           <select name="time">
             <option disabled>Choose your option</option>
-            {% for i in range(0,120, 5) %} {% if i == recipe.cooking_time %}
-            <option selected value="{{i}}"
-              >{{i}} minutes</option
-            >
+            {% for i in range(0,120, 5) %} {% if i|string == recipe.cooking_time %}
+            <option selected value="{{i}}">{{i}} minutes</option>
             {%else%}
             <option value="{{i}}">{{i}} minutes</option>
             {% endif %} {% endfor %}
