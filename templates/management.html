@@ -234,8 +234,11 @@
                   style="border-radius: 1.4em; background-color: white;"
                   name="type_name"
                   id="type_name"
+                  minlength="4"
                   type="text"
+                  maxlength="15"
                   class="validate center"
+                  required
                 />
                 <label for="type_name">Recipe Type Name</label>
               </div>
@@ -245,8 +248,11 @@
                   style="border-radius: 1.4em; background-color: white;"
                   id="description"
                   name="type_desc"
+                  minlength="5"                
                   type="tel"
+                  maxlength="50"
                   class="validate center"
+                  required
                 />
                 <label for="description">Type Description</label>
               </div>
@@ -276,12 +282,11 @@
             <td>{{item.type_name}}</td>
             <td style="width: 60%;">{{item.type_desc}}</td>
             <td>
-              {%for recipe in recipes%}{%if recipe.type == item.type_name%}
-              <i class="fas fa-bookmark"></i> {%endif%}{%endfor%}
+              {{item.count}}
             </td>
             <td>
               <a href="{{url_for('delete_recipe_type', type_id=item._id) }}"
-                ><button id="delete-type-btn" class="red btn">
+                ><button  class="delete-type-btn red btn">
                   <i class="fas fa-trash"></i></button
               ></a>
             </td>
@@ -330,6 +335,7 @@
                   id="product_name"
                   type="text"
                   class="validate center"
+                  required
                 />
                 <label for="product_name">Product Name</label>
               </div>
@@ -341,6 +347,7 @@
                   name="product_desc"
                   type="text"
                   class="validate center"
+                  required
                 />
                 <label for="product_desc">Product Description</label>
               </div>
@@ -354,6 +361,7 @@
                   name="url"
                   type="text"
                   class="validate center"
+                  required
                 />
                 <label for="url">Product URL</label>
               </div>
@@ -365,6 +373,7 @@
                   name="image_url"
                   type="text"
                   class="validate center"
+                  required
                 />
                 <label for="image_url">Image URL</label>
               </div>
@@ -378,6 +387,7 @@
                   name="price"
                   type="text"
                   class="validate center"
+                  required
                 />
                 <label for="price">Price</label>
               </div>
@@ -461,6 +471,7 @@
                   id="tool_name"
                   type="text"
                   class="validate center"
+                  required
                 />
                 <label for="tool_name">Tool Name</label>
               </div>
@@ -472,6 +483,7 @@
                   name="tool_desc"
                   type="text"
                   class="validate center"
+                  required
                 />
                 <label for="tool_desc">Tool Description</label>
               </div>
@@ -485,6 +497,7 @@
                   name="url"
                   type="text"
                   class="validate center"
+                  required
                 />
                 <label for="url">Tool URL</label>
               </div>
@@ -496,6 +509,7 @@
                   name="image_url"
                   type="text"
                   class="validate center"
+                  required
                 />
                 <label for="image_url">Image URL</label>
               </div>
@@ -509,6 +523,7 @@
                   name="price"
                   type="text"
                   class="validate center"
+                  required
                 />
                 <label for="price">Price</label>
               </div>
@@ -543,7 +558,7 @@
             </td>
             <td>
               <a href="{{url_for('delete_tool', tool=item._id)}}"
-                ><button id="delete-tool-btn" class="red btn">
+                ><button class="delete-tool-btn red btn">
                   <i class="fas fa-trash"></i></button
               ></a>
             </td>
