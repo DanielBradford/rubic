@@ -125,7 +125,7 @@ $(document).ready(function () {
   $(".delete-user-btn").click(function () {
     if (
       confirm(
-        "Are you sure you want to delete this user? This action cannot be undone!"
+        "Are you sure you want to delete this user? This action cannot be undone! ALL RECIPES CONTRIBUTED BY THE USER WILL REMAIN IN THE SYSTEM"
       )
     ) {
     } else {
@@ -134,7 +134,7 @@ $(document).ready(function () {
   });
 
   // delete type button
-  $("#delete-type-btn").click(function () {
+  $(".delete-type-btn").click(function () {
     if (
       confirm(
         "Are you sure you want to delete this recipe type? This action cannot be undone!"
@@ -145,7 +145,7 @@ $(document).ready(function () {
     }
   });
   //   delete tool /product confirm
-  $("#delete-tool").click(function () {
+  $(".delete-tool-btn").click(function () {
     if (
       confirm(
         "Are you sure you want to delete this tool? This action cannot be undone!"
@@ -155,7 +155,7 @@ $(document).ready(function () {
       return false; //----On cancel user returns to current screen------//
     }
   });
-  $("#delete-product").click(function () {
+  $(".delete-product-btn").click(function () {
     if (
       confirm(
         "Are you sure you want to delete this product? This action cannot be undone!"
