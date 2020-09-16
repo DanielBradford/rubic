@@ -11,34 +11,33 @@ main {
   padding: 1em;
 }
 
-.flashes{
-    margin-bottom: 0;
+.flashes {
+  margin-bottom: 0;
 }
 
-.random-border{
-    border: solid rgb(218, 6, 105) 5px;
+.random-border {
+  border: solid rgb(218, 6, 105) 5px;
 }
 
-h4 .badge{
-    text-transform: uppercase;
-    color: white;
+h4 .badge {
+  text-transform: uppercase;
+  color: white;
 }
 
-/* .stat{
-    background-color: rgba(0, 151, 151, 0.466);
-    border-radius: 50%;
-} */
+#why_register{
+    background-color: rgba(255, 255, 255, 0.836);
+    color: rgb(1, 97, 97);
 
+}
 /* icons */
 
-.fas{
-    font-weight: 200;
+.fas {
+  font-weight: 200;
 }
 
 #view_recipe .fas,
-.collection-item
- .fas{
-    font-weight: 800;
+.collection-item .fas {
+  font-weight: 800;
 }
 
 .recipes i {
@@ -154,31 +153,31 @@ nav {
   color: teal;
 }
 
-.search:hover{
-    cursor: pointer;
+.search:hover {
+  cursor: pointer;
 }
-#search-glass:hover{
-    color: white;
-    font-weight: 500;
+#search-glass:hover {
+  color: white;
+  font-weight: 500;
 }
 
-.fa-times:hover{
-    color: red;
+.fa-times:hover {
+  color: red;
 }
 
 #saved-reset .btn {
-    border-radius: 1.4em;
+  border-radius: 1.4em;
 }
 
 /* images */
 
-#products img{
-    width: 80%;
+#products img {
+  width: 80%;
 }
 
-.products img{
-    height: auto;
-    width: auto;
+.products img {
+  height: auto;
+  width: auto;
 }
 
 /* text */
@@ -257,46 +256,43 @@ h4 {
 table {
   padding: 0.4em;
   font-family: "Gayathri", sans-serif;
-  
 }
 
-.table{
-     border-radius: 1.4em;
-     max-height: 500px;
-     min-height: auto;
-     overflow:scroll;
-    
+.table {
+  border-radius: 1.4em;
+  max-height: 500px;
+  min-height: auto;
+  overflow: scroll;
 }
 
-.table label{
-    padding-left: 1em;
+.table label {
+  padding-left: 1em;
 }
 
-.table label::after{
-    color: white;
+.table label::after {
+  color: white;
 }
 
-.table button{
-    z-index: 0;
+.table button {
+  z-index: 0;
 }
 
 #products-table,
-#tools-table{
-    border: solid 1px green;
+#tools-table {
+  border: solid 1px green;
 }
 
-
-table a{
-    color: white;
+table a {
+  color: white;
 }
-table a:hover{
-    text-decoration: underline;
-    color: darkblue;
-    text-shadow: none;
+table a:hover {
+  text-decoration: underline;
+  color: darkblue;
+  text-shadow: none;
 }
-tr td{
-    width: 180px;
-    overflow: hidden;
+tr td {
+  width: 180px;
+  overflow: hidden;
 }
 
 /* forms and cards */
@@ -329,25 +325,24 @@ form i {
 #view_recipe i {
   color: teal;
 }
-#view_recipe a{
-    color: coral;
+#view_recipe a {
+  color: coral;
 }
-#view_recipe a:hover{
-    text-decoration: underline;
+#view_recipe a:hover {
+  text-decoration: underline;
 }
 
-
-#toast-container{
-    background-color: green;
-    color: white;
+#toast-container {
+  background-color: green;
+  color: white;
 }
 
 #view_recipe button i {
   color: white;
 }
 
-#tools-table input{
-    border: solid 1px green;
+#tools-table input {
+  border: solid 1px green;
 }
 
 /* images */
@@ -500,7 +495,7 @@ button > a {
   color: white;
   border-radius: 1.4em;
   width: auto;
-  padding: 1em;
+  margin-bottom: 1em;
 }
 
 #save-btn i {
@@ -510,12 +505,15 @@ button > a {
   cursor: pointer;
 }
 
+#saved {
+  border-radius: 1.4em;
+  background-color: white;
+  border: 2px 2px teal;
+  color: teal;
+}
 
-#saved{
-    border-radius: 1.4em;
-    background-color: white;
-    border: 2px 2px teal;
-    color:teal;
+.fixed-action-btn:hover {
+  color: coral;
 }
 
 .remove-btn {
@@ -551,5 +549,12 @@ footer {
     color: white;
     border-radius: 1.2em;
     z-index: 300;
+  }
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
   }
 }
