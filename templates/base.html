@@ -32,18 +32,18 @@
       <nav class="nav-extended text-shadow teal darken-1">
         <!--top navbar-->
         <div class="navbar nav-wrapper">
-          <a href="/" class="title logo brand-logo"
+          <a href="#" class="title logo brand-logo"
             ><i class="fas fa-hat-chef"></i>Rubric</a
           >
           <a href="#" data-target="mobile-demo" class="sidenav-trigger right"
             ><i class="fas fa-bars"></i
           ></a>
           <ul class="right hide-on-med-and-down">
+            {%if session.user == "Guest"%}
             <li>
               <a href="/">Home <i class="fas fa-home"></i></a>
             </li>
-
-            {% if session['user'] == 'admin' %}
+            {%endif %} {% if session['user'] == 'admin' %}
             <li>
               <a href="{{url_for('manage')}}"
                 >Management <i class="fas fa-cogs"></i
@@ -89,11 +89,11 @@
             <i class="fas fa-hat-chef"></i> Rubric
           </h4>
         </li>
+        {%if session.user == "Guest"%}
         <li>
           <a href="/">Home <i class="fas fa-home"></i></a>
         </li>
-
-        {% if session['user'] == 'admin' %}
+        {%endif %} {% if session['user'] == 'admin' %}
         <li>
           <a href="{{url_for('manage')}}"
             >Management <i class="fas fa-cogs"></i
