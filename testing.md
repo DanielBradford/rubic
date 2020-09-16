@@ -13,15 +13,23 @@
 **JAVASCRIPT VALIDATION** - https://jshint.com/
 
 - ALL JS written in this project has been parsed through JSHint and no errors have been found.
-  **Metrics:**
+
+ **Metrics:**
+  There are 32 functions in this file. Function with the largest signature take 0 arguments, while the median is 0. Largest function has 33 statements in it, while the median is 2. The most complex function has a cyclomatic complexity value of 2 while the median is 1.
 
 **PYTHON VALIDATION** - http://pep8online.com/
 
-- ALL Python written in this project has been parsed through pep8 online and gitpod and no errors have been found.
+- ALL Python written in this project has been parsed through pep8 online and gitpod and no errors have been found. Upon scanning some lines of code needed to be shortened.
+
+        commit 3c480c91bb56308f20ebc5e99f9db5a8fd71587a
+        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+        Date:   Wed Sep 16 18:55:00 2020 +0000
+        Code layout cleaned to pass through pep8 validation
 
 
 
-  **Metrics:**
+
+  
 
 
 
