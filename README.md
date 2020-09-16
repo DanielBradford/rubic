@@ -104,7 +104,7 @@ The next plane to approach was Structure. What the application will do and and t
 This allowed an insight into the user experience and how a visitor uses the application.
 
 **Here is the link to the structural sitemap:**
-<a  href="#" target="_blank">SITEMAP</a>
+<a  href="https://github.com/DanielBradford/rubric/blob/793f1b03bbb0c314173efad35b1952d0630e94d5/documents/wireframes/Rubric%20Sitemap.pdf" target="_blank">SITEMAP</a>
 
 **What does the application do/ How does it work?**
 
@@ -146,7 +146,8 @@ This was maintained throught the application using a mix of customised CSS and M
 
 
 ## **Main Page**
-<img src="#" alt="screenshot of landing page">
+<img class="align-center" src="documents/screenshots/landingTop.png" alt="screenshot of landing page">
+<img src="documents/screenshots/landingBottom.png" alt="screenshot of landing page">
 
 ## **Features**
 
@@ -182,7 +183,7 @@ This was maintained throught the application using a mix of customised CSS and M
   - Used to create the structure of the pages
 - ### **CSS / CSS3**
   - Used to style the elements and customise layout. e.g. Color Schemes, design elements
-- ### **Materialise**
+- ### **Materialize (CSS & Javascript/JQuery)**
   - Used mainly for responsive design and layout. Other elements used were Tables and Modals
 - ### **JQuery**
   - Used to enhance the interactivity
