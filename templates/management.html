@@ -123,7 +123,7 @@
               {%if item.user_name == "admin" %}
               <i class="fas fa-lock"></i> {%else%}<a
                 class="edit-user-btn"
-                href="#"
+                href="{{url_for('edit_user', user_id=item._id)}}"
                 ><button class="blue btn">
                   <i class="fas fa-pencil"></i></button></a
               >{%endif%}
