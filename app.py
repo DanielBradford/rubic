@@ -77,7 +77,8 @@ def my_recipes():
                            recipes=recipes, this_user=this_user)
 
 
-# function displays amazon products recommended to user (Scope for monetising the app)
+# function displays amazon products recommended
+# (Scope for monetising the app)
 # discount code only shown to logged in users
 @app.route("/products")
 def products():
@@ -275,7 +276,8 @@ def add_user():
                 "last_name": request.form.get("last_name"),
                 "email": request.form.get("email"),
                 "user_name": request.form.get("user_name"),
-                "password": generate_password_hash(request.form.get("password")),
+                "password": generate_password_hash(request.form.get
+                                                   ("password")),
                 "vegan": vegan,
                 "saved_recipes": [],
                 "contributed": 0
@@ -372,12 +374,13 @@ def add_new_recipe():
                 return redirect(url_for("add_recipe"))
             ingredients = request.form.get("ingredients")
             if len(ingredients) > 100:
-                flash(
-                    "Ingredients over 100 character limit. Please condense and re-submit")
+                flash("""Ingredients over 100 character limit.
+            Please condense and re-submit""")
                 return redirect(url_for("recipes"))
             method = request.form.get("method")
             if len(method) > 200:
-                flash("Method over 200 character limit. Please condense and re-submit")
+                flash("""Method over 200 character limit.
+                Please condense and re-submit""")
                 return redirect(url_for("recipes"))
 
             # increments the contribution count of user
@@ -394,9 +397,6 @@ def add_new_recipe():
             return redirect(url_for("recipes"))
         return render_template("add_recipe.html")
     else:
-        types = list(mongo.db.type.find().sort("type_name", 1))
-        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-        users = list(mongo.db.users.find().sort("user_name", 1))
         # warning message to non admin users
         flash("MEMBERS ONLY! PLEASE REGISTER OR LOGIN FOR FULL ACCESS!")
         return redirect(url_for('home'))
@@ -443,21 +443,24 @@ def edit_recipe(recipe_id):
             ingredients = request.form.get("ingredients")
             if len(ingredients) > 100:
                 flash(
-                    "Ingredients over 100 character limit. Please condense and re-submit")
+                    """Ingredients over 100 character limit.
+                    Please condense and re-submit""")
                 return redirect(url_for("recipes"))
             method = request.form.get("method")
             if len(method) > 200:
-                flash("Method over 200 character limit. Please condense and re-submit")
+                flash("""Method over 200 character limit.
+                Please condense and re-submit""")
                 return redirect(url_for("recipes"))
             ingredients = request.form.get("ingredients"),
             if len(ingredients) > 100:
                 flash(
-                    "Ingredients over 100 character limit. Please condense and re-submit")
+                    """Ingredients over 100 character limit.
+                    Please condense and re-submit""")
                 return redirect(url_for("recipes"))
             vegan = vegan,
             method = request.form.get("method"),
-            if len(method) > 200:
-                flash("Method over 200 character limit. Please condense")
+            if len(method) > 250:
+                flash("Method over 250 character limit. Please condense")
                 return redirect(url_for("recipes"))
             # check recipe exists if not 404 page
 
@@ -465,11 +468,11 @@ def edit_recipe(recipe_id):
             flash("RECIPE SUCCESSFULLY UPDATED")
             return redirect(url_for("recipes"))
         return render_template("edit_recipe.html", recipe=recipe,
-                               recipes=recipes, types=types, recipe_id=recipe_id, products=products)
+                               recipes=recipes, types=types,
+                               recipe_id=recipe_id, products=products)
     else:
         types = list(mongo.db.type.find().sort("type_name", 1))
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-        users = list(mongo.db.users.find().sort("user_name", 1))
         # warning message to non admin users
         flash("MEMBERS ONLY! PLEASE REGISTER OR LOGIN FOR FULL ACCESS!")
         return redirect(url_for('home'))
@@ -590,7 +593,8 @@ def add_rating(recipe_id):
         {'$addToSet': {"rating": userRating}})
     flash("RECIPE RATED SUCCESSFULLY")
 
-    return redirect(url_for("view_recipe", recipe_id=recipe_id, currentRating=currentRating))
+    return redirect(url_for("view_recipe",
+                            recipe_id=recipe_id, currentRating=currentRating))
 
 
 # filters
@@ -688,6 +692,11 @@ def add_recipe_type():
                            recipes=recipes, types=types, users=users)
 
 
+# @app.route("/edit_type", methods=["GET", "POST"])
+# def edit_type(this_id):
+#     this = mongo.db.type.find_one({"_id": ObjectId(this_id)})
+
+
 # adding tools
 @ app.route("/add_tool", methods=["GET", "POST"])
 def add_tool():
@@ -747,7 +756,8 @@ def add_product():
             return redirect(url_for('manage'))
 
         flash("Failed to add product")
-        return render_template("management.html/", recipes=recipes, types=types, users=users)
+        return render_template("management.html/",
+                               recipes=recipes, types=types, users=users)
     else:
         types = list(mongo.db.type.find().sort("type_name", 1))
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
@@ -772,11 +782,13 @@ def user_search():
     # checks if no users match search
     if count == 0:
         flash("NO USERS FOUND")
-        return render_template("management.html", users=users, types=types, recipes=recipes, count=count, search=search)
+        return render_template("management.html", users=users, types=types,
+                               recipes=recipes, count=count, search=search)
     # returns results that match
     else:
         flash("Search results: {} for '{}'".format(len(users), search))
-        return render_template("management.html", users=users, types=types, recipes=recipes, count=count, search=search)
+        return render_template("management.html", users=users, types=types,
+                               recipes=recipes, count=count, search=search)
 
 
 # deleting records
