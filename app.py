@@ -25,9 +25,8 @@ def home():
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     users = list(mongo.db.users.find().sort("user_name", 1))
     session['user'] = "Guest"
-    user = session['user']
     return render_template("landing.html", types=types,
-                           recipes=recipes, users=users, user=user)
+                           recipes=recipes, users=users)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -136,6 +135,9 @@ def login():
                     session["user"] = request.form.get("user_name")
                     flash("Welcome, {}".format(
                         request.form.get("user_name")))
+                    if session["user"] == "admin":
+                        return redirect(url_for("manage",
+                                                user=session["user"]))
                     return redirect(url_for(
                         "profile", user=session["user"]))
 
@@ -151,12 +153,10 @@ def login():
                 return redirect(url_for("login"))
 
         return render_template("login.html")
+    # Defensive programming if user is logged in already
     else:
-        types = list(mongo.db.type.find().sort("type_name", 1))
-        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-        users = list(mongo.db.users.find().sort("user_name", 1))
-        flash("MEMBERS ONLY! PLEASE REGISTER OR LOGIN FOR FULL ACCESS!")
-        return redirect(url_for('home'))
+        flash("YOU WERE ALREADY LOGGED IN!")
+        return redirect(url_for('profile'))
 
 # logs user out of appplication
 
@@ -166,9 +166,7 @@ def logout():
     # remove user session from cookies
     session.pop("user")
     flash("You have been logged out")
-    return redirect(url_for("login"))
-    flash("SORRY IT LOOKS LIKE YOU'RE NOT LOGGED IN OR REGISTERED")
-    return render_template("guest.html")
+    return redirect(url_for("home"))
 
 
 # takes user to registrating page
@@ -244,9 +242,6 @@ def add_recipe():
         return render_template("add_recipe.html",
                                types=types, products=products)
     else:
-        types = list(mongo.db.type.find().sort("type_name", 1))
-        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-        users = list(mongo.db.users.find().sort("user_name", 1))
         flash("MEMBERS ONLY! PLEASE REGISTER OR LOGIN FOR FULL ACCESS!")
         return redirect(url_for('home'))
 
@@ -339,8 +334,6 @@ def profile():
     user = session["user"]
     if user != "Guest":
         this_user = mongo.db.users.find_one({"user_name": user})
-        # users = mongo.db.users.find().sort("user_name", 1)
-        # recipes = mongo.db.recipes.find().sort("recipe_name", 1)
 
         return render_template("profile.html", this_user=this_user)
     else:
@@ -369,7 +362,8 @@ def add_new_recipe():
                 "rating": []
             }
 
-            recipe_name = request.form.get("recipe_name"),
+            # form validation
+            recipe_name = request.form.get("recipe_name")
             if len(recipe_name) > 30:
                 flash("Recipe name cannot be longer than 30 characters")
                 return redirect(url_for('add_new_recipe'))
@@ -381,17 +375,20 @@ def add_new_recipe():
                 flash(
                     "Ingredients over 100 character limit. Please condense and re-submit")
                 return redirect(url_for("recipes"))
-            vegan = vegan,
             method = request.form.get("method")
             if len(method) > 200:
                 flash("Method over 200 character limit. Please condense and re-submit")
                 return redirect(url_for("recipes"))
 
-            # validation defensive programming
-            # adds new recipe to recipes collection
+            # increments the contribution count of user
             mongo.db.users.update({"user_name": session["user"]},
                                   {"$inc": {"contributed": 1}}
                                   )
+            this_type = request.form.get("type")
+            # increments recipe type count
+            mongo.db.type.update({"type_name": this_type},
+                                 {"$inc": {"count": 1}})
+            # adds new recipe to recipes collection
             mongo.db.recipes.insert_one(new)
             flash("Recipe Successfully Added")
             return redirect(url_for("recipes"))
@@ -436,11 +433,22 @@ def edit_recipe(recipe_id):
             }
 
             # validation defensive programming
-            recipe_name = request.form.get("recipe_name"),
-            recipe_type = request.form.get("type"),
-            appliance = request.form.get("appliance"),
-            temperature = request.form.get("temperature"),
-            cooking_time = request.form.get("time"),
+            recipe_name = request.form.get("recipe_name")
+            if len(recipe_name) > 30:
+                flash("Recipe name cannot be longer than 30 characters")
+                return redirect(url_for('edit_recipe'))
+            if len(recipe_name) == 0:
+                flash("Recipe name must be filled for registration")
+                return redirect(url_for("edit_recipe"))
+            ingredients = request.form.get("ingredients")
+            if len(ingredients) > 100:
+                flash(
+                    "Ingredients over 100 character limit. Please condense and re-submit")
+                return redirect(url_for("recipes"))
+            method = request.form.get("method")
+            if len(method) > 200:
+                flash("Method over 200 character limit. Please condense and re-submit")
+                return redirect(url_for("recipes"))
             ingredients = request.form.get("ingredients"),
             if len(ingredients) > 100:
                 flash(
@@ -516,18 +524,31 @@ def delete_recipe(recipe_id):
     # backend check the user is logged in
 
     if session['user'] != "Guest":
+        types = mongo.db.recipes.distinct("type", {"_id": ObjectId(recipe_id)})
+        for i in types:
+            mongo.db.type.update({"type_name": i},
+                                 {"$inc": {"count": -1}})
         # javascript confirm confirms this action on frontend
         mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+        # contributed amount is reduced by 1
+        mongo.db.users.update({"user_name": session["user"]},
+                              {"$inc": {"contributed": -1}})
         flash("Recipe Successfully Deleted")
         # check recipe exists if not 404 page
         # defensive programming verify owner login in required
         if session['user'] == "admin":
             return redirect(url_for('manage'))
 
-        else:
-            return redirect(url_for("my_recipes"))
+        return redirect(url_for("my_recipes"))
+
     else:
-        return redirect(url_for('home'))
+        types = list(mongo.db.type.find().sort("type_name", 1))
+        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+        users = list(mongo.db.users.find().sort("user_name", 1))
+        # warning message to non admin users
+        flash("MEMBERS ONLY! Authorization denied!")
+        return render_template("landing.html",
+                               users=users, recipes=recipes, types=types)
 
 
 # removes the recipe from the users saved list
@@ -608,26 +629,23 @@ def random():
 # deleting recipe types
 @app.route("/delete_recipe_type/<type_id>")
 def delete_recipe_type(type_id):
-    types = list(mongo.db.type.find().sort("type_name", 1))
-    users = list(mongo.db.users.find().sort("last_name", 1))
-    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    if session['user'] == "admin":
+        types = list(mongo.db.type.find().sort("type_name", 1))
+        users = list(mongo.db.users.find().sort("last_name", 1))
+        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
 
-    # # verifies if an item in that category exists and prevents deletion
-    # for item in types:
-    #     for recipe in recipes:
-    #         search = list(mongo.db.recipes.find({recipe["type"]: item['type_name']}))
-    #         if len(search) > 0:
-    #             flash("THIS TYPE HAS RECIPES. CANNOT DELETE!")
-    #             return render_template("management.html/",
-    #                                 recipes=recipes, types=types, users=users)
-    #         elif len(search) == 0:
-    #             mongo.db.type.remove({"_id": ObjectId(type_id)})
-    #             flash("Recipe Type Successfully Deleted")
-    #             return render_template("management.html/", recipes=recipes,
-    #                        types=types, users=users)
+        # verifies if an item in that category exists and prevents deletion
+        # add field that counts recipes of that type
 
-    return render_template("management.html/", recipes=recipes,
-                           types=types, users=users)
+        mongo.db.type.remove({"_id": ObjectId(type_id)})
+        flash("Recipe Type Successfully Deleted")
+        return redirect(url_for('manage'))
+
+        return render_template("management.html", recipes=recipes,
+                               types=types, users=users)
+    else:
+        flash("UNAUTHORISED ACCESS!")
+        return redirect(url_for("home"))
 
 
 # adding recipe types
@@ -644,8 +662,19 @@ def add_recipe_type():
         }
 
         type_name = request.form.get("type_name")
-
+        if len(type_name) == 0:
+            flash("Type name must be given")
+            return redirect(url_for('add_recipe_type'))
+        if len(type_name) > 50:
+            flash("Type name too long. Over 50 character limit")
+            return redirect(url_for('add_recipe_type'))
         type_desc = request.form.get("type_desc")
+        if len(type_desc) == 0:
+            flash("Type desctipiton must be given")
+            return redirect(url_for('add_recipe_type'))
+        if len(type_desc) > 150:
+            flash("Type name too long. Over 150 character limit")
+            return redirect(url_for('add_recipe_type'))
 
         mongo.db.type.insert_one(new_type)
         flash("Type Successfully Added")
@@ -659,54 +688,74 @@ def add_recipe_type():
 # adding tools
 @app.route("/add_tool", methods=["GET", "POST"])
 def add_tool():
-    types = list(mongo.db.type.find().sort("type_name", 1))
-    users = list(mongo.db.users.find().sort("last_name", 1))
-    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    # verifies current user is admin
+    if session['user'] == "admin":
+        types = list(mongo.db.type.find().sort("type_name", 1))
+        users = list(mongo.db.users.find().sort("last_name", 1))
+        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
 
-    if request.method == "POST":
-        new_tool = {
-            "name": request.form.get("tool_name"),
-            "url": request.form.get("url"),
-            "image": request.form.get("image_url"),
-            "desc": request.form.get("tool_desc"),
-            "price": request.form.get("price")
-        }
+        if request.method == "POST":
+            new_tool = {
+                "name": request.form.get("tool_name"),
+                "url": request.form.get("url"),
+                "image": request.form.get("image_url"),
+                "desc": request.form.get("tool_desc"),
+                "price": request.form.get("price")
+            }
 
-        mongo.db.tools.insert_one(new_tool)
-        flash("Tool Successfully Added")
-        return redirect(url_for('manage'))
+            mongo.db.tools.insert_one(new_tool)
+            flash("Tool Successfully Added")
+            return redirect(url_for('manage'))
 
-    flash("Failed to add tool")
-    return render_template("management.html/", recipes=recipes,
-                           types=types, users=users)
+        flash("Failed to add tool")
+        return render_template("management.html/", recipes=recipes,
+                               types=types, users=users)
+    else:
+        types = list(mongo.db.type.find().sort("type_name", 1))
+        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+        users = list(mongo.db.users.find().sort("user_name", 1))
+        # warning message to non admin users
+        flash("ADMIN ONLY! Authorization denied!")
+        return render_template("landing.html",
+                               users=users, recipes=recipes, types=types)
 
 # adding products
 
 
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
-    types = list(mongo.db.type.find().sort("type_name", 1))
-    users = list(mongo.db.users.find().sort("last_name", 1))
-    recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+    # verifies current user is admin
+    if session['user'] == "admin":
+        types = list(mongo.db.type.find().sort("type_name", 1))
+        users = list(mongo.db.users.find().sort("last_name", 1))
+        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
 
-    if request.method == "POST":
-        new_tool = {
-            "product_name": request.form.get("product_name"),
-            "url": request.form.get("url"),
-            "image_url": request.form.get("image_url"),
-            "product_desc": request.form.get("product_desc"),
-            "price": request.form.get("price")
-        }
+        if request.method == "POST":
+            new_product = {
+                "product_name": request.form.get("product_name"),
+                "url": request.form.get("url"),
+                "image_url": request.form.get("image_url"),
+                "product_desc": request.form.get("product_desc"),
+                "price": request.form.get("price")
+            }
 
-        mongo.db.tools.insert_one(new_tool)
-        flash("Product Successfully Added")
-        return redirect(url_for('manage'))
+            mongo.db.products.insert_one(new_product)
+            flash("Product Successfully Added")
+            return redirect(url_for('manage'))
 
-    flash("Failed to add product")
-    return render_template("management.html/", recipes=recipes, types=types, users=users)
+        flash("Failed to add product")
+        return render_template("management.html/", recipes=recipes, types=types, users=users)
+    else:
+        types = list(mongo.db.type.find().sort("type_name", 1))
+        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+        users = list(mongo.db.users.find().sort("user_name", 1))
+        # warning message to non admin users
+        flash("ADMIN ONLY! Authorization denied!")
+        return render_template("landing.html",
+                               users=users, recipes=recipes, types=types)
 
 
-# searches
+# User search function
 
 @app.route("/user_search", methods=["GET", "POST"])
 # function to allow user to search for recipes based
@@ -748,7 +797,7 @@ def delete_product(product):
     # validate the user is admin
     if session['user'] == "admin":
         # javascript confirm confirms this action on frontend
-        mongo.db.products.remove({"product_name": product})
+        mongo.db.products.remove({"_id": ObjectId(product)})
         flash("Product Successfully Deleted")
         # check user exists if not 404 page
         # defensive programming verify admin possibly with password
@@ -767,13 +816,12 @@ def delete_tool(tool):
         flash("Tool Successfully Deleted")
         # check user exists if not 404 page
         # defensive programming verify admin possibly with password
-        return redirect(url_for("manage"))
+        return redirect(url_for('manage'))
     flash("UNAUTHORISED ACCESS!")
     return redirect(url_for("home"))
 
-# EDIT TOOLS
 
-
+# EDIT RECORDS
 @app.route("/edit_user/<user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
 
