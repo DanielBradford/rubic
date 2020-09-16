@@ -12,24 +12,24 @@
         id="all_users"
         name="users"
         class="hoverable center-align light-blue btn-large"
-        >Users <br><i class="hide-on-small-only fas fa-sort-alpha-down"></i
+        >Users <br /><i class="hide-on-small-only fas fa-sort-alpha-down"></i
       ></a>
     </div>
     <div class="col s6 m3">
       <a id="recipes-btn" class="hoverable center-align pink btn-large"
-        >Recipes <br><i class="hide-on-small-only fas fa-books"></i>
+        >Recipes <br /><i class="hide-on-small-only fas fa-books"></i>
       </a>
     </div>
     <div class="col s6 m3">
       <a
         id="types-btn"
         class="hoverable center-align #ff6e40 deep-orange accent-2 btn-large"
-        >Recipe Types <br><i class="hide-on-small-only fas fa-filter"></i
+        >Recipe Types <br /><i class="hide-on-small-only fas fa-filter"></i
       ></a>
     </div>
     <div class="col s6 m3">
       <a id="prodsAndTools-btn" class="hoverable center-align green btn-large"
-        >Products & Tools <br><i class="hide-on-small-only fas fa-blender"></i
+        >Products & Tools <br /><i class="hide-on-small-only fas fa-blender"></i
       ></a>
     </div>
   </div>
@@ -101,7 +101,8 @@
               {{item.user_name}} {% if item.vegan =="Yes" %}
               <a onclick="M.toast({html: 'This User is Vegan'})"
                 ><i class="fab fa-envira"></i></a
-              >{%elif item.contributed >= 5 %}<a onclick="M.toast({html: 'STAR MEMBER: Over 5 recipes contributed'})"
+              >{%elif item.contributed >= 5 %}<a
+                onclick="M.toast({html: 'STAR MEMBER: Over 5 recipes contributed'})"
                 ><i class="fas fa-star"></i></a
               >{%else%}{%endif%}
             </td>
@@ -138,7 +139,6 @@
                   <i class="fas fa-trash"></i></button></a
               >{%endif%}
             </td>
-            
           </tr>
           {% endfor %}
         </tbody>
@@ -178,10 +178,12 @@
           {% for item in recipes %}
           <tr class="white-text">
             <td>{{loop.index}}</td>
-            <td>{{item.recipe_name}} {% if item.vegan =="Yes" %}
+            <td>
+              {{item.recipe_name}} {% if item.vegan =="Yes" %}
               <a onclick="M.toast({html: 'This recipe is Vegan'})"
                 ><i class="fab fa-envira"></i></a
-              >{%else%}{%endif%}</td>
+              >{%else%}{%endif%}
+            </td>
             <td>{{item.type}}</td>
             <td class="hide-on-small-only">
               {% if item.rating|length == 0 %}UNRATED{%else%}{%set rating =
@@ -248,7 +250,7 @@
                   style="border-radius: 1.4em; background-color: white;"
                   id="description"
                   name="type_desc"
-                  minlength="5"                
+                  minlength="5"
                   type="tel"
                   maxlength="50"
                   class="validate center"
@@ -271,6 +273,7 @@
             <th>Type <i class="fas fa-tag"></i></th>
             <th>Description <i class="fas fa-info"></i></th>
             <th>Recipe Count</th>
+            <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -285,12 +288,67 @@
               {{item.count}}
             </td>
             <td>
+              <a href="#, id = item._id"
+                ><button class="edit-type-btn blue btn">
+                  <i class="fas fa-pencil"></i></button
+              ></a>
+            </td>
+            <td>
               <a href="{{url_for('delete_recipe_type', type_id=item._id) }}"
-                ><button  class="delete-type-btn red btn">
+                ><button class="delete-type-btn red btn">
                   <i class="fas fa-trash"></i></button
               ></a>
             </td>
           </tr>
+          <div hidden id="edit_type">
+            <form
+              class="col s12"
+              method="POST"
+              action="#"
+            >
+              <div class="row">
+                <div class="input-field col s12 m6">
+                  <i class="fas fa-filter prefix"></i>
+                  <input
+                    style="border-radius: 1.4em; background-color: white;"
+                    name="type_name"
+                    id="type_name"
+                    minlength="4"
+                    type="text"
+                    maxlength="15"
+                    class="validate center"
+                    value="{{item.type_name}}"
+                    required
+                  />
+                  <label for="type_name">Recipe Type Name</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <i class="fas fa-pencil prefix"></i>
+                  <input
+                    style="border-radius: 1.4em; background-color: white;"
+                    id="description"
+                    name="type_desc"
+                    minlength="5"
+                    type="text"
+                    rows="5"
+                    maxlength="50"
+                    class="validate center"
+                    value="{{item.type_desc}}"
+                    required
+                  />
+                  <label for="description">Type Description</label>
+                </div>
+              </div>
+              <div class="row center-align">
+                <button type="submit" class="btn blue center">
+                  Edit Type <i class="fas fa-pencil"></i>
+                </button>
+                <button id="cancel" type="submit" class="btn red center">
+                  Cancel <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </form>
+          </div>
           {% endfor %}
         </tbody>
       </table>
@@ -424,7 +482,7 @@
               {%if item.product_name == "Other" %}
               <i class="fas fa-lock"></i> {%else%}<a
                 class="delete-product-btn"
-                href="{{url_for('delete_product', product=item._id)}}"
+                href="#"
                 ><button class="red btn">
                   <i class="fas fa-trash"></i></button></a
               >{%endif%}
@@ -442,12 +500,9 @@
               Tools
               <i class="fas fa-blender"></i> ({{tools|length}})
             </h3></span
-          ><button
-            id="add-tool-btn"
-            class="col s6 btn white green-text right"
-          >
+          ><button id="add-tool-btn" class="col s6 btn white green-text right">
             Add Tool <i class="green-text fas fa-plus"></i
-            ><i hidden class="right  green-text fas fa-times"></i
+            ><i hidden class="right green-text fas fa-times"></i
             ><i class="green-text right fas fa-chevron-down"></i>
           </button>
         </div>
@@ -457,11 +512,7 @@
           class="row"
           style="padding: 1em; padding-bottom: none; margin-bottom: none;"
         >
-          <form
-            class="col s12"
-            method="POST"
-            action="{{url_for('add_tool')}}"
-          >
+          <form class="col s12" method="POST" action="{{url_for('add_tool')}}">
             <div class="row">
               <div class="input-field col s12">
                 <i class="fas fa-filter prefix"></i>
