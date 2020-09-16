@@ -2,7 +2,6 @@ $(document).ready(function () {
   // materialise js
   $("select").formSelect();
   $(".collapsible").collapsible();
-  $(".dropdown-trigger").dropdown();
   $(".sidenav").sidenav();
   $(".modal").modal();
 
