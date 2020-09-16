@@ -635,12 +635,14 @@ def delete_recipe_type(type_id):
         recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
 
         # verifies if an item in that category exists and prevents deletion
-        # add field that counts recipes of that type
-
-        mongo.db.type.remove({"_id": ObjectId(type_id)})
-        flash("Recipe Type Successfully Deleted")
-        return redirect(url_for('manage'))
-
+        checkType = list(mongo.db.type.distinct("count",
+                                                {"_id": ObjectId(type_id)}))
+        for i in checkType:
+            if i == 0:
+                mongo.db.type.remove({"_id": ObjectId(type_id)})
+                flash("Recipe Type Successfully Deleted")
+                return redirect(url_for('manage'))
+        flash("RECIPE TYPE CANNOT BE DELETED! RECIPES EXIST WITH THIS TYPE")
         return render_template("management.html", recipes=recipes,
                                types=types, users=users)
     else:
@@ -649,7 +651,7 @@ def delete_recipe_type(type_id):
 
 
 # adding recipe types
-@app.route("/add_recipe_type", methods=["GET", "POST"])
+@ app.route("/add_recipe_type", methods=["GET", "POST"])
 def add_recipe_type():
     types = list(mongo.db.type.find().sort("type_name", 1))
     users = list(mongo.db.users.find().sort("last_name", 1))
@@ -658,7 +660,8 @@ def add_recipe_type():
     if request.method == "POST":
         new_type = {
             "type_name": request.form.get("type_name"),
-            "type_desc": request.form.get("type_desc")
+            "type_desc": request.form.get("type_desc"),
+            "count": 0
         }
 
         type_name = request.form.get("type_name")
@@ -686,7 +689,7 @@ def add_recipe_type():
 
 
 # adding tools
-@app.route("/add_tool", methods=["GET", "POST"])
+@ app.route("/add_tool", methods=["GET", "POST"])
 def add_tool():
     # verifies current user is admin
     if session['user'] == "admin":
@@ -722,7 +725,7 @@ def add_tool():
 # adding products
 
 
-@app.route("/add_product", methods=["GET", "POST"])
+@ app.route("/add_product", methods=["GET", "POST"])
 def add_product():
     # verifies current user is admin
     if session['user'] == "admin":
@@ -757,7 +760,7 @@ def add_product():
 
 # User search function
 
-@app.route("/user_search", methods=["GET", "POST"])
+@ app.route("/user_search", methods=["GET", "POST"])
 # function to allow user to search for recipes based
 # on recipe_name and ingredients index
 def user_search():
@@ -777,7 +780,7 @@ def user_search():
 
 
 # deleting records
-@app.route("/delete_user/<username>")
+@ app.route("/delete_user/<username>")
 def delete_user(username):
     # validate the user is admin
     if session['user'] == "admin":
@@ -792,7 +795,7 @@ def delete_user(username):
         return redirect(url_for("home"))
 
 
-@app.route("/delete_product/<product>")
+@ app.route("/delete_product/<product>")
 def delete_product(product):
     # validate the user is admin
     if session['user'] == "admin":
@@ -807,7 +810,7 @@ def delete_product(product):
         return redirect(url_for("home"))
 
 
-@app.route("/delete_tool/<tool>")
+@ app.route("/delete_tool/<tool>")
 def delete_tool(tool):
     # validate the user is admin
     if session['user'] == "admin":
@@ -822,7 +825,7 @@ def delete_tool(tool):
 
 
 # EDIT RECORDS
-@app.route("/edit_user/<user_id>", methods=["GET", "POST"])
+@ app.route("/edit_user/<user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
 
     # gets chosen user
