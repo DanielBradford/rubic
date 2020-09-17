@@ -535,7 +535,7 @@ footer {
 
 /* MEDIA QUERIES*/
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .container {
     width: 100%;
     max-width: initial;
