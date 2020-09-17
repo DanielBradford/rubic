@@ -21,7 +21,7 @@ main {
 
 h4 .badge {
   text-transform: uppercase;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 #why_register{
@@ -58,26 +58,26 @@ h4 .badge {
 
 main .star {
   color: goldenrod;
-  text-shadow: 2px 2px white;
+  text-shadow: 2px 2px rgb(255, 255, 255);
 }
 
 .card-reveal i {
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
   text-shadow: none;
 }
 
 .card i {
-  color: rgb(255, 95, 37);
-  text-shadow: 2px 2px white;
+  color: rgb(226, 75, 20);
+  text-shadow: 2px 2px rgb(255, 255, 255);
 }
 
 .checker a {
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
 }
 
 a:hover {
-  color: rgb(255, 95, 37);
-  text-shadow: 0.5px 0.5px white;
+  color: rgb(226, 75, 20);
+  text-shadow: 0.5px 0.5px rgb(255, 255, 255);
 }
 body {
   display: flex;
@@ -92,7 +92,7 @@ main {
 /* Navbar */
 
 nav {
-  background-color: rgb(255, 95, 37);
+  background-color: rgb(226, 75, 20);
   border-bottom-left-radius: 1.4em;
   border-bottom-right-radius: 1.4em;
 }
@@ -102,10 +102,10 @@ nav {
 }
 .logo {
   font-family: "Fredoka One", cursive;
-  text-shadow: 2px 2px rgb(255, 95, 37);
+  text-shadow: 2px 2px rgb(226, 75, 20);
 }
 .title:hover {
-  text-shadow: 2px 2px white;
+  text-shadow: 2px 2px rgb(255, 255, 255);
 }
 
 /* Mobile navbar  */
@@ -114,7 +114,7 @@ nav {
   color: rgb(1, 128, 128);
 }
 #mobile-demo li a i {
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
 }
 
 /* Focus Point */
@@ -139,7 +139,7 @@ nav {
   border-radius: 1.4em;
   font-family: "Fredoka One", cursive;
   color: rgb(1, 128, 128);
-  text-shadow: 1px 1px white;
+  text-shadow: 1px 1px rgb(255, 255, 255);
 
   border: solid 1px rgb(1, 128, 128);
   text-transform: uppercase;
@@ -152,7 +152,7 @@ nav {
   border-top-left-radius: 0.8em;
   border-bottom-left-radius: 0.8em;
   padding: 8px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   color: rgb(1, 128, 128);
 }
 
@@ -160,7 +160,7 @@ nav {
   cursor: pointer;
 }
 #search-glass:hover {
-  color: white;
+  color: rgb(255, 255, 255);
   font-weight: 500;
 }
 
@@ -188,12 +188,12 @@ nav {
 body h1 {
   font-family: "Fredoka One", cursive;
   color: rgb(2, 68, 68);
-  text-shadow: 2px 2px rgb(255, 95, 37);
+  text-shadow: 2px 2px rgb(226, 75, 20);
   padding: 0.5em;
 }
 h2 {
   font-family: "Fredoka One", cursive;
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
   text-shadow: 1px 1px rgb(2, 68, 68);
   padding: 0.5em;
 }
@@ -223,25 +223,25 @@ h4 {
 }
 
 #size {
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
   text-shadow: 2px 2px rgb(1, 128, 128);
 }
 
 .type-desc h3 {
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
   font-weight: 200;
   letter-spacing: 2px;
   text-shadow: 1px 1px rgb(1, 128, 128);
 }
 
 .register {
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
   text-shadow: 2px 2px rgb(1, 128, 128);
 }
 
 .view {
   font-family: "Fredoka One", cursive;
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
   text-shadow: 2px 2px rgb(1, 128, 128);
   padding: 0.2em;
   margin: 0;
@@ -266,7 +266,7 @@ table {
 }
 
 .table label::after {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .table button {
@@ -281,7 +281,7 @@ table {
 }
 
 table a {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 table a:hover {
   text-decoration: underline;
@@ -297,7 +297,7 @@ tr td {
 
 form i {
   color: rgb(248, 246, 246);
-  text-shadow: 2px 2px rgb(255, 95, 37);
+  text-shadow: 2px 2px rgb(226, 75, 20);
 }
 .card {
   background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
@@ -305,11 +305,11 @@ form i {
 
   border-radius: 1.4em;
   font-weight: 600;
-  /* border: solid rgb(255, 95, 37) 0.5px; */
+  /* border: solid rgb(226, 75, 20) 0.5px; */
 }
 
 .card:hover {
-  box-shadow: 3px 3px 3px rgb(255, 95, 37);
+  box-shadow: 3px 3px 3px rgb(226, 75, 20);
   z-index: 200;
 }
 
@@ -323,7 +323,7 @@ form i {
   color: rgb(1, 128, 128);
 }
 #view_recipe a {
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
 }
 #view_recipe a:hover {
   text-decoration: underline;
@@ -331,11 +331,11 @@ form i {
 
 #toast-container {
   background-color: green;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 #view_recipe button i {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 #tools-table input {
@@ -404,26 +404,26 @@ img.circle {
 }
 
 ul a {
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
 }
 
 /* buttons */
 button {
   height: auto;
   width: auto;
-  background-color: rgb(255, 95, 37);
+  background-color: rgb(226, 75, 20);
   border-top-right-radius: 0.8em;
   border-bottom-right-radius: 0.8em;
   z-index: 600;
 }
 
 button i {
-  color: white;
+  color: rgb(255, 255, 255);
   text-shadow: none;
 }
 button:hover {
   cursor: pointer;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 button > a {
@@ -431,7 +431,7 @@ button > a {
 }
 .search-btn {
   margin: 0;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 .search-btn:hover {
   transform: scale(1.2);
@@ -441,18 +441,18 @@ button > a {
   width: auto;
 }
 .btn-large {
-  border: solid 2px white;
+  border: solid 2px rgb(255, 255, 255);
   border-radius: 0.8em;
   padding: 0.4em;
   margin-bottom: 10px;
 }
 
 .btn-large a {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .btn-large:hover {
-  background-color: rgb(255, 95, 37);
+  background-color: rgb(226, 75, 20);
 }
 
 #controlPanel button {
@@ -461,13 +461,13 @@ button > a {
 
 .add-recipe-btn {
   background-color: green;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .edit-btn,
 .delete-btn {
   width: 7em;
-  color: white;
+  color: rgb(255, 255, 255);
   border-radius: 1.2em;
   margin: 20px;
   z-index: 300;
@@ -484,20 +484,20 @@ button > a {
 
 .delete-btn i,
 .edit-btn i {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 #save-btn {
-  border: 2px solid white;
+  border: 2px solid rgb(255, 255, 255);
   background-color: rgb(1, 128, 128);
-  color: white;
+  color: rgb(255, 255, 255);
   border-radius: 1.4em;
   width: auto;
   margin-bottom: 1em;
 }
 
 #save-btn i {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 #save-btn:hover {
   cursor: pointer;
@@ -505,13 +505,13 @@ button > a {
 
 #saved {
   border-radius: 1.4em;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border: 2px 2px rgb(1, 128, 128);
   color: rgb(1, 128, 128);
 }
 
 .fixed-action-btn:hover {
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
 }
 
 .remove-btn {
@@ -521,15 +521,15 @@ button > a {
 
 .remove-btn:hover {
   cursor: pointer;
-  color: rgb(255, 95, 37);
+  color: rgb(226, 75, 20);
   text-shadow: none;
 }
 
 /* footer */
 
 footer {
-  background-color: rgb(255, 95, 37);
-  color: white;
+  background-color: rgb(226, 75, 20);
+  color: rgb(255, 255, 255);
   height: 2em;
 }
 
@@ -555,7 +555,7 @@ footer {
   .edit-btn,
   .delete-btn {
     width: auto;
-    color: white;
+    color: rgb(255, 255, 255);
     border-radius: 1.2em;
     z-index: 300;
   }
