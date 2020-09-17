@@ -251,84 +251,80 @@ def add_recipe():
 
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
-    if session['user'] == "admin":
-        if request.method == "POST":
+    if request.method == "POST":
 
-            existing_user = mongo.db.users.find_one(
-                {"user_name": request.form.get("user_name").lower()})
+        existing_user = mongo.db.users.find_one(
+            {"user_name": request.form.get("user_name").lower()})
 
-            if existing_user:
-                flash("Username already exists")
-                return redirect(url_for("register"))
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
 
-            password = request.form.get("password")
-            confirm = request.form.get("confirm")
-            if password != confirm:
-                flash("Passwords do not match")
-                return redirect(url_for("register"))
+        password = request.form.get("password")
+        confirm = request.form.get("confirm")
+        if password != confirm:
+            flash("Passwords do not match")
+            return redirect(url_for("register"))
 
-            vegan = "Yes" if request.form.get("vegan") else "No"
-            # boolean
-            register = {
+        vegan = "Yes" if request.form.get("vegan") else "No"
+        # boolean
+        register = {
 
 
-                "first_name": request.form.get("first_name"),
-                "last_name": request.form.get("last_name"),
-                "email": request.form.get("email"),
-                "user_name": request.form.get("user_name"),
-                "password": generate_password_hash(request.form.get
-                                                   ("password")),
-                "vegan": vegan,
-                "saved_recipes": [],
-                "contributed": 0
-            }
+            "first_name": request.form.get("first_name"),
+            "last_name": request.form.get("last_name"),
+            "email": request.form.get("email"),
+            "user_name": request.form.get("user_name"),
+            "password": generate_password_hash(request.form.get
+                                               ("password")),
+            "vegan": vegan,
+            "saved_recipes": [],
+            "contributed": 0
+        }
 
-            # defensive programming validation
-            first_name = request.form.get("first_name")
-            if len(first_name) > 20:
-                flash("First Name should be under 20 characters")
-                return redirect(url_for("register"))
-            #  checks fields are completed before submission
-            if len(first_name) == 0:
-                flash("First Name must be filled for registration")
-                return redirect(url_for("register"))
-            last_name = request.form.get("last_name")
-            if len(last_name) > 20:
-                flash("Last Name should be under 20 characters")
-                return redirect(url_for("register"))
-            if len(last_name) == 0:
-                flash("Last Name must be filled for registration")
-                return redirect(url_for("register"))
-            email = request.form.get("email")
-            if len(email) > 50:
-                flash("Email should be under 50 characters")
-                return redirect(url_for("register"))
-            if len(email) == 0:
-                flash("Email must be filled for registration")
-                return redirect(url_for("register"))
-            user_name = request.form.get("user_name")
-            if len(user_name) > 15:
-                flash("Email should be under 15 characters")
-                return redirect(url_for("register"))
-            if len(user_name) == 0:
-                flash("Username must be filled for registration")
-                return redirect(url_for("register"))
-            # password validaton
-            password = generate_password_hash(request.form.get("password"))
-            if len(password) == 0:
-                flash("Both Password fields must be filled for registration")
-                return redirect(url_for("register"))
-            mongo.db.users.insert_one(register)
-            # put new user in session cookie
-            session["user"] = request.form.get("user_name")
-            flash("Registration Successful!")
-            # log user in and take to profile
-            return redirect(url_for(
-                "profile", user=session["user"]))
-        return render_template("landing.html")
-    else:
-        flash("ADMIN ONLY! PLEASE REGISTER OR LOGIN FOR MEMBER ACCESS!")
-        return redirect(url_for('home'))
+        # defensive programming validation
+        first_name = request.form.get("first_name")
+        if len(first_name) > 20:
+            flash("First Name should be under 20 characters")
+            return redirect(url_for("register"))
+        #  checks fields are completed before submission
+        if len(first_name) == 0:
+            flash("First Name must be filled for registration")
+            return redirect(url_for("register"))
+        last_name = request.form.get("last_name")
+        if len(last_name) > 20:
+            flash("Last Name should be under 20 characters")
+            return redirect(url_for("register"))
+        if len(last_name) == 0:
+            flash("Last Name must be filled for registration")
+            return redirect(url_for("register"))
+        email = request.form.get("email")
+        if len(email) > 50:
+            flash("Email should be under 50 characters")
+            return redirect(url_for("register"))
+        if len(email) == 0:
+            flash("Email must be filled for registration")
+            return redirect(url_for("register"))
+        user_name = request.form.get("user_name")
+        if len(user_name) > 15:
+            flash("Email should be under 15 characters")
+            return redirect(url_for("register"))
+        if len(user_name) == 0:
+            flash("Username must be filled for registration")
+            return redirect(url_for("register"))
+        # password validaton
+        password = generate_password_hash(request.form.get("password"))
+        if len(password) == 0:
+            flash("Both Password fields must be filled for registration")
+            return redirect(url_for("register"))
+        mongo.db.users.insert_one(register)
+        # put new user in session cookie
+        session["user"] = request.form.get("user_name")
+        flash("Registration Successful!")
+        # log user in and take to profile
+        return redirect(url_for(
+            "profile", user=session["user"]))
+    return render_template("landing.html")
 
 
 @app.route("/profile", methods=["GET", "POST"])
