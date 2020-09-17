@@ -44,11 +44,11 @@ h4 .badge {
 }
 
 .recipes i {
-  color: teal;
+  color: rgb(1, 128, 128);
 }
 
 .saved i {
-  color: teal;
+  color: rgb(1, 128, 128);
 }
 
 #ribbon {
@@ -111,7 +111,7 @@ nav {
 /* Mobile navbar  */
 
 #mobile-demo a {
-  color: teal;
+  color: rgb(1, 128, 128);
 }
 #mobile-demo li a i {
   color: rgb(255, 95, 37);
@@ -138,10 +138,10 @@ nav {
   background-color: #e0f2f1;
   border-radius: 1.4em;
   font-family: "Fredoka One", cursive;
-  color: teal;
+  color: rgb(1, 128, 128);
   text-shadow: 1px 1px white;
 
-  border: solid 1px teal;
+  border: solid 1px rgb(1, 128, 128);
   text-transform: uppercase;
 }
 
@@ -153,7 +153,7 @@ nav {
   border-bottom-left-radius: 0.8em;
   padding: 8px;
   background-color: white;
-  color: teal;
+  color: rgb(1, 128, 128);
 }
 
 .search:hover {
@@ -227,25 +227,25 @@ h4 {
 
 #size {
   color: rgb(255, 95, 37);
-  text-shadow: 2px 2px teal;
+  text-shadow: 2px 2px rgb(1, 128, 128);
 }
 
 .type-desc h3 {
   color: rgb(255, 95, 37);
   font-weight: 200;
   letter-spacing: 2px;
-  text-shadow: 1px 1px teal;
+  text-shadow: 1px 1px rgb(1, 128, 128);
 }
 
 .register {
   color: rgb(255, 95, 37);
-  text-shadow: 2px 2px teal;
+  text-shadow: 2px 2px rgb(1, 128, 128);
 }
 
 .view {
   font-family: "Fredoka One", cursive;
   color: rgb(255, 95, 37);
-  text-shadow: 2px 2px teal;
+  text-shadow: 2px 2px rgb(1, 128, 128);
   padding: 0.2em;
   margin: 0;
 }
@@ -279,6 +279,8 @@ table {
 .table button {
   z-index: 0;
 }
+
+
 
 #products-table,
 #tools-table {
@@ -320,12 +322,12 @@ form i {
 
 #view_recipe {
   font-family: "Gayathri", cursive;
-  color: teal;
+  color: rgb(1, 128, 128);
   font-size: 1.2em;
 }
 
 #view_recipe i {
-  color: teal;
+  color: rgb(1, 128, 128);
 }
 #view_recipe a {
   color: rgb(255, 95, 37);
@@ -350,7 +352,7 @@ form i {
 /* images */
 
 .circle {
-  text-shadow: 2px 2px teal;
+  text-shadow: 2px 2px rgb(1, 128, 128);
 }
 .card img {
   padding-top: 1em;
@@ -380,7 +382,7 @@ img.circle {
   background-size: cover;
 }
 .collection-item:hover {
-  box-shadow: solid 1px teal;
+  box-shadow: solid 1px rgb(1, 128, 128);
   z-index: 300;
 }
 
@@ -394,7 +396,7 @@ img.circle {
 .ing,
 .method {
   border-radius: 1.4em;
-  border: solid 2px teal;
+  border: solid 2px rgb(1, 128, 128);
   background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
   background-size: cover;
 }
@@ -493,7 +495,7 @@ button > a {
 
 #save-btn {
   border: 2px solid white;
-  background-color: teal;
+  background-color: rgb(1, 128, 128);
   color: white;
   border-radius: 1.4em;
   width: auto;
@@ -510,8 +512,8 @@ button > a {
 #saved {
   border-radius: 1.4em;
   background-color: white;
-  border: 2px 2px teal;
-  color: teal;
+  border: 2px 2px rgb(1, 128, 128);
+  color: rgb(1, 128, 128);
 }
 
 .fixed-action-btn:hover {
@@ -520,7 +522,7 @@ button > a {
 
 .remove-btn {
   z-index: 500;
-  color: teal;
+  color: rgb(1, 128, 128);
 }
 
 .remove-btn:hover {
@@ -545,6 +547,13 @@ footer {
     max-width: initial;
   }
 
+  .card img {
+  padding-top: 1em;
+  height: 120px;
+
+   }
+
+
   .edit-btn,
   .delete-btn {
     width: auto;
@@ -558,5 +567,8 @@ footer {
   }
   body {
     position: relative;
+  }
+  .menu-btn{
+      margin-bottom: 10px;
   }
 }
