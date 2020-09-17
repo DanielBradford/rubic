@@ -540,6 +540,10 @@ footer {
     width: 100%;
     max-width: initial;
   }
+  
+  .title i {
+      margin-top: .6em;
+}
 
   .card img {
   padding-top: 1em;
