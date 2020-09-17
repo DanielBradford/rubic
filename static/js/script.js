@@ -174,6 +174,15 @@ $(document).ready(function () {
     $("#add_type").slideToggle("slow");
   });
 
+  //   edit type button
+  $(".edit-type-btn").click(function () {
+    //   changes drop down icon to exit icon
+    $("#edit_type").slideToggle("slow");
+  });
+  $("#cancel").click(function(){
+    $("#edit_type").slideToggle("slow");
+  });
+
   //add product
   $("#add-product-btn").click(function () {
     //   changes drop down icon to exit icon
@@ -196,19 +205,17 @@ $(document).ready(function () {
     $(".inner-search").fadeToggle("medium");
   });
 
-//   copy discount code confirmation
+  //   copy discount code confirmation
   $("#copy").click(function () {
     $("#copy").hide();
     $("#tick").show();
-
   });
 
-//   resets copy confirmation
-  $("#thanks").click(function(){
-       $("#copy").show();
+  //   resets copy confirmation
+  $("#thanks").click(function () {
+    $("#copy").show();
     $("#tick").hide();
-
-  })
+  });
 });
 
 // fixed action button and menu made clickable for responsive desgin
