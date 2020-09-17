@@ -20,14 +20,14 @@
 <hr />
 <br>
 <div class="row center-align">
-    <div class=" col s6 m3">
+    <div class="menu-btn col s6 m3">
         <a
             id="allRecipes"
             href="{{url_for('all_filter')}}"
             class="hoverable center-align blue btn-large" >All Recipes <i class="fas fa-sort-alpha-down"></i
         ></a>
         </div>
-        <div class="col s6 m3">
+        <div class="menu-btn col s6 m3">
         <a id="random-btn"
             href="{{url_for('random')}}"
            class="hoverable center-align pink btn-large"
@@ -35,14 +35,14 @@
         >
         </a>
     </div>
-    <div class="col s6 m3">
+    <div class="menu-btn col s6 m3">
         <a
             id="types-btn"
             class="hoverable center-align #ff6e40 deep-orange accent-2 btn-large"
             >Types <i class="fas fa-filter"></i
         ></a>
     </div>
-    <div class="col s6 m3">
+    <div class="menu-btn col s6 m3">
         <a
             href="{{url_for('vegan_filter')}}"
             
@@ -151,7 +151,7 @@
 
           <br />
 
-          <a href="" disabled class="secondary-content"
+          <a disabled class="secondary-content"
             ><h3 class="flow-text">
            {% if item.rating|length == 0 %}RATE ME{%else%}{%set rating = item.rating|sum / item.rating|length %}{{'%0.1f' % rating|float}}{% endif %} <i id="star" class="star fas fa-star"></i>
             </h3>
