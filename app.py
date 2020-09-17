@@ -125,7 +125,7 @@ def manage():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if session['user'] == "Guest":
+    if session["user"] == "Guest":
         if request.method == "POST":
             existing_user = mongo.db.users.find_one(
                 {"user_name": request.form.get("user_name")
