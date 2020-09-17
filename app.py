@@ -83,7 +83,7 @@ def my_recipes():
 @app.route("/products")
 def products():
     if session['user'] != "Guest":
-        products = tools = list(
+        products = list(
             mongo.db.products.find().sort("product_name", 1))
         tools = list(mongo.db.tools.find().sort("name", 1))
 
@@ -774,6 +774,9 @@ def user_search():
     types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     users = list(mongo.db.users.find({"$text": {"$search": search}}))
+    products = list(
+            mongo.db.products.find().sort("product_name", 1))
+    tools = list(mongo.db.tools.find().sort("name", 1))
     count = len(users)
     # checks if no users match search
     if count == 0:
@@ -784,7 +787,8 @@ def user_search():
     else:
         flash("Search results: {} for '{}'".format(len(users), search))
         return render_template("management.html", users=users, types=types,
-                               recipes=recipes, count=count, search=search)
+                               recipes=recipes, count=count, search=search,
+                               tools=tools, products=products)
 
 
 # deleting records
