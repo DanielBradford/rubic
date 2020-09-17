@@ -62,21 +62,21 @@ main .star {
 }
 
 .card-reveal i {
-  color: coral;
+  color: rgb(255, 95, 37);
   text-shadow: none;
 }
 
 .card i {
-  color: coral;
+  color: rgb(255, 95, 37);
   text-shadow: 2px 2px white;
 }
 
 .checker a {
-  color: coral;
+  color: rgb(255, 95, 37);
 }
 
 a:hover {
-  color: coral;
+  color: rgb(255, 95, 37);
   text-shadow: 0.5px 0.5px white;
 }
 body {
@@ -92,7 +92,7 @@ main {
 /* Navbar */
 
 nav {
-  background-color: coral;
+  background-color: rgb(255, 95, 37);
   border-bottom-left-radius: 1.4em;
   border-bottom-right-radius: 1.4em;
 }
@@ -102,7 +102,7 @@ nav {
 }
 .logo {
   font-family: "Fredoka One", cursive;
-  text-shadow: 2px 2px coral;
+  text-shadow: 2px 2px rgb(255, 95, 37);
 }
 .title:hover {
   text-shadow: 2px 2px white;
@@ -114,7 +114,7 @@ nav {
   color: teal;
 }
 #mobile-demo li a i {
-  color: coral;
+  color: rgb(255, 95, 37);
 }
 
 /* Focus Point */
@@ -188,12 +188,12 @@ nav {
 body h1 {
   font-family: "Fredoka One", cursive;
   color: rgb(2, 68, 68);
-  text-shadow: 2px 2px coral;
+  text-shadow: 2px 2px rgb(255, 95, 37);
   padding: 0.5em;
 }
 h2 {
   font-family: "Fredoka One", cursive;
-  color: coral;
+  color: rgb(255, 95, 37);
   text-shadow: 1px 1px rgb(2, 68, 68);
   padding: 0.5em;
 }
@@ -226,25 +226,25 @@ h4 {
 }
 
 #size {
-  color: coral;
+  color: rgb(255, 95, 37);
   text-shadow: 2px 2px teal;
 }
 
 .type-desc h3 {
-  color: coral;
+  color: rgb(255, 95, 37);
   font-weight: 200;
   letter-spacing: 2px;
   text-shadow: 1px 1px teal;
 }
 
 .register {
-  color: coral;
+  color: rgb(255, 95, 37);
   text-shadow: 2px 2px teal;
 }
 
 .view {
   font-family: "Fredoka One", cursive;
-  color: coral;
+  color: rgb(255, 95, 37);
   text-shadow: 2px 2px teal;
   padding: 0.2em;
   margin: 0;
@@ -302,7 +302,7 @@ tr td {
 
 form i {
   color: rgb(248, 246, 246);
-  text-shadow: 2px 2px coral;
+  text-shadow: 2px 2px rgb(255, 95, 37);
 }
 .card {
   background-image: url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80");
@@ -310,12 +310,11 @@ form i {
 
   border-radius: 1.4em;
   font-weight: 600;
-  /* border: solid coral 0.5px; */
+  /* border: solid rgb(255, 95, 37) 0.5px; */
 }
 
 .card:hover {
-  border: solid coral 2px;
-  box-shadow: 3px 3px 3px coral;
+  box-shadow: 3px 3px 3px rgb(255, 95, 37);
   z-index: 200;
 }
 
@@ -329,7 +328,7 @@ form i {
   color: teal;
 }
 #view_recipe a {
-  color: coral;
+  color: rgb(255, 95, 37);
 }
 #view_recipe a:hover {
   text-decoration: underline;
@@ -410,14 +409,14 @@ img.circle {
 }
 
 ul a {
-  color: coral;
+  color: rgb(255, 95, 37);
 }
 
 /* buttons */
 button {
   height: auto;
   width: auto;
-  background-color: coral;
+  background-color: rgb(255, 95, 37);
   border-top-right-radius: 0.8em;
   border-bottom-right-radius: 0.8em;
   z-index: 600;
@@ -457,7 +456,7 @@ button > a {
 }
 
 .btn-large:hover {
-  background-color: coral;
+  background-color: rgb(255, 95, 37);
 }
 
 #controlPanel button {
@@ -516,7 +515,7 @@ button > a {
 }
 
 .fixed-action-btn:hover {
-  color: coral;
+  color: rgb(255, 95, 37);
 }
 
 .remove-btn {
@@ -526,14 +525,14 @@ button > a {
 
 .remove-btn:hover {
   cursor: pointer;
-  color: coral;
+  color: rgb(255, 95, 37);
   text-shadow: none;
 }
 
 /* footer */
 
 footer {
-  background-color: coral;
+  background-color: rgb(255, 95, 37);
   color: white;
   height: 2em;
 }
