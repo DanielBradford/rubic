@@ -231,8 +231,8 @@ For final testing [Responsinator](https://www.responsinator.com/) was used to te
 
 Screen Size         | Size              | Comments
 --------------------|-------------------|---------
-X-Small             | <768px            | No space between card-title and image. Padding added to rectify this on small screens.
-Small               | >=768px           | No space between card-title and image. Padding added to rectify this on small screens.
+X-Small             | <768px            | No space between buttons for landing template. Grid layout altered to rectify
+Small               | >=768px           | Landing page stats given flow-text attr. to prevent distortion
 Medium              | >=992px           | Passed, no changes needed.
 Large               | >=1200px          | Passed, no changes needed.
 
@@ -295,6 +295,7 @@ To clone this project from GitHub:
 ## **Credits**
 
 - Unsplash for Images
+- QR CODE GENERATOR : https://www.the-qrcode-generator.com/
 
 For continual guidance:
 - Stack Overflow (https://stackoverflow.com/)
