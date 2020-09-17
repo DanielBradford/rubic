@@ -116,7 +116,10 @@ The skeleton of this project was designed and established using Balsamiq (Cloud)
 ### **Wireframe Designs**
 
 All wireframe designs can be found here:
-<a href="#">Wireframe Designs</a>
+
+Mobile: <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/documents/wireframes/RUBRIC%20MOBILE%20WIREFRAMES.pdf">Mobile Wireframe Designs</a>
+
+Desktop: <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/documents/wireframes/RUBRIC%20MOBILE%20WIREFRAMES.pdf">Desktop Wireframe Designs</a>
 
 
 
@@ -183,26 +186,68 @@ This was maintained throught the application using a mix of customised CSS and M
   - Used to create the structure of the pages
 - ### **CSS / CSS3**
   - Used to style the elements and customise layout. e.g. Color Schemes, design elements
-- ### **Materialize (CSS & Javascript/JQuery)**
+- ### **Materialize (CSS & Javascript/JQuery) https://materializecss.com/**
   - Used mainly for responsive design and layout. Other elements used were Tables and Modals
 - ### **JQuery**
   - Used to enhance the interactivity
 - ### **Font Awesome** - v5.10.0 https://fontawesome.com/
   - All icons used in this project were from Font Awesome
-- ### **Python 3** - 
+- ### **Python (3)** 
   - For all application functionality and databse interaction
-- ### **Flask** - 
+- ### **Flask** 
   - For all website functionality and python interaction
-- ### **Mongo DB** - 
+- ### **Mongo DB** 
   - For all database functionality
 
 - ### **Lighthouse Analytics** (DevTools)
   - This was used to analayse the performance, accessiblity, best practices and SEO scores of the site.
 - ### **WAVE** - https://wave.webaim.org/ (Accessibility Testing)
 
+## **Defensive Programming**
+The main objective when developing this application from a defensive design standpoint was to limit the users access and prevent the system breakin due to user input.
+
+For this project, i have deployed full CRUD functionality and allowed any user to view the recipes but only registered users can Create, Edit and Delete them.
+
+Back-end routing checks prevent any cross site activity that may result in unwanted behaviour from a malicious user.
+
+This application uses both front-end  and back-end data validation via the formfield attributes (max and min # of characters, only accepting valid url, etc.) along with back-end defensive programming in app.py.
+
+This ensures the amount of data for each recipe is limited/controlled however the content of the data is not.
+
+A user could upload any text (for example offensive text) into the database at this point.
+
+A future feature i have considered is an approval functionality from an admin user that requires approval before the uploaded recipe/information is made publicly available.
+
+*For details on defensive design testing, please see <a href="https://github.com/DanielBradford/rubric/blob/master/testing.md" target="_blank">testing section</a>.
+
+## **Responsive Design**
+The application has been built using a mobile-first approach. Throughout the development process, chrome developer tools, multiple desktops and mobile devices
+where used to ensure responsivness across all screen resolutions. *(The application was also tested by family and friends using various devices and browsers.)*
+
+For final testing [Responsinator](https://www.responsinator.com/) was used to test the application accross multiple devices.
+
+### Screen Size Testing/Compability
+
+Screen Size         | Size              | Comments
+--------------------|-------------------|---------
+X-Small             | <768px            | No space between card-title and image. Padding added to rectify this on small screens.
+Small               | >=768px           | No space between card-title and image. Padding added to rectify this on small screens.
+Medium              | >=992px           | Passed, no changes needed.
+Large               | >=1200px          | Passed, no changes needed.
+
+### Browser Compability
+
+Browser             | Version           | Comments
+--------------------|-------------------|---------
+Firefox             | 72.0.2 (64-bit)   | No errors observed
+Edge                | 44.18362.449.0    | No errors observed
+Chrome              | 80.0.3987.122     | No errors observed
+
+
+
 ## **Testing**
 
-### Please refer to <a href="#" target="_blank">TESTING.md</a> for a full testing breakdown
+### Please refer to <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/testing.md" target="_blank">TESTING.md</a> for a full testing breakdown
 
 ## **Deployment**
 
@@ -215,7 +260,20 @@ This project was **developed** using a <a href="https://gitpod.io/" target="_bla
 - To push:
   - git push
 
-This project was **deployed** using HEROKU.
+This project was **deployed** using **HEROKU**.
+
+**How to deploy to Heroku using GitPod:**
+
+1. Created a new application using the Heroku dashboard.
+2. Go to settings tab, click on 'reveal config vars' and add config vars such as IP (0.0.0.0), PORT (5000), MongoDB Name, MongoDB URI (URL with DB name and password).
+3. Install Heroku via the console using 'npm install -g Heroku'.
+4. Log into Heroku via the console using 'heroku login' and follow the on screen instructions to log in.
+5. Create a requirements.txt via the console using 'pip3 freeze > requirements.txt'.
+6. Create a Procfile via the console using 'echo web: python app.py > Procfile'.
+7. Connect GitHub to Heroku via the console using 'heroku git:remote a Rubric-Recipe-Manager'
+8. Commit all files in your project via the console using 'git add .' and 'git commit -m "Message"'.
+9. Deploy your project to Heroku via the consol using 'git push heroku master'.
+
 
 
 
@@ -239,6 +297,7 @@ To clone this project from GitHub:
 
 - Unsplash for Images
 
-- Inspiration and Structural guidance for the README.md file was taken from:
-    * https://github.com/AJGreaves/portrait-artist/blob/master/README.md
-    * https://github.com/Code-Institute-Solutions/StudentExampleProjectGradeFive/blob/master/README.md
+For continual guidance:
+- Stack Overflow (https://stackoverflow.com/)
+- W3 Schools (https://www.w3schools.com/)
+
