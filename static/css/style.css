@@ -444,6 +444,7 @@ button > a {
   border: solid 2px white;
   border-radius: 0.8em;
   padding: 0.4em;
+  margin-bottom: 10px;
 }
 
 .btn-large a {
