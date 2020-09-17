@@ -38,7 +38,7 @@
             Edit <i class="fas fa-pencil"></i></button></a
       ></span>
       {%else %} {% if item._id in saved_list %}
-      <span id="saved"><h4 class="flow-text">SAVED <i class="fas fa-thumbtack"></i></h4></span>
+      <span ><h4 id="saved" class="flow-text">SAVED <i class="fas fa-thumbtack"></i></h4></span>
       {%else%}
       <span><a href="{{url_for('save_recipe', recipe_id=item._id)}}"
         ><button id="save-btn" class="btn">
