@@ -211,9 +211,6 @@ h4 {
   color: rgb(2, 68, 68);
 }
 
-.method ol {
-  padding-left: auto;
-}
 
 .card .card-title {
   font-size: 22px;
@@ -248,10 +245,6 @@ h4 {
   text-shadow: 2px 2px rgb(1, 128, 128);
   padding: 0.2em;
   margin: 0;
-}
-
-.reg_label {
-  font-size: 200;
 }
 
 /* management table */
@@ -382,7 +375,7 @@ img.circle {
   background-size: cover;
 }
 .collection-item:hover {
-  box-shadow: solid 1px rgb(1, 128, 128);
+  box-shadow: 5px 5px 5px rgb(1, 128, 128);
   z-index: 300;
 }
 
