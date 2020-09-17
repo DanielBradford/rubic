@@ -24,13 +24,11 @@ h4 .badge {
   color: rgb(255, 255, 255);
 }
 
-#why_register{
-    background-color: rgba(255, 255, 255, 0.836);
-    color: rgb(1, 97, 97);
-    align-items: center;
-    padding: .6em;
-  
-
+#why_register {
+  background-color: rgba(255, 255, 255, 0.836);
+  color: rgb(1, 97, 97);
+  align-items: center;
+  padding: 0.6em;
 }
 /* icons */
 
@@ -211,7 +209,6 @@ h4 {
   color: rgb(2, 68, 68);
 }
 
-
 .card .card-title {
   font-size: 22px;
 }
@@ -272,8 +269,6 @@ table {
 .table button {
   z-index: 0;
 }
-
-
 
 #products-table,
 #tools-table {
@@ -534,23 +529,20 @@ footer {
 }
 
 /* MEDIA QUERIES*/
-
+@media only screen and (max-width: 600px) {
+  .title i {
+    margin-top: 0.6em;
+  }
+  .card img {
+    padding-top: 1em;
+    height: 120px;
+  }
+}
 @media only screen and (max-width: 900px) {
   .container {
     width: 100%;
     max-width: initial;
   }
-  
-  .title i {
-      margin-top: .6em;
-}
-
-  .card img {
-  padding-top: 1em;
-  height: 120px;
-
-   }
-
 
   .edit-btn,
   .delete-btn {
@@ -566,7 +558,7 @@ footer {
   body {
     position: relative;
   }
-  .menu-btn{
-      margin-bottom: 10px;
+  .menu-btn {
+    margin-bottom: 10px;
   }
 }

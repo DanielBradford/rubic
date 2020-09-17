@@ -29,8 +29,8 @@
     </div>
     <div class="menu-btn col s6 m3">
       <a id="prodsAndTools-btn" class="hoverable center-align green btn-large"
-        >Products & Tools <br /><i class="hide-on-small-only fas fa-blender"></i
-      ></a>
+        >Products <span class="hide-on-small-only">& Tools <br /><i class="hide-on-small-only fas fa-blender"></i
+      ></span></a>
     </div>
   </div>
   <br />
@@ -38,7 +38,7 @@
   <div id="user-table" class="row">
     <div class="table col light-blue white-text s12">
       <table class="highlight">
-        <span class="col 2 right"
+        <span class="col right"
           ><a style="positon: absolute;" href="{{url_for('register')}}"
             ><button class="green btn">
               Add User <i class="fas fa-user"></i></button></a
@@ -53,6 +53,7 @@
             ><i class="fas fa-search"></i>: {{search}}</span
           >
         </h4>
+        <br>
         <span class="row center">
           <h3>
             Users <i class="fas fa-users"></i> {%if users|length > 0
@@ -158,6 +159,8 @@
               <span class="hide-on-small-only"> Reset</span>
               <i class="fas fa-redo"></i></button></a
         ></span>
+        <br>
+        <br>
         <h3 class="center">
           Recipes <i class="fas fa-books"></i> ({{recipes|length}})
         </h3>
@@ -208,16 +211,15 @@
     <div class="table col #ff6e40 deep-orange accent-2 s12">
       <table class="striped">
         <div class="row">
-          <span class="col s6"
-            ><h3>
-              Recipe Type <i class="fas fa-filter"></i> ({{types|length}})
-            </h3></span
-          ><button id="add_type_show" class="col s6 btn green right">
+         <button id="add_type_show" class="col m4 s8 btn green right">
             Create Recipe Type <i class="fas fa-hammer"></i
             ><i hidden class="right fas fa-times"></i
             ><i class="right fas fa-chevron-down"></i>
           </button>
         </div>
+         <h3 class="center">
+              Recipe Type <i class="fas fa-filter"></i> ({{types|length}})
+            </h3>
         <div
           hidden
           id="add_type"
@@ -271,7 +273,7 @@
           <tr class="dark-blue-text">
             <th></th>
             <th>Type <i class="fas fa-tag"></i></th>
-            <th>Description <i class="fas fa-info"></i></th>
+            <th class="hide-on-small-only">Description <i class="hide-on-small-only fas fa-info"></i></th>
             <th>Recipe Count</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -283,7 +285,7 @@
           <tr class="white-text">
             <td>{{loop.index}}</td>
             <td>{{item.type_name}}</td>
-            <td style="width: 60%;">{{item.type_desc}}</td>
+            <td class="hide-on-small-only">{{item.type_desc}}</td>
             <td>
               {{item.count}}
             </td>
@@ -301,11 +303,7 @@
             </td>
           </tr>
           <div hidden id="edit_type">
-            <form
-              class="col s12"
-              method="POST"
-              action="#"
-            >
+            <form class="col s12" method="POST" action="#">
               <div class="row">
                 <div class="input-field col s12 m6">
                   <i class="fas fa-filter prefix"></i>
@@ -359,12 +357,7 @@
     <div id="products-table" class="table centered col green s12 m6">
       <table class="striped">
         <div class="row">
-          <span class="col s6"
-            ><h3>
-              Products
-              <i class="fas fa-microwave"></i> ({{products|length}})
-            </h3></span
-          ><button
+            <button
             id="add-product-btn"
             class="col s6 btn white green-text right"
           >
@@ -373,6 +366,10 @@
             ><i class="green-text right fas fa-chevron-down"></i>
           </button>
         </div>
+        <h3 class="center">
+              Products
+              <i class="fas fa-shopping-bag"></i> ({{products|length}})
+            </h3>
         <div
           hidden
           id="add_product"
@@ -462,7 +459,7 @@
           <tr class="dark-blue-text">
             <th></th>
             <th>Name <i class="fas fa-tag"></i></th>
-            <th>Description <i class="fas fa-info"></i></th>
+            <th class="hide-on-small-only">Description <i class="fas fa-info"></i></th>
 
             <th>Price</th>
             <th>Delete</th>
@@ -474,7 +471,7 @@
           <tr class="white-text">
             <td>{{loop.index}}</td>
             <a href="{{item.url}}"><td>{{item.product_name}}</td></a>
-            <td class="truncate">{{item.product_desc}}</td>
+            <td class="hide-on-small-only truncate">{{item.product_desc}}</td>
             <td>
               £{{item.price}}
             </td>
@@ -495,17 +492,16 @@
     <div id="tools-table" class="table centered col white border-green s12 m6">
       <table class="striped">
         <div class="row">
-          <span class="col s6"
-            ><h3>
-              Tools
-              <i class="fas fa-blender"></i> ({{tools|length}})
-            </h3></span
-          ><button id="add-tool-btn" class="col s6 btn white green-text right">
+        <button id="add-tool-btn" class="col s6 btn white green-text right">
             Add Tool <i class="green-text fas fa-plus"></i
             ><i hidden class="right green-text fas fa-times"></i
             ><i class="green-text right fas fa-chevron-down"></i>
           </button>
         </div>
+        <h3 class="center">
+              Tools
+              <i class="fas fa-blender"></i> ({{tools|length}})
+            </h3>
         <div
           hidden
           id="add_tool"
@@ -591,7 +587,9 @@
           <tr class="dark-blue-text">
             <th></th>
             <th>Name <i class="fas fa-tag"></i></th>
-            <th>Description <i class="fas fa-info"></i></th>
+            <th class="hide-on-small-only">
+              Description <i class="fas fa-info"></i>
+            </th>
 
             <th>Price</th>
             <th>Delete</th>
@@ -603,7 +601,7 @@
           <tr class="green-text">
             <td>{{loop.index}}</td>
             <a href="{{item.url}}"><td>{{item.name}}</td></a>
-            <td class="truncate">{{item.desc}}</td>
+            <td class="hide-on-small-only truncate">{{item.desc}}</td>
             <td>
               £{{item.price}}
             </td>
