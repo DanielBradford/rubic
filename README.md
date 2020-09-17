@@ -15,6 +15,7 @@ There are 2 stages of access
 1. **Unregistered Access:** This allows users to view all recipes without being able to add, save or edit. It also limits their access to a products, tools and discounts page.
 1. **Registered Access:** Once the user has logged in or registered, they can Create, Read, Update, Delete, Save and Rate recipes on the application. 
 (*The user can only edit and delete their own recipes and can only rate the recipes of others*)
+1. **Admin Access** Only admin can access the management page which has full CRUD funcitonaloty over all contents of the application including Users, Recipes, Recipe Types and Products.
 
 
 <img src="static/images/qrcode.png" alt="qrcode">
