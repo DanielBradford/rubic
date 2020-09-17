@@ -202,21 +202,25 @@ def recipe_list(recipe_type):
 @app.route("/view_recipe/<recipe_id>", methods=["GET", "POST"])
 def view_recipe(recipe_id):
     if session['user']:
-        recipe_id = recipe_id
-        recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-        recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-        types = list(mongo.db.type.find().sort("type_name", 1))
-        user = session['user']
-        guest = "Guest"
-        user_id = mongo.db.users.find_one({"user_name": user})
-        saved_list = list(mongo.db.users.distinct(
-            "saved_recipes", {"user_name": user}))
-        products = list(mongo.db.products.find().sort("product_name", 1))
+        # checks recipe id is valid
+        if len(recipe_id) == 24:
+            recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+            recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+            types = list(mongo.db.type.find().sort("type_name", 1))
+            user = session['user']
+            guest = "Guest"
+            user_id = mongo.db.users.find_one({"user_name": user})
+            saved_list = list(mongo.db.users.distinct(
+                "saved_recipes", {"user_name": user}))
+            products = list(mongo.db.products.find().sort("product_name", 1))
 
-        return render_template("view_recipe.html", recipe=recipe,
-                               recipes=recipes, user_id=user_id,
-                               user=user, saved_list=saved_list,
-                               types=types, products=products, guest=guest)
+            return render_template("view_recipe.html", recipe=recipe,
+                                recipes=recipes, user_id=user_id,
+                                user=user, saved_list=saved_list,
+                                types=types, products=products, guest=guest)
+        else:
+            flash("Sorry. The recipe you are looking for does not exist.")
+            return redirect(url_for('recipes'))
 
     user = "Guest"
     recipe_id = recipe_id
