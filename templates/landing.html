@@ -21,7 +21,7 @@
   <br />
 
   <div class="buttons row">
-    <div class="col  m2"></div>
+    <div class="col s1 m2"></div>
     {% if session.user == "Guest" %}
     <div class="col btn-large s5 m3">
       <a class="flowtext text-white" href="{{ url_for('register') }}"
@@ -35,23 +35,29 @@
       ></a>
     </div>
     <div class="col s1 m2"></div>
-    {% endif %} 
+    {% endif %}
   </div>
-  <div id="why_register" class="center row"><p>Register or Login to <span style="color: coral">SAVE</span> and <span style="color: coral">RATE</span> recipes and view our top tools, products and discounts for <span style="color: coral">FREE!</span></p></div>
+  <div id="why_register" class="center row">
+    <p>
+      Register or Login to <span style="color: coral;">SAVE</span> and
+      <span style="color: coral;">RATE</span> recipes and view our top tools,
+      products and discounts for <span style="color: coral;">FREE!</span>
+    </p>
+  </div>
 </div>
-<div class="center-align stats row">
-<div class=" center-align col s12 m4">
-    <h2>
+<div class="show-on-large center-align stats row">
+  <div class="center-align col s4 m4">
+    <h2 class="flow-text">
       {{users|length}} <i class="fas fa-users"></i><br />
       <span class="stat">USERS</span>
     </h2>
   </div>
-  <div class="stat center-align col s12 m4">
-    <h2>{{recipes|length}} <i class="fas fa-books"></i><br />RECIPES</h2>
+  <div class="stat center-align col s4 m4">
+    <h2 class="flow-text">{{recipes|length}} <i class="fas fa-books"></i><br />RECIPES</h2>
   </div>
 
-  <div class="stat center-align col s12 m4">
-    <h2>
+  <div class="stat center-align col s4 m4">
+    <h2 class="flow-text">
       100 <i class="fas fa-percent"></i><br />
       FREE
     </h2>
