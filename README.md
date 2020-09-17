@@ -1,5 +1,6 @@
 # **<p align="center">RUBRIC <i  class="fas fa-hat-chef"></i></p>** 
 
+Project: <a href="https://rubric-recipe-manager.herokuapp.com/"> RUBRIC - *RECIPE MANAGER*</a>
 
 ## WHAT IS RUBRIC
 Rubric is an efficient personal recipe management web application.  It provides a full recipe management service, free of charge, that allows users to have access to a selection of recipes, including their own all in one place.
@@ -16,7 +17,7 @@ There are 2 stages of access
 (*The user can only edit and delete their own recipes and can only rate the recipes of others*)
 
 
-### QR CODE?
+<img src="static/images/qrcode.png" alt="qrcode">
 
 ### **Creation and Design**
 
@@ -132,8 +133,8 @@ Below are some screen shots of the application in use:
 
 - It was important to me that the application remained gender neutral in order to maximise potential user scope. Upon researching current applications it appears many have a feminine tone which might discourage male users. From the start i intended the site to be bright, fun and intuitive.
 The main COLOR scheme used includes:
-- **Coral** (#ff7e50)
-- **Teal** (#00897b)
+- **Coral** (rgb(255, 95, 37))
+- **Teal** (rgb(1, 128, 128))
 - **White** (#ffffff)
 As the application is centered around recipes and cooking i used a Chef Hat Symbol as the maing logo.
 The FONTS used were from Google Fonts:
@@ -270,11 +271,9 @@ This project was **deployed** using **HEROKU**.
 4. Log into Heroku via the console using 'heroku login' and follow the on screen instructions to log in.
 5. Create a requirements.txt via the console using 'pip3 freeze > requirements.txt'.
 6. Create a Procfile via the console using 'echo web: python app.py > Procfile'.
-7. Connect GitHub to Heroku via the console using 'heroku git:remote a Rubric-Recipe-Manager'
+7. Connect GitHub to Heroku via the console using 'heroku git:remote a rubric-recipe-manager'
 8. Commit all files in your project via the console using 'git add .' and 'git commit -m "Message"'.
 9. Deploy your project to Heroku via the consol using 'git push heroku master'.
-
-
 
 
 ### **To run locally:**
