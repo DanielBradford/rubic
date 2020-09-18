@@ -90,17 +90,17 @@ There were 3 minor errors that were corrected during testing:
     <span style="color:green">PASSED</span> *The discount code modal functionality works efficiently*
 
 
-### **CRUD FUNCTIONALITY TESTING** <span style="color:green">PASSED</span>
-CREATE
+### **CRUD FUNCTIONALITY TESTING**
+CREATE:  <span style="color:green">PASSED</span>
 - All creation functionality for recipes, users, recipe types, products and tools was successfull and reflected in the Mongo database
 
-READ
+READ: <span style="color:green">PASSED</span>
 - All data was successfully presented to the user and is accurate to all data stored in the Mongo database 
 
-UPDATE
+UPDATE: <span style="color:green">PASSED</span>
 - All update functionality for editing recipes and users, was successful and the database stored the data accordingly 
 
-DELETE
+DELETE: <span style="color:green">PASSED</span>
 - All functionality for deleting recipes, users, recipe types, tools and products was successfull
 
 
@@ -117,7 +117,7 @@ This failed once on the management page but was corrected.
 
 
 ### **RATING FUNCTIONALITY** <span style="color:green">PASSED</span>
-One of the main features that needed to be tested was the rating system. This system allows user to rate a recipe betweem 1 and 10. The rating is then stored in an array. On the frontend the code generates the sum of the array divided by the length of the array giving the average rating for that recipe.
+One of the main features that needed to be tested was the rating system. This system allows the user to rate a recipe between 1 and 10 using a slide bar. The rating is then stored in an array in the recipe document. On the front-end the code generates the sum of the array and divides it by the length of the array giving the average rating for that recipe.
 
 I tested this by logging in as different users and rating recipes to check the calculations were correct.
 
@@ -142,10 +142,36 @@ I tested this by doing the following:
 
 All of the above tests passed as the forms did not allow me to proceed.
 
+### **MANAGEMENT / ADMIN FEATURE TESTING**
+- **C.R.U.D** FUNCTIONALITY FOR USERS, RECIPES, RECIPE TYPES, PRODUCTS AND TOOLS <span style="color:green">PASSED</span>
+- USER EMAIL MAILTO FUNCTIONALITY <span style="color:green">PASSED</span>
+- INCREMENT/DECREMENT OF RECIPE TYPE COUNT <span style="color:green">PASSED</span>
+
+    Below is the code used:
+
+            this_type = request.form.get("type")
+            # increments recipe type count
+            mongo.db.type.update({"type_name": this_type},
+                                 {"$inc": {"count": 1}})
+
+            types = mongo.db.recipes.distinct("type", {"_id": ObjectId(recipe_id)})
+            #decrements recipe type count
+            for i in types:
+            mongo.db.type.update({"type_name": i},
+                                 {"$inc": {"count": -1}})
 
 ### **URL Defensive Programming** <span style="color:green">PASSED</span>
 
-To prevent users breaking the application by trying to view recipes that dont exist
+For the purpose of access control i gave the visitor the default session username of "Guest". By doing this i was then able to control and manipulate the users access to various parts of the application.
+
+- This helps prevent non registered users accessing member only areas e.g. someone elses profile
+<img src="documents/screenshots/members_only.png">
+- This helps prevent users editing or deleting recipes that were not their own
+- This helps prevent non ADMIN users accessing the management page.
+<img src="documents/screenshots/admin_only.png">
+- This reduces the scope of malicious or damaging activity within the application
+
+THIS CAN BE IMPROVED IN FUTURE DEVELOPMENT
 
 **For example:**
 
@@ -157,9 +183,7 @@ To prevent users trying to view a recipe with a false code. I only allowed the s
 
     View recipe defensive programming added. Checks recipe_id length to verify validity
 
-This can be imporved upon by cross checking the Object Id exists within the database before proceeding. This would be a good security feature to implement in the future.
-
-
+This can be improved upon by cross checking the Object Id exists within the database before proceeding. This would be a good security feature to implement in the future.
 
 
 ### **FLASH MESSAGES** <span style="color:green">PASSED</span>
@@ -188,10 +212,10 @@ For final testing [Responsinator](https://www.responsinator.com/) was used to te
 
 Screen Size         | Size              | Comments
 --------------------|-------------------|---------
-X-Small             | <768px            | No space between buttons for landing template. Grid layout altered to rectify
-Small               | >=768px           | Landing page stats given flow-text attr. to prevent distortion
-Medium              | >=992px           | Passed, no changes neccessary.
-Large               | >=1200px          | Passed, no changes neccessary.
+X-Small             | <768px            | No space between buttons for landing template. Grid layout altered to rectify <span style="color:green">PASSED</span>
+Small               | >=768px           | Landing page stats given flow-text attr. to prevent distortion <span style="color:green">PASSED</span>
+Medium              | >=992px           | Passed, no changes neccessary. <span style="color:green">PASSED</span>
+Large               | >=1200px          | Passed, no changes neccessary. <span style="color:green">PASSED</span>
 
 Commit Examples:
 
@@ -238,12 +262,11 @@ Chrome              | 80.0.3987.122     | <span style="color:green">PASSED</span
     commit 7a0c9c0baad9f6294d642e80e3c8f9cbbf07250a
 
 
-
-
-
 ## **Future Issues to be fixed**
 
-During development i encountered issues with the user session feature. When i a guest opens the application they are assigned a session['user] status as "Guest". This status allowed me to control their access throughout the application. This may have issues in the future if the application scope is to expand. 
+- During development i encountered issues with the user session feature. When i a guest opens the application they are assigned a session['user] status as "Guest". This status allowed me to control their access throughout the application. This may have issues in the future if the application scope is to expand. 
+
+- The edit recipe type function in the management suite is still in development. The issue is not how it operates but what way it can be presented to the user most efficiently. 
 
 
 ## **Development Tools Testing**
