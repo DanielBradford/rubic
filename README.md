@@ -1,6 +1,12 @@
 <div align="center"><img src="documents/screenshots/logo.png"></div>
 
-Project:**<a href="https://rubric-recipe-manager.herokuapp.com/"> RUBRIC - *RECIPE MANAGER*</a>**
+<div align="center"><p>Project:<a href="https://rubric-recipe-manager.herokuapp.com/"> **RUBRIC - RECIPE MANAGER**</a>
+
+**TEST USER INFO**
+
+USERNAME :  **TEST1**
+
+PASSWORD:   **password**</p></div>
 
 ## <p align="center" style="color:teal">WHAT IS RUBRIC?</p>
 Rubric is an efficient personal recipe management web application.  It provides a full recipe management service, free of charge which allows users to have access to a selection of recipes, including their own, all in one place.
