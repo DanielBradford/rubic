@@ -218,6 +218,7 @@ This allows new users to register for free so they can access the extra features
 - The email must contain the '@' and '.' symbol in a recognised format
 - The password and confirm password field must match 
 - The password is also hashed for security purposes
+<br/>
 
 <img style="width:100%" src="documents/screenshots/register1.png">
 <img style="width:100%" src="documents/screenshots/register2.png">
@@ -260,7 +261,7 @@ This allows all users to view the recipe of their choice from the selection in t
 
 - Check boxes to be ticked if the user has the ingredient on the list
 - Check boxes to be ticked if the user has completed the stage of the method/instructions
-- When the appliance name is clicked it takes the user to the recommended appliance on the affiliate website
+- When the appliance name is clicked it takes the user to the recommended appliance on the affiliate website. (THIS ALLOWS FOR THE APPLICATION TO BE MONETIZED THROUGH ADVERTSING AND AFFILILIATE MARKETING)
 
  For example:
 
