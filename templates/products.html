@@ -20,7 +20,7 @@
      
         <div class="col s6">
          <a
-        href="{{tool.url}}" target="_blank"
+        href="{{tool.url}}" rel="noreferrer" target="_blank"
       >
           <h3 class="flow-text">{{tool.name}}</h3></a>
         
@@ -35,11 +35,11 @@
         <div class="center"><h4 class="center">£{{tool.price}}</h4>  {%if session.user %}<button data-target="discount" class=" btn green modal-trigger">10% off with voucher code <i class="fas fa-receipt"></i></button>{%else%}{%endif%}</div>
 
          <a
-        href="{{tool.url}}" target="_blank"
+        href="{{tool.url}}" target="_blank" rel="noreferrer"
       ><p style="font-size: 1.4em; text-transform: uppercase" class="center"> <i class="fas fa-location-arrow"></i> Click here for more info...</p></a>
         </div>
          <a
-        href="{{tool.url}}" target="_blank"
+        href="{{tool.url}}" rel="noreferrer" target="_blank"
       >
         <div class="col s6">
           <img
@@ -53,7 +53,7 @@
 <li>
     <div class="row">
      <a
-        href="{{tool.url}}" target="_blank"
+        href="{{tool.url}}" rel="noreferrer" target="_blank"
       >
         <div class="col s6">
           <img
@@ -64,7 +64,7 @@
      
         <div class="col s6">
          <a
-        href="{{tool.url}}" target="_blank"
+        href="{{tool.url}}"  rel="noreferrer" target="_blank"
       >
           <h3 class="flow-text">{{tool.name}}</h3></a>
         
@@ -79,7 +79,7 @@
         <div class="center"><h4 class="center">£{{tool.price}}</h4>  {%if session.user %}<button data-target="discount" class=" btn green modal-trigger">10% off with voucher code <i class="fas fa-receipt"></i></button>{%else%}{%endif%}</div>
 
          <a
-        href="{{tool.url}}" target="_blank"
+        href="{{tool.url}}" rel="noreferrer" target="_blank"
       ><p style="font-size: 1.4em; text-transform: uppercase" class="center"><i class="fas fa-location-arrow"></i> Click here for more info...</p></a>
         </div>
     </div>
@@ -96,7 +96,7 @@
 <h3> Our recommended apppliances:</h3>
 <br>
 {%for product in products %} 
-<a href="{{product.url}}">
+<a href="{{product.url}}" rel="noreferrer">
 <span class="center col s2">
 {{product.product_name}}:
  <img src="{{product.image_url}}" alt="{{product.product_name}}">
