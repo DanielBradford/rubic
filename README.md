@@ -107,11 +107,35 @@ This allowed an insight into the user experience and how a visitor uses the appl
 
 Structure:
 
-DATA MODELS
+Within the Rubric Recipe Manager Database their are 5 collections
 
-HOW IT FUNCTIONS
+1. USERS 
 
-CROSS ACCESS LIMITATION
+    - The majority of the fields use String input.
+    - The saved recipes uses an array which stores the ObjectIds of the recipes that have been saved by this user.
+    - The contributed field uses the Int32 value to allow a number to be incremented/decremented easily
+<img style="width:100%"  src="documents/screenshots/user_data_model.png">
+
+1.  RECIPES 
+
+    - The majority of the fields in this collection also use String values.
+    - The rating field uses an Array to collect all the ratings. The output is the sum of the array divided by the length.
+<img style="width:100%"  src="documents/screenshots/recipe_data_model.png">
+
+1. RECIPE TYPE 
+    - 2 Fields have string values
+    - The count field is Int32 to allow for incrementation / decrementation
+<img style="width:100%"  src="documents/screenshots/recipe_type_data_model.png">
+
+1. TOOLS
+
+    - All string values
+<img style="width:100%"  src="documents/screenshots/tool_data_model.png">
+
+1. PRODUCTS 
+
+    - All string values
+<img style="width:100%"  src="documents/screenshots/product_data_model.png">
 
 
 ### **UX - SKELETON:**
@@ -183,6 +207,8 @@ This was maintained throught the application using a mix of customised CSS and M
 ### **Login Feature**
 This allows registered members to login into application in order to access the extra features. This contains back-end verifcation that checks if the username exists in the database.
 
+If the unhashed password in the database matches the user is able to login.
+
 <img style="width:100%" src="documents/screenshots/login.png">
 
 ### **Register Feature**
@@ -192,6 +218,7 @@ This allows new users to register for free so they can access the extra features
 - The First Name cannot be over 20 characters
 - The email must contain the '@' and '.' symbol in a recognised format
 - The password and confirm password field must match 
+- The password is also hashed for security purposes
 
 <img style="width:100%" src="documents/screenshots/register1.png">
 <img style="width:100%" src="documents/screenshots/register2.png">
@@ -259,24 +286,40 @@ The profile feature presents a dashboard display of the applications features. F
 
 <img style="width:100%"  src="documents/screenshots/profile.png">
 
+When the cards are selected they reveal information and a link to the corresponding profile section.
+
+<img style="width:100%"  src="documents/screenshots/profile_cards.png">
+
+## **My Recipes**
+This page displays all recipes contrbuted by the user. The number in brackets counts the total amount. 
+
+This page presents the add recipe button which redirects the user to the add recipe page. This allows the user to add a recipe. 
+
+On the recipe cards displayed there are buttons to edit (blue) or delete (red) their recipe. Or by clicking the card they can view the recipe.
+
+<img style="width:100%"  src="documents/screenshots/my_recipes.png">
+
 ## **Create/Add recipes**
-The create recipe feature allows the user to add their own recipe using the data entry form provided. The data entry form has front-end and back-end validation to reduce user error and help prevent malicious activity. For example:
+The ADD RECIPE button in 'My Recipes' and the Floating Menu ADD RECIPE Button (Green) direct the user here.
+
+The create recipe feature allows the user to add their own recipe using the data entry form provided. 
+
+The data entry form has front-end and back-end validation to reduce user error and help prevent malicious activity. For example:
 
 - Character min and max limits on text inputs
 
  <img style="width:100%" src="documents/screenshots/add_recipe.png">
 <img style="width:100%" src="documents/screenshots/add_recipe2.png">
 
+## **Delete recipes**
+The delete option is presented to the registered user in 'My Recipes' and 'View Recipe' Pages. If the user selects delete they have to confirm this via a Javascript Pop Up confirm box.
+
+<div align="center"><img style="width:50%" src="documents/screenshots/edit_delete_option.png"></div>
+
 ## **Edit/Update recipes**
 The Edit Recipe Feature allows users to modify any recipe they have created. They are presented with the data enrty form used when adding but with populated fields using the data of the recipe they have chosen to edit. They also have the option cancel the editing proccess.
 
 <img style="width:50%" src="documents/screenshots/edit_recipe.png"><img style="width:50%" src="documents/screenshots/edit_recipe2.png">
-
-
-## **Delete recipes**
-The delete option is presented to the registered user in 'My Recipes' and 'View Recipe' Pages. If the user selects delete they have to confirm this via a Javascript Pop Up confirm box.
-
-<img style="width:50%" src="documents/screenshots/edit_delete_option.png"><img style="width:50%" src="documents/screenshots/delete_confirm.png">
 
 ## **Save recipes**
 The save recipes feature allows a registered user to click 'save' on any recipe they havent created and save it to their "saved recipes" page which can be accesed via their profile. (This is supported with the feature that can also remove the saved recipe).
@@ -289,19 +332,19 @@ The rate recipe feature allows all registered users to rate a recipe out of 10 i
 
 <div align="center"><img style="width:50%" src="documents/screenshots/rating.png"></div>
 
-## Product & Tools
+## **Product & Tools**
 This feature presents recomended tools and products.
 The product image, description and price are displayed with clickable links to the corresponding site. A registered user has access to discount codes which are displayed via modal when clicked.
 The modal also allows the user to click the copy icon to copy to the devices clipboard for future use.
 
 <img style="width:100%" src="documents/screenshots/tools_products.png"><img style="width:50%" src="documents/screenshots/discount_code.png"><img style="width:50%" src="documents/screenshots/amazon_tool.png">
 
-## **ADMIN/MANAGEMENT FEATURES**
+## **ADMIN / MANAGEMENT FEATURES**
 <img src="documents/screenshots/manage_top.png">
 
 ## **Users Table**
 
-The user table displays all user information apart from the password. This is to protect the privacy of the users. A future feature will be a password recovery feature if the password is lost or forgotten. The table displays:
+The user table displays all user information. The table displays:
 - User Name (There is the option of 2 symbols. When clicked a toast is shown explaining. Leaf = Vegan, Star = Over 5 recipes contributed)
 - Last Name (Records sorted by this field alphabetically)
 - First Name
@@ -323,6 +366,8 @@ This is the red button with the trash icon. This button deletes the user but the
 In the management page the admin can search within the index of username and last name and the results are displayed in the table.
 
 <img style="width:100%" src="documents/screenshots/search_users.png">
+
+ ### ***All user data is viewable apart from their password. This is to protect the privacy of the users. A future feature will be a password recovery feature if the password is lost or forgotten or needs to be changed.***
 
 ## Recipes Table
 
@@ -363,7 +408,7 @@ The green tab with the plus icon toggles a data entry form where the admin can a
 
 The red button with the trash icon deletes the recipe type. The user is presented with a confirm window to double check they wish to do this. This helps revent accidental deletion.
 
-### ***AN EDIT FEATURE WAS ADDED BUT REMAINS DISABLED DUE TO FUNCTIONALITY DEVELOPMENT. THIS WOULD BE A FUTURE FEATURE ON THE SYSTEM***
+### ***AN EDIT FEATURE WAS ADDED BUT REMAINS DISABLED DUE TO ONGOING FUNCTIONALITY DEVELOPMENT. THIS WOULD BE A FUTURE FEATURE ON THE SYSTEM***
 
 ## Products Table / Tools Table
 This table displays all information about the products and tools stored in the Mongo database.
@@ -373,20 +418,23 @@ Products and Tools Info:
 - Name
 - Description
 - Price
-
-
-
 <img src="documents/screenshots/products_tools.png">
 
-### DELETE PRODUCT/TOOLS
+### ADD PRODUCT / TOOL
+The add button with the plus icon toggles a data entry form within the window which allows admin to add a prouct or tool to the database.
+<img src="documents/screenshots/add_product_tool.png">
+
+
+
+
+### DELETE PRODUCT/TOOL
 This allows the user to delete a product/tool from the system. This action is met with same verifcation as other deletion proccess.
 
-<img src="documents/screenshots/delete_confim.png">
  
-### ***AN EDIT TOOLS AND PRODUCTS FEATURE WOULD BE A FUTURE FEATURE ON THE SYSTEM***
+### ***AN EDIT FEATURE FOR TOOLS AND PRODUCT WOULD BE A FUTURE FEATURE ON THE SYSTEM***
 
 ## **Defensive Programming**
-The main objective when developing this application from a defensive design standpoint was to limit the users access and prevent the system breakin due to user input.
+A primary objective when developing this application from a defensive design standpoint was to limit the users access and prevent the system breaking due to user input or malicious activity.
 
 For this project, i have deployed full CRUD functionality and allowed any user to view the recipes but only registered users can Create, Edit and Delete them.
 
@@ -419,25 +467,34 @@ Please see the <a href="https://github.com/DanielBradford/rubric/blob/239022217d
 - ### **MacBook Pro (Retina, 13-inch, Mid 2014)**
 
 ## **Technologies Used**
-
+IDE:
 - ### **Gitpod** - https://gitpod.io/
+
+
+
+
+Languages:
 - ### **HTML / HTML5**
   - Used to create the structure of the pages
 - ### **CSS / CSS3**
   - Used to style the elements and customise layout. e.g. Color Schemes, design elements
-- ### **Materialize (CSS & Javascript/JQuery) https://materializecss.com/**
-  - Used mainly for responsive design and layout. Other elements used were Tables and Modals
 - ### **JQuery**
   - Used to enhance the interactivity
-- ### **Font Awesome** - v5.10.0 https://fontawesome.com/
-  - All icons used in this project were from Font Awesome
 - ### **Python (3)** 
   - For all application functionality and databse interaction
+
+Frameworks/Libraries:
+
+- ### **Materialize** (CSS & Javascript/JQuery) https://materializecss.com/
+  - Used mainly for responsive design and layout. Other elements used were Tables and Modals
+
+- ### **Font Awesome** - v5.10.0 https://fontawesome.com/
+  - All icons used in this project were from Font Awesome
+
 - ### **Flask** 
   - For all website functionality and python interaction
 - ### **Mongo DB** 
   - For all database functionality
-
 - ### **Lighthouse Analytics** (DevTools)
   - This was used to analayse the performance, accessiblity, best practices and SEO scores of the site.
 - ### **WAVE** - https://wave.webaim.org/ (Accessibility Testing)
