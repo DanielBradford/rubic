@@ -301,7 +301,7 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 - By making these changes the current SEO rating is now **100**
 
 **Lighthouse Desktop Report:**
-<img src="#" alt="Landing Page - LIGHTHOUSE REPORT">
+<img src="documents/screenshots/lighthouse.png" alt="Landing Page - LIGHTHOUSE REPORT">
 
 ## Further Testing
 
