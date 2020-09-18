@@ -468,6 +468,12 @@ Please see the <a href="https://github.com/DanielBradford/rubric/blob/239022217d
 ## **Technologies Used**
 IDE:
 - ### **Gitpod** - https://gitpod.io/
+Version Control:
+- ### **Git**
+- ### **GitHub**
+Deployment: 
+- ### **Heroku**
+
 
 
 
@@ -548,7 +554,8 @@ To clone this project from GitHub:
 **Further reading and troubleshooting on <a href="https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository" target="_blank">cloning a repository from GitHub here.</a>**
 
 ## **Credits**
-
+Content :
+- Materialize was heavily utilised in this project 
 - Unsplash for Images
 - QR CODE GENERATOR : https://www.the-qrcode-generator.com/
 

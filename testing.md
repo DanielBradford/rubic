@@ -3,7 +3,7 @@
 **HTML VALIDATION** - https://validator.w3.org/
 
 - All HTML written in this project has been submitted for validation via the above software.
-- ALL pages returned the vaildation that "Document checking completed. No errors or warnings to show."
+- The only errors were thrown due to the validator not recognising Jinja Templates. However Gitpod's prettier control allows the HTML to be validated inside the workspace.
 
 **CSS VALIDATION** - https://jigsaw.w3.org/css-validator/
 
@@ -27,7 +27,7 @@ There were 3 minor errors that were corrected during testing:
 
 **PYTHON VALIDATION** - http://pep8online.com/
 
-- ALL Python written in this project has been parsed through pep8 online and gitpod and no errors have been found. Upon scanning some lines of code needed to be shortened.
+- ALL Python written in this project has been parsed  and linted using pep8 online and gitpod and no errors have been found. Upon scanning some lines of code needed to be shortened.
 
         commit 3c480c91bb56308f20ebc5e99f9db5a8fd71587a
         Author: Daniel Bradford <danielbradford@hotmail.co.uk>
@@ -35,9 +35,26 @@ There were 3 minor errors that were corrected during testing:
         Code layout cleaned to pass through pep8 validation
 
 
-### **Client Story Testing:**
+### **User Story Testing:**
 
-## Logical Testing (MANUAL) of all functions and elements:
+1. As a new or returning user i want to navigate the application easily
+1. As a new user i want the option to register to the site
+1. As a returning user i want the option to login to the application
+1. As a new or returning user i want to view all recipes on the application
+1. As a new or returning user i want to easily search through all the recipes on the application
+1. As a new or returning user i cant decide what recipe to view and want to be shown a random recipe to make my recipe choice experience fun and enjoyable
+1. As a new or returning user i want to view all recipe types
+1. As a new or returning user i want to view a recipe that is displayed clearly and makes my cooking experience easier
+1. As a new or returning user i want to view all Vegan recipes 
+1. As a registered user i want to add a recipe to the application
+1. As a registered user i want to view all the recipes i have added/contributed
+1. As a registered user i want to easily search through all recipes i have added/contributed
+1. As a registered user i want to save recipes of other registered users
+1. As a registered user i want to view all the recipes i have saved
+1. As a registered i want to easily search through all the recipes i have saved
+1. As a registered user i want to view cooking related products and tools recommended by Rubric
+1. As a registered user i want to receive discount codes for cooking related products.
+
 
 ### **LANDING PAGE**
 
