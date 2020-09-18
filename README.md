@@ -1,13 +1,13 @@
-# **<p align="center">RUBRIC <i  class="fas fa-hat-chef"></i></p>** 
+<div class="align-center"><img src="documents/screenshots/logo.png"></div>
 
 Project: <a href="https://rubric-recipe-manager.herokuapp.com/"> RUBRIC - *RECIPE MANAGER*</a>
 
 ## WHAT IS RUBRIC
-Rubric is an efficient personal recipe management web application.  It provides a full recipe management service, free of charge, that allows users to have access to a selection of recipes, including their own all in one place.
+Rubric is an efficient personal recipe management web application.  It provides a full recipe management service, free of charge which allows users to have access to a selection of recipes, including their own, all in one place.
 ## WHAT DOES IT DO
 It allows users to Create, Read, Update and Delete Recipe Documents. It also has features that allow registered users to save recipes they like and rate other peoples recipes. 
 
-screenshot of landing page
+<img class="align-center" style="width: 100%" src="documents/screenshots/desktop.png" alt="screenshot of landing page">
 
 ## HOW IT WORKS FOR USERS
 There are 2 stages of access
@@ -17,14 +17,11 @@ There are 2 stages of access
 (*The user can only edit and delete their own recipes and can only rate the recipes of others*)
 1. **Admin Access** Only admin can access the management page which has full CRUD funcitonaloty over all contents of the application including Users, Recipes, Recipe Types and Products.
 
-
-<img src="static/images/qrcode.png" alt="qrcode">
-
 ### **Creation and Design**
 
 ### **Behaviour Driven Development vs Test Driven Development or Acceptance Test Driven Development**
 
-Due to the complexity of the application test driven development was paramount when developing the system. The behaviour needed to match the users needs but the functionality needed to pass essential tests to be a viable web application.
+Due to the complexity of the application, test driven development was paramount when developing the system. The behaviour needed to match the users needs while the functionality needed to pass essential tests. In addition to providing full CRUD (Create, Read, Update, Delete) functionality.
 
 ### **UX - STRATEGY:**
 
@@ -121,7 +118,7 @@ All wireframe designs can be found here:
 
 Mobile: <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/documents/wireframes/RUBRIC%20MOBILE%20WIREFRAMES.pdf">Mobile Wireframe Designs</a>
 
-Desktop: <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/documents/wireframes/RUBRIC%20MOBILE%20WIREFRAMES.pdf">Desktop Wireframe Designs</a>
+Desktop: <a href="https://github.com/DanielBradford/rubric/blob/c4a2399f3f18880deb4bf009fe06c59fb35feba8/documents/wireframes/RUBRIC%20DESKTOP%20WIREFRAMES.pdf">Desktop Wireframe Designs</a>
 
 
 
@@ -145,33 +142,76 @@ To maintain the idea of being approachable, bright and friendly i used supportin
 - **Pink** (#e91f63)
 - **Purple** (#9c27b0)
 - **Yellow** (#fdd835)
-
-
 This was maintained throught the application using a mix of customised CSS and Materialize framework.
-
-
-## **Main Page**
-<img class="align-center" src="documents/screenshots/landingTop.png" alt="screenshot of landing page">
-<img src="documents/screenshots/landingBottom.png" alt="screenshot of landing page">
 
 ## **Features**
 
 ### **Repeating Features**
 
-### The following features are repeated across the game/website allowing a consistent design format for the user to feel comfortable and familiar;
+### The following features are repeated across the application allowing a consistent design format for the user to feel comfortable and familiar;
 
-**Header**
+### Navigation
 
-- **Title/Icon** is clearly displayed in a user-friendly and stylish format.
-- **Menu/Navbar** is clear and accessible. When hovered over the links are highlighted.
+- **Mobile** The navigation menu is represented by the hamburger icon. The mobile menu uses Materialize JS to and is displayed in a user-friendly and stylish format.
+- **Desktop** The navigation menu is clear and accessible. When hovered over the links are highlighted.
+- **Registered Users** 
+    Once logged in users can enjoy the extra feature of the floating action menu. This is located in the lower right corner of the screen and allows quick access to the following:
+    - Add Recipe (Green Plus Icon)
+    - Products and Tools (Purple Blender Icon)
+    - Random Recipe (Pink random icon)
+    - My Recipes (Coral archive icon)
+    - Saved Recipes (Yellow Thumbtack icon)
+
+    The placement of the floating menu is positioned using the Gestalt theory and principle of proximity. 
+
+### Footer
+
+- **Social Media Icons:** These icons when clicked take the user (on a new page) to the corresponding website for that social media e.g. LinkedIn of Creator, Facebook & Instagram of Rubric.
 
 
-**Main Area**
+### Search Feature
+This feature occurs in a number of pages in the application.
+The search feature allows the user to input text and search the database for the relevant inputted data.
+- **Search recipes page** allows the user to search within the index of recipe name and recipe ingredients
+- **Search saved recipes page** allows the user to search within the index of recipe name and recipe ingredients within their saved recipes contents
+- **Search my recipes page** allows the user to search within the index of recipe name and recipe ingredients within their 'my recipes' contents
+- **Search Users in management page** allows the user to search within the index of username and last name
+
+### **Random Button**
+The random feature button allows any indecisive user to click the button and they will be presented with a random recipe from the database.
+
+### **Save recipes**
+The save recipes feature allows a registered user to click 'save' on any recipe they havent created and save it to their "saved recipes" page which can be accesed via their profile. (This is supported with the feature that can also remove the saved recipe).
+This was created using an Array in the User Collection document. 
+
+### **Rate recipes**
+The rate recipe feature allows all registered users to rate a recipe out of 10 if they have not created it. This generates user feedback and allows users to see which recipes are rated well for reccomendation. The rating and the count of how many times it has been rated is clearly displayed.
 
 
-**Footer**
+## **Defensive Programming**
+The main objective when developing this application from a defensive design standpoint was to limit the users access and prevent the system breakin due to user input.
 
-- **Social Media Icons:** These icons when clicked take the user (on a new page) to the corresponding website for that social media
+For this project, i have deployed full CRUD functionality and allowed any user to view the recipes but only registered users can Create, Edit and Delete them.
+
+Back-end routing checks prevent any cross site activity that may result in unwanted behaviour from a malicious user.
+
+This application uses both front-end  and back-end data validation via the formfield attributes (max and min # of characters, only accepting valid url, etc.) along with back-end defensive programming in app.py.
+
+This ensures the amount of data for each recipe is limited/controlled however the content of the data is not.
+
+A user could upload any text (for example offensive text) into the database at this point.
+
+A future feature i have considered is an approval functionality from an admin user that requires approval before the uploaded recipe/information is made publicly available.
+
+*For details on defensive design testing, please see <a href="https://github.com/DanielBradford/rubric/blob/master/testing.md" target="_blank">testing section</a>.
+
+## **Responsive Design**
+<div class="center-align"><img style="width: 20%" src="static/images/qrcode.png" alt="qrcode"><img style="width: 50%" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"><span>   </span><img style="width: 20%" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></div>
+
+The application has been built using a mobile-first approach. Throughout the development process, chrome developer tools, multiple desktops and mobile devices
+where used to ensure responsivness across all screen resolutions. *(The application was also tested by family and friends using various devices and browsers.)*
+
+Please see the <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/testing.md" target="_blank">TESTING.md</a> file for more information
 
 
 ## **Future Features**
@@ -205,45 +245,6 @@ This was maintained throught the application using a mix of customised CSS and M
   - This was used to analayse the performance, accessiblity, best practices and SEO scores of the site.
 - ### **WAVE** - https://wave.webaim.org/ (Accessibility Testing)
 
-## **Defensive Programming**
-The main objective when developing this application from a defensive design standpoint was to limit the users access and prevent the system breakin due to user input.
-
-For this project, i have deployed full CRUD functionality and allowed any user to view the recipes but only registered users can Create, Edit and Delete them.
-
-Back-end routing checks prevent any cross site activity that may result in unwanted behaviour from a malicious user.
-
-This application uses both front-end  and back-end data validation via the formfield attributes (max and min # of characters, only accepting valid url, etc.) along with back-end defensive programming in app.py.
-
-This ensures the amount of data for each recipe is limited/controlled however the content of the data is not.
-
-A user could upload any text (for example offensive text) into the database at this point.
-
-A future feature i have considered is an approval functionality from an admin user that requires approval before the uploaded recipe/information is made publicly available.
-
-*For details on defensive design testing, please see <a href="https://github.com/DanielBradford/rubric/blob/master/testing.md" target="_blank">testing section</a>.
-
-## **Responsive Design**
-The application has been built using a mobile-first approach. Throughout the development process, chrome developer tools, multiple desktops and mobile devices
-where used to ensure responsivness across all screen resolutions. *(The application was also tested by family and friends using various devices and browsers.)*
-
-For final testing [Responsinator](https://www.responsinator.com/) was used to test the application accross multiple devices.
-
-### Screen Size Testing/Compability
-
-Screen Size         | Size              | Comments
---------------------|-------------------|---------
-X-Small             | <768px            | No space between buttons for landing template. Grid layout altered to rectify
-Small               | >=768px           | Landing page stats given flow-text attr. to prevent distortion
-Medium              | >=992px           | Passed, no changes needed.
-Large               | >=1200px          | Passed, no changes needed.
-
-### Browser Compability
-
-Browser             | Version           | Comments
---------------------|-------------------|---------
-Firefox             | 72.0.2 (64-bit)   | No errors observed
-Edge                | 44.18362.449.0    | No errors observed
-Chrome              | 80.0.3987.122     | No errors observed
 
 
 
