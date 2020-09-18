@@ -336,7 +336,7 @@ This feature presents recomended tools and products.
 The product image, description and price are displayed with clickable links to the corresponding site. A registered user has access to discount codes which are displayed via modal when clicked.
 The modal also allows the user to click the copy icon to copy to the devices clipboard for future use.
 
-<img style="width:100%" src="documents/screenshots/tools_products.png"><img style="width:50%" src="documents/screenshots/discount_code.png"><img style="width:50%" src="documents/screenshots/amazon_tool.png">
+<img style="width:100%" src="documents/screenshots/tools_products.png"><img style="width:100%" src="documents/screenshots/products2.png"><img style="width:50%" src="documents/screenshots/discount_code.png"><img style="width:50%" src="documents/screenshots/amazon_tool.png">
 
 ## **ADMIN / MANAGEMENT FEATURES**
 <img src="documents/screenshots/manage_top.png">
