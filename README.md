@@ -143,6 +143,8 @@ Within the Rubric Recipe Manager Database their are 5 collections
     - All string values
 <img style="width:80%"  src="documents/screenshots/product_data_model.png">
 
+    *In future development i would make the price field a decimal*
+
 
 ### **UX - SKELETON:**
 
@@ -417,7 +419,7 @@ The green tab with the plus icon toggles a data entry form where the admin can a
 
 ### DELETE RECIPE TYPE
 
-The red button with the trash icon deletes the recipe type. The user is presented with a confirm window to double check they wish to do this. This helps prevent accidental deletion.
+The red button with the trash icon deletes the recipe type. The user is presented with a confirm window to double check they wish to do this. This helps prevent accidental deletion. *This function is validated in the back-end to check if there is a recipe under this recipe type category. If there is the recipe type cannot be deleted!*
 
 ### ***AN EDIT FEATURE WAS ADDED BUT REMAINS DISABLED DUE TO ONGOING FUNCTIONALITY DEVELOPMENT. THIS WOULD BE A FUTURE FEATURE ON THE SYSTEM***
 
@@ -446,6 +448,13 @@ This allows the user to delete a product/tool from the system. This action is me
  
 ### ***AN EDIT FEATURE FOR TOOLS AND PRODUCT WOULD BE A FUTURE FEATURE ON THE SYSTEM***
 
+## **FUTURE FEATURES**
+
+- Comment Section on view recipe page
+- Messaging system and Inbox for  registered users
+- Leaderboard and points system for recipes and ratings
+- Coin earning/payment system for contributions. You earn coins for watching recipe videos/ adverts. You can redeem them for online discounts
+
 ## **Defensive Programming**
 A primary objective when developing this application from a defensive design standpoint was to limit the users access and prevent the system breaking due to user input or malicious activity.
 
@@ -470,10 +479,6 @@ The application has been built using a mobile-first approach. Throughout the dev
 where used to ensure responsivness across all screen resolutions. *(The application was also tested by family and friends using various devices and browsers.)*
 
 Please see the <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/testing.md" target="_blank">TESTING.md</a> file for more information
-
-
-## **Future Features**
-
 
 ## **Hardware Used**
 
@@ -504,24 +509,26 @@ Languages:
 
 Frameworks/Libraries:
 
-- ### **Materialize** (CSS & Javascript/JQuery) https://materializecss.com/
+- ### **Materialize** 1.0.0 (CSS & Javascript/JQuery) https://materializecss.com/
   - Used mainly for responsive design and layout. Other elements used were Tables and Modals
-
 - ### **Font Awesome** - v5.10.0 https://fontawesome.com/
   - All icons used in this project were from Font Awesome
-
-- ### **Flask** 
-  - For all website functionality and python interaction
 - ### **Mongo DB** 
   - For all database functionality
+- ### **Dnspython** 2.0.0
+- ### **Flask** 1.1.2
+- ### **Flask-PyMongo** 2.3.0
+- ### **PyMongo** 3.11.0
+
 - ### **Lighthouse Analytics** (DevTools)
   - This was used to analayse the performance, accessiblity, best practices and SEO scores of the site.
-- ### **WAVE** - https://wave.webaim.org/ (Accessibility Testing)
+(Accessibility Testing)
+
+<br>
 
 
 
-
-## **Testing**
+## **TESTING**
 
 ### Please refer to <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/testing.md" target="_blank">TESTING.md</a> for a full testing breakdown
 dd 
