@@ -214,10 +214,12 @@ def view_recipe(recipe_id):
                 "saved_recipes", {"user_name": user}))
             products = list(mongo.db.products.find().sort("product_name", 1))
 
-            return render_template("view_recipe.html", recipe=recipe,
-                                recipes=recipes, user_id=user_id,
-                                user=user, saved_list=saved_list,
-                                types=types, products=products, guest=guest)
+            return render_template("view_recipe.html",
+                                   recipe=recipe, recipes=recipes,
+                                   user_id=user_id, user=user,
+                                   saved_list=saved_list,
+                                   types=types, products=products,
+                                   guest=guest)
         else:
             flash("Sorry. The recipe you are looking for does not exist.")
             return redirect(url_for('recipes'))
@@ -779,7 +781,7 @@ def user_search():
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     users = list(mongo.db.users.find({"$text": {"$search": search}}))
     products = list(
-            mongo.db.products.find().sort("product_name", 1))
+        mongo.db.products.find().sort("product_name", 1))
     tools = list(mongo.db.tools.find().sort("name", 1))
     count = len(users)
     # checks if no users match search
