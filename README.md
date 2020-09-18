@@ -15,7 +15,7 @@ There are 3 stages of access
 1. **Unregistered Access:** This allows users to view all recipes without being able to add, save or edit. It also limits their access to a products, tools and discounts page.
 1. **Registered Access:** Once the user has logged in or registered, they can Create, Read, Update, Delete, Save and Rate recipes on the application. 
 (*The user can only edit and delete their own recipes and can only rate the recipes of others*)
-1. **Admin Access** Only admin can access the management page which has full CRUD funcitonaloty over all contents of the application including Users, Recipes, Recipe Types and Products.
+1. **Admin Access** Only admin can access the management page which has full CRUD functionality over all contents of the application including Users, Recipes, Recipe Types, Products and Tools.
 
 ## **Creation and Design**
 
@@ -344,12 +344,17 @@ The modal also allows the user to click the copy icon to copy to the device's cl
 ## **Users Table**
 
 The user table displays all user information. The table displays:
-- User Name (There is the option of 2 symbols. When clicked a toast is shown explaining. Leaf = Vegan, Star = Over 5 recipes contributed)
-- Last Name (Records sorted by this field alphabetically)
-- First Name
-- Email address
-- Contributed (Number of recipes added by user)
-- Saved (Number of recipes user has saved)
+- **User Name** (There are 2 symbols. When clicked a toast is shown explaining. Leaf = Vegan, Star = Over 5 recipes contributed)
+- **Last Name** (Records sorted by this field alphabetically)
+- **First Name**
+- **Email address** (When clicked this opens an email to be sent to the member from RUBRIC ACCOUNT MANAGEMENT) This allows for easier communication if needed between admin and members.
+
+    commit cf0cf744e09639f4de4b7c0dc829994d702a13a7
+
+
+
+- **Contributed** (Number of recipes added by user)
+- **Saved** (Number of recipes user has saved)
 
 ### ADD USER
 The green button with the plus icon allows redirects the user to the registration page where they can add/create/register a new user.
@@ -372,10 +377,10 @@ In the management page the admin can search within the index of username and las
 
 The recipes table displays all recipe information in the database collection. The amount of data displayed varies depending on screen size. This information includes:
 
-- Recipe Name (If the name has a leaf symbol it means the recipe is vegan)
-- Recipe Type (Displays the category of recipe)
-- Rating (Average rating / 10)
-- Created by (Shows the creator's username)
+- **Recipe Name** (If the name has a leaf symbol it means the recipe is vegan)
+- **Recipe Type** (Displays the category of recipe)
+- **Rating** (Average rating / 10)
+- **Created by** (Shows the creator's username)
 
 ### ADD RECIPE
 This green button with the plus icon allows the admin user to add a recipe. The admin user will be redirected to the add recipe page.
@@ -389,9 +394,9 @@ This red button with the trash icon will delete the corresponding recipe. The us
 ## Recipe Type Table
 This table displays all recipe types within the database. The data includes:
 
-- Type Name (This is the name of the recipe type)
-- Description (This is a short description of the category)
-- Recipe Count (This counts how many recipes are in this category)
+- **Type Name** (This is the name of the recipe type)
+- **Description** (This is a short description of the category)
+- **Recipe Count** (This counts how many recipes are in this category)
 
 When a recipe is added or deleted this count is incremented/decremented accordingly.
 
@@ -414,9 +419,11 @@ This table displays all information about the products and tools stored in the M
 
 Products and Tools Info:
 
-- Name
-- Description
-- Price
+*For the purpose of this project all information was taken from AMAZON as an exemplary sponsored associate*
+
+- **Name**
+- **Description**
+- **Price**
 <img src="documents/screenshots/products_tools.png">
 
 ### ADD PRODUCT / TOOL
