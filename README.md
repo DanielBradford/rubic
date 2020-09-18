@@ -7,7 +7,7 @@ Rubric is an efficient personal recipe management web application.  It provides 
 ## <p align="center"  style="color:teal">WHAT DOES IT DO?</p>
 It allows users to Create, Read, Update and Delete Recipe Documents. It also has features that allow registered users to save recipes they like and rate other peoples recipes. 
 
-<img class="align-center" style="width: 100%" src="documents/screenshots/desktop.png" alt="screenshot of landing page">
+<div align="center"><img style="width: 70%" src="documents/screenshots/desktop.png" alt="screenshot of landing page"></div>
 
 ## <p align="center" style="color:teal">HOW DOES IT WORK?</p>
 There are 3 stages of access
@@ -114,28 +114,28 @@ Within the Rubric Recipe Manager Database their are 5 collections
     - The majority of the fields use String input.
     - The saved recipes uses an array which stores the ObjectIds of the recipes that have been saved by this user.
     - The contributed field uses the Int32 value to allow a number to be incremented/decremented easily
-<img style="width:100%"  src="documents/screenshots/user_data_model.png">
+<img style="width:80%"  src="documents/screenshots/user_data_model.png">
 
 1.  RECIPES 
 
     - The majority of the fields in this collection also use String values.
     - The rating field uses an Array to collect all the ratings. The output is the sum of the array divided by the length.
-<img style="width:100%"  src="documents/screenshots/recipe_data_model.png">
+<img style="width:80%"  src="documents/screenshots/recipe_data_model.png">
 
 1. RECIPE TYPE 
     - 2 Fields have string values
     - The count field is Int32 to allow for incrementation / decrementation
-<img style="width:100%"  src="documents/screenshots/recipe_type_data_model.png">
+<img style="width:80%"  src="documents/screenshots/recipe_type_data_model.png">
 
 1. TOOLS
 
     - All string values
-<img style="width:100%"  src="documents/screenshots/tool_data_model.png">
+<img style="width:80%"  src="documents/screenshots/tool_data_model.png">
 
 1. PRODUCTS 
 
     - All string values
-<img style="width:100%"  src="documents/screenshots/product_data_model.png">
+<img style="width:80%"  src="documents/screenshots/product_data_model.png">
 
 
 ### **UX - SKELETON:**
@@ -186,15 +186,14 @@ This was maintained throught the application using a mix of customised CSS and M
 - **Desktop** The navigation menu is clear and accessible. When hovered over the links are highlighted.
 - **Registered Users** 
     Once logged in users can enjoy the extra feature of the floating action menu. This is located in the lower right corner of the screen and allows quick access to the following:
-    <div class="container">
-   <ul style="width:50%">
+   <ul style="width:50%"> <img align="right" style="width:25px; height:100px" src="documents/screenshots/floating_menu.png">
         <li>Add Recipe (Green Plus Icon)</li>
         <li>Products and Tools (Purple Blender Icon)</li>
+         <li>My Recipes (Coral archive icon)</li>
         <li>Random Recipe (Pink random icon)</li>
-        <li>My Recipes (Coral archive icon)</li>
         <li>Saved Recipes (Yellow Thumbtack icon)</li>
-    <img align="right" style="width:25px; height:100px" src="documents/screenshots/floating_menu.png">
-    </div>
+   
+
 
     The placement of the floating menu is positioned using the Gestalt theory and principle of proximity. Lower right corner is intuitive for users.
 
