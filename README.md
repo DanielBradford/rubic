@@ -35,7 +35,7 @@ The application is designed to provide an essential service to users looking for
 - To CREATE, READ, UPDATE and DELETE Product Information
 - To CREATE, READ, UPDATE and DELETE Tool Information
 - To PROMOTE recipe related Amazon products such as appliances and tools, to MONETIZE the application
-- To direct online traffic and encourage shopping of sed products through the incentive of discounts 
+- To direct online traffic and encourage shopping of said products through the incentive of discounts 
 - To generate a large user base to monetise the site through advertising by providing a free, useful and easy to use application
 
 **_USER GOALS OF APPLICATION_**
@@ -94,7 +94,7 @@ Although registering is also free the user must give their full name and email a
 1. As a registered user i want to view all the recipes i have saved
 1. As a registered i want to easily search through all the recipes i have saved
 1. As a registered user i want to view cooking related products and tools recommended by Rubric
-1. As a registered user i want to recieve discount codes for cooking related products
+1. As a registered user i want to receive discount codes for cooking related products.
 
 
 ### **UX - STRUCTURE:**
@@ -113,7 +113,7 @@ Within the Rubric Recipe Manager Database their are 5 collections
 
     - The majority of the fields use String input.
     - The saved recipes uses an array which stores the ObjectIds of the recipes that have been saved by this user.
-    - The contributed field uses the Int32 value to allow a number to be incremented/decremented easily
+    - The contributed field uses the Int32 value to allow a number to  increment/decrement easily
 <img style="width:80%"  src="documents/screenshots/user_data_model.png">
 
 1.  RECIPES 
@@ -164,7 +164,7 @@ The main COLOR scheme used includes:
 - **Coral** (rgb(255, 95, 37))
 - **Teal** (rgb(1, 128, 128))
 - **White** (#ffffff)
-As the application is centered around recipes and cooking i used a Chef Hat Symbol as the maing logo.
+As the application is centered around recipes and cooking i used a Chef Hat Symbol as the main logo.
 The FONTS used were from Google Fonts:
 - **Fredoka One**
 - **Gayathri**
@@ -172,7 +172,7 @@ To maintain the idea of being approachable, bright and friendly i used supportin
 - **Pink** (#e91f63)
 - **Purple** (#9c27b0)
 - **Yellow** (#fdd835)
-This was maintained throught the application using a mix of customised CSS and Materialize framework.
+This was maintained through out the application using a mix of customised CSS and Materialize framework.
 
 ## **Features**
 
@@ -256,10 +256,10 @@ The search feature allows the user to input text and search the database for the
 - **Search my recipes page** allows the user to search within the index of recipe name and recipe ingredients within their 'my recipes' contents
 
 ### **View/Read Recipes**
-This allows all users to view the recipe of their choice from the selection in the database. The view recipe page has the follwoing features:
+This allows all users to view the recipe of their choice from the selection in the database. The view recipe page has the following features:
 
-- Checkboxes to be ticked if the user has the ingredient on the list
-- Checkboxes to be ticked if the user has complteed the stage of the method
+- Check boxes to be ticked if the user has the ingredient on the list
+- Check boxes to be ticked if the user has completed the stage of the method/instructions
 - When the appliance name is clicked it takes the user to the recommended appliance on the affiliate website
 
  For example:
@@ -321,7 +321,7 @@ The Edit Recipe Feature allows users to modify any recipe they have created. The
 <img style="width:50%" src="documents/screenshots/edit_recipe.png"><img style="width:50%" src="documents/screenshots/edit_recipe2.png">
 
 ## **Save recipes**
-The save recipes feature allows a registered user to click 'save' on any recipe they havent created and save it to their "saved recipes" page which can be accesed via their profile. (This is supported with the feature that can also remove the saved recipe).
+The save recipes feature allows a registered user to click 'save' on any recipe they havent created and save it to their "saved recipes" page which can be accessed via their profile. (This is supported with the feature that can also remove the saved recipe).
 This was created using an Array in the User Collection document. Below shows the SAVED status and an example of the Saved Recipes Page.
 
  <img style="width:100%"  src="documents/screenshots/add_to_saved.png"><img style="width:50%" src="documents/screenshots/saved.png"><img style="width:50%" src="documents/screenshots/saved_recipes.png">
@@ -334,7 +334,7 @@ The rate recipe feature allows all registered users to rate a recipe out of 10 i
 ## **Product & Tools**
 This feature presents recomended tools and products.
 The product image, description and price are displayed with clickable links to the corresponding site. A registered user has access to discount codes which are displayed via modal when clicked.
-The modal also allows the user to click the copy icon to copy to the devices clipboard for future use.
+The modal also allows the user to click the copy icon to copy to the device's clipboard for future use.
 
 <img style="width:100%" src="documents/screenshots/tools_products.png"><img style="width:100%" src="documents/screenshots/products2.png"><img style="width:50%" src="documents/screenshots/discount_code.png"><img style="width:50%" src="documents/screenshots/amazon_tool.png">
 
@@ -375,7 +375,7 @@ The recipes table displays all recipe information in the database collection. Th
 - Recipe Name (If the name has a leaf symbol it means the recipe is vegan)
 - Recipe Type (Displays the category of recipe)
 - Rating (Average rating / 10)
-- Created by (Shows the creators username)
+- Created by (Shows the creator's username)
 
 ### ADD RECIPE
 This green button with the plus icon allows the admin user to add a recipe. The admin user will be redirected to the add recipe page.
@@ -405,7 +405,7 @@ The green tab with the plus icon toggles a data entry form where the admin can a
 
 ### DELETE RECIPE TYPE
 
-The red button with the trash icon deletes the recipe type. The user is presented with a confirm window to double check they wish to do this. This helps revent accidental deletion.
+The red button with the trash icon deletes the recipe type. The user is presented with a confirm window to double check they wish to do this. This helps prevent accidental deletion.
 
 ### ***AN EDIT FEATURE WAS ADDED BUT REMAINS DISABLED DUE TO ONGOING FUNCTIONALITY DEVELOPMENT. THIS WOULD BE A FUTURE FEATURE ON THE SYSTEM***
 
@@ -420,7 +420,7 @@ Products and Tools Info:
 <img src="documents/screenshots/products_tools.png">
 
 ### ADD PRODUCT / TOOL
-The add button with the plus icon toggles a data entry form within the window which allows admin to add a prouct or tool to the database.
+The add button with the plus icon toggles a data entry form within the window which allows admin to add a product or tool to the database.
 <img src="documents/screenshots/add_product_tool.png">
 
 
@@ -504,7 +504,7 @@ Frameworks/Libraries:
 ## **Testing**
 
 ### Please refer to <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/testing.md" target="_blank">TESTING.md</a> for a full testing breakdown
-
+dd 
 ## **Deployment**
 
 This project was **developed** using a <a href="https://gitpod.io/" target="_blank">GITPOD IDE</a>, committed to git and pushed to <a href="https://github.com/" target="_blank">GitHub</a> using the built in terminal feature.
@@ -528,7 +528,7 @@ This project was **deployed** using **HEROKU**.
 6. Create a Procfile via the console using 'echo web: python app.py > Procfile'.
 7. Connect GitHub to Heroku via the console using 'heroku git:remote a rubric-recipe-manager'
 8. Commit all files in your project via the console using 'git add .' and 'git commit -m "Message"'.
-9. Deploy your project to Heroku via the consol using 'git push heroku master'.
+9. Deploy your project to Heroku via the console using 'git push heroku master'.
 
 
 ### **To run locally:**
