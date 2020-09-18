@@ -1,23 +1,23 @@
-<div class="align-center"><img src="documents/screenshots/logo.png"></div>
+<div align="center"><img src="documents/screenshots/logo.png"></div>
 
-Project: <a href="https://rubric-recipe-manager.herokuapp.com/"> RUBRIC - *RECIPE MANAGER*</a>
+Project:**<a href="https://rubric-recipe-manager.herokuapp.com/"> RUBRIC - *RECIPE MANAGER*</a>**
 
-## WHAT IS RUBRIC
+## <p align="center" style="color:teal">WHAT IS RUBRIC?</p>
 Rubric is an efficient personal recipe management web application.  It provides a full recipe management service, free of charge which allows users to have access to a selection of recipes, including their own, all in one place.
-## WHAT DOES IT DO
+## <p align="center"  style="color:teal">WHAT DOES IT DO?</p>
 It allows users to Create, Read, Update and Delete Recipe Documents. It also has features that allow registered users to save recipes they like and rate other peoples recipes. 
 
 <img class="align-center" style="width: 100%" src="documents/screenshots/desktop.png" alt="screenshot of landing page">
 
-## HOW IT WORKS FOR USERS
-There are 2 stages of access
+## <p align="center" style="color:teal">HOW DOES IT WORK?</p>
+There are 3 stages of access
 
 1. **Unregistered Access:** This allows users to view all recipes without being able to add, save or edit. It also limits their access to a products, tools and discounts page.
 1. **Registered Access:** Once the user has logged in or registered, they can Create, Read, Update, Delete, Save and Rate recipes on the application. 
 (*The user can only edit and delete their own recipes and can only rate the recipes of others*)
 1. **Admin Access** Only admin can access the management page which has full CRUD funcitonaloty over all contents of the application including Users, Recipes, Recipe Types and Products.
 
-### **Creation and Design**
+## **Creation and Design**
 
 ### **Behaviour Driven Development vs Test Driven Development or Acceptance Test Driven Development**
 
@@ -105,7 +105,13 @@ This allowed an insight into the user experience and how a visitor uses the appl
 **Here is the link to the structural sitemap:**
 <a  href="https://github.com/DanielBradford/rubric/blob/793f1b03bbb0c314173efad35b1952d0630e94d5/documents/wireframes/Rubric%20Sitemap.pdf" target="_blank">SITEMAP</a>
 
-**What does the application do/ How does it work?**
+Structure:
+
+DATA MODELS
+
+HOW IT FUNCTIONS
+
+CROSS ACCESS LIMITATION
 
 
 ### **UX - SKELETON:**
@@ -156,37 +162,228 @@ This was maintained throught the application using a mix of customised CSS and M
 - **Desktop** The navigation menu is clear and accessible. When hovered over the links are highlighted.
 - **Registered Users** 
     Once logged in users can enjoy the extra feature of the floating action menu. This is located in the lower right corner of the screen and allows quick access to the following:
-    - Add Recipe (Green Plus Icon)
-    - Products and Tools (Purple Blender Icon)
-    - Random Recipe (Pink random icon)
-    - My Recipes (Coral archive icon)
-    - Saved Recipes (Yellow Thumbtack icon)
+    <div class="container">
+   <ul style="width:50%">
+        <li>Add Recipe (Green Plus Icon)</li>
+        <li>Products and Tools (Purple Blender Icon)</li>
+        <li>Random Recipe (Pink random icon)</li>
+        <li>My Recipes (Coral archive icon)</li>
+        <li>Saved Recipes (Yellow Thumbtack icon)</li>
+    <img align="right" style="width:25px; height:100px" src="documents/screenshots/floating_menu.png">
+    </div>
 
-    The placement of the floating menu is positioned using the Gestalt theory and principle of proximity. 
+    The placement of the floating menu is positioned using the Gestalt theory and principle of proximity. Lower right corner is intuitive for users.
 
 ### Footer
 
 - **Social Media Icons:** These icons when clicked take the user (on a new page) to the corresponding website for that social media e.g. LinkedIn of Creator, Facebook & Instagram of Rubric.
 
+## USER FEATURES
 
-### Search Feature
+### **Login Feature**
+This allows registered members to login into application in order to access the extra features. This contains back-end verifcation that checks if the username exists in the database.
+
+<img style="width:100%" src="documents/screenshots/login.png">
+
+### **Register Feature**
+
+This allows new users to register for free so they can access the extra features. The data entry form has front-end and back-end validation to ensure full protection and help prevent user error. For example:
+
+- The First Name cannot be over 20 characters
+- The email must contain the '@' and '.' symbol in a recognised format
+- The password and confirm password field must match 
+
+<img style="width:100%" src="documents/screenshots/register1.png">
+<img style="width:100%" src="documents/screenshots/register2.png">
+
+### **Recipes Page**
+The recipes page is the main dashboard for all the recipes. 
+
+<img style="width:100%"  
+src="documents/screenshots/recipes1.png">
+
+There is a control panel that presents 4 options:
+
+- All Recipes: Displays all recipes in alphabetical order:
+
+<div align="center"><img style="width:50%"  src="documents/screenshots/recipes2.png"></div>
+
+- Random: The random feature button allows any indecisive user to click the button and they will be presented with a random recipe from the database: 
+
+<div align="center"><img style="width:50%"  src="documents/screenshots/random.png"></div>
+
+- Types: Allows the user to see the categories of recipes i.e. Snack, Main etc:
+
+<div align="center"><img style="width:50%"  src="documents/screenshots/recipe_types.png"></div>  
+
+- Vegan: Allows the user to filter the results to only show Vegan recipes:
+
+<div align="center"><img style="width:50%"  src="documents/screenshots/vegan_result.png"></div>
+
+### **Search Feature**
 This feature occurs in a number of pages in the application.
 The search feature allows the user to input text and search the database for the relevant inputted data.
 - **Search recipes page** allows the user to search within the index of recipe name and recipe ingredients
+
+    <div align="center"><img style="width:80%" src="documents/screenshots/search_result.png"></div>
 - **Search saved recipes page** allows the user to search within the index of recipe name and recipe ingredients within their saved recipes contents
 - **Search my recipes page** allows the user to search within the index of recipe name and recipe ingredients within their 'my recipes' contents
-- **Search Users in management page** allows the user to search within the index of username and last name
 
-### **Random Button**
-The random feature button allows any indecisive user to click the button and they will be presented with a random recipe from the database.
+### **View/Read Recipes**
+This allows all users to view the recipe of their choice from the selection in the database. The view recipe page has the follwoing features:
 
-### **Save recipes**
+- Checkboxes to be ticked if the user has the ingredient on the list
+- Checkboxes to be ticked if the user has complteed the stage of the method
+- When the appliance name is clicked it takes the user to the recommended appliance on the affiliate website
+
+ For example:
+
+<img style="width:50%" src="documents/screenshots/view_recipe.png"><img style="width:50%" src="documents/screenshots/view_recipe2.png">
+<div align="center"><img style="width:50%" src="documents/screenshots/amazon_product.png"></div>
+
+
+## **REGISTERED USER FEATURES**
+Apart from Login and Register, all of the above features are accessible in addition to the following:
+
+## **Profile Page**
+After login and registration the user is directed to the profile page. On first arrival they are greeted with a flash message 'Welcome {username}'.
+
+The search feature in this page is identical in funcitonality and display to the search feature of the recipes page.
+
+The profile feature presents a dashboard display of the applications features. From the profile they can view:
+
+- All Recipes
+- Saved Recipes
+- My Recipes
+- Top Tools & Products
+
+<img style="width:100%"  src="documents/screenshots/profile.png">
+
+## **Create/Add recipes**
+The create recipe feature allows the user to add their own recipe using the data entry form provided. The data entry form has front-end and back-end validation to reduce user error and help prevent malicious activity. For example:
+
+- Character min and max limits on text inputs
+
+ <img style="width:100%" src="documents/screenshots/add_recipe.png">
+<img style="width:100%" src="documents/screenshots/add_recipe2.png">
+
+## **Edit/Update recipes**
+The Edit Recipe Feature allows users to modify any recipe they have created. They are presented with the data enrty form used when adding but with populated fields using the data of the recipe they have chosen to edit. They also have the option cancel the editing proccess.
+
+<img style="width:50%" src="documents/screenshots/edit_recipe.png"><img style="width:50%" src="documents/screenshots/edit_recipe2.png">
+
+
+## **Delete recipes**
+The delete option is presented to the registered user in 'My Recipes' and 'View Recipe' Pages. If the user selects delete they have to confirm this via a Javascript Pop Up confirm box.
+
+<img style="width:50%" src="documents/screenshots/edit_delete_option.png"><img style="width:50%" src="documents/screenshots/delete_confirm.png">
+
+## **Save recipes**
 The save recipes feature allows a registered user to click 'save' on any recipe they havent created and save it to their "saved recipes" page which can be accesed via their profile. (This is supported with the feature that can also remove the saved recipe).
-This was created using an Array in the User Collection document. 
+This was created using an Array in the User Collection document. Below shows the SAVED status and an example of the Saved Recipes Page.
 
-### **Rate recipes**
-The rate recipe feature allows all registered users to rate a recipe out of 10 if they have not created it. This generates user feedback and allows users to see which recipes are rated well for reccomendation. The rating and the count of how many times it has been rated is clearly displayed.
+ <img style="width:100%"  src="documents/screenshots/add_to_saved.png"><img style="width:50%" src="documents/screenshots/saved.png"><img style="width:50%" src="documents/screenshots/saved_recipes.png">
 
+## **Rate recipes**
+The rate recipe feature allows all registered users to rate a recipe out of 10 if they have not created it. This generates user feedback and allows users to see which recipes are rated well for reccomendation. The rating and the count of how many times it has been rated is clearly displayed. Below is a screenshot of the feature on the View Recipe page.
+
+<div align="center"><img style="width:50%" src="documents/screenshots/rating.png"></div>
+
+## Product & Tools
+This feature presents recomended tools and products.
+The product image, description and price are displayed with clickable links to the corresponding site. A registered user has access to discount codes which are displayed via modal when clicked.
+The modal also allows the user to click the copy icon to copy to the devices clipboard for future use.
+
+<img style="width:100%" src="documents/screenshots/tools_products.png"><img style="width:50%" src="documents/screenshots/discount_code.png"><img style="width:50%" src="documents/screenshots/amazon_tool.png">
+
+## **ADMIN/MANAGEMENT FEATURES**
+<img src="documents/screenshots/manage_top.png">
+
+## **Users Table**
+
+The user table displays all user information apart from the password. This is to protect the privacy of the users. A future feature will be a password recovery feature if the password is lost or forgotten. The table displays:
+- User Name (There is the option of 2 symbols. When clicked a toast is shown explaining. Leaf = Vegan, Star = Over 5 recipes contributed)
+- Last Name (Records sorted by this field alphabetically)
+- First Name
+- Email address
+- Contributed (Number of recipes added by user)
+- Saved (Number of recipes user has saved)
+
+### ADD USER
+The green button with the plus icon allows redirects the user to the registration page where they can add/create/register a new user.
+
+### EDIT USER
+This is the blue button with pencil icon. The edit user button directs the admin to the edit user page. This page is identical to the add user form but is populated with the corresponding user details
+
+### DELETE USER
+This is the red button with the trash icon. This button deletes the user but the admin has to confirm this . They are presented with a Javascript Confirm Pop Up window to ensure they intend to delete the user. 
+<img style="width:100%" src="documents/screenshots/users_recipes.png">
+
+### **Search Users**
+In the management page the admin can search within the index of username and last name and the results are displayed in the table.
+
+<img style="width:100%" src="documents/screenshots/search_users.png">
+
+## Recipes Table
+
+The recipes table displays all recipe information in the database collection. The amount of data displayed varies depending on screen size. This information includes:
+
+- Recipe Name (If the name has a leaf symbol it means the recipe is vegan)
+- Recipe Type (Displays the category of recipe)
+- Rating (Average rating / 10)
+- Created by (Shows the creators username)
+
+### ADD RECIPE
+This green button with the plus icon allows the admin user to add a recipe. The admin user will be redirected to the add recipe page.
+
+### DELETE RECIPE
+This red button with the trash icon will delete the corresponding recipe. The user will have to verify the deletion via a Javascript Confirm window. 
+
+<img style="width:100%" src="documents/screenshots/users_recipes.png">
+
+
+## Recipe Type Table
+This table displays all recipe types within the database. The data includes:
+
+- Type Name (This is the name of the recipe type)
+- Description (This is a short description of the category)
+- Recipe Count (This counts how many recipes are in this category)
+
+When a recipe is added or deleted this count is incremented/decremented accordingly.
+
+<img style="width:100%"  src="documents/screenshots/manage_recipe_type.png">
+
+### ADD RECIPE TYPE
+
+The green tab with the plus icon toggles a data entry form where the admin can add a recipe type.
+
+<img style="width:100%"  src="documents/screenshots/add_recipe_type.png">
+
+### DELETE RECIPE TYPE
+
+The red button with the trash icon deletes the recipe type. The user is presented with a confirm window to double check they wish to do this. This helps revent accidental deletion.
+
+### ***AN EDIT FEATURE WAS ADDED BUT REMAINS DISABLED DUE TO FUNCTIONALITY DEVELOPMENT. THIS WOULD BE A FUTURE FEATURE ON THE SYSTEM***
+
+## Products Table / Tools Table
+This table displays all information about the products and tools stored in the Mongo database.
+
+Products and Tools Info:
+
+- Name
+- Description
+- Price
+
+
+
+<img src="documents/screenshots/products_tools.png">
+
+### DELETE PRODUCT/TOOLS
+This allows the user to delete a product/tool from the system. This action is met with same verifcation as other deletion proccess.
+
+<img src="documents/screenshots/delete_confim.png">
+ 
+### ***AN EDIT TOOLS AND PRODUCTS FEATURE WOULD BE A FUTURE FEATURE ON THE SYSTEM***
 
 ## **Defensive Programming**
 The main objective when developing this application from a defensive design standpoint was to limit the users access and prevent the system breakin due to user input.
@@ -195,7 +392,7 @@ For this project, i have deployed full CRUD functionality and allowed any user t
 
 Back-end routing checks prevent any cross site activity that may result in unwanted behaviour from a malicious user.
 
-This application uses both front-end  and back-end data validation via the formfield attributes (max and min # of characters, only accepting valid url, etc.) along with back-end defensive programming in app.py.
+This application uses both front-end  and back-end data validation via the formfield attributes (max and min # of characters, only accepting valid url, etc.) along with back-end defensive programming in app.py
 
 This ensures the amount of data for each recipe is limited/controlled however the content of the data is not.
 
@@ -300,6 +497,7 @@ To clone this project from GitHub:
 - QR CODE GENERATOR : https://www.the-qrcode-generator.com/
 
 For continual guidance:
+- Brain Macharia (CI Mentor)
 - Stack Overflow (https://stackoverflow.com/)
 - W3 Schools (https://www.w3schools.com/)
 
