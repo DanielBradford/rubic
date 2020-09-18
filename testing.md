@@ -7,15 +7,23 @@
 
 **CSS VALIDATION** - https://jigsaw.w3.org/css-validator/
 
-- All CSS written in this project has been submitted for validation via the above software.
-  <img src="#" alt="CSS Validation">
+There were 3 minor errors that were corrected during testing:
+
+        commit 2c8e061905795040d61851ad483cc667bb5d6804
+        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+        Date:   Thu Sep 17 14:53:17 2020 +0000
+
+        Minor alterations resulted in passing jigssaw validation
+
+- All CSS written in this project has been submitted for validation and passed via the above software.
+
 
 **JAVASCRIPT VALIDATION** - https://jshint.com/
 
 - ALL JS written in this project has been parsed through JSHint and no errors have been found.
 
- **Metrics:**
-  There are 32 functions in this file. Function with the largest signature take 0 arguments, while the median is 0. Largest function has 33 statements in it, while the median is 2. The most complex function has a cyclomatic complexity value of 2 while the median is 1.
+        Metrics:
+        There are 32 functions in this file. Function with the largest signature take 0 arguments, while the median is 0. Largest function has 33 statements in it, while the median is 2. The most complex function has a cyclomatic complexity value of 2 while the median is 1.
 
 **PYTHON VALIDATION** - http://pep8online.com/
 
@@ -25,12 +33,6 @@
         Author: Daniel Bradford <danielbradford@hotmail.co.uk>
         Date:   Wed Sep 16 18:55:00 2020 +0000
         Code layout cleaned to pass through pep8 validation
-
-
-
-
-  
-
 
 
 ### **Client Story Testing:**
@@ -67,7 +69,46 @@ Verify the sizing of the box adjusts from desktop > tablet > mobile and that no 
 
     **Result:** 
 
+## Responsive Design Testing
+
+For final testing [Responsinator](https://www.responsinator.com/) was used to test the application accross multiple devices.
+
+### Screen Size Testing/Compability
+
+Screen Size         | Size              | Comments
+--------------------|-------------------|---------
+X-Small             | <768px            | No space between buttons for landing template. Grid layout altered to rectify
+Small               | >=768px           | Landing page stats given flow-text attr. to prevent distortion
+Medium              | >=992px           | Passed, no changes neccessary.
+Large               | >=1200px          | Passed, no changes neccessary.
+
+Commit Examples:
+
+        commit 7a286130e0414e9703575ff7e0777cd1aafab062
+        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+        Date:   Thu Sep 17 15:44:48 2020 +0000
+
+        Media query alterations for responsive design improvements
+
+
+        commit 4bde74435aaea76484abec91143be5529c7485d2
+        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+        Date:   Thu Sep 17 15:26:32 2020 +0000
+
+        Post testing alterations made to enhance responsive design
+### Browser Compability
+
+Browser             | Version           | Comments
+--------------------|-------------------|---------
+Firefox             | 72.0.2 (64-bit)   | No errors observed
+Edge                | 44.18362.449.0    | No errors observed
+Chrome              | 80.0.3987.122     | No errors observed
+
+
+
 ## Development Issues / De-bugging:
+
+
 
 
 ### **RESPONSIVE DESIGN** (Materialise and Media Queries)
@@ -81,7 +122,7 @@ Date:   Thu Sep 17 13:37:02 2020 +0000
 
 ## **Future Issues to be fixed**
 
-Following testing there are issues that still could be improved:
+During development i encountered issues with the user session feature. When i a guest opens the application they are assigned a session['user] status as "Guest". This status allowed me to control their access throughout the application. This may have issues in the future if the application scope is to expand. 
 
 
 ## **Development Tools Testing**
@@ -93,7 +134,7 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 
 - In initial reports the website had an average Performance rating of **74**.
 - I changed changed the appropriate .jpg & .png files into webp format to minimise memory usage and speed up loading and rendering times.
-- I streamlined the style.css file to lessen the data being loaded. (commit 988437bcb814fe1235dfb5ecc33d9eae2832bae2)
+- I streamlined the style.css file to lessen the data being loaded. (commit 
 - By making these changes the current Performance rating is now (on average) **91**
 
 **Accessibility**
@@ -101,7 +142,6 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 - In initial reports the website had an average Accessibility rating of **84**
 - I altered color schemes of text vs. background to maximise the contrast score allowing information to be more visible to a wider group of users with accessiblity issues.
 - I resized icons and images to make them more visible
-- I re-assessed background image choices for their contrast score (commit aaec109f844de9865edeea2d8415630d683557d9)
 - By making these changes the current Performance rating is now (on average) **100**
 
 **Best Practices**
