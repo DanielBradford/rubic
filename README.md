@@ -315,6 +315,10 @@ On the recipe cards displayed there are buttons to edit (blue) or delete (red) t
 
 <img style="width:100%"  src="documents/screenshots/my_recipes.png">
 
+## **Saved Recipes**
+
+<img style="width:100%"  src="documents/screenshots/saved_recipes.png">
+
 ## **Create/Add recipes**
 The ADD RECIPE button in 'My Recipes' and the Floating Menu ADD RECIPE Button (Green) direct the user here.
 
