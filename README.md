@@ -4,7 +4,7 @@
 
 **TEST USER INFO**
 
-USERNAME :  **TEST1**
+USERNAME :  **Test1**
 
 PASSWORD:   **password**</p></div>
 
