@@ -38,55 +38,149 @@ There were 3 minor errors that were corrected during testing:
 ### **User Story Testing:**
 
 1. As a new or returning user i want to navigate the application easily
+   
+    <span style="color:green">PASSED</span> *The menu/nav bar functions for all screen sizes and the added floating menu enhances this experience*
 1. As a new user i want the option to register to the site
+    
+    <span style="color:green">PASSED</span>
 1. As a returning user i want the option to login to the application
+
+    <span style="color:green">PASSED</span> *The login page allows this*
 1. As a new or returning user i want to view all recipes on the application
+
+    <span style="color:green">PASSED</span> *The view recipe page does this*
 1. As a new or returning user i want to easily search through all the recipes on the application
+
+    <span style="color:green">PASSED</span> *The search function operates successfully*
 1. As a new or returning user i cant decide what recipe to view and want to be shown a random recipe to make my recipe choice experience fun and enjoyable
+
+    <span style="color:green">PASSED</span> *The random recipe button function accomodates this*
 1. As a new or returning user i want to view all recipe types
+
+    <span style="color:green">PASSED</span> *Recipes Types are well displayed*
 1. As a new or returning user i want to view a recipe that is displayed clearly and makes my cooking experience easier
+
+    <span style="color:green">PASSED</span> *The layout and design of the view recipe along with the check boxes does this*
 1. As a new or returning user i want to view all Vegan recipes 
+
+    <span style="color:green">PASSED</span> *The vegan filter button meets this requirement*
 1. As a registered user i want to add a recipe to the application
+
+    <span style="color:green">PASSED</span> *The add recipe functionality works efficiently*
 1. As a registered user i want to view all the recipes i have added/contributed
+
+    <span style="color:green">PASSED</span>*The 'my recipes' display and functionality works efficiently*
 1. As a registered user i want to easily search through all recipes i have added/contributed
+
+    <span style="color:green">PASSED</span> *The search 'my recipes' functionality works efficiently*
 1. As a registered user i want to save recipes of other registered users
+
+    <span style="color:green">PASSED</span> *The save recipe functionality works efficiently*
 1. As a registered user i want to view all the recipes i have saved
-1. As a registered i want to easily search through all the recipes i have saved
+
+    <span style="color:green">PASSED</span> *The save recipe display works efficiently*
+1. As a registered user i want to easily search through all the recipes i have saved
+
+    <span style="color:green">PASSED</span> *The search saved recipes functionality works efficiently*
 1. As a registered user i want to view cooking related products and tools recommended by Rubric
+
+    <span style="color:green">PASSED</span> *The products and tools display page works efficiently*
 1. As a registered user i want to receive discount codes for cooking related products.
 
-
-### **LANDING PAGE**
-
-This is the main landing page the user sees when the screen has loaded. An intro sound plays on loading (intro.mp3).
-
-<img src="#" alt="screenshot of main page">
-
-### **TITLE & ICON**
-
-**Test**:
-Verify the sizing of the box adjusts from desktop > tablet > mobile and that no over flow distorts the layout:
-
-**Expectation**:
+    <span style="color:green">PASSED</span> *The discount code modal functionality works efficiently*
 
 
-**RESULT**:
+### **CRUD FUNCTIONALITY TESTING** <span style="color:green">PASSED</span>
+CREATE
+- All creation functionality for recipes, users, recipe types, products and tools was successfull and reflected in the Mongo database
 
-### **MENU / NAVIGATION Bar**
+READ
+- All data was successfully presented to the user and is accurate to all data stored in the Mongo database 
 
-1.  **Test:** Verify that the sizing of the navigation bar adjusts with screen size changes:
-    - **Result:** I made the navigation menu adapt to all screen sizes. For mobile, a hamburger button is used. This maximises screen real estate for smaller devices.
-1.  **Test:** Verify that the menu drops down and that the menu text is clear and visible.
-    - **Result:** I had difficulties during accessbility testing but found a color to make this work.
-1.  **Test:** Hover over the navigation links and verify the CSS styling changes
-    - **Result:** Some CSS styling choices were changed during testing due to accessbility/contrast issues
-1.  **Test:** Click on each of the navigation links and verify that it opens the corresponding modals
-    - **Result:** During testing i found all links to modals worked correctly.
-1.  **Test:** Repeat verification of functionality and responsiveness on my mobile phone and tablet.
+UPDATE
+- All update functionality for editing recipes and users, was successful and the database stored the data accordingly 
 
-    **Result:** 
+DELETE
+- All functionality for deleting recipes, users, recipe types, tools and products was successfull
 
-## Responsive Design Testing
+
+### **DELETION CONFIRMATION TESTING**
+All Javascript Confirm functionality was used to prevent user error. This was tested by trying to delete a record without having to confirm.
+
+On every test the user had to confirm before deletion.
+
+This failed once on the management page but was corrected.
+
+<img src="documents/screenshots/delete_confirm.png" alt="">
+<img src="documents/screenshots/delete_confim.png" alt="">
+
+
+
+### **RATING FUNCTIONALITY** <span style="color:green">PASSED</span>
+One of the main features that needed to be tested was the rating system. This system allows user to rate a recipe betweem 1 and 10. The rating is then stored in an array. On the frontend the code generates the sum of the array divided by the length of the array giving the average rating for that recipe.
+
+I tested this by logging in as different users and rating recipes to check the calculations were correct.
+
+
+### **DATA ENTRY FORM TESTING** <span style="color:green">PASSED</span>
+
+This included testing the front-end and back-end validation for:
+- Add Recipe
+- Add User
+- Edit User
+
+For the purpose of defensive programming i used back end verification as well as front end validation to help prevent user error and or malicious intent.
+
+This was primarily checking that the input fields had been completed and were not empty as well as verifying that the input length was within the minimum and maximum allowance.
+
+I tested this by doing the following:
+
+- Leaving input fields blank
+- Trying to submit a form with fields missing
+- Trying to submit with incorrect email address format
+- Trying to submit with input length of 200 character
+
+All of the above tests passed as the forms did not allow me to proceed.
+
+
+### **URL Defensive Programming** <span style="color:green">PASSED</span>
+
+To prevent users breaking the application by trying to view recipes that dont exist
+
+**For example:**
+
+To prevent users trying to view a recipe with a false code. I only allowed the standard Object ID length of 24 characters to be accepted.
+
+    commit f20ef11bb8e2fdbc016d5626438a208a701cc066
+    Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+    Date:   Thu Sep 17 16:30:03 2020 +0000
+
+    View recipe defensive programming added. Checks recipe_id length to verify validity
+
+This can be imporved upon by cross checking the Object Id exists within the database before proceeding. This would be a good security feature to implement in the future.
+
+
+
+
+### **FLASH MESSAGES** <span style="color:green">PASSED</span>
+
+ALL flash messages used in app.py are displayed clearly and correctly when required. 
+
+These include:
+- Form validation (Back-End) for input field lengths and content
+- Login/Logout success - displayed when user has successfully logged in/out
+- Registration success - Displayed after succesful registration
+- Recipe Creation, Deletion, Saving and Editing success
+<img src="documents/screenshots/save_success.png">
+
+- Admin Only! Authorization Denied! - When user tries to access an admin only feature
+<img src="documents/screenshots/admin_only.png">
+- Members Only - When user tries to access a member only feature
+<img src="documents/screenshots/members_only.png">
+
+
+
+## Responsive Design Testing <span style="color:green">PASSED</span>
 
 For final testing [Responsinator](https://www.responsinator.com/) was used to test the application accross multiple devices.
 
@@ -113,28 +207,38 @@ Commit Examples:
         Date:   Thu Sep 17 15:26:32 2020 +0000
 
         Post testing alterations made to enhance responsive design
-### Browser Compability
+
+        commit d11bb2716f24a9fdf42574bf275a7490d0e563d2 (HEAD -> master)
+        Author: Daniel Bradford <danielbradford@hotmail.co.uk>
+        Date:   Thu Sep 17 13:37:02 2020 +0000
+
+         Menu buttons spaced. Post testing resolve
+### Browser Compability <span style="color:green">PASSED</span>
 
 Browser             | Version           | Comments
 --------------------|-------------------|---------
-Firefox             | 72.0.2 (64-bit)   | No errors observed
-Edge                | 44.18362.449.0    | No errors observed
-Chrome              | 80.0.3987.122     | No errors observed
+Firefox             | 72.0.2 (64-bit)   | <span style="color:green">PASSED</span> No errors observed
+Edge                | 44.18362.449.0    | <span style="color:green">PASSED</span> No errors observed
+Chrome              | 80.0.3987.122     | <span style="color:green">PASSED</span> No errors observed
+
+
+## **Development Issues / De-bugging:**
+
+**Registration Bug:** When trying to apply defensive programming i blocked out the users option to register. I fixed this by removing uneccesary user filtering.
+
+    Registration bug fixed. Overly defensive programming removed
+    commit 1597d33a6d773432837b4944992968b58b464cab
+
+**Add recipe Routing Bug:** After the floating menu was added i had incorrectly routed the add recipe template. This was fixed accordingly.
+
+    commit 5453a8c314a786b6ef52de5221aaeef7e21bea5a
+
+**Data Binding in Edit Recipe Form** A repeating bug was th inability to bind cooking time and temperature to the edit form to present the existing recipe information correctly. This was fixed by parsing the data into string format so it could be compared.
+
+    commit 7a0c9c0baad9f6294d642e80e3c8f9cbbf07250a
 
 
 
-## Development Issues / De-bugging:
-
-
-
-
-### **RESPONSIVE DESIGN** (Materialise and Media Queries)
-
-commit d11bb2716f24a9fdf42574bf275a7490d0e563d2 (HEAD -> master)
-Author: Daniel Bradford <danielbradford@hotmail.co.uk>
-Date:   Thu Sep 17 13:37:02 2020 +0000
-
-    Menu buttons spaced. Post testing resolve
 
 
 ## **Future Issues to be fixed**
