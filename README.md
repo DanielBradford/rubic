@@ -589,7 +589,7 @@ Frameworks/Libraries:
 <a name="testing"></a>
 ## **TESTING**
 
-### Please refer to <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/testing.md" target="_blank">TESTING.md</a> for a full testing breakdown
+### Please refer to <a href="https://github.com/DanielBradford/rubric/blob/master/testing.md" target="_blank">TESTING.md</a> for a full testing breakdown
 
 <a name="deployment"></a>
 ## **Deployment**
