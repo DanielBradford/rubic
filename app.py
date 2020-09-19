@@ -568,7 +568,7 @@ def remove_recipe(recipe_id):
         if item == ObjectId(recipe_id):
             mongo.db.users.update(
                 {"user_name": user},
-                {"$pull":  {'saved_recipes': recipe_id}}
+                {"$pull":  {'saved_recipes': ObjectId(recipe_id)}}
             )
 
             flash("Recipe successfully removed from saved list")
