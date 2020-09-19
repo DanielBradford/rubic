@@ -17,7 +17,8 @@ PASSWORD:   **admin**</p></div>
 <br>
 
 ## <p align="center" style="color:teal">WHAT IS RUBRIC?</p>
-Rubric is an efficient personal recipe management web application.  It provides a full recipe management service, free of charge which allows users to have access to a selection of recipes, including their own, all in one place.
+Rubric is an efficient personal recipe management web application.  It provides a full recipe management service, free of charge which allows users to have access to a selection of recipes, including their own, all in one place. The project is a combination of HTML, CSS, JavaScript, and Python and utilizes a NoSQL Database (MongoDB) with Flask.
+
 ## <p align="center"  style="color:teal">WHAT DOES IT DO?</p>
 It allows users to Create, Read, Update and Delete Recipe Documents. It also has features that allow registered users to save recipes they like and rate other peoples recipes. 
 
@@ -198,7 +199,7 @@ This was maintained through out the application using a mix of customised CSS an
 
 ### Navigation
 
-- **Mobile** The navigation menu is represented by the hamburger icon. The mobile menu uses Materialize JS to and is displayed in a user-friendly and stylish format.
+- **Mobile** The navigation menu is represented by the hamburger icon. The mobile menu uses Materialize JS and is displayed in a user-friendly and stylish format.
 - **Desktop** The navigation menu is clear and accessible. When hovered over the links are highlighted.
 - **Registered Users** 
     Once logged in users can enjoy the extra feature of the floating action menu. This is located in the lower right corner of the screen and allows quick access to the following:
@@ -222,7 +223,7 @@ This was maintained through out the application using a mix of customised CSS an
 ### **Login Feature**
 This allows registered members to login into application in order to access the extra features. This contains back-end verifcation that checks if the username exists in the database.
 
-If the unhashed password in the database matches the user is able to login.
+If the unhashed password in the database matches the user's password, they are then able to login.
 
 <img style="width:100%" src="documents/screenshots/login.png">
 
@@ -307,7 +308,7 @@ When the cards are selected they reveal information and a link to the correspond
 <img style="width:100%"  src="documents/screenshots/profile_cards.png">
 
 ## **My Recipes**
-This page displays all recipes contrbuted by the user. The number in brackets counts the total amount. 
+This page displays all recipes contributed by the user. The number in brackets counts the total amount. 
 
 This page presents the add recipe button which redirects the user to the add recipe page. This allows the user to add a recipe. 
 
@@ -316,6 +317,13 @@ On the recipe cards displayed there are buttons to edit (blue) or delete (red) t
 <img style="width:100%"  src="documents/screenshots/my_recipes.png">
 
 ## **Saved Recipes**
+
+This page displays all recipes saved by the user. The number in brackets counts the total amount.
+
+The user has the option to search all recipes within their saved list.
+
+They also have the option to remove the recipe using the trash icon. When this is clicked there is an option to remove the item. They have to confirm to complete this function.
+
 
 <img style="width:100%"  src="documents/screenshots/saved_recipes.png">
 
@@ -500,10 +508,10 @@ Please see the <a href="https://github.com/DanielBradford/rubric/blob/239022217d
 IDE:
 - ### **Gitpod** - https://gitpod.io/
 Version Control:
-- ### **Git**
-- ### **GitHub**
+- ### **Git** https://git-scm.com/
+- ### **GitHub** https://github.com/
 Deployment: 
-- ### **Heroku**
+- ### **Heroku** https://www.heroku.com
 
 
 
