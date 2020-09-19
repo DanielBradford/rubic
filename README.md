@@ -533,7 +533,7 @@ A user could upload any text (for example offensive text) into the database at t
 
 A future feature i have considered is an approval functionality from an admin user that requires approval before the uploaded recipe/information is made publicly available.
 
-*For details on defensive design testing, please see <a href="https://github.com/DanielBradford/rubric/blob/master/testing.md" target="_blank">testing section</a>.
+*For details on defensive design testing, please see <a href="https://github.com/DanielBradford/rubric/blob/f255ded4eaef409b9e71a8dc2d2aded3fe14e3d5/testing.md" target="_blank">testing section</a>.
 <a name="responsive"></a>
 ## **Responsive Design**
 <div class="center-align"><img style="width: 20%" src="static/images/qrcode.png" alt="qrcode"><img style="width: 50%" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"><span>   </span><img style="width: 20%" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></div>
