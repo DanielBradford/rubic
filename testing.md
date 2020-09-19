@@ -35,6 +35,24 @@ There were 3 minor errors that were corrected during testing:
         Code layout cleaned to pass through pep8 validation
 
 
+### **Navigation Testing**
+
+- Mobile/Tablet Menu <span style="color:green">PASSED</span> 
+    - The hamburger menu icon is visible and functions  
+    - All text and icons are visible and appropriate sizes
+    - All navigation links successfully direct the user to corresponding pages
+
+- Desktop Menu <span style="color:green">PASSED</span> 
+    - All links highlight and apply intended CSS 
+    - All text and icons are visible and appropriate sizes
+    - All navigation links successfully direct the user to corresponding pages
+
+- Floating Action Button Menu <span style="color:green">PASSED</span> 
+    - Menu successfully opens and closes on press/click
+    - All buttons have clear icons
+    - All buttons lead to corresponding pages
+
+
 ### **User Story Testing:**
 
 1. As a new or returning user i want to navigate the application easily
@@ -42,19 +60,27 @@ There were 3 minor errors that were corrected during testing:
     <span style="color:green">PASSED</span> *The menu/nav bar functions for all screen sizes and the added floating menu enhances this experience*
 1. As a new user i want the option to register to the site
     
-    <span style="color:green">PASSED</span>
+    <span style="color:green">PASSED</span> The registration page allows this
 1. As a returning user i want the option to login to the application
 
     <span style="color:green">PASSED</span> *The login page allows this*
 1. As a new or returning user i want to view all recipes on the application
 
+    <span style="color:orange">TESTING NOTE</span> A 'forgotten password" feature would be utilised in future.
+
     <span style="color:green">PASSED</span> *The view recipe page does this*
 1. As a new or returning user i want to easily search through all the recipes on the application
+
+    <span style="color:orange">TESTING NOTE</span> Although the search function works, the function does not take errors or mispelling into account. This could be improved in the future by filtering in the back-end
 
     <span style="color:green">PASSED</span> *The search function operates successfully*
 1. As a new or returning user i cant decide what recipe to view and want to be shown a random recipe to make my recipe choice experience fun and enjoyable
 
+    <span style="color:orange">TESTING NOTE</span> During testing the presentation of the random results could be clearer and display could be improved
+
     <span style="color:green">PASSED</span> *The random recipe button function accomodates this*
+
+    
 1. As a new or returning user i want to view all recipe types
 
     <span style="color:green">PASSED</span> *Recipes Types are well displayed*
@@ -92,7 +118,7 @@ There were 3 minor errors that were corrected during testing:
 
 ### **CRUD FUNCTIONALITY TESTING**
 CREATE:  <span style="color:green">PASSED</span>
-- All creation functionality for recipes, users, recipe types, products and tools was successfull and reflected in the Mongo database
+- All creation functionality for recipes, users, recipe types, products and tools was successful and reflected in the Mongo database
 
 READ: <span style="color:green">PASSED</span>
 - All data was successfully presented to the user and is accurate to all data stored in the Mongo database 
@@ -101,7 +127,7 @@ UPDATE: <span style="color:green">PASSED</span>
 - All update functionality for editing recipes and users, was successful and the database stored the data accordingly 
 
 DELETE: <span style="color:green">PASSED</span>
-- All functionality for deleting recipes, users, recipe types, tools and products was successfull
+- All functionality for deleting recipes, users, recipe types, tools and products was successful
 
 
 ### **DELETION CONFIRMATION TESTING**
@@ -111,8 +137,7 @@ On every test the user had to confirm before deletion.
 
 This failed once on the management page but was corrected.
 
-<img src="documents/screenshots/delete_confirm.png" alt="">
-<img src="documents/screenshots/delete_confim.png" alt="">
+<img style="width:50%" src="documents/screenshots/delete_confirm.png" alt=""><img  style="width:50%" src="documents/screenshots/delete_confim.png" alt="">
 
 
 
@@ -160,14 +185,18 @@ All of the above tests passed as the forms did not allow me to proceed.
             mongo.db.type.update({"type_name": i},
                                  {"$inc": {"count": -1}})
 
+- TEST RECIPE TYPE CANNOT BE DELETED IF A RECIPE EXISTS IN THAT TYPE <span style="color:green">PASSED</span>
+
+        commit b63a6bc3a52e2b0b83c6dd6f3bb70524b5cc0fcb
+
 ### **URL Defensive Programming** <span style="color:green">PASSED</span>
 
 For the purpose of access control i gave the visitor the default session username of "Guest". By doing this i was then able to control and manipulate the users access to various parts of the application.
 
-- This helps prevent non registered users accessing member only areas e.g. someone elses profile
+- This helps prevent non registered users  from accessing member only areas e.g. someone elses profile
 <img src="documents/screenshots/members_only.png">
-- This helps prevent users editing or deleting recipes that were not their own
-- This helps prevent non ADMIN users accessing the management page.
+- This helps prevent users from editing or deleting recipes that were not their own
+- This helps prevent non ADMIN users from accessing the management page.
 <img src="documents/screenshots/admin_only.png">
 - This reduces the scope of malicious or damaging activity within the application
 
@@ -188,19 +217,35 @@ This can be improved upon by cross checking the Object Id exists within the data
 
 ### **FLASH MESSAGES** <span style="color:green">PASSED</span>
 
+Flash messages in this application inform the user of their succes and or errors.
+
 ALL flash messages used in app.py are displayed clearly and correctly when required. 
 
 These include:
-- Form validation (Back-End) for input field lengths and content
-- Login/Logout success - displayed when user has successfully logged in/out
-- Registration success - Displayed after succesful registration
+- Form validation (Back-End) for correct password, input field lengths and content.
+
+    <img src="documents/screenshots/length_check.png">
+    <img src="documents/screenshots/password_check.png">
+
+- Login (Welcome message) / Registration success - displayed when user has successfully logged in
+
+    <img src="documents/screenshots/profile.png">
+
+- Logout - displayed when user has succes logged out
+
+    <img src="documents/screenshots/logout.png">
+
 - Recipe Creation, Deletion, Saving and Editing success
-<img src="documents/screenshots/save_success.png">
+
+    <img src="documents/screenshots/save_success.png">
 
 - Admin Only! Authorization Denied! - When user tries to access an admin only feature
-<img src="documents/screenshots/admin_only.png">
+
+    <img src="documents/screenshots/admin_only.png">
+
 - Members Only - When user tries to access a member only feature
-<img src="documents/screenshots/members_only.png">
+
+    <img src="documents/screenshots/members_only.png">
 
 
 
@@ -272,7 +317,7 @@ Chrome              | 80.0.3987.122     | <span style="color:green">PASSED</span
 ## **Development Tools Testing**
 
 From using the technologies of Wave and Lighthouse i was able to check the performance and accessiblity of the website. By utilizing this in DevTools i was able to generate reports for both desktop and mobile.
-By analysing these rerports i was able to make alterations in both the HTML and CSS code to improve the accessiblity of the site.
+By analysing these rerports i was able to make alterations in both the HTML and CSS code to improve the accessiblity of the application.
 
 **Performance**
 
