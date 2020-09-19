@@ -434,7 +434,10 @@ The user table displays all user information. The table displays:
 The green button with the plus icon allows redirects the user to the registration page where they can add/create/register a new user.
 
 ### EDIT USER
-This is the blue button with pencil icon. The edit user button directs the admin to the edit user page. This page is identical to the add user form but is populated with the corresponding user details
+This is the blue button with pencil icon. The edit user button directs the admin to the edit user page. This page is identical to the add user form but is populated with the corresponding user details and is without password fields. This is to protect the users privacy and security. Only Name, Username and Email can be updated.
+
+<img style="width:100%" src="documents/screenshots/edit_user.png">
+
 
 ### DELETE USER
 This is the red button with the trash icon. This button deletes the user but the admin has to confirm this . They are presented with a Javascript Confirm Pop Up window to ensure they intend to delete the user. 
