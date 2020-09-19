@@ -498,10 +498,12 @@ Products and Tools Info:
 - **Name**
 - **Description**
 - **Price**
+
 <img src="documents/screenshots/products_tools.png">
 
 ### ADD PRODUCT / TOOL
 The add button with the plus icon toggles a data entry form within the window which allows admin to add a product or tool to the database.
+
 <img src="documents/screenshots/add_product_tool.png">
 
 ### DELETE PRODUCT/TOOL
@@ -538,7 +540,7 @@ A future feature i have considered is an approval functionality from an admin us
 ## **Responsive Design**
 <div class="center-align"><img style="width: 20%" src="static/images/qrcode.png" alt="qrcode"><img style="width: 50%" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"><span>   </span><img style="width: 20%" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></div>
 
-The application has been built using a mobile-first approach. Throughout the development process, chrome developer tools, multiple desktops and mobile devices
+The application has been built using a mobile-first approach. The Materialize grid system was utilized to maintain the responsiveness of this application accross all screen sizes. Throughout the development process, chrome developer tools, multiple desktops and mobile devices
 where used to ensure responsivness across all screen resolutions. *(The application was also tested by family and friends using various devices and browsers.)*
 
 Please see the <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/testing.md" target="_blank">TESTING.md</a> file for more information
