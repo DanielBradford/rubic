@@ -2,7 +2,7 @@
 
 # Table of contents
 
-1. <a href="#valid">Validation</a>
+1. <a href="#valid">Code Validation</a>
 1. <a href="#nav">Navigation Testing</a>
 1. <a href="#story">User Story Testing</a>
 1. <a href="#crud">C.R.U.D Testing</a>

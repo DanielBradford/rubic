@@ -538,7 +538,7 @@ A future feature i have considered is an approval functionality from an admin us
 *For details on defensive design testing, please see <a href="https://github.com/DanielBradford/rubric/blob/f255ded4eaef409b9e71a8dc2d2aded3fe14e3d5/testing.md" target="_blank">testing section</a>.
 <a name="responsive"></a>
 ## **Responsive Design**
-<div class="center-align"><img style="width: 20%" src="static/images/qrcode.png" alt="qrcode"><img style="width: 50%" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"><span>   </span><img style="width: 20%" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></div>
+<div><img style="width: 20%" src="static/images/qrcode.png" alt="qrcode"><img style="width: 50%" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"><span>   </span><img style="width: 20%" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></div>
 
 The application has been built using a mobile-first approach. The Materialize grid system was utilized to maintain the responsiveness of this application accross all screen sizes. Throughout the development process, chrome developer tools, multiple desktops and mobile devices
 where used to ensure responsivness across all screen resolutions. *(The application was also tested by family and friends using various devices and browsers.)*
@@ -611,7 +611,7 @@ This project was **deployed** using **HEROKU**.
 
 1. Created a new application using the Heroku dashboard.
 2. Go to settings tab, click on 'reveal config vars' and add config vars such as IP (0.0.0.0), PORT (5000), MongoDB Name, MongoDB URI (URL with DB name and password).
-3. Install Heroku via the console using 'npm install -g Heroku'.
+3. Install Heroku via the console using 'pip3 install -g Heroku'.
 4. Log into Heroku via the console using 'heroku login' and follow the on screen instructions to log in.
 5. Create a requirements.txt via the console using 'pip3 freeze > requirements.txt'.
 6. Create a Procfile via the console using 'echo web: python app.py > Procfile'.
