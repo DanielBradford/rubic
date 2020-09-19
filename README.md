@@ -46,9 +46,9 @@ The application is designed to provide an essential service to users looking for
 - To provide an efficient recipe management web application
 - To CREATE, READ, UPDATE and DELETE User Information
 - To CREATE, READ, UPDATE and DELETE Recipe Information
-- To CREATE, READ, UPDATE and DELETE Recipe Type Data
-- To CREATE, READ, UPDATE and DELETE Product Information
-- To CREATE, READ, UPDATE and DELETE Tool Information
+- To CREATE, READ and DELETE Recipe Type Data
+- To CREATE, READ and DELETE Product Information
+- To CREATE, READ and DELETE Tool Information
 - To PROMOTE recipe related Amazon products such as appliances and tools, to MONETIZE the application
 - To direct online traffic and encourage shopping of said products through the incentive of discounts 
 - To generate a large user base to monetise the site through advertising by providing a free, useful and easy to use application
@@ -471,6 +471,7 @@ This allows the user to delete a product/tool from the system. This action is me
 ## **FUTURE FEATURES**
 
 - Comment Section on view recipe page
+- Products and Tools page populated through API / AWS (Amazon Web Services)
 - Messaging system and Inbox for  registered users
 - Leaderboard and points system for recipes and ratings
 - Coin earning/payment system for contributions. You earn coins for watching recipe videos/ adverts. You can redeem them for online discounts
@@ -512,10 +513,6 @@ Version Control:
 - ### **GitHub** https://github.com/
 Deployment: 
 - ### **Heroku** https://www.heroku.com
-
-
-
-
 
 Languages:
 - ### **HTML / HTML5**

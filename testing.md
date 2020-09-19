@@ -37,17 +37,17 @@ There were 3 minor errors that were corrected during testing:
 
 ### **Navigation Testing**
 
-- Mobile/Tablet Menu <span style="color:green">PASSED</span> 
+- Mobile/Tablet Menu <span style="color:#00b300">PASSED</span> 
     - The hamburger menu icon is visible and functions  
     - All text and icons are visible and appropriate sizes
     - All navigation links successfully direct the user to corresponding pages
 
-- Desktop Menu <span style="color:green">PASSED</span> 
+- Desktop Menu <span style="color:#00b300">PASSED</span> 
     - All links highlight and apply intended CSS 
     - All text and icons are visible and appropriate sizes
     - All navigation links successfully direct the user to corresponding pages
 
-- Floating Action Button Menu <span style="color:green">PASSED</span> 
+- Floating Action Button Menu <span style="color:#00b300">PASSED</span> 
     - Menu successfully opens and closes on press/click
     - All buttons have clear icons
     - All buttons lead to corresponding pages
@@ -57,80 +57,97 @@ There were 3 minor errors that were corrected during testing:
 
 1. As a new or returning user i want to navigate the application easily
    
-    <span style="color:green">PASSED</span> *The menu/nav bar functions for all screen sizes and the added floating menu enhances this experience*
+    <span style="color:#00b300">PASSED</span> *The menu/nav bar functions for all screen sizes and the added floating menu enhances this experience. All navigation links successfully direct the user throughout the application*
 1. As a new user i want the option to register to the site
     
-    <span style="color:green">PASSED</span> The registration page allows this
+    <span style="color:#00b300">PASSED</span> The registration page allows this. The functionality was tested by intentionally inputting data of various lengths and content. The registration validation passed this  manual test.
 1. As a returning user i want the option to login to the application
 
-    <span style="color:green">PASSED</span> *The login page allows this*
+    <span style="color:#00b300">PASSED</span> *The login page allows this. This was tested by intentionally inputting correct and incorrect usernames and passwords. The login validation passed this manual test.*
 1. As a new or returning user i want to view all recipes on the application
 
-    <span style="color:orange">TESTING NOTE</span> A 'forgotten password" feature would be utilised in future.
+    <span style="color:#ffa500">TESTING NOTE</span> A 'forgotten password" feature would be utilised in future.
 
-    <span style="color:green">PASSED</span> *The view recipe page does this*
+    <span style="color:#00b300">PASSED</span> *The view recipe page does this*
 1. As a new or returning user i want to easily search through all the recipes on the application
 
-    <span style="color:orange">TESTING NOTE</span> Although the search function works, the function does not take errors or mispelling into account. This could be improved in the future by filtering in the back-end
+    <span style="color:#ffa500">TESTING NOTE</span> Although the search function works, the function does not take errors or mispelling into account. This could be improved in the future by filtering in the back-end
 
-    <span style="color:green">PASSED</span> *The search function operates successfully*
+    <span style="color:#00b300">PASSED</span> *The search function operates successfully*
 1. As a new or returning user i cant decide what recipe to view and want to be shown a random recipe to make my recipe choice experience fun and enjoyable
 
-    <span style="color:orange">TESTING NOTE</span> During testing the presentation of the random results could be clearer and display could be improved
+    <span style="color:#ffa500">TESTING NOTE</span> During testing the presentation of the random results could be clearer and display could be improved
 
-    <span style="color:green">PASSED</span> *The random recipe button function accomodates this*
+    <span style="color:#00b300">PASSED</span> *The random recipe button function accomodates this*
 
     
 1. As a new or returning user i want to view all recipe types
 
-    <span style="color:green">PASSED</span> *Recipes Types are well displayed*
+    <span style="color:#00b300">PASSED</span> *Recipes Types are well displayed*
 1. As a new or returning user i want to view a recipe that is displayed clearly and makes my cooking experience easier
 
-    <span style="color:green">PASSED</span> *The layout and design of the view recipe along with the check boxes does this*
+     <span style="color:#ffa500">TESTING NOTE</span> *The check boxes allow order and organisation for the user and is a helpful UX feature.*
+
+    <span style="color:#00b300">PASSED</span> *The layout and design of the view recipe page does this*
 1. As a new or returning user i want to view all Vegan recipes 
 
-    <span style="color:green">PASSED</span> *The vegan filter button meets this requirement*
+    <span style="color:#00b300">PASSED</span> *The vegan filter button meets this requirement*
 1. As a registered user i want to add a recipe to the application
 
-    <span style="color:green">PASSED</span> *The add recipe functionality works efficiently*
+     <span style="color:#ffa500">TESTING NOTE</span> The data entry form was tested by inputting a variety of data sets that challended the length and content validation.
+
+    <span style="color:#00b300">PASSED</span> *The add recipe functionality and validation works efficiently*
 1. As a registered user i want to view all the recipes i have added/contributed
 
-    <span style="color:green">PASSED</span>*The 'my recipes' display and functionality works efficiently*
+    <span style="color:#00b300">PASSED</span>*The 'my recipes' display and functionality works efficiently*
 1. As a registered user i want to easily search through all recipes i have added/contributed
 
-    <span style="color:green">PASSED</span> *The search 'my recipes' functionality works efficiently*
+     <span style="color:#ffa500">TESTING NOTE</span> If the user clicks back after the search the system is unable to provide a suitable page destination and crashes. THIS REMAINS UNFIXED
+
+    <span style="color:#00b300">PASSED</span> *The search 'my recipes' functionality works efficiently*
 1. As a registered user i want to save recipes of other registered users
 
-    <span style="color:green">PASSED</span> *The save recipe functionality works efficiently*
+    <span style="color:#00b300">PASSED</span> *The save recipe functionality works efficiently*
 1. As a registered user i want to view all the recipes i have saved
 
-    <span style="color:green">PASSED</span> *The save recipe display works efficiently*
+    <span style="color:#00b300">PASSED</span> *The save recipe display works efficiently*
 1. As a registered user i want to easily search through all the recipes i have saved
 
-    <span style="color:green">PASSED</span> *The search saved recipes functionality works efficiently*
+    <span style="color:#ffa500">TESTING NOTE</span> If the user clicks back after the search the system is unable to provide a suitable page destination and crashes. THIS REMAINS UNFIXED
+
+    <span style="color:#00b300">PASSED</span> *The search saved recipes functionality works efficiently*
 1. As a registered user i want to view cooking related products and tools recommended by Rubric
 
-    <span style="color:green">PASSED</span> *The products and tools display page works efficiently*
+    <span style="color:#00b300">PASSED</span> *The products and tools display page works efficiently*
 1. As a registered user i want to receive discount codes for cooking related products.
 
-    <span style="color:green">PASSED</span> *The discount code modal functionality works efficiently*
+    <span style="color:#00b300">PASSED</span> *The discount code modal functionality works efficiently*
 
 
 ### **CRUD FUNCTIONALITY TESTING**
-CREATE:  <span style="color:green">PASSED</span>
+CREATE:  <span style="color:#00b300">PASSED</span>
 - All creation functionality for recipes, users, recipe types, products and tools was successful and reflected in the Mongo database
 
-READ: <span style="color:green">PASSED</span>
+READ: <span style="color:#00b300">PASSED</span>
 - All data was successfully presented to the user and is accurate to all data stored in the Mongo database 
 
-UPDATE: <span style="color:green">PASSED</span>
+UPDATE: <span style="color:#00b300">PASSED</span>
 - All update functionality for editing recipes and users, was successful and the database stored the data accordingly 
 
-DELETE: <span style="color:green">PASSED</span>
-- All functionality for deleting recipes, users, recipe types, tools and products was successful
+DELETE: <span style="color:#00b300">PASSED</span>
+- All functionality for deleting recipes, users, recipe types, tools and products was successful along with all Javascript confirmations.
 
+### **JAVASCRIPT/JQUERY INTERACTIVITY TESTING** <span style="color:#00b300">PASSED</span>
 
-### **DELETION CONFIRMATION TESTING**
+ALL Javascript interactivity passed testing. This included:
+
+- All MATERIALIZE javascript/JQUERY e.g. Modals & Navigation
+- Toggles and Drop Downs
+- Show/Hide functionality
+- Delete Confirmations
+- Copy to user device function (https://www.w3schools.com/howto/howto_js_copy_clipboard.asp)
+
+### **DELETION CONFIRMATION TESTING**  (Javascript)  <span style="color:#00b300">PASSED</span>
 All Javascript Confirm functionality was used to prevent user error. This was tested by trying to delete a record without having to confirm.
 
 On every test the user had to confirm before deletion.
@@ -141,13 +158,18 @@ This failed once on the management page but was corrected.
 
 
 
-### **RATING FUNCTIONALITY** <span style="color:green">PASSED</span>
+### **RATING FUNCTIONALITY** <span style="color:#00b300">PASSED</span>
 One of the main features that needed to be tested was the rating system. This system allows the user to rate a recipe between 1 and 10 using a slide bar. The rating is then stored in an array in the recipe document. On the front-end the code generates the sum of the array and divides it by the length of the array giving the average rating for that recipe.
 
 I tested this by logging in as different users and rating recipes to check the calculations were correct.
 
+### **SAVE RECIPE FUNCTIONALITY**
 
-### **DATA ENTRY FORM TESTING** <span style="color:green">PASSED</span>
+- This involved logging in as a registered user and clciking the save option on the view recipe page for various recipes.
+- The saved function passed this test by allowing the ObjectId to be saved and recalled/displayed on the Saved Recipes Page.
+- The removal of this saved recipe also passed testing.
+
+### **DATA ENTRY FORM TESTING** <span style="color:#00b300">PASSED</span>
 
 This included testing the front-end and back-end validation for:
 - Add Recipe
@@ -168,9 +190,9 @@ I tested this by doing the following:
 All of the above tests passed as the forms did not allow me to proceed.
 
 ### **MANAGEMENT / ADMIN FEATURE TESTING**
-- **C.R.U.D** FUNCTIONALITY FOR USERS, RECIPES, RECIPE TYPES, PRODUCTS AND TOOLS <span style="color:green">PASSED</span>
-- USER EMAIL MAILTO FUNCTIONALITY <span style="color:green">PASSED</span>
-- INCREMENT/DECREMENT OF RECIPE TYPE COUNT <span style="color:green">PASSED</span>
+- **C.R.U.D** FUNCTIONALITY FOR USERS, RECIPES, RECIPE TYPES, PRODUCTS AND TOOLS <span style="color:#00b300">PASSED</span>
+- USER EMAIL MAILTO FUNCTIONALITY - This successfully opens a new email addressed to the corresponding user. <span style="color:#00b300">PASSED</span>
+- INCREMENT/DECREMENT OF RECIPE TYPE COUNT - The result can be viewed either in the Admin Management Table or in the Mongo DB collection. <span style="color:#00b300">PASSED</span>
 
     Below is the code used:
 
@@ -185,15 +207,21 @@ All of the above tests passed as the forms did not allow me to proceed.
             mongo.db.type.update({"type_name": i},
                                  {"$inc": {"count": -1}})
 
-- TEST RECIPE TYPE CANNOT BE DELETED IF A RECIPE EXISTS IN THAT TYPE <span style="color:green">PASSED</span>
+- TEST RECIPE TYPE CANNOT BE DELETED IF A RECIPE EXISTS IN THAT TYPE <span style="color:#00b300">PASSED</span>
 
         commit b63a6bc3a52e2b0b83c6dd6f3bb70524b5cc0fcb
 
-### **URL Defensive Programming** <span style="color:green">PASSED</span>
+### **URL Defensive Programming** <span style="color:#00b300">PASSED</span>
 
 For the purpose of access control i gave the visitor the default session username of "Guest". By doing this i was then able to control and manipulate the users access to various parts of the application.
 
+For example:
+
+        commit 6a427fc696ec7441ba8f935f4d0184e317f9a4cb
+
 - This helps prevent non registered users  from accessing member only areas e.g. someone elses profile
+
+        commit: 4f83b44abaf36a8ca2cc6231703d48c5b543f828
 <img src="documents/screenshots/members_only.png">
 - This helps prevent users from editing or deleting recipes that were not their own
 - This helps prevent non ADMIN users from accessing the management page.
@@ -215,7 +243,7 @@ To prevent users trying to view a recipe with a false code. I only allowed the s
 This can be improved upon by cross checking the Object Id exists within the database before proceeding. This would be a good security feature to implement in the future.
 
 
-### **FLASH MESSAGES** <span style="color:green">PASSED</span>
+### **FLASH MESSAGES** <span style="color:#00b300">PASSED</span>
 
 Flash messages in this application inform the user of their succes and or errors.
 
@@ -249,7 +277,7 @@ These include:
 
 
 
-## Responsive Design Testing <span style="color:green">PASSED</span>
+## Responsive Design Testing <span style="color:#00b300">PASSED</span>
 
 For final testing [Responsinator](https://www.responsinator.com/) was used to test the application accross multiple devices.
 
@@ -257,10 +285,10 @@ For final testing [Responsinator](https://www.responsinator.com/) was used to te
 
 Screen Size         | Size              | Comments
 --------------------|-------------------|---------
-X-Small             | <768px            | No space between buttons for landing template. Grid layout altered to rectify <span style="color:green">PASSED</span>
-Small               | >=768px           | Landing page stats given flow-text attr. to prevent distortion <span style="color:green">PASSED</span>
-Medium              | >=992px           | Passed, no changes neccessary. <span style="color:green">PASSED</span>
-Large               | >=1200px          | Passed, no changes neccessary. <span style="color:green">PASSED</span>
+X-Small             | <768px            | No space between buttons for landing template. Grid layout altered to rectify <span style="color:#00b300">PASSED</span>
+Small               | >=768px           | Landing page stats given flow-text attr. to prevent distortion <span style="color:#00b300">PASSED</span>
+Medium              | >=992px           | Passed, no changes neccessary. <span style="color:#00b300">PASSED</span>
+Large               | >=1200px          | Passed, no changes neccessary. <span style="color:#00b300">PASSED</span>
 
 Commit Examples:
 
@@ -282,13 +310,13 @@ Commit Examples:
         Date:   Thu Sep 17 13:37:02 2020 +0000
 
          Menu buttons spaced. Post testing resolve
-### Browser Compability <span style="color:green">PASSED</span>
+### Browser Compability <span style="color:#00b300">PASSED</span>
 
 Browser             | Version           | Comments
 --------------------|-------------------|---------
-Firefox             | 72.0.2 (64-bit)   | <span style="color:green">PASSED</span> No errors observed
-Edge                | 44.18362.449.0    | <span style="color:green">PASSED</span> No errors observed
-Chrome              | 80.0.3987.122     | <span style="color:green">PASSED</span> No errors observed
+Firefox             | 72.0.2 (64-bit)   | <span style="color:#00b300">PASSED</span> No errors observed
+Edge                | 44.18362.449.0    | <span style="color:#00b300">PASSED</span> No errors observed
+Chrome              | 80.0.3987.122     | <span style="color:#00b300">PASSED</span> No errors observed
 
 
 ## **Development Issues / De-bugging:**
@@ -313,6 +341,8 @@ Chrome              | 80.0.3987.122     | <span style="color:green">PASSED</span
 
 - The edit recipe type function in the management suite is still in development. The issue is not how it operates but what way it can be presented to the user most efficiently. 
 
+- After calling any search function there is a vulnerability if the user clicks the browsers back button. The form data is lost and crashes the application. THIS REMAINS UNFIXED
+
 
 ## **Development Tools Testing**
 
@@ -321,17 +351,17 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 
 **Performance**
 
-- In initial reports the website had an average Performance rating of **74**.
+- In initial reports the website had an average Performance rating of **76**.
 - I changed changed the appropriate .jpg & .png files into webp format to minimise memory usage and speed up loading and rendering times.
 - I streamlined the style.css file to lessen the data being loaded. (commit 
-- By making these changes the current Performance rating is now (on average) **91**
+- By making these changes the current Performance rating is now (on average) **93**
 
 **Accessibility**
 
-- In initial reports the website had an average Accessibility rating of **84**
+- In initial reports the website had an average Accessibility rating of **81**
 - I altered color schemes of text vs. background to maximise the contrast score allowing information to be more visible to a wider group of users with accessiblity issues.
 - I resized icons and images to make them more visible
-- By making these changes the current Performance rating is now (on average) **100**
+- By making these changes the current Performance rating is now (on average) **85**
 
 **Best Practices**
 
@@ -342,7 +372,7 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 **Search Engine Optimisation**
 
 - In initial reports the website had an average SEO rating of **98**
-- I added in some META tags to give more information about th websites content and creator.
+- I added in some META tags to give more information about the websites content and creator.
 - By making these changes the current SEO rating is now **100**
 
 **Lighthouse Desktop Report:**
