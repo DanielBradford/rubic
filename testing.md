@@ -86,10 +86,12 @@ There were 3 minor errors that were corrected during testing:
     <span style="color:#00b300">PASSED</span> *Recipes Types are well displayed*
 1. As a new or returning user i want to view a recipe that is displayed clearly and makes my cooking experience easier
 
-     <span style="color:#ffa500">TESTING NOTE</span> *The check boxes allow order and organisation for the user and is a helpful UX feature.*
+     <span style="color:#ffa500">TESTING NOTE</span> *All ingredient and method data is successfully processed and presented in the intended list format. The check boxes allow order and organisation for the user and is a helpful UX feature.*
 
     <span style="color:#00b300">PASSED</span> *The layout and design of the view recipe page does this*
 1. As a new or returning user i want to view all Vegan recipes 
+
+    <span style="color:#ffa500">TESTING NOTE</span> *The presentation and focus of the results can be improved.*
 
     <span style="color:#00b300">PASSED</span> *The vegan filter button meets this requirement*
 1. As a registered user i want to add a recipe to the application
