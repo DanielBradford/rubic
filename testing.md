@@ -234,16 +234,16 @@ All of the above tests passed as the forms did not allow me to proceed.
 
         commit b63a6bc3a52e2b0b83c6dd6f3bb70524b5cc0fcb
 <a name="def"></a>
-### **URL Defensive Programming** <span style="color:#00b300">PASSED</span>
+### **Defensive Programming** <span style="color:#00b300">PASSED</span>
 
 All defensive programming works as expected and controls user access and passed all tests.
 
 These tests included:
 - Cross URL Manipulation
-    - Copy and paste other usernames to access their profile
-    - Paste 'products' to the end of the URL to access the products page
-    - Paste in the 'Manage' to access Admin Management page
-    - Paste Add or Edit Recipe to end of URL to access add / edit page (members only)
+    - Copy and paste other usernames to access their profile **PASSED - User redirected and flash message displayed**
+    - Paste 'products' to the end of the URL to access the products page **PASSED - User redirected and flash message displayed**
+    - Paste in the 'Manage' to access Admin Management page **PASSED - User redirected and flash message displayed**
+    - Paste Add to end of URL to access add page (members only) **PASSED - User redirected and flash message displayed**
 
 For the purpose of access control i gave the visitor the default session username of "Guest". By doing this i was then able to control and manipulate the users access to various parts of the application.
 
