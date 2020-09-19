@@ -47,6 +47,7 @@ It allows users to Create, Read, Update and Delete Recipe Documents. It also has
 
 <div align="center"><img style="width: 70%" src="documents/screenshots/desktop.png" alt="screenshot of landing page"></div>
 <a name="how"></a>
+
 ## **HOW DOES IT WORK?**
 There are 3 stages of access
 
