@@ -1,6 +1,29 @@
 <div align="center"><img src="documents/screenshots/logo.png"></div>
 
-<div align="center"><p>Project:<a href="https://rubric-recipe-manager.herokuapp.com/"> **RUBRIC - RECIPE MANAGER**</a>
+# Table of contents
+
+1. <a href="#details">User and Admin Login Details</a>
+1. <a href="#whatis">What is Rubric?</a>
+1. <a href="#whatdo">What does it do></a>
+1. <a href="#how">How does it work?</a>
+1. <a href="#creation">Creation & Design</a>
+1. <a href="#strategy">Strategy</a>
+1. <a href="#scope">Scope</a>
+1. <a href="#structure">Structure</a>
+1. <a href="#skeleton">Skeleton (Wireframes)</a>
+1. <a href="#surface">Surface</a>
+1. <a href="#features">Features</a>
+1. <a href="#future">Future Features</a>
+1. <a href="#defensive">Defensive Programming</a>
+1. <a href="#responsive">Responsive Design</a>
+1. <a href="#hardware">Hardware & Technology Used</a>
+1. <a href="#testing">Testing</a>
+1. <a href="#deployment">Deployment</a>
+1. <a href="#credits">Credits</a>
+
+
+
+<a name="details"></a><div align="center"><p>Project Live Demo:<a href="https://rubric-recipe-manager.herokuapp.com/"> **RUBRIC - RECIPE MANAGER**</a>
 
 **TEST USER LOGIN DETAILS**
 
@@ -15,15 +38,15 @@ USERNAME :  **admin**
 
 PASSWORD:   **admin**</p></div>
 <br>
-
+<a name="whatis"></a>
 ## <p align="center" style="color:teal">WHAT IS RUBRIC?</p>
 Rubric is an efficient personal recipe management web application.  It provides a full recipe management service, free of charge which allows users to have access to a selection of recipes, including their own, all in one place. The project is a combination of HTML, CSS, JavaScript, and Python and utilizes a NoSQL Database (MongoDB) with Flask.
-
+<a name="whatdo"></a>
 ## <p align="center"  style="color:teal">WHAT DOES IT DO?</p>
 It allows users to Create, Read, Update and Delete Recipe Documents. It also has features that allow registered users to save recipes they like and rate other peoples recipes. 
 
 <div align="center"><img style="width: 70%" src="documents/screenshots/desktop.png" alt="screenshot of landing page"></div>
-
+<a name="how"></a>
 ## <p align="center" style="color:teal">HOW DOES IT WORK?</p>
 There are 3 stages of access
 
@@ -31,13 +54,13 @@ There are 3 stages of access
 1. **Registered Access:** Once the user has logged in or registered, they can Create, Read, Update, Delete, Save and Rate recipes on the application. 
 (*The user can only edit and delete their own recipes and can only rate the recipes of others*)
 1. **Admin Access** Only admin can access the management page which has full CRUD functionality over all contents of the application including Users, Recipes, Recipe Types, Products and Tools.
-
+<a name="creation"></a>
 ## **Creation and Design**
 
 ### **Behaviour Driven Development vs Test Driven Development or Acceptance Test Driven Development**
 
 Due to the complexity of the application, test driven development was paramount when developing the system. The behaviour needed to match the users needs while the functionality needed to pass essential tests. In addition to providing full CRUD (Create, Read, Update, Delete) functionality.
-
+<a name="strategy"></a>
 ### **UX - STRATEGY:**
 
 The application is designed to provide an essential service to users looking for an online recipe management system.
@@ -73,7 +96,7 @@ The application is designed to provide an essential service to users looking for
   - Wants to cook more
   - Needs an online place to view and store recipes
   - Has disposable income for e-commerce
-
+<a name="scope"></a>
 ### **UX - SCOPE:**
 **Business Intentions**
 
@@ -111,7 +134,7 @@ Although registering is also free the user must give their full name and email a
 1. As a registered user i want to view cooking related products and tools recommended by Rubric
 1. As a registered user i want to receive discount codes for cooking related products.
 
-
+<a name="structure"></a>
 ### **UX - STRUCTURE:**
 
 The next plane to approach was Structure. What the application will do and and the external factors that might affect it.
@@ -122,6 +145,8 @@ This allowed an insight into the user experience and how a visitor uses the appl
 
 Structure:
 
+The application uses Mongo DB, a noSQL database system. 
+
 Within the Rubric Recipe Manager Database their are 5 collections
 
 1. USERS 
@@ -129,32 +154,32 @@ Within the Rubric Recipe Manager Database their are 5 collections
     - The majority of the fields use String input.
     - The saved recipes uses an array which stores the ObjectIds of the recipes that have been saved by this user.
     - The contributed field uses the Int32 value to allow a number to  increment/decrement easily
-<img style="width:80%"  src="documents/screenshots/user_data_model.png">
+    <img style="width:80%"  src="documents/screenshots/user_data_model.png">
 
 1.  RECIPES 
 
     - The majority of the fields in this collection also use String values.
     - The rating field uses an Array to collect all the ratings. The output is the sum of the array divided by the length.
-<img style="width:80%"  src="documents/screenshots/recipe_data_model.png">
+    <img style="width:80%"  src="documents/screenshots/recipe_data_model.png">
 
 1. RECIPE TYPE 
     - 2 Fields have string values
     - The count field is Int32 to allow for incrementation / decrementation
-<img style="width:80%"  src="documents/screenshots/recipe_type_data_model.png">
+    <img style="width:80%"  src="documents/screenshots/recipe_type_data_model.png">
 
 1. TOOLS
 
     - All string values
-<img style="width:80%"  src="documents/screenshots/tool_data_model.png">
+    <img style="width:80%"  src="documents/screenshots/tool_data_model.png">
 
 1. PRODUCTS 
 
     - All string values
-<img style="width:80%"  src="documents/screenshots/product_data_model.png">
+    <img style="width:80%"  src="documents/screenshots/product_data_model.png">
 
     *In future development i would make the price field a decimal*
 
-
+<a name="skeleton"></a>
 ### **UX - SKELETON:**
 
 The skeleton of this project was designed and established using Balsamiq (Cloud): https://balsamiq.cloud/
@@ -168,7 +193,7 @@ Mobile: <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c
 Desktop: <a href="https://github.com/DanielBradford/rubric/blob/c4a2399f3f18880deb4bf009fe06c59fb35feba8/documents/wireframes/RUBRIC%20DESKTOP%20WIREFRAMES.pdf">Desktop Wireframe Designs</a>
 
 
-
+<a name="surface"></a>
 ### **UX - SURFACE:**
 
 The final element to consider was the surface plane of UX design. This is the look and feel of the application.
@@ -190,7 +215,7 @@ To maintain the idea of being approachable, bright and friendly i used supportin
 - **Purple** (#9c27b0)
 - **Yellow** (#fdd835)
 This was maintained through out the application using a mix of customised CSS and Materialize framework.
-
+<a name="features"></a>
 ## **Features**
 
 ### **Repeating Features**
@@ -199,8 +224,8 @@ This was maintained through out the application using a mix of customised CSS an
 
 ### Navigation
 
-- **Mobile** The navigation menu is represented by the hamburger icon. The mobile menu uses Materialize JS and is displayed in a user-friendly and stylish format.
-- **Desktop** The navigation menu is clear and accessible. When hovered over the links are highlighted.
+- **Mobile** The navigation menu is represented by the hamburger icon. The mobile menu uses Materialize JS and is displayed in a user-friendly and stylish format. A breadcrumb navbar allows a tracking of inner application movement.
+- **Desktop** The navigation menu is clear and accessible. When hovered over the links are highlighted. A breadcrumb navbar allows a tracking of inner application movement.
 - **Registered Users** 
     Once logged in users can enjoy the extra feature of the floating action menu. This is located in the lower right corner of the screen and allows quick access to the following:
    <ul style="width:50%"> <img align="right" style="width:25px; height:100px" src="documents/screenshots/floating_menu.png">
@@ -256,7 +281,7 @@ There is a control panel that presents 4 options:
 
 <div align="center"><img style="width:50%"  src="documents/screenshots/random.png"></div>
 
-- Types: Allows the user to see the categories of recipes i.e. Snack, Main etc:
+- Types: Allows the user to see the categories of recipes i.e. Snack, Main etc. **Each category has a corresponding related image. This is repeated in the recipe cards as circular avatars**:
 
 <div align="center"><img style="width:50%"  src="documents/screenshots/recipe_types.png"></div>  
 
@@ -276,8 +301,21 @@ The search feature allows the user to input text and search the database for the
 ### **View/Read Recipes**
 This allows all users to view the recipe of their choice from the selection in the database. The view recipe page has the following features:
 
-- Check boxes to be ticked if the user has the ingredient on the list
-- Check boxes to be ticked if the user has completed the stage of the method/instructions
+- The ingredients are split by "," and displayed in an unordered list
+
+    view_recipe.html (line 135)
+
+        {% for ing in item.ingredients.split(",") %}
+
+- Check boxes are displayed to be ticked if the user has the ingredient on the list
+-The method instructions are split by "." and displayed in an ordered list
+
+    view_recipe.html (line 111)
+
+        {% for ing in item.method.split(".") %}
+
+- Check boxes are displayed to be ticked if the user has completed the stage of the method/instructions
+
 - When the appliance name is clicked it takes the user to the recommended appliance on the affiliate website. (THIS ALLOWS FOR THE APPLICATION TO BE MONETIZED THROUGH ADVERTSING AND AFFILILIATE MARKETING)
 
  For example:
@@ -331,6 +369,10 @@ They also have the option to remove the recipe using the trash icon. When this i
 The ADD RECIPE button in 'My Recipes' and the Floating Menu ADD RECIPE Button (Green) direct the user here.
 
 The create recipe feature allows the user to add their own recipe using the data entry form provided. 
+
+The user is encouraged to seperate all ingredients with "," and seperate all method instructions with "." 
+
+This is important for the processing and displaying of information in the view_recipe.html template. *This method can be improved as it relies entirely on user compliance*
 
 The data entry form has front-end and back-end validation to reduce user error and help prevent malicious activity. For example:
 
@@ -433,7 +475,7 @@ When a recipe is added or deleted this count is incremented/decremented accordin
 
 ### ADD RECIPE TYPE
 
-The green tab with the plus icon toggles a data entry form where the admin can add a recipe type.
+The green tab with the plus icon toggles a data entry form where the admin can add a recipe type. **If a new recipe type is added it is assigned a default image for corresponding recipe card avatars**.
 
 <img style="width:100%"  src="documents/screenshots/add_recipe_type.png">
 
@@ -467,7 +509,7 @@ This allows the user to delete a product/tool from the system. This action is me
 
  
 ### ***AN EDIT FEATURE FOR TOOLS AND PRODUCT WOULD BE A FUTURE FEATURE ON THE SYSTEM***
-
+<a name="future"></a>
 ## **FUTURE FEATURES**
 
 - Comment Section on view recipe page
@@ -475,7 +517,7 @@ This allows the user to delete a product/tool from the system. This action is me
 - Messaging system and Inbox for  registered users
 - Leaderboard and points system for recipes and ratings
 - Coin earning/payment system for contributions. You earn coins for watching recipe videos/ adverts. You can redeem them for online discounts
-
+<a name="defensive"></a>
 ## **Defensive Programming**
 A primary objective when developing this application from a defensive design standpoint was to limit the users access and prevent the system breaking due to user input or malicious activity.
 
@@ -492,7 +534,7 @@ A user could upload any text (for example offensive text) into the database at t
 A future feature i have considered is an approval functionality from an admin user that requires approval before the uploaded recipe/information is made publicly available.
 
 *For details on defensive design testing, please see <a href="https://github.com/DanielBradford/rubric/blob/master/testing.md" target="_blank">testing section</a>.
-
+<a name="responsive"></a>
 ## **Responsive Design**
 <div class="center-align"><img style="width: 20%" src="static/images/qrcode.png" alt="qrcode"><img style="width: 50%" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"><span>   </span><img style="width: 20%" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></div>
 
@@ -500,7 +542,7 @@ The application has been built using a mobile-first approach. Throughout the dev
 where used to ensure responsivness across all screen resolutions. *(The application was also tested by family and friends using various devices and browsers.)*
 
 Please see the <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/testing.md" target="_blank">TESTING.md</a> file for more information
-
+<a name="hardware"></a>
 ## **Hardware Used**
 
 - ### **MacBook Pro (Retina, 13-inch, Mid 2014)**
@@ -544,11 +586,12 @@ Frameworks/Libraries:
 <br>
 
 
-
+<a name="testing"></a>
 ## **TESTING**
 
 ### Please refer to <a href="https://github.com/DanielBradford/rubric/blob/239022217d7984c6c0c9a6378e43f6daf76b7dc3/testing.md" target="_blank">TESTING.md</a> for a full testing breakdown
-dd 
+
+<a name="deployment"></a>
 ## **Deployment**
 
 This project was **developed** using a <a href="https://gitpod.io/" target="_blank">GITPOD IDE</a>, committed to git and pushed to <a href="https://github.com/" target="_blank">GitHub</a> using the built in terminal feature.
@@ -590,7 +633,7 @@ To clone this project from GitHub:
 1. To cut ties with this GitHub repository, type git remote rm origin into the terminal.
 
 **Further reading and troubleshooting on <a href="https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository" target="_blank">cloning a repository from GitHub here.</a>**
-
+<a name="credits"></a>
 ## **Credits**
 Content :
 - Materialize was heavily utilised in this project 
