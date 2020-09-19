@@ -1,5 +1,26 @@
 # **<p align="center"> Testing </p>**
 
+# Table of contents
+
+1. <a href="#valid">Validation</a>
+1. <a href="#nav">Navigation Testing</a>
+1. <a href="#story">User Story Testing</a>
+1. <a href="#crud">C.R.U.D Testing</a>
+1. <a href="#js">Javascript / JQuery Testing</a>
+1. <a href="#rating">User Features Manual Testing</a>
+1. <a href="#form">Form Validation Testing</a>
+1. <a href="#admin">Admin features Manual Testing</a>
+1. <a href="#def">Defensive Programming Testing</a>
+1. <a href="#flash">Flash Messages Testing</a>
+1. <a href="#responsive">Responsive Design Testing</a>
+1. <a href="#bugs">De-bugging</a>
+1. <a href="#future">Future Issues</a>
+1. <a href="#devtool">DevTool Testing</a>
+1. <a href="#further">Further Testing</a>
+
+
+
+<a name="valid"></a>
 **HTML VALIDATION** - https://validator.w3.org/
 
 - All HTML written in this project has been submitted for validation via the above software.
@@ -34,7 +55,7 @@ There were 3 minor errors that were corrected during testing:
         Date:   Wed Sep 16 18:55:00 2020 +0000
         Code layout cleaned to pass through pep8 validation
 
-
+<a name="nav"></a>
 ### **Navigation Testing**
 
 - Mobile/Tablet Menu <span style="color:#00b300">PASSED</span> 
@@ -52,7 +73,7 @@ There were 3 minor errors that were corrected during testing:
     - All buttons have clear icons
     - All buttons lead to corresponding pages
 
-
+<a name="story"></a>
 ### **User Story Testing:**
 
 1. As a new or returning user i want to navigate the application easily
@@ -125,7 +146,7 @@ There were 3 minor errors that were corrected during testing:
 
     <span style="color:#00b300">PASSED</span> *The discount code modal functionality works efficiently*
 
-
+<a name="crud"></a>
 ### **CRUD FUNCTIONALITY TESTING**
 CREATE:  <span style="color:#00b300">PASSED</span>
 - All creation functionality for recipes, users, recipe types, products and tools was successful and reflected in the Mongo database
@@ -138,7 +159,7 @@ UPDATE: <span style="color:#00b300">PASSED</span>
 
 DELETE: <span style="color:#00b300">PASSED</span>
 - All functionality for deleting recipes, users, recipe types, tools and products was successful along with all Javascript confirmations.
-
+<a name="js"></a>
 ### **JAVASCRIPT/JQUERY INTERACTIVITY TESTING** <span style="color:#00b300">PASSED</span>
 
 ALL Javascript interactivity passed testing. This included:
@@ -159,18 +180,18 @@ This failed once on the management page but was corrected.
 <img style="width:50%" src="documents/screenshots/delete_confirm.png" alt=""><img  style="width:50%" src="documents/screenshots/delete_confim.png" alt="">
 
 
-
+<a name="rating"></a>
 ### **RATING FUNCTIONALITY** <span style="color:#00b300">PASSED</span>
 One of the main features that needed to be tested was the rating system. This system allows the user to rate a recipe between 1 and 10 using a slide bar. The rating is then stored in an array in the recipe document. On the front-end the code generates the sum of the array and divides it by the length of the array giving the average rating for that recipe.
 
 I tested this by logging in as different users and rating recipes to check the calculations were correct.
-
+<a name="saved"></a>
 ### **SAVE RECIPE FUNCTIONALITY**
 
-- This involved logging in as a registered user and clciking the save option on the view recipe page for various recipes.
+- This involved logging in as a registered user and clicking the save option on the view recipe page for various recipes.
 - The saved function passed this test by allowing the ObjectId to be saved and recalled/displayed on the Saved Recipes Page.
 - The removal of this saved recipe also passed testing.
-
+<a name="form"></a>
 ### **DATA ENTRY FORM TESTING** <span style="color:#00b300">PASSED</span>
 
 This included testing the front-end and back-end validation for:
@@ -190,7 +211,7 @@ I tested this by doing the following:
 - Trying to submit with input length of 200 character
 
 All of the above tests passed as the forms did not allow me to proceed.
-
+<a name="admin"></a>
 ### **MANAGEMENT / ADMIN FEATURE TESTING**
 - **C.R.U.D** FUNCTIONALITY FOR USERS, RECIPES, RECIPE TYPES, PRODUCTS AND TOOLS <span style="color:#00b300">PASSED</span>
 - USER EMAIL MAILTO FUNCTIONALITY - This successfully opens a new email addressed to the corresponding user. <span style="color:#00b300">PASSED</span>
@@ -212,8 +233,17 @@ All of the above tests passed as the forms did not allow me to proceed.
 - TEST RECIPE TYPE CANNOT BE DELETED IF A RECIPE EXISTS IN THAT TYPE <span style="color:#00b300">PASSED</span>
 
         commit b63a6bc3a52e2b0b83c6dd6f3bb70524b5cc0fcb
-
+<a name="def"></a>
 ### **URL Defensive Programming** <span style="color:#00b300">PASSED</span>
+
+All defensive programming works as expected and controls user access and passed all tests.
+
+These tests included:
+- Cross URL Manipulation
+    - Copy and paste other usernames to access their profile
+    - Paste 'products' to the end of the URL to access the products page
+    - Paste in the 'Manage' to access Admin Management page
+    - Paste Add or Edit Recipe to end of URL to access add / edit page (members only)
 
 For the purpose of access control i gave the visitor the default session username of "Guest". By doing this i was then able to control and manipulate the users access to various parts of the application.
 
@@ -224,9 +254,12 @@ For example:
 - This helps prevent non registered users  from accessing member only areas e.g. someone elses profile
 
         commit: 4f83b44abaf36a8ca2cc6231703d48c5b543f828
+
 <img src="documents/screenshots/members_only.png">
+
 - This helps prevent users from editing or deleting recipes that were not their own
 - This helps prevent non ADMIN users from accessing the management page.
+
 <img src="documents/screenshots/admin_only.png">
 - This reduces the scope of malicious or damaging activity within the application
 
@@ -244,7 +277,7 @@ To prevent users trying to view a recipe with a false code. I only allowed the s
 
 This can be improved upon by cross checking the Object Id exists within the database before proceeding. This would be a good security feature to implement in the future.
 
-
+<a name="flash"></a>
 ### **FLASH MESSAGES** <span style="color:#00b300">PASSED</span>
 
 Flash messages in this application inform the user of their succes and or errors.
@@ -268,6 +301,7 @@ These include:
 - Recipe Creation, Deletion, Saving and Editing success
 
     <img src="documents/screenshots/save_success.png">
+    <img src="documents/screenshots/fail_remove.png">
 
 - Admin Only! Authorization Denied! - When user tries to access an admin only feature
 
@@ -278,7 +312,7 @@ These include:
     <img src="documents/screenshots/members_only.png">
 
 
-
+<a name="responsive"></a>
 ## Responsive Design Testing <span style="color:#00b300">PASSED</span>
 
 For final testing [Responsinator](https://www.responsinator.com/) was used to test the application accross multiple devices.
@@ -320,7 +354,7 @@ Firefox             | 72.0.2 (64-bit)   | <span style="color:#00b300">PASSED</sp
 Edge                | 44.18362.449.0    | <span style="color:#00b300">PASSED</span> No errors observed
 Chrome              | 80.0.3987.122     | <span style="color:#00b300">PASSED</span> No errors observed
 
-
+<a name="bugs"></a>
 ## **Development Issues / De-bugging:**
 
 **Registration Bug:** When trying to apply defensive programming i blocked out the users option to register. I fixed this by removing uneccesary user filtering.
@@ -336,7 +370,7 @@ Chrome              | 80.0.3987.122     | <span style="color:#00b300">PASSED</sp
 
     commit 7a0c9c0baad9f6294d642e80e3c8f9cbbf07250a
 
-
+<a name="future"></a>
 ## **Future Issues to be fixed**
 
 - During development i encountered issues with the user session feature. When i a guest opens the application they are assigned a session['user] status as "Guest". This status allowed me to control their access throughout the application. This may have issues in the future if the application scope is to expand. 
@@ -345,7 +379,7 @@ Chrome              | 80.0.3987.122     | <span style="color:#00b300">PASSED</sp
 
 - After calling any search function there is a vulnerability if the user clicks the browsers back button. The form data is lost and crashes the application. THIS REMAINS UNFIXED
 
-
+<a name="devtool"></a>
 ## **Development Tools Testing**
 
 From using the technologies of Wave and Lighthouse i was able to check the performance and accessiblity of the website. By utilizing this in DevTools i was able to generate reports for both desktop and mobile.
@@ -379,7 +413,7 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 
 **Lighthouse Desktop Report:**
 <img src="documents/screenshots/lighthouse.png" alt="Landing Page - LIGHTHOUSE REPORT">
-
+ <a name="further"></a>
 ## Further Testing
 
 I completed further testing by asking family and friends to play the game and give me feedback.

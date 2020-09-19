@@ -4,7 +4,7 @@
 
 1. <a href="#details">User and Admin Login Details</a>
 1. <a href="#whatis">What is Rubric?</a>
-1. <a href="#whatdo">What does it do></a>
+1. <a href="#whatdo">What does it do?</a>
 1. <a href="#how">How does it work?</a>
 1. <a href="#creation">Creation & Design</a>
 1. <a href="#strategy">Strategy</a>
@@ -47,7 +47,7 @@ It allows users to Create, Read, Update and Delete Recipe Documents. It also has
 
 <div align="center"><img style="width: 70%" src="documents/screenshots/desktop.png" alt="screenshot of landing page"></div>
 <a name="how"></a>
-## <p align="center" style="color:teal">HOW DOES IT WORK?</p>
+## **HOW DOES IT WORK?**
 There are 3 stages of access
 
 1. **Unregistered Access:** This allows users to view all recipes without being able to add, save or edit. It also limits their access to a products, tools and discounts page.
@@ -410,7 +410,10 @@ The modal also allows the user to click the copy icon to copy to the device's cl
 <img style="width:100%" src="documents/screenshots/tools_products.png"><img style="width:100%" src="documents/screenshots/products2.png"><img style="width:50%" src="documents/screenshots/discount_code.png"><img style="width:50%" src="documents/screenshots/amazon_tool.png">
 
 ## **ADMIN / MANAGEMENT FEATURES**
+
 <img src="documents/screenshots/manage_top.png">
+
+When Admin logs in they are directed to the management versus the usual profile page for non admin users.
 
 ## **Users Table**
 
@@ -500,9 +503,6 @@ Products and Tools Info:
 ### ADD PRODUCT / TOOL
 The add button with the plus icon toggles a data entry form within the window which allows admin to add a product or tool to the database.
 <img src="documents/screenshots/add_product_tool.png">
-
-
-
 
 ### DELETE PRODUCT/TOOL
 This allows the user to delete a product/tool from the system. This action is met with same verifcation as other deletion proccess.
