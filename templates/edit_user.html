@@ -1,10 +1,12 @@
 {% extends "base.html" %}{% block content %}
-
 <div class="s12 wrap">
   <h1 class="center-align jumbotron">
     Edit User <i class="fas fa-pencil"></i>
   </h1>
-  <p class="center" style="text-transform:uppercase;"><span class="red-text">Important!</span> passwords cannot be viewed or altered here to protect member privacy</p>
+  <p class="center" style="text-transform: uppercase;">
+    <span class="red-text">Important!</span> passwords cannot be viewed or
+    altered here to protect member privacy
+  </p>
   <div class="row">
     <div class="row center">
       <button class="back btn red">
@@ -74,57 +76,13 @@
             <label for="user_name">Username</label>
           </div>
         </div>
-        <!-- <div class="row">
-          <div class="input-field col s8">
-            <i class="fas fa-lock prefix text-darken-4"></i>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              minlength="5"
-              class="validate"
-              maxlength="15"
-              pattern="^[a-zA-Z0-9]{5,15}$"
-              value="{{user.password}}"
-              required
-            />
-            <label for="password">Password</label>
-          </div>
-          <div class="col s4">
-            <div class="switch">
-              <label>
-                <input name="vegan" value="vegan" type="checkbox" />
-                <span class="lever"></span>
-                <span class="reg_label">Vegan</span>
-                <i class="fab fa-vuejs"></i>
-              </label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s8">
-              <i class="fas fa-user-check prefix"></i>
-
-              <input
-                id="confirm"
-                name="confirm"
-                type="password"
-                class="validate"
-                value="{{user.confirm}}"
-                required
-              />
-              <label for="confirm"> Confirm Password</label>
-            </div>
-          </div> -->
-          <!--login-->
-          <div class="row">
-            <button
-              type="submit"
-              class="col s12 btn-large darken-4 text-shadow pulse"
-            >
-              Update User <i class="fas fa-redo"></i>
-            </button>
-          </div>
+        <div class="row">
+          <button
+            type="submit"
+            class="col s12 btn-large darken-4 text-shadow pulse"
+          >
+            Update User <i class="fas fa-redo"></i>
+          </button>
         </div>
       </div>
     </form>
