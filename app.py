@@ -563,10 +563,9 @@ def remove_recipe(recipe_id):
     user = session["user"]
     saved_list = list(mongo.db.users.distinct(
         "saved_recipes", {"user_name": user}))
-    recipe_id = ObjectId(recipe_id)
 
     for item in saved_list:
-        if str(item) == str(recipe_id):
+        if item == ObjectId(recipe_id):
             mongo.db.users.update(
                 {"user_name": user},
                 {"$pull":  {'saved_recipes': recipe_id}}
