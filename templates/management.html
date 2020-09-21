@@ -1,7 +1,7 @@
 {% extends 'base.html' %}{% block content %}
 <div class="row">
   <div class="center row">
-    <h1 class="flow-text">Management <i class="fas fa-cogs"></i></h1>
+    <h1 class="flow-text" style="text-shadow:none">Management <i class="fas fa-cogs"></i></h1>
   </div>
   <hr />
   <br />
@@ -102,7 +102,7 @@
               {{item.user_name}} {% if item.vegan =="Yes" %}
               <a onclick="M.toast({html: 'This User is Vegan'})"
                 ><i class="fab fa-envira"></i></a
-              >{%elif item.contributed >= 5 %}<a
+              >{%elif item.contributed > 5 %}<a
                 onclick="M.toast({html: 'STAR MEMBER: Over 5 recipes contributed'})"
                 ><i class="fas fa-star"></i></a
               >{%else%}{%endif%}
@@ -310,7 +310,7 @@
                   <input
                     style="border-radius: 1.4em; background-color: white;"
                     name="type_name"
-                    id="type_name"
+                    id="recipe_type_name"
                     minlength="4"
                     type="text"
                     maxlength="15"
@@ -318,13 +318,13 @@
                     value="{{item.type_name}}"
                     required
                   />
-                  <label for="type_name">Recipe Type Name</label>
+                  <label for="recipe_type_name">Recipe Type Name</label>
                 </div>
                 <div class="input-field col s12 m6">
                   <i class="fas fa-pencil prefix"></i>
                   <input
                     style="border-radius: 1.4em; background-color: white;"
-                    id="description"
+                    id="type-description"
                     name="type_desc"
                     minlength="5"
                     type="text"
@@ -334,7 +334,7 @@
                     value="{{item.type_desc}}"
                     required
                   />
-                  <label for="description">Type Description</label>
+                  <label for="type-description">Type Description</label>
                 </div>
               </div>
               <div class="row center-align">
@@ -552,13 +552,13 @@
                 <i class="fas fa-image prefix"></i>
                 <input
                   style="border-radius: 1.4em; background-color: white;"
-                  id="image_url"
+                  id="tool-image_url"
                   name="image_url"
                   type="text"
                   class="validate center"
                   required
                 />
-                <label for="image_url">Image URL</label>
+                <label for="tool-image_url">Image URL</label>
               </div>
             </div>
             <div class="row">
@@ -566,13 +566,13 @@
                 <i class="fas fa-pound-sign prefix"></i>
                 <input
                   style="border-radius: 1.4em; background-color: white;"
-                  id="price"
+                  id="tool-price"
                   name="price"
                   type="text"
                   class="validate center"
                   required
                 />
-                <label for="price">Price</label>
+                <label for="tool-price">Price</label>
               </div>
               <div class="col s6 center">
                 <button type="submit" class="btn green white-text center">
