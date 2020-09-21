@@ -550,32 +550,34 @@ def delete_recipe(recipe_id):
     if user != "Guest":
         recipe = mongo.db.recipes.distinct("created_by",
                                            {"_id": ObjectId(recipe_id)})
-        if str(recipe) == str(user):
-            types = mongo.db.recipes.distinct(
-                "type", {"_id": ObjectId(recipe_id)})
-            for i in types:
-                mongo.db.type.update({"type_name": i},
-                                     {"$inc": {"count": -1}})
-            # javascript confirm confirms this action on frontend
-            mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
-            # contributed amount is reduced by 1
-            mongo.db.users.update({"user_name": user},
-                                  {"$inc": {"contributed": -1}})
-            flash("Recipe Successfully Deleted")
-            # check recipe exists if not 404 page
-            # defensive programming verify owner login in required
-            if user == "admin":
-                return redirect(url_for('manage'))
+        for i in recipe:
+            if str(i) == user:
+                types = mongo.db.recipes.distinct(
+                    "type", {"_id": ObjectId(recipe_id)})
+                for i in types:
+                    mongo.db.type.update({"type_name": i},
+                                         {"$inc": {"count": -1}})
+                # javascript confirm confirms this action on frontend
+                mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+                # contributed amount is reduced by 1
+                mongo.db.users.update({"user_name": user},
+                                      {"$inc": {"contributed": -1}})
+                flash("Recipe Successfully Deleted")
+                # check recipe exists if not 404 page
+                # defensive programming verify owner login in required
+                if user == "admin":
+                    return redirect(url_for('manage'))
 
-            return redirect(url_for("my_recipes"))
-        else:
-            types = list(mongo.db.type.find().sort("type_name", 1))
-            recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
-            users = list(mongo.db.users.find().sort("user_name", 1))
-            # warning message to non admin users
-            flash("This is not your recipe. You cannot delete!")
-            return render_template("landing.html",
-                                   users=users, recipes=recipes, types=types)
+                return redirect(url_for("my_recipes"))
+            else:
+                types = list(mongo.db.type.find().sort("type_name", 1))
+                recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
+                users = list(mongo.db.users.find().sort("user_name", 1))
+                # warning message to non admin users
+                flash("This is not your recipe. You cannot delete!")
+                return render_template("landing.html",
+                                       users=users, recipes=recipes,
+                                       types=types)
 
     else:
         types = list(mongo.db.type.find().sort("type_name", 1))
