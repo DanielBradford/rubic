@@ -289,8 +289,6 @@ For example:
 <img src="documents/screenshots/admin_only.png">
 - This reduces the scope of malicious or damaging activity within the application
 
-THIS CAN BE IMPROVED IN FUTURE DEVELOPMENT
-
 **For example:**
 
 To prevent users trying to view a recipe with a false code. I only allowed the standard Object ID length of 24 characters to be accepted.
@@ -302,6 +300,8 @@ To prevent users trying to view a recipe with a false code. I only allowed the s
     View recipe defensive programming added. Checks recipe_id length to verify validity
 
 This can be improved upon by cross checking the Object Id exists within the database before proceeding. This would be a good security feature to implement in the future.
+
+CURRENTLY THERE IS A VULNERABILITY IN WHICH MEMBERS CAN COPY AND PASTE AN EXISTING RECIPE ID INTO THE URL BAR AND DELETE RECIPES THAT ARE NOT THEIR OWN. ATTEMPTS TO SOLVE THIS CAN BE VIEWED IN Branch deleteCheck.THIS REMAINS VULNERABLE AND WILL BE PROTECTED AGAINST IN FUTURE DEVELOPMENT.
 
 <a name="flash"></a>
 ### **FLASH MESSAGES** <span style="color:#00b300">PASSED</span>
