@@ -42,26 +42,31 @@
       <img
         class="circle"
         src="{{ url_for('static', filename='images/dessert.jpg') }}"
+        alt="dessert image"
       />
       {% elif item.type == 'Snack' %}
       <img
         class="circle"
         src="{{ url_for('static', filename='images/food.jpg') }}"
+        alt="food image"
       />
       {% elif item.type == 'Starter' %}
       <img
         class="circle"
         src="{{ url_for('static', filename='images/starter.jpg') }}"
+        alt="starter image"
       />
       {% elif item.type == 'Main'%}
       <img
         class="circle"
         src="{{ url_for('static', filename='images/main.jpg') }}"
+        alt="main image"
       />
       {% else %}
       <img
         class="circle"
         src="{{ url_for('static', filename='images/books.jpg') }}"
+        alt="books image"
       />
       {% endif %}
       <a href="{{url_for('view_recipe', recipe_id=item._id) }}">

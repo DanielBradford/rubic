@@ -62,26 +62,31 @@
         <img
           class="activator"
           src="{{ url_for('static', filename='images/dessert.jpg') }}"
+          alt="dessert image"
         />
         {% elif item.type_name == 'Snack' %}
         <img
           class="activator"
           src="{{ url_for('static', filename='images/food.jpg') }}"
+          alt="food image"
         />
         {% elif item.type_name == 'Starter' %}
         <img
           class="activator"
           src="{{ url_for('static', filename='images/starter.jpg') }}"
+          alt="starter image"
         />
         {% elif item.type_name == 'Main'%}
         <img
           class="activator"
           src="{{ url_for('static', filename='images/main.jpg') }}"
+          alt="main image"
         />
         {% else %}
         <img
           class="activator"
           src="{{ url_for('static', filename='images/books.jpg') }}"
+          alt="books image"
         />
         {% endif %}
       </div>
