@@ -404,19 +404,20 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 - I changed changed the appropriate .jpg & .png files into webp format to minimise memory usage and speed up loading and rendering times.
 - I streamlined the style.css file to lessen the data being loaded. (commit 
 - By making these changes the current Performance rating is now (on average) **94**
-
 **Accessibility**
 
 - In initial reports the website had an average Accessibility rating of **78**
 - I altered color schemes of text vs. background to maximise the contrast score allowing information to be more visible to a wider group of users with accessiblity issues.
+- I added aria labels to enhance navigation accessiblity
 - I resized icons and images to make them more visible
-- By making these changes the current Performance rating is now (on average) **82**
+- By making these changes the current Performance rating is now (on average) **97**
 
 **Best Practices**
 
-- In initial reports the website had an average Best Practices Score of **88**
+- In initial reports the website had an average Best Practices Score of **84**
 - I added meta tags, alt tags, and aria labels (commit c8e0752bba88a3db1f15b682f667785c412515bb)
-- By making these changes the current Best Practices rating is now (on average)**92**
+- I corrected heading usage to ensure best practice was maintained
+- By making these changes the current Best Practices rating is now (on average)**100**
 
 **Search Engine Optimisation**
 

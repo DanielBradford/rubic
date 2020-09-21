@@ -3,12 +3,13 @@
 <div class="jumbotron row center-align">
   <h1 class="pulse">Welcome to Rubric!</h1>
   <hr />
-  <h3 id="welcome">Your personal recipe manager...</h3>
+  <h2 id="welcome">Your personal recipe manager...</h2>
   <br />
 
-  <form method="POST" action="{{url_for('search')}}">
+  <form method="POST" action="{{url_for('search')}}" aria-label="search bar">
     <input
       type="search"
+      aria-label="search bar. search here for recipes"
       name="search"
       placeholder="SEARCH IN RECIPES..."
       id="searchbar"
