@@ -1,7 +1,9 @@
 {% extends 'base.html' %}{%block content%}
 
 <h1 class="center jumbotron" style="background-color:white">Oops something went wrong. We dont have what you are looking for!</h1>
-
+{%if user != "Guest" %}
+<a  class="center hoverable" href="{{url_for('profile')}}"><p class="large">CLICK HERE TO RETURN TO PROFILE PAGE</p></a>
+{%else%}
 <a  class="center hoverable" href="{{url_for('home')}}"><p class="large">CLICK HERE TO RETURN TO HOME PAGE</p></a>
-
+{%endif%}
 {%endblock%}
