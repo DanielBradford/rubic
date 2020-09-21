@@ -61,27 +61,27 @@
         {% if item.type_name == 'Dessert' %}
         <img
           class="activator"
-          src="{{ url_for('static', filename='images/dessert.jpg') }}"
+          src="{{ url_for('static', filename='images/dessert.') }}"
         />
         {% elif item.type_name == 'Snack' %}
         <img
           class="activator"
-          src="{{ url_for('static', filename='images/food.jpg') }}"
+          src="{{ url_for('static', filename='images/food.webp') }}"
         />
         {% elif item.type_name == 'Starter' %}
         <img
           class="activator"
-          src="{{ url_for('static', filename='images/starter.jpg') }}"
+          src="{{ url_for('static', filename='images/starter.webp') }}"
         />
         {% elif item.type_name == 'Main'%}
         <img
           class="activator"
-          src="{{ url_for('static', filename='images/main.jpg') }}"
+          src="{{ url_for('static', filename='images/main.webp') }}"
         />
         {% else %}
         <img
           class="activator"
-          src="{{ url_for('static', filename='images/books.jpg') }}"
+          src="{{ url_for('static', filename='images/books.webp') }}"
         />
         {% endif %}
       </div>
@@ -113,27 +113,27 @@
           {% if item.type == 'Dessert' %}
           <img
             class="circle"
-            src="{{ url_for('static', filename='images/dessert.jpg') }}" alt="dessert image"
+            src="{{ url_for('static', filename='images/dessert.webp') }}" alt="dessert image"
           />
           {% elif item.type == 'Snack' %}
           <img
             class="circle"
-            src="{{ url_for('static', filename='images/food.jpg') }}" alt="food image"
+            src="{{ url_for('static', filename='images/food.webp') }}" alt="food image"
           />
           {% elif item.type == 'Starter' %}
           <img
             class="circle"
-            src="{{ url_for('static', filename='images/starter.jpg') }}" alt="starter image"
+            src="{{ url_for('static', filename='images/starter.webp') }}" alt="starter image"
           />
           {% elif item.type == 'Main'%}
           <img
             class="circle"
-            src="{{ url_for('static', filename='images/main.jpg') }}" alt="main course image"
+            src="{{ url_for('static', filename='images/main.webp') }}" alt="main course image"
           />
           {% else %}
           <img
             class="circle"
-            src="{{ url_for('static', filename='images/books.jpg') }}" alt="recipe books image"
+            src="{{ url_for('static', filename='images/books.webp') }}" alt="recipe books image"
           />
           {% endif %}
           <span class="title">
