@@ -24,7 +24,8 @@
 **HTML VALIDATION** - https://validator.w3.org/
 
 - All HTML written in this project has been submitted for validation via the above software.
-- The only errors were thrown due to the validator not recognising Jinja Templates. However Gitpod's prettier control allows the HTML to be validated inside the workspace.
+- The only errors thrown were due to the validator not recognising Jinja Templates.
+- I then inputted it using the apps URL address and all pages passed.
 
 **CSS VALIDATION** - https://jigsaw.w3.org/css-validator/
 
