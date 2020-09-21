@@ -35,27 +35,27 @@
         {% if item.type == 'Dessert' %}
         <img
           class="circle"
-          src="{{ url_for('static', filename='images/dessert.jpg') }}"
+          src="{{ url_for('static', filename='images/dessert.webp') }}"
         />
         {% elif item.type == 'Snack' %}
         <img
           class="circle"
-          src="{{ url_for('static', filename='images/food.jpg') }}"
+          src="{{ url_for('static', filename='images/food.webp') }}"
         />
         {% elif item.type == 'Starter' %}
         <img
           class="circle"
-          src="{{ url_for('static', filename='images/starter.jpg') }}"
+          src="{{ url_for('static', filename='images/starter.webp') }}"
         />
         {% elif item.type == 'Main'%}
         <img
           class="circle"
-          src="{{ url_for('static', filename='images/main.jpg') }}"
+          src="{{ url_for('static', filename='images/main.webp') }}"
         />
         {% else %}
         <img
           class="circle"
-          src="{{ url_for('static', filename='images/books.jpg') }}"
+          src="{{ url_for('static', filename='images/books.webp') }}"
         />
         {% endif %}
         <span class="title"> <h2 class="flow-text">{{item.recipe_name}}</h2></span
