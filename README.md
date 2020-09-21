@@ -32,7 +32,7 @@ Rubric is an efficient personal recipe management web application.  It provides 
 ## <p align="center"  style="color:teal">WHAT DOES IT DO?</p>
 It allows users to Create, Read, Update and Delete Recipe Documents. It also has features that allow registered users to save recipes they like and rate other peoples recipes. 
 
-<div align="center"><img style="width: 70%" src="documents/screenshots/desktop.png" alt="screenshot of landing page"></div>
+<div align="center"><img style="max-width: 70%" src="documents/screenshots/desktop.png" alt="screenshot of landing page"></div>
 <a name="how"></a>
 
 ## **HOW DOES IT WORK?**
@@ -142,28 +142,28 @@ Within the Rubric Recipe Manager Database their are 5 collections
     - The majority of the fields use String input.
     - The saved recipes uses an array which stores the ObjectIds of the recipes that have been saved by this user.
     - The contributed field uses the Int32 value to allow a number to  increment/decrement easily
-    <img style="width:80%"  src="documents/screenshots/user_data_model.png">
+    <img style="max-width:80%"  src="documents/screenshots/user_data_model.png">
 
 1.  RECIPES 
 
     - The majority of the fields in this collection also use String values.
     - The rating field uses an Array to collect all the ratings. The output is the sum of the array divided by the length.
-    <img style="width:80%"  src="documents/screenshots/recipe_data_model.png">
+    <img style="max-width:80%"  src="documents/screenshots/recipe_data_model.png">
 
 1. RECIPE TYPE 
     - 2 Fields have string values
     - The count field is Int32 to allow for incrementation / decrementation
-    <img style="width:80%"  src="documents/screenshots/recipe_type_data_model.png">
+    <img style="max-width:80%"  src="documents/screenshots/recipe_type_data_model.png">
 
 1. TOOLS
 
     - All string values
-    <img style="width:80%"  src="documents/screenshots/tool_data_model.png">
+    <img style="max-width:80%"  src="documents/screenshots/tool_data_model.png">
 
 1. PRODUCTS 
 
     - All string values
-    <img style="width:80%"  src="documents/screenshots/product_data_model.png">
+    <img style="max-width:80%"  src="documents/screenshots/product_data_model.png">
 
     *In future development i would make the price field a decimal*
 
@@ -238,7 +238,7 @@ This allows registered members to login into application in order to access the 
 
 If the unhashed password in the database matches the user's password, they are then able to login.
 
-<img style="width:100%" src="documents/screenshots/login.png">
+<div align="center"><img style="max-width:80%" src="documents/screenshots/login.png"></div>
 
 ### **Register Feature**
 
@@ -250,32 +250,32 @@ This allows new users to register for free so they can access the extra features
 - The password is also hashed for security purposes
 <br/>
 
-<img style="width:100%" src="documents/screenshots/register1.png">
-<img style="width:100%" src="documents/screenshots/register2.png">
+<div align="center"><img style="width:80%" src="documents/screenshots/register1.png">
+<img style="width:80%" src="documents/screenshots/register2.png"></div>
 
 ### **Recipes Page**
 The recipes page is the main dashboard for all the recipes. 
 
-<img style="width:100%"  
-src="documents/screenshots/recipes1.png">
+<div align="center"><img style="max-width:80%" src="documents/screenshots/recipes1.png"></div>
+
 
 There is a control panel that presents 4 options:
 
 - All Recipes: Displays all recipes in alphabetical order:
 
-<div align="center"><img style="width:50%"  src="documents/screenshots/recipes2.png"></div>
+    <div align="center"><img style="max-width:50%"  src="documents/screenshots/recipes2.png"></div>
 
 - Random: The random feature button allows any indecisive user to click the button and they will be presented with a random recipe from the database: 
 
-<div align="center"><img style="width:50%"  src="documents/screenshots/random.png"></div>
+    <div align="center"><img style="max-width:50%"  src="documents/screenshots/random.png"></div>
 
 - Types: Allows the user to see the categories of recipes i.e. Snack, Main etc. **Each category has a corresponding related image. This is repeated in the recipe cards as circular avatars**:
 
-<div align="center"><img style="width:50%"  src="documents/screenshots/recipe_types.png"></div>  
+    <div align="center"><img style="width:50%"  src="documents/screenshots/recipe_types.png"></div>  
 
 - Vegan: Allows the user to filter the results to only show Vegan recipes:
 
-<div align="center"><img style="width:50%"  src="documents/screenshots/vegan_result.png"></div>
+    <div align="center"><img style="width:50%"  src="documents/screenshots/vegan_result.png"></div>
 
 ### **Search Feature**
 This feature occurs in a number of pages in the application.
@@ -308,8 +308,8 @@ This allows all users to view the recipe of their choice from the selection in t
 
  For example:
 
-<img style="width:50%" src="documents/screenshots/view_recipe.png"><img style="width:50%" src="documents/screenshots/view_recipe2.png">
-<div align="center"><img style="width:50%" src="documents/screenshots/amazon_product.png"></div>
+<span></span><img style="max-width:50%" src="documents/screenshots/view_recipe.png"><img style="max-width:50%" src="documents/screenshots/view_recipe2.png">
+<div align="center"></span><img style="max-width:50%" src="documents/screenshots/amazon_product.png"></div>
 
 
 ## **REGISTERED USER FEATURES**
@@ -327,11 +327,11 @@ The profile feature presents a dashboard display of the applications features. F
 - My Recipes
 - Top Tools & Products
 
-<img style="width:100%"  src="documents/screenshots/profile.png">
+<img style="width:80%"  src="documents/screenshots/profile.png">
 
 When the cards are selected they reveal information and a link to the corresponding profile section.
 
-<img style="width:100%"  src="documents/screenshots/profile_cards.png">
+<img style="width:80%"  src="documents/screenshots/profile_cards.png">
 
 ## **My Recipes**
 This page displays all recipes contributed by the user. The number in brackets counts the total amount. 
@@ -531,7 +531,7 @@ A future feature i have considered is an approval functionality from an admin us
 *For details on defensive design testing, please see <a href="https://github.com/DanielBradford/rubric/blob/f255ded4eaef409b9e71a8dc2d2aded3fe14e3d5/testing.md" target="_blank">testing section</a>.
 <a name="responsive"></a>
 ## **Responsive Design**
-<div align="center"><img style="height: 120px" src="static/images/qrcode.png" alt="qrcode"><img style="height:200px" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"><span>   </span><img style="height: 180px" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></div>
+<div align="center"><span></span><img style="height: 120px" src="static/images/qrcode.png" alt="qrcode"></span><span><img style="height:200px" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"></span><span>   <img style="height: 180px" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></span></div>
 
 The application has been built using a mobile-first approach. The Materialize grid system was utilized to maintain the responsiveness of this application accross all screen sizes. Throughout the development process, chrome developer tools, multiple desktops and mobile devices
 where used to ensure responsivness across all screen resolutions. *(The application was also tested by family and friends using various devices and browsers.)*
