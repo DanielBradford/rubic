@@ -308,8 +308,11 @@ This allows all users to view the recipe of their choice from the selection in t
 
  For example:
 
-<img width="400px" src="documents/screenshots/view_recipe.png"><img width="400px" src="documents/screenshots/view_recipe2.png">
-<div align="center"></span><img width="400px" src="documents/screenshots/amazon_product.png"></div>
+<div align="center"><img width="400px" src="documents/screenshots/view_recipe.png">
+<img width="400px" src="documents/screenshots/view_recipe2.png">
+<div align="center"></div>
+
+<div align="center"><img width="400px" src="documents/screenshots/amazon_product.png"></div>
 
 
 ## **REGISTERED USER FEATURES**
@@ -372,37 +375,38 @@ The data entry form has front-end and back-end validation to reduce user error a
 ## **Delete recipes**
 The delete option is presented to the registered user in 'My Recipes' and 'View Recipe' Pages. If the user selects delete they have to confirm this via a Javascript Pop Up confirm box.
 
-<div align="center"><img style="width:50%" src="documents/screenshots/edit_delete_option.png"></div>
+<div align="center"><img width="600px" src="documents/screenshots/edit_delete_option.png"></div>
 
 ## **Edit/Update recipes**
 The Edit Recipe Feature allows users to modify any recipe they have created. They are presented with the data enrty form used when adding but with populated fields using the data of the recipe they have chosen to edit. They also have the option cancel the editing proccess.
 
-<img style="width:50%" src="documents/screenshots/edit_recipe.png"><img style="width:50%" src="documents/screenshots/edit_recipe2.png">
+<div align="center"><img width="600px" src="documents/screenshots/edit_recipe.png"><img width="600px" src="documents/screenshots/edit_recipe2.png"></div>
 
 ## **Save recipes**
 The save recipes feature allows a registered user to click 'save' on any recipe they havent created and save it to their "saved recipes" page which can be accessed via their profile. (This is supported with the feature that can also remove the saved recipe).
 This was created using an Array in the User Collection document. Below shows the SAVED status and an example of the Saved Recipes Page.
 
- <div align="center"><img width="800px"  src="documents/screenshots/add_to_saved.png"></div>
-<span align="center"><img width="400px" src="documents/screenshots/saved.png"></span><span><img width="400px" src="documents/screenshots/saved_recipes.png"></span>
+ <div align="center"><img width="600px"  src="documents/screenshots/add_to_saved.png"></div>
+<div align="center"><img width="300px" src="documents/screenshots/saved.png"><img width="300px" src="documents/screenshots/saved_recipes.png"></div>
 
 ## **Rate recipes**
 The rate recipe feature allows all registered users to rate a recipe out of 10 if they have not created it. This generates user feedback and allows users to see which recipes are rated well for reccomendation. The rating and the count of how many times it has been rated is clearly displayed. Below is a screenshot of the feature on the View Recipe page.
 
-<div align="center"><img style="width:50%" src="documents/screenshots/rating.png"></div>
+<div align="center"><img width="500px" src="documents/screenshots/rating.png"></div>
 
 ## **Product & Tools**
 This feature presents recomended tools and products.
 The product image, description and price are displayed with clickable links to the corresponding site. A registered user has access to discount codes which are displayed via modal when clicked.
 The modal also allows the user to click the copy icon to copy to the device's clipboard for future use.
 
-<img style="width:100%" src="documents/screenshots/tools_products.png"><img style="width:100%" src="documents/screenshots/products2.png"><img style="width:50%" src="documents/screenshots/discount_code.png"><img style="width:50%" src="documents/screenshots/amazon_tool.png">
+<div align="center"><img width="600px" src="documents/screenshots/tools_products.png"><img width="600px" src="documents/screenshots/products2.png"></div>
+<div align="center"><img width="300px" src="documents/screenshots/discount_code.png"><img width="300px" src="documents/screenshots/amazon_tool.png"></div>
 
 In future this page will be populated either via an API or using a web scraper (Beautiful Soup) depending on the legality. 
 
 ## **ADMIN / MANAGEMENT FEATURES**
 
-<img src="documents/screenshots/manage_top.png">
+<div align="center"><img width="600px" src="documents/screenshots/manage_top.png"></div>
 
 When Admin logs in they are directed to the management versus the usual profile page for non admin users.
 
@@ -427,12 +431,12 @@ The green button with the plus icon allows redirects the user to the registratio
 ### EDIT USER
 This is the blue button with pencil icon. The edit user button directs the admin to the edit user page. This page is identical to the add user form but is populated with the corresponding user details and is without password fields. This is to protect the users privacy and security. Only Name, Username and Email can be updated.
 
-<img style="width:100%" src="documents/screenshots/edit_user.png">
+<div align="center"><img width="600px" src="documents/screenshots/edit_user.png"></div>
 
 
 ### DELETE USER
 This is the red button with the trash icon. This button deletes the user but the admin has to confirm this . They are presented with a Javascript Confirm Pop Up window to ensure they intend to delete the user. 
-<img style="width:100%" src="documents/screenshots/users_recipes.png">
+<div align="center"><img width="600px" src="documents/screenshots/users_recipes.png"></div>
 
 ### **Search Users**
 In the management page the admin can search within the index of username and last name and the results are displayed in the table.
