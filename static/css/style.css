@@ -528,6 +528,11 @@ footer {
   height: 2em;
 }
 
+footer a{
+    margin-left: 1em;
+    color: white;
+}
+
 /* MEDIA QUERIES*/
 @media only screen and (max-width: 600px) {
   .title i {
