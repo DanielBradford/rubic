@@ -32,7 +32,7 @@ Rubric is an efficient personal recipe management web application.  It provides 
 ## <p align="center"  style="color:teal">WHAT DOES IT DO?</p>
 It allows users to Create, Read, Update and Delete Recipe Documents. It also has features that allow registered users to save recipes they like and rate other peoples recipes. 
 
-<div align="center"><img style="max-width: 70%" src="documents/screenshots/desktop.png" alt="screenshot of landing page"></div>
+<div align="center"><img width='500px' src="documents/screenshots/desktop.png" alt="screenshot of landing page"></div>
 <a name="how"></a>
 
 ## **HOW DOES IT WORK?**
@@ -148,22 +148,22 @@ Within the Rubric Recipe Manager Database their are 5 collections
 
     - The majority of the fields in this collection also use String values.
     - The rating field uses an Array to collect all the ratings. The output is the sum of the array divided by the length.
-    <img style="max-width:80%"  src="documents/screenshots/recipe_data_model.png">
+    <img width="300px" src="documents/screenshots/recipe_data_model.png">
 
 1. RECIPE TYPE 
     - 2 Fields have string values
     - The count field is Int32 to allow for incrementation / decrementation
-    <img style="max-width:80%"  src="documents/screenshots/recipe_type_data_model.png">
+    <img width="300px"  src="documents/screenshots/recipe_type_data_model.png">
 
 1. TOOLS
 
     - All string values
-    <img style="max-width:80%"  src="documents/screenshots/tool_data_model.png">
+    <img width="300px"  src="documents/screenshots/tool_data_model.png">
 
 1. PRODUCTS 
 
     - All string values
-    <img style="max-width:80%"  src="documents/screenshots/product_data_model.png">
+    <img width="300px"  src="documents/screenshots/product_data_model.png">
 
     *In future development i would make the price field a decimal*
 
@@ -238,7 +238,7 @@ This allows registered members to login into application in order to access the 
 
 If the unhashed password in the database matches the user's password, they are then able to login.
 
-<div align="center"><img style="max-width:80%" src="documents/screenshots/login.png"></div>
+<div align="center"><img width="600px" src="documents/screenshots/login.png"></div>
 
 ### **Register Feature**
 
@@ -256,14 +256,14 @@ This allows new users to register for free so they can access the extra features
 ### **Recipes Page**
 The recipes page is the main dashboard for all the recipes. 
 
-<div align="center"><img style="max-width:80%" src="documents/screenshots/recipes1.png"></div>
+<div align="center"><img width="300px" src="documents/screenshots/recipes1.png"></div>
 
 
 There is a control panel that presents 4 options:
 
 - All Recipes: Displays all recipes in alphabetical order:
 
-    <div align="center"><img style="max-width:50%"  src="documents/screenshots/recipes2.png"></div>
+    <div align="center"><img width="300px" src="documents/screenshots/recipes2.png"></div>
 
 - Random: The random feature button allows any indecisive user to click the button and they will be presented with a random recipe from the database: 
 
