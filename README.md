@@ -142,28 +142,28 @@ Within the Rubric Recipe Manager Database their are 5 collections
     - The majority of the fields use String input.
     - The saved recipes uses an array which stores the ObjectIds of the recipes that have been saved by this user.
     - The contributed field uses the Int32 value to allow a number to  increment/decrement easily
-    <img style="max-width:80%"  src="documents/screenshots/user_data_model.png">
+    <div align="center"><img width="500px"  src="documents/screenshots/user_data_model.png"></div>
 
 1.  RECIPES 
 
     - The majority of the fields in this collection also use String values.
     - The rating field uses an Array to collect all the ratings. The output is the sum of the array divided by the length.
-    <img width="300px" src="documents/screenshots/recipe_data_model.png">
+    <div align="center"><img width="500px" src="documents/screenshots/recipe_data_model.png"></div>
 
 1. RECIPE TYPE 
     - 2 Fields have string values
     - The count field is Int32 to allow for incrementation / decrementation
-    <img width="300px"  src="documents/screenshots/recipe_type_data_model.png">
+    <div align="center"><img width="500px"  src="documents/screenshots/recipe_type_data_model.png"></div>
 
 1. TOOLS
 
     - All string values
-    <img width="300px"  src="documents/screenshots/tool_data_model.png">
+    <div align="center"><img width="500px"  src="documents/screenshots/tool_data_model.png"></div>
 
 1. PRODUCTS 
 
     - All string values
-    <img width="300px"  src="documents/screenshots/product_data_model.png">
+   <div align="center"><img width="500px"  src="documents/screenshots/product_data_model.png"></div>
 
     *In future development i would make the price field a decimal*
 
@@ -256,33 +256,33 @@ This allows new users to register for free so they can access the extra features
 ### **Recipes Page**
 The recipes page is the main dashboard for all the recipes. 
 
-<div align="center"><img width="300px" src="documents/screenshots/recipes1.png"></div>
+<div align="center"><img width="600px" src="documents/screenshots/recipes1.png"></div>
 
 
 There is a control panel that presents 4 options:
 
 - All Recipes: Displays all recipes in alphabetical order:
 
-    <div align="center"><img width="300px" src="documents/screenshots/recipes2.png"></div>
+    <div align="center"><img width="600px" src="documents/screenshots/recipes2.png"></div>
 
 - Random: The random feature button allows any indecisive user to click the button and they will be presented with a random recipe from the database: 
 
-    <div align="center"><img style="max-width:50%"  src="documents/screenshots/random.png"></div>
+    <div align="center"><img width="600px"  src="documents/screenshots/random.png"></div>
 
 - Types: Allows the user to see the categories of recipes i.e. Snack, Main etc. **Each category has a corresponding related image. This is repeated in the recipe cards as circular avatars**:
 
-    <div align="center"><img style="width:50%"  src="documents/screenshots/recipe_types.png"></div>  
+    <div align="center"><img width="600px"  src="documents/screenshots/recipe_types.png"></div>  
 
 - Vegan: Allows the user to filter the results to only show Vegan recipes:
 
-    <div align="center"><img style="width:50%"  src="documents/screenshots/vegan_result.png"></div>
+    <div align="center"><img width="600px"  src="documents/screenshots/vegan_result.png"></div>
 
 ### **Search Feature**
 This feature occurs in a number of pages in the application.
 The search feature allows the user to input text and search the database for the relevant inputted data.
 - **Search recipes page** allows the user to search within the index of recipe name and recipe ingredients
 
-    <div align="center"><img style="width:80%" src="documents/screenshots/search_result.png"></div>
+    <div align="center"><img width="600px" src="documents/screenshots/search_result.png"></div>
 - **Search saved recipes page** allows the user to search within the index of recipe name and recipe ingredients within their saved recipes contents
 - **Search my recipes page** allows the user to search within the index of recipe name and recipe ingredients within their 'my recipes' contents
 
@@ -308,8 +308,8 @@ This allows all users to view the recipe of their choice from the selection in t
 
  For example:
 
-<span></span><img style="max-width:50%" src="documents/screenshots/view_recipe.png"><img style="max-width:50%" src="documents/screenshots/view_recipe2.png">
-<div align="center"></span><img style="max-width:50%" src="documents/screenshots/amazon_product.png"></div>
+<img width="400px" src="documents/screenshots/view_recipe.png"><img width="400px" src="documents/screenshots/view_recipe2.png">
+<div align="center"></span><img width="400px" src="documents/screenshots/amazon_product.png"></div>
 
 
 ## **REGISTERED USER FEATURES**
@@ -327,11 +327,11 @@ The profile feature presents a dashboard display of the applications features. F
 - My Recipes
 - Top Tools & Products
 
-<img style="width:80%"  src="documents/screenshots/profile.png">
+<div align="center"><img width="600px"  src="documents/screenshots/profile.png"></div>
 
 When the cards are selected they reveal information and a link to the corresponding profile section.
 
-<img style="width:80%"  src="documents/screenshots/profile_cards.png">
+<div align="center"><img width="600px"  src="documents/screenshots/profile_cards.png"></div>
 
 ## **My Recipes**
 This page displays all recipes contributed by the user. The number in brackets counts the total amount. 
@@ -340,7 +340,7 @@ This page presents the add recipe button which redirects the user to the add rec
 
 On the recipe cards displayed there are buttons to edit (blue) or delete (red) their recipe. Or by clicking the card they can view the recipe.
 
-<img style="width:100%"  src="documents/screenshots/my_recipes.png">
+<div align="center"><img width="600px"  src="documents/screenshots/my_recipes.png"></div>
 
 ## **Saved Recipes**
 
@@ -351,7 +351,7 @@ The user has the option to search all recipes within their saved list.
 They also have the option to remove the recipe using the trash icon. When this is clicked there is an option to remove the item. They have to confirm to complete this function.
 
 
-<img style="width:100%"  src="documents/screenshots/saved_recipes.png">
+<div align="center"><img width="600px" src="documents/screenshots/saved_recipes.png"></div>
 
 ## **Create/Add recipes**
 The ADD RECIPE button in 'My Recipes' and the Floating Menu ADD RECIPE Button (Green) direct the user here.
@@ -366,8 +366,8 @@ The data entry form has front-end and back-end validation to reduce user error a
 
 - Character min and max limits on text inputs
 
- <img style="width:100%" src="documents/screenshots/add_recipe.png">
-<img style="width:100%" src="documents/screenshots/add_recipe2.png">
+<div align="center"><img width="600px" src="documents/screenshots/add_recipe.png"></div>
+<div align="center"><img width="600px" src="documents/screenshots/add_recipe2.png"></div>
 
 ## **Delete recipes**
 The delete option is presented to the registered user in 'My Recipes' and 'View Recipe' Pages. If the user selects delete they have to confirm this via a Javascript Pop Up confirm box.
@@ -383,7 +383,8 @@ The Edit Recipe Feature allows users to modify any recipe they have created. The
 The save recipes feature allows a registered user to click 'save' on any recipe they havent created and save it to their "saved recipes" page which can be accessed via their profile. (This is supported with the feature that can also remove the saved recipe).
 This was created using an Array in the User Collection document. Below shows the SAVED status and an example of the Saved Recipes Page.
 
- <img style="width:100%"  src="documents/screenshots/add_to_saved.png"><img style="width:50%" src="documents/screenshots/saved.png"><img style="width:50%" src="documents/screenshots/saved_recipes.png">
+ <div align="center"><img width="800px"  src="documents/screenshots/add_to_saved.png"></div>
+<span align="center"><img width="400px" src="documents/screenshots/saved.png"></span><span><img width="400px" src="documents/screenshots/saved_recipes.png"></span>
 
 ## **Rate recipes**
 The rate recipe feature allows all registered users to rate a recipe out of 10 if they have not created it. This generates user feedback and allows users to see which recipes are rated well for reccomendation. The rating and the count of how many times it has been rated is clearly displayed. Below is a screenshot of the feature on the View Recipe page.
@@ -531,7 +532,7 @@ A future feature i have considered is an approval functionality from an admin us
 *For details on defensive design testing, please see <a href="https://github.com/DanielBradford/rubric/blob/f255ded4eaef409b9e71a8dc2d2aded3fe14e3d5/testing.md" target="_blank">testing section</a>.
 <a name="responsive"></a>
 ## **Responsive Design**
-<div align="center"><span></span><img style="height: 120px" src="static/images/qrcode.png" alt="qrcode"></span><span><img style="height:200px" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"></span><span>   <img style="height: 180px" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></span></div>
+<span align="center"><img width="100px" src="static/images/qrcode.png" alt="qrcode"></span><span><img width="400px" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"></span><span>   <img width="100px" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></span>
 
 The application has been built using a mobile-first approach. The Materialize grid system was utilized to maintain the responsiveness of this application accross all screen sizes. Throughout the development process, chrome developer tools, multiple desktops and mobile devices
 where used to ensure responsivness across all screen resolutions. *(The application was also tested by family and friends using various devices and browsers.)*
