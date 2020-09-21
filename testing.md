@@ -3,6 +3,7 @@
 # Table of contents
 
 1. <a href="#valid">Code Validation</a>
+1. <a href="#error">Error Testing</a>
 1. <a href="#nav">Navigation Testing</a>
 1. <a href="#story">User Story Testing</a>
 1. <a href="#crud">C.R.U.D Testing</a>
@@ -56,7 +57,21 @@ There were 3 minor errors that were corrected during testing:
         Date:   Wed Sep 16 18:55:00 2020 +0000
         Code layout cleaned to pass through pep8 validation
 
+
+<a name="error"></a>
+
+### **Error Testing**
+
+In the eventuality of an error 400, 404, 500 or otherwise it was essential to provide a page the user is directed to. 
+
+I tested this by intentionally entering a non-existent URL. The application passed this test by presenting the 404 page:
+
+<img src="documents/screenshots/error.png">
+
+If the user is logged in they are directed back to their profile page. If the user is not logged in they are directed to the home page.
+
 <a name="nav"></a>
+
 ### **Navigation Testing**
 
 - Mobile/Tablet Menu <span style="color:#00b300">PASSED</span> 
