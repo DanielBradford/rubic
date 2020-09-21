@@ -1,5 +1,6 @@
 <div align="center"><img src="documents/screenshots/logo.png"></div>
 <a name="top">
+
 # Table of contents
 
 1. <a href="#whatis">What is Rubric?</a>
