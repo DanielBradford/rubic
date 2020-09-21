@@ -2,7 +2,6 @@
 
 # Table of contents
 
-1. <a href="#details">User and Admin Login Details</a>
 1. <a href="#whatis">What is Rubric?</a>
 1. <a href="#whatdo">What does it do?</a>
 1. <a href="#how">How does it work?</a>
@@ -25,19 +24,6 @@
 
 <a name="details"></a><div align="center"><p>Project Live Demo:<a href="https://rubric-recipe-manager.herokuapp.com/"> **RUBRIC - RECIPE MANAGER**</a>
 
-**TEST USER LOGIN DETAILS**
-
-USERNAME :  **Test1**
-
-PASSWORD:   **password**</p>
-<br/>
-
-**ADMIN LOGIN DETAILS (For assessment purposes only)**
-
-USERNAME :  **admin**
-
-PASSWORD:   **admin**</p></div>
-<br>
 <a name="whatis"></a>
 ## <p align="center" style="color:teal">WHAT IS RUBRIC?</p>
 Rubric is an efficient personal recipe management web application.  It provides a full recipe management service, free of charge which allows users to have access to a selection of recipes, including their own, all in one place. The project is a combination of HTML, CSS, JavaScript, and Python and utilizes a NoSQL Database (MongoDB) with Flask.
