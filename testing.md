@@ -59,12 +59,14 @@ There were 3 minor errors that were corrected during testing:
 ### **Navigation Testing**
 
 - Mobile/Tablet Menu <span style="color:#00b300">PASSED</span> 
-    - The hamburger menu icon is visible and functions  
+    - The hamburger menu icon is visible and functions
+    - Appropriate links are shown/hidden depending on user
     - All text and icons are visible and appropriate sizes
     - All navigation links successfully direct the user to corresponding pages
 
 - Desktop Menu <span style="color:#00b300">PASSED</span> 
-    - All links highlight and apply intended CSS 
+    - All links highlight and apply intended CSS
+    - Appropriate links are shown/hidden depending on user 
     - All text and icons are visible and appropriate sizes
     - All navigation links successfully direct the user to corresponding pages
 
@@ -87,17 +89,17 @@ There were 3 minor errors that were corrected during testing:
     <span style="color:#00b300">PASSED</span> *The login page allows this. This was tested by intentionally inputting correct and incorrect usernames and passwords. The login validation passed this manual test.*
 1. As a new or returning user i want to view all recipes on the application
 
-    <span style="color:#ffa500">TESTING NOTE</span> A 'forgotten password" feature would be utilised in future.
+    <span style="color:#ffa500">TESTING NOTE</span> *A 'forgotten password" feature would be utilised in future.*
 
     <span style="color:#00b300">PASSED</span> *The view recipe page does this*
 1. As a new or returning user i want to easily search through all the recipes on the application
 
-    <span style="color:#ffa500">TESTING NOTE</span> Although the search function works, the function does not take errors or mispelling into account. This could be improved in the future by filtering in the back-end
+    <span style="color:#ffa500">TESTING NOTE</span> *Although the search function works, the function does not take errors or mispelling into account. This could be improved in the future by filtering in the back-end*
 
     <span style="color:#00b300">PASSED</span> *The search function operates successfully*
 1. As a new or returning user i cant decide what recipe to view and want to be shown a random recipe to make my recipe choice experience fun and enjoyable
 
-    <span style="color:#ffa500">TESTING NOTE</span> During testing the presentation of the random results could be clearer and display could be improved
+    <span style="color:#ffa500">TESTING NOTE</span> *During testing the presentation of the random results could be clearer and display could be improved*
 
     <span style="color:#00b300">PASSED</span> *The random recipe button function accomodates this*
 
@@ -186,7 +188,7 @@ One of the main features that needed to be tested was the rating system. This sy
 
 I tested this by logging in as different users and rating recipes to check the calculations were correct.
 <a name="saved"></a>
-### **SAVE RECIPE FUNCTIONALITY**
+### **SAVE RECIPE FUNCTIONALITY** <span style="color:#00b300">PASSED</span>
 
 - This involved logging in as a registered user and clicking the save option on the view recipe page for various recipes.
 - The saved function passed this test by allowing the ObjectId to be saved and recalled/displayed on the Saved Recipes Page.
@@ -350,9 +352,9 @@ Commit Examples:
 
 Browser             | Version           | Comments
 --------------------|-------------------|---------
-Firefox             | 72.0.2 (64-bit)   | <span style="color:#00b300">PASSED</span> No errors observed
-Edge                | 44.18362.449.0    | <span style="color:#00b300">PASSED</span> No errors observed
-Chrome              | 80.0.3987.122     | <span style="color:#00b300">PASSED</span> No errors observed
+Safari              | 12.0.2 (14606.3.4)| <span style="color:#00b300">PASSED</span> No errors observed
+Firefox             | 80.0.1 (64-bit)   | <span style="color:#00b300">PASSED</span> No errors observed
+Chrome              | 84.0.4147.105     | <span style="color:#00b300">PASSED</span> No errors observed
 
 <a name="bugs"></a>
 ## **Development Issues / De-bugging:**
@@ -414,7 +416,8 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 **Lighthouse Desktop Report:**
 <img src="documents/screenshots/lighthouse.png" alt="Landing Page - LIGHTHOUSE REPORT">
  <a name="further"></a>
-## Further Testing
 
-I completed further testing by asking family and friends to play the game and give me feedback.
-This stage of testing allowed me to understand a more realistic client/user impression of the game and guided me to altering some stylistic choices. e.g. bigger text in places and more breathing space between elements.
+## **Further Testing**
+
+I completed further testing by asking family and friends to use the application and give me feedback.
+This stage of testing allowed me to understand a more realistic client/user impression of the game and guided me to altering some functionality and stylistic choices. e.g. Future password retreaval system, bigger text in places and more breathing space between elements.
