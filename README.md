@@ -1,5 +1,5 @@
 <div align="center"><img src="documents/screenshots/logo.png"></div>
-
+<a name="top">
 # Table of contents
 
 1. <a href="#whatis">What is Rubric?</a>
@@ -637,3 +637,4 @@ For continual guidance:
 - Stack Overflow (https://stackoverflow.com/)
 - W3 Schools (https://www.w3schools.com/)
 
+<div align="center"><a href="#top">BACK TO TOP</a></div>

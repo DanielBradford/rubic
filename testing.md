@@ -1,5 +1,5 @@
 # **<p align="center"> Testing </p>**
-
+<a name="top">
 # Table of contents
 
 1. <a href="#valid">Code Validation</a>
@@ -459,3 +459,6 @@ One user after testing advised the floating menu should have 'tool tips' to hint
 
     Titles added to floating menu icons to inform user of their function when hovered over on desktop
 This stage of testing allowed me to understand a more realistic client/user impression of the game and guided me to altering some functionality and stylistic choices. e.g. Future password retreaval system, bigger text in places and more breathing space between elements.
+
+<div align="center"><a href="#top">BACK TO TOP</a></div>
+
