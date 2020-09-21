@@ -23,7 +23,7 @@
 
 
 
-<a name="details"></a><div align="center"><p>Project Live Demo:<a href="https://rubric-recipe-manager.herokuapp.com/"> **RUBRIC - RECIPE MANAGER**</a>
+<a name="details"></a><div align="center"><p>Project Live Demo:<a href="https://rubric-recipe-manager.herokuapp.com/"> **RUBRIC - RECIPE MANAGER**</a></div></a>
 
 <a name="whatis"></a>
 ## <p align="center" style="color:teal">WHAT IS RUBRIC?</p>
