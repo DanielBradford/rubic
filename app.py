@@ -69,9 +69,9 @@ def search_saved():
                            check_list=check_list, size=size, user=user)
 
 
-# displays recipes only created by current user
 @app.route("/my_recipes")
 def my_recipes():
+    """displays recipes only created by current user"""
     # prevent users to cross to other clients recipe page
     user = session.get('user', 'Guest')
     if user != 'Guest':
@@ -89,13 +89,12 @@ def my_recipes():
         return render_template('landing.html',
                                types=types, recipes=recipes, users=users)
 
-# function displays amazon products recommended
-# (Scope for monetising the app)
-# discount code only shown to logged in users
-
 
 @app.route("/products")
 def products():
+    """function displays amazon products recommended, 
+    Scope for monetising the app, 
+    discount code only shown to logged in users"""
     user = session.get('user', 'Guest')
     if user != "Guest":
         products = list(
@@ -115,6 +114,7 @@ def products():
 
 @ app.route("/manage")
 def manage():
+    """Presents a dashboard/suite for the admin user to manage data"""
     # prevents non admin users accessing management template
     user = session.get('user', 'Guest')
     if user == "admin":
@@ -140,6 +140,7 @@ def manage():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """Logs the user into their profile and allows full access"""
     user = session.get('user', 'Guest')
     if user == "Guest":
         if request.method == "POST":
@@ -186,10 +187,9 @@ def logout():
     return redirect(url_for("home"))
 
 
-# takes user to registrating page
 @app.route("/register")
 def register():
-
+    """takes user to registrating page"""
     return render_template("register.html")
 
 
@@ -217,6 +217,8 @@ def recipe_list(recipe_type):
 
 @app.route("/view_recipe/<recipe_id>", methods=["GET", "POST"])
 def view_recipe(recipe_id):
+    """Presents a full recipe to user. The option to save, rate, edit and delete,
+    varies upon the user accessing the recipe"""
     user = session.get('user', 'Guest')
     if session['user']:
         # checks recipe id is valid
@@ -257,9 +259,9 @@ def view_recipe(recipe_id):
                            types=types, products=products)
 
 
-# routes user to the add recipe form template
 @app.route("/add_recipe")
 def add_recipe():
+    """routes user to the add recipe form template"""
     user = session.get('user', 'Guest')
     if user != "Guest":
         types = list(mongo.db.type.find().sort("type_name", 1))
@@ -270,11 +272,10 @@ def add_recipe():
         flash("MEMBERS ONLY! PLEASE REGISTER OR LOGIN FOR FULL ACCESS!")
         return redirect(url_for('home'))
 
-# adds new user to users collection in db
-
 
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
+    """adds new user to users collection in db"""
     if request.method == "POST":
 
         existing_user = mongo.db.users.find_one(
@@ -422,9 +423,10 @@ def add_new_recipe():
         return redirect(url_for('home'))
 
 
-# function to edit the chosen recipe
+
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    """function to edit the chosen recipe"""
     user = session.get('user', 'Guest')
     if user != "Guest":
 
@@ -499,9 +501,10 @@ def edit_recipe(recipe_id):
         return redirect(url_for('home'))
 
 
-# function to allow user to save chosen recipe
+
 @app.route("/save_recipe/<recipe_id>", methods=["GET", "POST"])
 def save_recipe(recipe_id):
+    """function to allow user to save chosen recipe"""
     # gets current user
     user = session.get('user', 'Guest')
     # appends the chosen recipe_id to current user document in db
@@ -512,9 +515,9 @@ def save_recipe(recipe_id):
     return redirect(url_for("view_recipe", recipe_id=recipe_id))
 
 
-# function to view all saved recipes of current user
 @app.route("/saved_recipes", methods=["GET", "POST"])
 def saved_recipes():
+    """function to view all saved recipes of current user"""
     # checks current user
     user = session.get('user', 'Guest')
     # checks if user is guest or registered member
@@ -542,9 +545,9 @@ def saved_recipes():
         return redirect(url_for('home'))
 
 
-# deletes the chosen recipe entirely from the database
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
+    """deletes the chosen recipe entirely from the database"""
     # backend check the user is logged in
     user = session.get('user', 'Guest')
     if user != "Guest":
@@ -589,9 +592,9 @@ def delete_recipe(recipe_id):
                                users=users, recipes=recipes, types=types)
 
 
-# removes the recipe from the users saved list
 @app.route("/remove_recipe/<recipe_id>")
 def remove_recipe(recipe_id):
+    """removes the recipe from the users saved list"""
     # check if user in session (login check)
     user = session["user"]
     saved_list = list(mongo.db.users.distinct(
@@ -613,9 +616,9 @@ def remove_recipe(recipe_id):
     return redirect(url_for('saved_recipes', user=user))
 
 
-# adds rating to the rating array in recipes db
 @app.route("/add_rating/<recipe_id>", methods=["POST", "GET"])
 def add_rating(recipe_id):
+    """adds rating to the rating array in recipes db"""
     userRating = int(request.form.get("rating"))
     # gets the existing array
     currentRating = list(mongo.db.recipes.distinct(
@@ -632,9 +635,9 @@ def add_rating(recipe_id):
 
 # filters
 
-# filters so only vegan recipes are shown
 @app.route("/vegan")
 def vegan_filter():
+    """filters so only vegan recipes are shown"""
     types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.find({"vegan": "Yes"}))
 
@@ -642,18 +645,18 @@ def vegan_filter():
                            recipes=recipes)
 
 
-#  filters so all recipes are shown
 @app.route("/all_recipes")
 def all_filter():
+    """filters so all recipes are shown"""
     types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
     return render_template("recipes.html",
                            recipes=recipes, types=types)
 
 
-#  filters so most popular recipes are shown
 @app.route("/random")
 def random():
+    """filters so most popular recipes are shown"""
     types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.aggregate([{'$sample': {'size': 1}}]))
     return render_template("recipes.html",
@@ -662,10 +665,10 @@ def random():
 
 # MANAGEMENT FUNCTIONS
 
-
-# deleting recipe types
 @app.route("/delete_recipe_type/<type_id>")
 def delete_recipe_type(type_id):
+    """delete recipe types"""
+    # gets current user
     user = session.get('user', 'Guest')
     if user == "admin":
         types = list(mongo.db.type.find().sort("type_name", 1))
@@ -688,9 +691,9 @@ def delete_recipe_type(type_id):
         return redirect(url_for("home"))
 
 
-# adding recipe types
 @ app.route("/add_recipe_type", methods=["GET", "POST"])
 def add_recipe_type():
+    """add recipe types"""
     types = list(mongo.db.type.find().sort("type_name", 1))
     users = list(mongo.db.users.find().sort("last_name", 1))
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
@@ -726,14 +729,9 @@ def add_recipe_type():
                            recipes=recipes, types=types, users=users)
 
 
-# @app.route("/edit_type", methods=["GET", "POST"])
-# def edit_type(this_id):
-#     this = mongo.db.type.find_one({"_id": ObjectId(this_id)})
-
-
-# adding tools
 @ app.route("/add_tool", methods=["GET", "POST"])
 def add_tool():
+    """adding tools"""
     user = session.get('user', 'Guest')
     # verifies current user is admin
     if user == "admin":
@@ -766,11 +764,10 @@ def add_tool():
         return render_template("landing.html",
                                users=users, recipes=recipes, types=types)
 
-# adding products
-
 
 @ app.route("/add_product", methods=["GET", "POST"])
 def add_product():
+    """adding products"""
     # verifies current user is admin
     user = session.get('user', 'Guest')
     if user == "admin":
@@ -804,12 +801,10 @@ def add_product():
                                users=users, recipes=recipes, types=types)
 
 
-# User search function
-
 @ app.route("/user_search", methods=["GET", "POST"])
-# function to allow user to search for recipes based
-# on recipe_name and ingredients index
 def user_search():
+    """User search function to allow admin to search for users based
+    on username and last name"""
     search = request.form.get("search")
     types = list(mongo.db.type.find().sort("type_name", 1))
     recipes = list(mongo.db.recipes.find().sort("recipe_name", 1))
@@ -831,9 +826,9 @@ def user_search():
                                tools=tools, products=products)
 
 
-# deleting records
 @ app.route("/delete_user/<username>")
 def delete_user(username):
+    """deleting records"""
     # validate the user is admin
     user = session.get('user', 'Guest')
     if user == "admin":
