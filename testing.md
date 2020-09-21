@@ -188,16 +188,13 @@ I created catch messages for this instance and they work correctly.
 
 <img style="width:50%" src="documents/screenshots/no_result.png" alt=""><img style="width:50%" src="documents/screenshots/no_result2.png" alt="">
 
-
-
-
-
-
 <a name="rating"></a>
 ### **RATING FUNCTIONALITY** <span style="color:#00b300">PASSED</span>
 One of the main features that needed to be tested was the rating system. This system allows the user to rate a recipe between 1 and 10 using a slide bar. The rating is then stored in an array in the recipe document. On the front-end the code generates the sum of the array and divides it by the length of the array giving the average rating for that recipe.
 
 I tested this by logging in as different users and rating recipes to check the calculations were correct.
+
+THERE IS CURRRENTLY NO LIMIT TO THE AMOUNT OF TIMES A USER CAN RATE THSE RECIPE. IN FUTURE THIS WILL BE LIMITED TO PREVENT ABUSE OF THIS FUNCTION. 
 <a name="saved"></a>
 ### **SAVE RECIPE FUNCTIONALITY** <span style="color:#00b300">PASSED</span>
 
@@ -401,7 +398,7 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 **Performance**
 
 - In initial reports the website had an average Performance rating of **76**.
-- I streamlined the style.css file to lessen the data being loaded. (commit 
+- I streamlined the style.css file to lessen the data being loaded. (commit git 
 - By making these changes the current Performance rating is now (on average) **94**
 
 **Accessibility**
