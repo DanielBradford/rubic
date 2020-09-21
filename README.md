@@ -309,7 +309,7 @@ This allows all users to view the recipe of their choice from the selection in t
  For example:
 
 <div align="center"><img width="400px" src="documents/screenshots/view_recipe.png">
-<img width="400px" src="documents/screenshots/view_recipe2.png">
+<img width="400px" src="documents/screenshots/view_recipe2.png"></div>
 <div align="center"><img width="400px" src="documents/screenshots/amazon_product.png"></div>
 
 
