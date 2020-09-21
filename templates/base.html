@@ -104,24 +104,25 @@
 		<div class="container">
 			{% block content %} {% endblock %} {%if session.user != "Guest" %}
 			<div class="fixed-action-btn">
-				<a class="btn-large btn-floating teal">
+				<a class="btn-large btn-floating teal" title="QUICK MENU">
 					<i class="fas fa-hat-chef"></i>
 				</a>
 				<ul>
-					<li>
+					<li title="ADD RECIPE"
+                >
 						<a href="{{url_for('add_recipe')}}" class="btn-floating green"><i class="fas fa-plus"></i></a>
 					</li>
-					<li>
+					<li title="VIEW PRODUCTS">
 						<a href="{{url_for('products')}}" class="btn-floating purple"><i class="fas fa-blender"></i></a>
 					</li>
-					<li>
+					<li title="MY RECIPES">
 						<a href="{{url_for('my_recipes')}}"
 							class="btn-floating #ff7043 deep-orange lighten-1"><i class="fas fa-archive"></i></a>
 					</li>
-					<li>
+					<li title="RANDOM RECIPE">
 						<a href="{{url_for('random')}}" class="btn-floating pink"><i class="fas fa-random"></i></a>
 					</li>
-					<li>
+					<li title="SAVED RECIPES">
 						<a href="{{url_for('saved_recipes')}}"
 							class="btn-floating yellow darken-1"><i class="fas fa-thumbtack"></i></a>
 					</li>
