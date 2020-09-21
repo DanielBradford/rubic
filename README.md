@@ -310,8 +310,6 @@ This allows all users to view the recipe of their choice from the selection in t
 
 <div align="center"><img width="400px" src="documents/screenshots/view_recipe.png">
 <img width="400px" src="documents/screenshots/view_recipe2.png">
-<div align="center"></div>
-
 <div align="center"><img width="400px" src="documents/screenshots/amazon_product.png"></div>
 
 
@@ -417,8 +415,7 @@ The user table displays all user information. The table displays:
 - **First Name**
 - **Email address** (When clicked this opens an email to be sent to the member from RUBRIC ACCOUNT MANAGEMENT) This allows for easier communication if needed between admin and members.
 
-    commit cf0cf744e09639f4de4b7c0dc829994d702a13a7
-
+        commit cf0cf744e09639f4de4b7c0dc829994d702a13a7
 
 
 - **Contributed** (Number of recipes added by user)
@@ -459,7 +456,7 @@ This green button with the plus icon allows the admin user to add a recipe. The 
 ### DELETE RECIPE
 This red button with the trash icon will delete the corresponding recipe. The user will have to verify the deletion via a Javascript Confirm window. 
 
-<img style="width:100%" src="documents/screenshots/users_recipes.png">
+<img width="600px" src="documents/screenshots/users_recipes.png">
 
 
 ## Recipe Type Table
@@ -471,13 +468,13 @@ This table displays all recipe types within the database. The data includes:
 
 When a recipe is added or deleted this count is incremented/decremented accordingly.
 
-<img style="width:100%"  src="documents/screenshots/manage_recipe_type.png">
+<img width="600px"  src="documents/screenshots/manage_recipe_type.png">
 
 ### ADD RECIPE TYPE
 
 The green tab with the plus icon toggles a data entry form where the admin can add a recipe type. **If a new recipe type is added it is assigned a default image for corresponding recipe card avatars**.
 
-<img style="width:100%"  src="documents/screenshots/add_recipe_type.png">
+<img width="600px"  src="documents/screenshots/add_recipe_type.png">
 
 ### DELETE RECIPE TYPE
 
@@ -496,12 +493,12 @@ Products and Tools Info:
 - **Description**
 - **Price**
 
-<img src="documents/screenshots/products_tools.png">
+<img width="600px" src="documents/screenshots/products_tools.png">
 
 ### ADD PRODUCT / TOOL
 The add button with the plus icon toggles a data entry form within the window which allows admin to add a product or tool to the database.
 
-<img src="documents/screenshots/add_product_tool.png">
+<img width="600px" src="documents/screenshots/add_product_tool.png">
 
 ### DELETE PRODUCT/TOOL
 This allows the user to delete a product/tool from the system. This action is met with same verifcation as other deletion proccess.
