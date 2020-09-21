@@ -1,5 +1,5 @@
 <div align="center"><img src="documents/screenshots/logo.png"></div>
-<a name="top">
+<a name="top"></a>
 
 # Table of contents
 
