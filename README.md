@@ -397,6 +397,8 @@ The modal also allows the user to click the copy icon to copy to the device's cl
 
 <img style="width:100%" src="documents/screenshots/tools_products.png"><img style="width:100%" src="documents/screenshots/products2.png"><img style="width:50%" src="documents/screenshots/discount_code.png"><img style="width:50%" src="documents/screenshots/amazon_tool.png">
 
+In future this page will be populated either via an API or using a web scraper (Beautiful Soup) depending on the legality. 
+
 ## **ADMIN / MANAGEMENT FEATURES**
 
 <img src="documents/screenshots/manage_top.png">
