@@ -20,8 +20,8 @@ mongo = PyMongo(app)
 
 @app.errorhandler(404)
 def not_found(e):
-    return render_template("404.html"), 404
-
+    user = session.get('user', 'Guest')
+    return render_template("404.html", user=user), 404
 
 
 @app.route("/")
@@ -912,8 +912,6 @@ def edit_user(user_id):
                 flash("Passwords do not match")
                 return render_template("edit_user", user=user)
             vegan = vegan,
-            # check recipe exists if not 404 page
-
             mongo.db.users.update({"_id": ObjectId(user_id)}, edit)
             flash("USER SUCCESSFULLY UPDATED")
             return redirect(url_for("manage"))
