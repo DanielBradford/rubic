@@ -225,6 +225,10 @@ h4 {
   font-family: "Gayathri", sans-serif;
 }
 
+#error{
+    text-shadow:1px 1px rgba(0, 179, 179, 0.562);
+}
+
 #size {
   color: rgb(226, 75, 20);
   text-shadow: 2px 2px rgb(1, 128, 128);
