@@ -316,7 +316,6 @@ This allows all users to view the recipe of their choice from the selection in t
 
 
 ## **REGISTERED USER FEATURES**
-Apart from Login and Register, all of the above features are accessible in addition to the following:
 
 ## **Profile Page**
 After login and registration the user is directed to the profile page. On first arrival they are greeted with a flash message 'Welcome {username}'.
@@ -441,7 +440,7 @@ This is the red button with the trash icon. This button deletes the user but the
 ### **Search Users**
 In the management page the admin can search within the index of username and last name and the results are displayed in the table.
 
-<img style="width:100%" src="documents/screenshots/search_users.png">
+<div align="center"><img width="600px" src="documents/screenshots/search_users.png"></div>
 
  ### ***All user data is viewable apart from their password. This is to protect the privacy of the users. A future feature will be a password recovery feature if the password is lost or forgotten or needs to be changed.***
 
