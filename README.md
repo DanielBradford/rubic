@@ -532,7 +532,7 @@ A future feature i have considered is an approval functionality from an admin us
 *For details on defensive design testing, please see <a href="https://github.com/DanielBradford/rubric/blob/f255ded4eaef409b9e71a8dc2d2aded3fe14e3d5/testing.md" target="_blank">testing section</a>.
 <a name="responsive"></a>
 ## **Responsive Design**
-<span align="center"><img width="100px" src="static/images/qrcode.png" alt="qrcode"></span><span><img width="400px" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"></span><span>   <img width="100px" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></span>
+<div align="center"><img width="100px" src="static/images/qrcode.png" alt="qrcode"></span><span><img width="400px" class="align-center" src="documents/screenshots/ipad.png" alt="screenshot of ipad view"></span><span>   <img width="100px" class="align-center" src="documents/screenshots/mobile.png" alt="screenshot of mobile view"></div>
 
 The application has been built using a mobile-first approach. The Materialize grid system was utilized to maintain the responsiveness of this application accross all screen sizes. Throughout the development process, chrome developer tools, multiple desktops and mobile devices
 where used to ensure responsivness across all screen resolutions. *(The application was also tested by family and friends using various devices and browsers.)*
