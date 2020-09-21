@@ -122,8 +122,8 @@
               %}{{item.saved_recipes|length}}{%else%}0{% endif %}
             </td>
             <td>
-              {%if item.user_name == "admin" or "Guest" %}
-              <i class="fas fa-lock"></i> {%else%}<a
+              {%if item.user_name == "admin"%}
+              <i class="fas fa-lock"></i> {%elif item.user_name == "Guest"%}<i class="fas fa-lock"></i>{%else%}<a
                 class="edit-user-btn"
                 href="{{url_for('edit_user', user_id=item._id)}}"
                 ><button class="blue btn">
@@ -132,8 +132,8 @@
             </td>
             <!-- the following stops the admin deleting their own account -->
             <td>
-              {%if item.user_name == "admin" or "Guest" %}
-              <i class="fas fa-lock"></i> {%else%}<a
+              {%if item.user_name == "admin" %}
+              <i class="fas fa-lock"></i> {%elif item.user_name == "Guest"%}<i class="fas fa-lock"></i>{%else%}<a
                 class="delete-user-btn"
                 href="{{url_for('delete_user', username=item.user_name)}}"
                 ><button class="red btn">
