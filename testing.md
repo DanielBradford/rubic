@@ -165,16 +165,21 @@ If the user is logged in they are directed back to their profile page. If the us
 <a name="crud"></a>
 ### **CRUD FUNCTIONALITY TESTING**
 CREATE:  <span style="color:#00b300">PASSED</span>
+
 - All creation functionality for recipes, users, recipe types, products and tools was successful and reflected in the Mongo database
 
 READ: <span style="color:#00b300">PASSED</span>
+
 - All data was successfully presented to the user and is accurate to all data stored in the Mongo database 
 
 UPDATE: <span style="color:#00b300">PASSED</span>
+
+- It was important that when the edit form was presented that the form input fields were populated with the recipe information. I ensured the correct data was parsed and bound to the edit_recipe template with the option to be updated/edited by the user.
 - All update functionality for editing recipes and users, was successful and the database stored the data accordingly 
 
 DELETE: <span style="color:#00b300">PASSED</span>
-- All functionality for deleting recipes, users, recipe types, tools and products was successful along with all Javascript confirmations.
+
+- All functionality for deleting recipes, users, recipe types, tools and products was successful along with all Javascript confirmations. Further testing was needed for XSS attacks. (Cross Site Scripting)
 <a name="js"></a>
 ### **JAVASCRIPT/JQUERY INTERACTIVITY TESTING** <span style="color:#00b300">PASSED</span>
 
