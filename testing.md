@@ -404,6 +404,7 @@ By analysing these rerports i was able to make alterations in both the HTML and 
 - I changed changed the appropriate .jpg & .png files into webp format to minimise memory usage and speed up loading and rendering times.
 - I streamlined the style.css file to lessen the data being loaded. (commit 
 - By making these changes the current Performance rating is now (on average) **94**
+
 **Accessibility**
 
 - In initial reports the website had an average Accessibility rating of **78**
