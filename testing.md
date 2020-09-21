@@ -94,7 +94,7 @@ There were 3 minor errors that were corrected during testing:
     <span style="color:#00b300">PASSED</span> *The view recipe page does this*
 1. As a new or returning user i want to easily search through all the recipes on the application
 
-    <span style="color:#ffa500">TESTING NOTE</span> *Although the search function works, the function does not take errors or mispelling into account. This could be improved in the future by filtering in the back-end*
+    <span style="color:#ffa500">TESTING NOTE</span> *Although the search function works, the function does not take errors or misspelling into account. This could be improved in the future by filtering in the back-end*
 
     <span style="color:#00b300">PASSED</span> *The search function operates successfully*
 1. As a new or returning user i cant decide what recipe to view and want to be shown a random recipe to make my recipe choice experience fun and enjoyable
@@ -124,10 +124,8 @@ There were 3 minor errors that were corrected during testing:
     <span style="color:#00b300">PASSED</span> *The add recipe functionality and validation works efficiently*
 1. As a registered user i want to view all the recipes i have added/contributed
 
-    <span style="color:#00b300">PASSED</span>*The 'my recipes' display and functionality works efficiently*
+    <span style="color:#00b300">PASSED</span> *The 'my recipes' display and functionality works efficiently*
 1. As a registered user i want to easily search through all recipes i have added/contributed
-
-     <span style="color:#ffa500">TESTING NOTE</span> If the user clicks back after the search the system is unable to provide a suitable page destination and crashes. THIS REMAINS UNFIXED
 
     <span style="color:#00b300">PASSED</span> *The search 'my recipes' functionality works efficiently*
 1. As a registered user i want to save recipes of other registered users
@@ -180,6 +178,19 @@ On every test the user had to confirm before deletion.
 This failed once on the management page but was corrected.
 
 <img style="width:50%" src="documents/screenshots/delete_confirm.png" alt=""><img  style="width:50%" src="documents/screenshots/delete_confim.png" alt="">
+
+
+<a name="search"></a>
+### **SEARCH FUNCTIONALITY** <span style="color:#00b300">PASSED</span>
+In addition to testing the individual search functions to ensure they return and display the correct results, i also tested the outcome if **no results** were found. 
+
+I created catch messages for this instance and they work correctly. 
+
+<img style="width:50%" src="documents/screenshots/no_result.png" alt=""><img style="width:50%" src="documents/screenshots/no_result2.png" alt="">
+
+
+
+
 
 
 <a name="rating"></a>
